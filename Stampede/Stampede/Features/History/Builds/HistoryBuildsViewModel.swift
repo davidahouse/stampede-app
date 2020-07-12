@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import SwiftUI
+
+class HistoryBuildsViewModel: BaseViewModel, ObservableObject {
+    @Published var builds: [BuildStatus]
+    
+    init(builds: [BuildStatus] = []) {
+        self.builds = builds
+    }
+}

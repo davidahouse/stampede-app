@@ -9,13 +9,18 @@
 import SwiftUI
 
 struct HistoryBuildsFeature: View {
+    
+    @State var viewModel = HistoryBuildsViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HistoryBuildsView(viewModel: viewModel)
     }
 }
 
 struct HistoryBuildsFeature_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryBuildsFeature()
+        DevicePreviewer {
+            HistoryBuildsFeature()
+        }
     }
 }

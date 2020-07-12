@@ -9,13 +9,26 @@
 import SwiftUI
 
 struct HistoryBuildsView: View {
+    
+    @ObservedObject var viewModel: HistoryBuildsViewModel
+    
+    let activeBuilds: [BuildStatus] = BuildStatus.activeBuilds
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(activeBuilds, id: \.self) { item in
+                NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                    StandardCell(viewModel: item.toStandardCellViewModel())
+                }
+            }
+        }
     }
 }
 
 struct HistoryBuildsView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryBuildsView()
+        Previewer {
+            HistoryBuildsView(viewModel: HistoryBuildsViewModel(builds: BuildStatus.activeBuilds))
+        }
     }
 }
