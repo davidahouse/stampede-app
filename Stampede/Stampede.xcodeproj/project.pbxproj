@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,27 @@
 		9438376C2468515E00A90FF4 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376B2468515E00A90FF4 /* Previewer.swift */; };
 		9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376D246859E400A90FF4 /* DevicePreviewer.swift */; };
 		943837702468713E00A90FF4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376F2468713E00A90FF4 /* View+Extension.swift */; };
+		94B571D424BBBEC200CA13A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D324BBBEC200CA13A4 /* Constants.swift */; };
+		94B571EB24BBBECD00CA13A4 /* HourlySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D624BBBECD00CA13A4 /* HourlySummary.swift */; };
+		94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D724BBBECD00CA13A4 /* ConfigDefaults.swift */; };
+		94B571ED24BBBECD00CA13A4 /* StampedeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D824BBBECD00CA13A4 /* StampedeError.swift */; };
+		94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D924BBBECD00CA13A4 /* ConfigOverrides.swift */; };
+		94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571DA24BBBECD00CA13A4 /* WorkerStatus.swift */; };
+		94B571F024BBBECD00CA13A4 /* BuildDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571DB24BBBECD00CA13A4 /* BuildDetails.swift */; };
+		94B571F124BBBECD00CA13A4 /* RepositoryBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571DC24BBBECD00CA13A4 /* RepositoryBuild.swift */; };
+		94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571DD24BBBECD00CA13A4 /* QueueSummary.swift */; };
+		94B571F324BBBECD00CA13A4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571DE24BBBECD00CA13A4 /* Repository.swift */; };
+		94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571DF24BBBECD00CA13A4 /* Queue.swift */; };
+		94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E024BBBECD00CA13A4 /* TaskStatus.swift */; };
+		94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E124BBBECD00CA13A4 /* BuildStatus.swift */; };
+		94B571F724BBBECD00CA13A4 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E224BBBECD00CA13A4 /* Task.swift */; };
+		94B571F824BBBECD00CA13A4 /* StampedeServiceFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E424BBBECD00CA13A4 /* StampedeServiceFixtures.swift */; };
+		94B571F924BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */; };
+		94B571FA24BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E624BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift */; };
+		94B571FB24BBBECD00CA13A4 /* StampedeServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */; };
+		94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E824BBBECD00CA13A4 /* StampedeAPIEndpoint.swift */; };
+		94B571FD24BBBECD00CA13A4 /* StampedeServiceMockProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E924BBBECD00CA13A4 /* StampedeServiceMockProvider.swift */; };
+		94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571EA24BBBECD00CA13A4 /* StampedeService.swift */; };
 		94DB4DFF247C47B8001EF693 /* NetworkErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */; };
 		94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */; };
 		94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */; };
@@ -98,7 +119,6 @@
 		C3CA2E2A24BA9F970086B71D /* SettingsRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2924BA9F970086B71D /* SettingsRepositoriesViewModel.swift */; };
 		C3D350EA23C1846500ADEDC9 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D350E923C1846500ADEDC9 /* BaseViewModel.swift */; };
 		C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D350F623C2B00600ADEDC9 /* CurrentThemeTests.swift */; };
-		C3DF323A24563862000E134B /* StampedeCommon in Frameworks */ = {isa = PBXBuildFile; productRef = C3DF323924563862000E134B /* StampedeCommon */; };
 		C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76680245B0F300022E485 /* StampedeDefaults.swift */; };
 		C3F76684245B43C40022E485 /* SettingsFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76683245B43C40022E485 /* SettingsFeatureTests.swift */; };
 		C3F76686245B43F80022E485 /* SettingsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76685245B43F80022E485 /* SettingsViewTests.swift */; };
@@ -139,6 +159,27 @@
 		9438376D246859E400A90FF4 /* DevicePreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreviewer.swift; sourceTree = "<group>"; };
 		9438376F2468713E00A90FF4 /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		948DCFD4239006B00078B23F /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
+		94B571D324BBBEC200CA13A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		94B571D624BBBECD00CA13A4 /* HourlySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlySummary.swift; sourceTree = "<group>"; };
+		94B571D724BBBECD00CA13A4 /* ConfigDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigDefaults.swift; sourceTree = "<group>"; };
+		94B571D824BBBECD00CA13A4 /* StampedeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeError.swift; sourceTree = "<group>"; };
+		94B571D924BBBECD00CA13A4 /* ConfigOverrides.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigOverrides.swift; sourceTree = "<group>"; };
+		94B571DA24BBBECD00CA13A4 /* WorkerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerStatus.swift; sourceTree = "<group>"; };
+		94B571DB24BBBECD00CA13A4 /* BuildDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildDetails.swift; sourceTree = "<group>"; };
+		94B571DC24BBBECD00CA13A4 /* RepositoryBuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryBuild.swift; sourceTree = "<group>"; };
+		94B571DD24BBBECD00CA13A4 /* QueueSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueSummary.swift; sourceTree = "<group>"; };
+		94B571DE24BBBECD00CA13A4 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		94B571DF24BBBECD00CA13A4 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		94B571E024BBBECD00CA13A4 /* TaskStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
+		94B571E124BBBECD00CA13A4 /* BuildStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStatus.swift; sourceTree = "<group>"; };
+		94B571E224BBBECD00CA13A4 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		94B571E424BBBECD00CA13A4 /* StampedeServiceFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtures.swift; sourceTree = "<group>"; };
+		94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceNetworkProvider.swift; sourceTree = "<group>"; };
+		94B571E624BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServicePreviewProvider.swift; sourceTree = "<group>"; };
+		94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceProvider.swift; sourceTree = "<group>"; };
+		94B571E824BBBECD00CA13A4 /* StampedeAPIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeAPIEndpoint.swift; sourceTree = "<group>"; };
+		94B571E924BBBECD00CA13A4 /* StampedeServiceMockProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceMockProvider.swift; sourceTree = "<group>"; };
+		94B571EA24BBBECD00CA13A4 /* StampedeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeService.swift; sourceTree = "<group>"; };
 		94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewTests.swift; sourceTree = "<group>"; };
 		94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		94E37CF723BF7D07000CB1AD /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
@@ -236,7 +277,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3DF323A24563862000E134B /* StampedeCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +430,40 @@
 			path = Build;
 			sourceTree = "<group>";
 		};
+		94B571D524BBBECD00CA13A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				94B571D624BBBECD00CA13A4 /* HourlySummary.swift */,
+				94B571D724BBBECD00CA13A4 /* ConfigDefaults.swift */,
+				94B571D824BBBECD00CA13A4 /* StampedeError.swift */,
+				94B571D924BBBECD00CA13A4 /* ConfigOverrides.swift */,
+				94B571DA24BBBECD00CA13A4 /* WorkerStatus.swift */,
+				94B571DB24BBBECD00CA13A4 /* BuildDetails.swift */,
+				94B571DC24BBBECD00CA13A4 /* RepositoryBuild.swift */,
+				94B571DD24BBBECD00CA13A4 /* QueueSummary.swift */,
+				94B571DE24BBBECD00CA13A4 /* Repository.swift */,
+				94B571DF24BBBECD00CA13A4 /* Queue.swift */,
+				94B571E024BBBECD00CA13A4 /* TaskStatus.swift */,
+				94B571E124BBBECD00CA13A4 /* BuildStatus.swift */,
+				94B571E224BBBECD00CA13A4 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		94B571E324BBBECD00CA13A4 /* StampedeAPI */ = {
+			isa = PBXGroup;
+			children = (
+				94B571E424BBBECD00CA13A4 /* StampedeServiceFixtures.swift */,
+				94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */,
+				94B571E624BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift */,
+				94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */,
+				94B571E824BBBECD00CA13A4 /* StampedeAPIEndpoint.swift */,
+				94B571E924BBBECD00CA13A4 /* StampedeServiceMockProvider.swift */,
+				94B571EA24BBBECD00CA13A4 /* StampedeService.swift */,
+			);
+			path = StampedeAPI;
+			sourceTree = "<group>";
+		};
 		94DB4DFD247C479C001EF693 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +485,9 @@
 		C3081AE42456428F000C20F1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				94B571D524BBBECD00CA13A4 /* Models */,
+				94B571E324BBBECD00CA13A4 /* StampedeAPI */,
+				94B571D324BBBEC200CA13A4 /* Constants.swift */,
 				9438376A246850E700A90FF4 /* Previews */,
 				C3D350E823C1845800ADEDC9 /* ViewModel */,
 				C3126DA323BED38F00AC542F /* Themes */,
@@ -865,7 +942,6 @@
 			);
 			name = Stampede;
 			packageProductDependencies = (
-				C3DF323924563862000E134B /* StampedeCommon */,
 			);
 			productName = "Stampede-Mobile";
 			productReference = C3349EB32350A92B00273730 /* Stampede.app */;
@@ -914,7 +990,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "David House";
 				TargetAttributes = {
 					C3349EB22350A92B00273730 = {
@@ -940,7 +1016,6 @@
 			);
 			mainGroup = C3349E742350A90400273730;
 			packageReferences = (
-				C3DF323824563862000E134B /* XCRemoteSwiftPackageReference "stampede-common" */,
 			);
 			productRefGroup = C3349E7E2350A90400273730 /* Products */;
 			projectDirPath = "";
@@ -1006,17 +1081,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B571FA24BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift in Sources */,
+				94B571F924BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift in Sources */,
 				C3CA2E1E24BA9F370086B71D /* AdminLoginViewModel.swift in Sources */,
+				94B571F824BBBECD00CA13A4 /* StampedeServiceFixtures.swift in Sources */,
 				C3AD03AD24887C4200EB881F /* QueueGaugeView.swift in Sources */,
 				C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */,
 				C38C889424BA224300F6E6C9 /* SettingsInfoViewModel.swift in Sources */,
 				C3CA2E1324BA9ED70086B71D /* HistoryTasksFeature.swift in Sources */,
 				C38C889224BA223200F6E6C9 /* SettingsInfoView.swift in Sources */,
 				C3AD03A924885D4600EB881F /* MonitorLiveFeature.swift in Sources */,
+				94B571F324BBBECD00CA13A4 /* Repository.swift in Sources */,
 				C3804FD0248EEB55008A302B /* QueueChartView.swift in Sources */,
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
+				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
+				94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */,
+				94B571F724BBBECD00CA13A4 /* Task.swift in Sources */,
 				C35D51B02353C5DF00FDA4A8 /* MainView.swift in Sources */,
 				C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */,
+				94B571F124BBBECD00CA13A4 /* RepositoryBuild.swift in Sources */,
 				C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */,
 				941F25C423C23B6400EC3E36 /* EmptyList.swift in Sources */,
 				C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */,
@@ -1024,22 +1107,29 @@
 				C3CA2E2624BA9F7B0086B71D /* SettingsRepositoriesFeature.swift in Sources */,
 				C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */,
 				C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */,
+				94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */,
 				C38C889024BA222500F6E6C9 /* SettingsInfoFeature.swift in Sources */,
 				C3CA2E1C24BA9F2C0086B71D /* AdminLoginView.swift in Sources */,
 				9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */,
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
+				94B571FD24BBBECD00CA13A4 /* StampedeServiceMockProvider.swift in Sources */,
 				94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */,
+				94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */,
 				C3CA2E2024BA9F480086B71D /* SettingsNotificationsFeature.swift in Sources */,
 				C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */,
 				C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */,
 				C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */,
+				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
 				C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */,
 				C3CA2E1024BA9EC00086B71D /* HistoryBuildsViewModel.swift in Sources */,
 				C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */,
+				94B571EB24BBBECD00CA13A4 /* HourlySummary.swift in Sources */,
 				C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */,
 				94E913AF24BB512B0056A150 /* BuildTaskFeature.swift in Sources */,
 				C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */,
+				94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */,
+				94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */,
 				C3D350EA23C1846500ADEDC9 /* BaseViewModel.swift in Sources */,
 				C38C888E24BA1B8F00F6E6C9 /* MainViewModel.swift in Sources */,
 				C3CA2E1A24BA9F230086B71D /* AdminLoginFeature.swift in Sources */,
@@ -1047,13 +1137,18 @@
 				9438376C2468515E00A90FF4 /* Previewer.swift in Sources */,
 				943837702468713E00A90FF4 /* View+Extension.swift in Sources */,
 				C3CA2E2424BA9F6A0086B71D /* SettingsNotificationsViewModel.swift in Sources */,
+				94B571ED24BBBECD00CA13A4 /* StampedeError.swift in Sources */,
 				C3816C79248702AB00E6980B /* MonitorActiveBuildsFeature.swift in Sources */,
+				94B571D424BBBEC200CA13A4 /* Constants.swift in Sources */,
 				C3CA2E1524BA9EE30086B71D /* HistoryTasksView.swift in Sources */,
 				C3816C7D248702AB00E6980B /* MonitorQueuesView.swift in Sources */,
+				94B571F024BBBECD00CA13A4 /* BuildDetails.swift in Sources */,
 				C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */,
 				94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */,
 				C3081AE124563FCC000C20F1 /* StandardCellViewModel+Extension.swift in Sources */,
 				C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */,
+				94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */,
+				94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */,
 				94E913AE24BB512B0056A150 /* BuildTaskViewModel.swift in Sources */,
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,
 				C3CA2E2224BA9F600086B71D /* SettingsNotificationsView.swift in Sources */,
@@ -1064,6 +1159,7 @@
 				C3AD03A724885D2D00EB881F /* MonitorLiveView.swift in Sources */,
 				94E913AD24BB512B0056A150 /* BuildTaskView.swift in Sources */,
 				C3816C7E248702AB00E6980B /* MonitorQueuesFeature.swift in Sources */,
+				94B571FB24BBBECD00CA13A4 /* StampedeServiceProvider.swift in Sources */,
 				C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */,
 				C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */,
 			);
@@ -1170,6 +1266,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1230,6 +1327,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1442,25 +1540,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C3DF323824563862000E134B /* XCRemoteSwiftPackageReference "stampede-common" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/davidahouse/stampede-common";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C3DF323924563862000E134B /* StampedeCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C3DF323824563862000E134B /* XCRemoteSwiftPackageReference "stampede-common" */;
-			productName = StampedeCommon;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C3349E752350A90400273730 /* Project object */;
 }

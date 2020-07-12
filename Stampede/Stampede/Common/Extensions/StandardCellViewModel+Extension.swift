@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import StampedeCommon
 
 extension StandardCellViewModel {
     
