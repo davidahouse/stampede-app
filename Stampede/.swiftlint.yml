@@ -1,0 +1,10 @@
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+  - type_body_length
+  - cyclomatic_complexity
+  - identifier_name
+  - type_name
+excluded:
+  - DerivedData
+  - build

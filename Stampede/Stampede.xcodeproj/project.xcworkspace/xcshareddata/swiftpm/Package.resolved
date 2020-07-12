@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "StampedeCommon",
+        "repositoryURL": "https://github.com/davidahouse/stampede-common",
+        "state": {
+          "branch": "master",
+          "revision": "e45409bf34c94601ac32b70c5588e4441df3da3e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
