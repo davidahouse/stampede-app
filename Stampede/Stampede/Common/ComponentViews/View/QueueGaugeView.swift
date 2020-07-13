@@ -39,7 +39,7 @@ struct QueueGaugeInfo: Hashable {
     }
 
     var total: Int {
-        return idle + active + queued
+        return active + queued
     }
 }
 

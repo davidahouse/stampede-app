@@ -18,12 +18,17 @@ struct MonitorActiveBuildsView: View {
 
     // MARK: - View
 
+    let activeBuilds: [BuildStatus] = BuildStatus.activeBuilds
+
     var body: some View {
-//        StandardList(viewModel.state)
-//            .navigationBarTitle("Active Builds")
-        Text("hello")
-    }
-}
+        List {
+            ForEach(activeBuilds, id: \.self) { item in
+                NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                    StandardCell(viewModel: item.toStandardCellViewModel())
+                }
+            }
+        }
+    }}
 
 #if DEBUG
 struct MonitorActiveBuildsView_Previews: PreviewProvider {

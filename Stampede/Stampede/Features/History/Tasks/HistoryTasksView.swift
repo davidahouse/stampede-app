@@ -9,13 +9,24 @@
 import SwiftUI
 
 struct HistoryTasksView: View {
+
+    let tasks = TaskStatus.recentTasks
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(tasks, id: \.self) { item in
+                NavigationLink(destination: BuildTaskFeature(task: item)) {
+                    StandardCell(viewModel: item.toStandardCellViewModel())
+                }
+            }
+        }
     }
 }
 
 struct HistoryTasksView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryTasksView()
+        Previewer {
+            HistoryTasksView()
+        }
     }
 }

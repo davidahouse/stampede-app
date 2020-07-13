@@ -15,21 +15,44 @@ struct QueueChartView: View {
 
     init(measurements: [QueueGaugeInfo]) {
         self.measurements = measurements
-        maxCount = measurements.map { $0.idle + $0.active + $0.queued }.max() ?? 0
+        maxCount = measurements.map { $0.active + $0.queued }.max() ?? 0
     }
 
     var body: some View {
-        GeometryReader { reader in
-            HStack(spacing: 0.0) {
-                ForEach(0..<self.measurements.count) { i in
-                    VStack(spacing: 0.0) {
-                        Spacer()
-                        Rectangle().fill(Color.purple).frame(height: reader.size.height * self.measurements[i].queuedPct)
-                        Rectangle().fill(Color.green).frame(height: reader.size.height * self.measurements[i].activePct)
-                        Rectangle().fill(Color.gray).frame(height: reader.size.height * self.measurements[i].idlePct)
+        if maxCount > 0 {
+            GeometryReader { reader in
+                HStack(spacing: 2.0) {
+                    ForEach(0..<self.measurements.count) { i in
+                        VStack(spacing: 0.0) {
+                            Spacer()
+                            Rectangle()
+                                .barHeight(reader.size.height, max: maxCount, info: self.measurements[i])
+                        }
                     }
                 }
-            }
+            }.padding(15.0)
+        } else {
+            Text("No data points")
+        }
+    }
+}
+
+extension Rectangle {
+    func barHeight(_ height: CGFloat, max: Int, info: QueueGaugeInfo) -> some View {
+        guard max > 0, info.total > 0 else {
+            return self
+                .fill(Color.blue)
+                .frame(height: 1.0)
+        }
+
+        if info.queued > 0 {
+            return self
+                .fill(Color.purple)
+                .frame(height: height * CGFloat(CGFloat(info.total) / CGFloat(max)))
+        } else {
+            return self
+                .fill(Color.green)
+                .frame(height: height * CGFloat(CGFloat(info.total) / CGFloat(max)))
         }
     }
 }

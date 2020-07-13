@@ -10,12 +10,14 @@ import SwiftUI
 
 struct HistoryTasksFeature: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HistoryTasksView()
     }
 }
 
 struct HistoryTasksFeature_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryTasksFeature()
+        DevicePreviewer {
+            HistoryTasksFeature()
+        }
     }
 }

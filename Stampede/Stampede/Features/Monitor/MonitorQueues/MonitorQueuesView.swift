@@ -12,17 +12,20 @@ struct MonitorQueuesView: View {
 
     // MARK: - Environment
 
-
     // MARK: - Observed Objects
 
 //    @ObservedObject var viewModel: BaseListViewModel<QueueSummary>
 
     // MARK: - View
 
+    let queues = QueueSummary.someSummaries
+
     var body: some View {
-        Text("hello")
-//        StandardList(viewModel.state)
-//        .navigationBarTitle("Queue Summary")
+        List {
+            ForEach(queues, id: \.self) { item in
+                StandardCell(viewModel: item.toStandardCellViewModel())
+            }
+        }
     }
 }
 

@@ -17,10 +17,16 @@ struct MonitorActiveTasksView: View {
 
     // MARK: - View
 
+    let tasks = TaskStatus.recentTasks
+
     var body: some View {
-        Text("hello")
-//        StandardList(viewModel.state)
-//        .navigationBarTitle("Active Tasks")
+        List {
+            ForEach(tasks, id: \.self) { item in
+                NavigationLink(destination: BuildTaskFeature(task: item)) {
+                    StandardCell(viewModel: item.toStandardCellViewModel())
+                }
+            }
+        }
     }
 }
 

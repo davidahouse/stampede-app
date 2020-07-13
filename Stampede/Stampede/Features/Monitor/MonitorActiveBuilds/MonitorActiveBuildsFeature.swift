@@ -31,7 +31,7 @@ struct MonitorActiveBuildsFeature: View {
     // MARK: - View
 
     var body: some View {
-        Text("hello")
+        MonitorActiveBuildsView()
 //        MonitorActiveBuildsView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?

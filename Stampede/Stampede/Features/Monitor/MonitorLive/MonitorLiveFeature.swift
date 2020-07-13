@@ -17,22 +17,22 @@ struct MonitorLiveFeature: View {
 
     // MARK: Properties
 
-    let viewModel = MonitorLiveViewModel()
+    let viewModel = MonitorLiveViewModel.allQueues
 
     // MARK: Body
 
     var body: some View {
         MonitorLiveView(viewModel: viewModel)
-        .onAppear {
-            self.viewModel.queuesPublisher = self.service.fetchMonitorQueuesPublisher()
-            self.viewModel.workersPublisher = self.service.fetchWorkerStatusPublisher()
-            UIApplication.shared.isIdleTimerDisabled = true
-        }
-        .onDisappear {
-            self.viewModel.queuesPublisher = nil
-            self.viewModel.workersPublisher = nil
-            UIApplication.shared.isIdleTimerDisabled = false
-        }
+//        .onAppear {
+//            self.viewModel.queuesPublisher = self.service.fetchMonitorQueuesPublisher()
+//            self.viewModel.workersPublisher = self.service.fetchWorkerStatusPublisher()
+//            UIApplication.shared.isIdleTimerDisabled = true
+//        }
+//        .onDisappear {
+//            self.viewModel.queuesPublisher = nil
+//            self.viewModel.workersPublisher = nil
+//            UIApplication.shared.isIdleTimerDisabled = false
+//        }
     }
 }
 

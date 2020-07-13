@@ -33,7 +33,7 @@ struct MonitorActiveTasksFeature: View {
     // MARK: - View
 
     var body: some View {
-        Text("hello")
+        MonitorActiveTasksView()
         //        MonitorActiveTasksView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?

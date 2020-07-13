@@ -33,7 +33,7 @@ struct MonitorQueuesFeature: View {
     // MARK: - View
 
     var body: some View {
-        Text("hello")
+        MonitorQueuesView()
         //        MonitorQueuesView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?
