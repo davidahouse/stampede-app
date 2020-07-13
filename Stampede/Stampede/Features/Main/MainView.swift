@@ -50,11 +50,6 @@ struct MainView: View {
                         Text("Tasks")
                     }
                 }
-                Section(header: Text("Admin")) {
-                    NavigationLink(destination: AdminLoginFeature()) {
-                        Text("Login")
-                    }
-                }
                 Section(header: Text("Settings")) {
                     NavigationLink(destination: SettingsStampedeServerFeature()) {
                         Text("Stampede Server")

@@ -108,9 +108,6 @@
 		C3CA2E1324BA9ED70086B71D /* HistoryTasksFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1224BA9ED70086B71D /* HistoryTasksFeature.swift */; };
 		C3CA2E1524BA9EE30086B71D /* HistoryTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1424BA9EE30086B71D /* HistoryTasksView.swift */; };
 		C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1624BA9EEE0086B71D /* HistoryTasksViewModel.swift */; };
-		C3CA2E1A24BA9F230086B71D /* AdminLoginFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1924BA9F230086B71D /* AdminLoginFeature.swift */; };
-		C3CA2E1C24BA9F2C0086B71D /* AdminLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1B24BA9F2C0086B71D /* AdminLoginView.swift */; };
-		C3CA2E1E24BA9F370086B71D /* AdminLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1D24BA9F370086B71D /* AdminLoginViewModel.swift */; };
 		C3CA2E2024BA9F480086B71D /* SettingsNotificationsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E1F24BA9F480086B71D /* SettingsNotificationsFeature.swift */; };
 		C3CA2E2224BA9F600086B71D /* SettingsNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2124BA9F600086B71D /* SettingsNotificationsView.swift */; };
 		C3CA2E2424BA9F6A0086B71D /* SettingsNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2324BA9F6A0086B71D /* SettingsNotificationsViewModel.swift */; };
@@ -253,9 +250,6 @@
 		C3CA2E1224BA9ED70086B71D /* HistoryTasksFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTasksFeature.swift; sourceTree = "<group>"; };
 		C3CA2E1424BA9EE30086B71D /* HistoryTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTasksView.swift; sourceTree = "<group>"; };
 		C3CA2E1624BA9EEE0086B71D /* HistoryTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTasksViewModel.swift; sourceTree = "<group>"; };
-		C3CA2E1924BA9F230086B71D /* AdminLoginFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginFeature.swift; sourceTree = "<group>"; };
-		C3CA2E1B24BA9F2C0086B71D /* AdminLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginView.swift; sourceTree = "<group>"; };
-		C3CA2E1D24BA9F370086B71D /* AdminLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginViewModel.swift; sourceTree = "<group>"; };
 		C3CA2E1F24BA9F480086B71D /* SettingsNotificationsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsFeature.swift; sourceTree = "<group>"; };
 		C3CA2E2124BA9F600086B71D /* SettingsNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsView.swift; sourceTree = "<group>"; };
 		C3CA2E2324BA9F6A0086B71D /* SettingsNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsViewModel.swift; sourceTree = "<group>"; };
@@ -645,7 +639,6 @@
 				C35D51972352ABD600FDA4A8 /* Repositories */,
 				C3816C6D248702AB00E6980B /* Monitor */,
 				C38C888A24BA1AD400F6E6C9 /* History */,
-				C38C888B24BA1ADB00F6E6C9 /* Admin */,
 				C3F76679245A43170022E485 /* Settings */,
 			);
 			path = Features;
@@ -806,14 +799,6 @@
 			path = History;
 			sourceTree = "<group>";
 		};
-		C38C888B24BA1ADB00F6E6C9 /* Admin */ = {
-			isa = PBXGroup;
-			children = (
-				C3CA2E1824BA9F180086B71D /* Login */,
-			);
-			path = Admin;
-			sourceTree = "<group>";
-		};
 		C3940D92248BDE5800979967 /* MonitorLive */ = {
 			isa = PBXGroup;
 			children = (
@@ -858,16 +843,6 @@
 				C3CA2E1624BA9EEE0086B71D /* HistoryTasksViewModel.swift */,
 			);
 			path = Tasks;
-			sourceTree = "<group>";
-		};
-		C3CA2E1824BA9F180086B71D /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				C3CA2E1924BA9F230086B71D /* AdminLoginFeature.swift */,
-				C3CA2E1B24BA9F2C0086B71D /* AdminLoginView.swift */,
-				C3CA2E1D24BA9F370086B71D /* AdminLoginViewModel.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		C3D350E823C1845800ADEDC9 /* ViewModel */ = {
@@ -1083,7 +1058,6 @@
 			files = (
 				94B571FA24BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift in Sources */,
 				94B571F924BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift in Sources */,
-				C3CA2E1E24BA9F370086B71D /* AdminLoginViewModel.swift in Sources */,
 				94B571F824BBBECD00CA13A4 /* StampedeServiceFixtures.swift in Sources */,
 				C3AD03AD24887C4200EB881F /* QueueGaugeView.swift in Sources */,
 				C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */,
@@ -1109,7 +1083,6 @@
 				C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */,
 				94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */,
 				C38C889024BA222500F6E6C9 /* SettingsInfoFeature.swift in Sources */,
-				C3CA2E1C24BA9F2C0086B71D /* AdminLoginView.swift in Sources */,
 				9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */,
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
 				94B571FD24BBBECD00CA13A4 /* StampedeServiceMockProvider.swift in Sources */,
@@ -1132,7 +1105,6 @@
 				94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */,
 				C3D350EA23C1846500ADEDC9 /* BaseViewModel.swift in Sources */,
 				C38C888E24BA1B8F00F6E6C9 /* MainViewModel.swift in Sources */,
-				C3CA2E1A24BA9F230086B71D /* AdminLoginFeature.swift in Sources */,
 				C3126DAA23BED8EF00AC542F /* NavbarButton.swift in Sources */,
 				9438376C2468515E00A90FF4 /* Previewer.swift in Sources */,
 				943837702468713E00A90FF4 /* View+Extension.swift in Sources */,

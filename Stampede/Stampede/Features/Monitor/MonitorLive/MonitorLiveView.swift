@@ -26,9 +26,14 @@ struct MonitorLiveView: View {
 
     // MARK: - View
     var body: some View {
-        List {
-            ForEach(viewModel.queueGauges, id: \.self) { gauge in
-                QueueChartView(measurements: gauge.history).aspectRatio(contentMode: .fit)
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(viewModel.queueGauges, id: \.self) { gauge in
+                    VStack {
+                        QueueChartView(measurements: gauge.history).aspectRatio(contentMode: .fit)
+                        PrimaryLabel(gauge.title)
+                    }
+                }
             }
         }
     }
