@@ -17,22 +17,30 @@ struct MonitorLiveFeature: View {
 
     // MARK: Properties
 
-    let viewModel = MonitorLiveViewModel.allQueues
+    @State var viewModel: MonitorLiveViewModel = MonitorLiveViewModel()
+
+    // MARK: Initializer
+
+    init(gauges: [MonitorLiveViewModelQueue]? = nil) {
+        if let gauges = gauges {
+            viewModel.queueGauges = gauges
+        }
+    }
 
     // MARK: Body
 
     var body: some View {
         MonitorLiveView(viewModel: viewModel)
-//        .onAppear {
-//            self.viewModel.queuesPublisher = self.service.fetchMonitorQueuesPublisher()
-//            self.viewModel.workersPublisher = self.service.fetchWorkerStatusPublisher()
-//            UIApplication.shared.isIdleTimerDisabled = true
-//        }
-//        .onDisappear {
-//            self.viewModel.queuesPublisher = nil
-//            self.viewModel.workersPublisher = nil
-//            UIApplication.shared.isIdleTimerDisabled = false
-//        }
+        .onAppear {
+            self.viewModel.queuesPublisher = self.service.fetchMonitorQueuesPublisher()
+            self.viewModel.workersPublisher = self.service.fetchWorkerStatusPublisher()
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        .onDisappear {
+            self.viewModel.queuesPublisher = nil
+            self.viewModel.workersPublisher = nil
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
     }
 }
 
@@ -40,7 +48,20 @@ struct MonitorLiveFeature: View {
 struct MonitorLiveFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            MonitorLiveFeature()
+            MonitorLiveFeature(gauges: [
+                MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.fullQueue, history: [
+                    MonitorLiveViewModel.idleQueue,
+                    MonitorLiveViewModel.idleQueue,
+                    MonitorLiveViewModel.partialQueue,
+                    MonitorLiveViewModel.partialQueue,
+                    MonitorLiveViewModel.idleQueue,
+                    MonitorLiveViewModel.idleQueue,
+                    MonitorLiveViewModel.idleQueue,
+                    MonitorLiveViewModel.fullQueue,
+                    MonitorLiveViewModel.fullQueue,
+                    MonitorLiveViewModel.fullQueue
+                ])
+            ])
         }
     }
 }

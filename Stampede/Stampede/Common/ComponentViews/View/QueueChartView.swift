@@ -21,7 +21,7 @@ struct QueueChartView: View {
     var body: some View {
         if maxCount > 0 {
             GeometryReader { reader in
-                HStack(spacing: 2.0) {
+                HStack(alignment: .bottom, spacing: 2.0) {
                     ForEach(0..<self.measurements.count) { i in
                         VStack(spacing: 0.0) {
                             Spacer()

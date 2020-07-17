@@ -124,19 +124,21 @@ extension MonitorLiveViewModel {
     static var fullQueue: QueueGaugeInfo = QueueGaugeInfo(title: "fullQueue", idle: 0, active: 8, queued: 0)
     static var queuedQueue: QueueGaugeInfo = QueueGaugeInfo(title: "queuedQueue", idle: 0, active: 8, queued: 6)
 
+    static var idleHistory: [QueueGaugeInfo] = [
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue,
+        MonitorLiveViewModel.idleQueue
+    ]
+
     static var oneIdleQueue = MonitorLiveViewModel(gauges: [
-        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.idleQueue, history: [
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue,
-            MonitorLiveViewModel.idleQueue
-        ])
+        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.idleQueue, history: MonitorLiveViewModel.idleHistory)
     ])
 
     static var onePartialQueue = MonitorLiveViewModel(gauges: [
