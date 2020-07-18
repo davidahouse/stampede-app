@@ -12,6 +12,4 @@ import Combine
 
 class MainViewModel: BaseViewModel, ObservableObject {
 
-    
-
 }

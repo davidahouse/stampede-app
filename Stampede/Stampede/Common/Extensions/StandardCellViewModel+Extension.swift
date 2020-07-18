@@ -94,26 +94,18 @@ extension StandardCellViewModel {
     init(_ build: RepositoryBuild) {
 
         title = build.build
-
-        switch build.status {
-        case "idle":
-            subtitle = ""
-            icon = .none
-            value = nil
-        case "active":
-            subtitle = ""
-            icon = .inProgress
-            value = nil
-        case "scheduled":
-            subtitle = build.message
-            icon = .none
-            value = nil
-        default:
-            subtitle = ""
-            icon = .none
-            value = nil
-        }
+        value = build.startedAgo
+        icon = .none
+        subtitle = ""
         id = build.buildID ?? build.build
+    }
+    
+    init(_ buildKey: BuildKey) {
+        title = buildKey.build_key
+        value = buildKey.startedAgo
+        icon = .none
+        subtitle = ""
+        id = buildKey.build_key
     }
 }
 

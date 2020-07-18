@@ -30,7 +30,7 @@ struct RepositoryFeature: View {
     // MARK: - View
 
     var body: some View {
-        RepositoryView(repository: repository, viewModel: viewModel)
+        RepositoryView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?
 //            self.viewModel.buildsPublisher = self.service.fetchRepositoryBuildsPublisher(owner: self.repository.owner, repository: self.repository.repository)
