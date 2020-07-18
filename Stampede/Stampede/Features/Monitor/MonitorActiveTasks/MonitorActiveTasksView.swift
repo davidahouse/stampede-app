@@ -14,7 +14,6 @@ struct MonitorActiveTasksView: View {
 
     // MARK: - ViewModel
 
-
     // MARK: - View
 
     let tasks = TaskStatus.recentTasks
@@ -27,6 +26,7 @@ struct MonitorActiveTasksView: View {
                 }
             }
         }
+        .listStyle(DefaultListStyle())
     }
 }
 

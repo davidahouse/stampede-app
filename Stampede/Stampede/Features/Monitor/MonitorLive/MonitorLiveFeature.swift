@@ -41,6 +41,7 @@ struct MonitorLiveFeature: View {
             self.viewModel.workersPublisher = nil
             UIApplication.shared.isIdleTimerDisabled = false
         }
+            .navigationBarTitle("Live Status")
     }
 }
 
@@ -48,20 +49,22 @@ struct MonitorLiveFeature: View {
 struct MonitorLiveFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            MonitorLiveFeature(gauges: [
-                MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.fullQueue, history: [
-                    MonitorLiveViewModel.idleQueue,
-                    MonitorLiveViewModel.idleQueue,
-                    MonitorLiveViewModel.partialQueue,
-                    MonitorLiveViewModel.partialQueue,
-                    MonitorLiveViewModel.idleQueue,
-                    MonitorLiveViewModel.idleQueue,
-                    MonitorLiveViewModel.idleQueue,
-                    MonitorLiveViewModel.fullQueue,
-                    MonitorLiveViewModel.fullQueue,
-                    MonitorLiveViewModel.fullQueue
+            NavigationView {
+                MonitorLiveFeature(gauges: [
+                    MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.fullQueue, history: [
+                        MonitorLiveViewModel.idleQueue,
+                        MonitorLiveViewModel.idleQueue,
+                        MonitorLiveViewModel.partialQueue,
+                        MonitorLiveViewModel.partialQueue,
+                        MonitorLiveViewModel.idleQueue,
+                        MonitorLiveViewModel.idleQueue,
+                        MonitorLiveViewModel.idleQueue,
+                        MonitorLiveViewModel.fullQueue,
+                        MonitorLiveViewModel.fullQueue,
+                        MonitorLiveViewModel.fullQueue
+                    ])
                 ])
-            ])
+            }
         }
     }
 }

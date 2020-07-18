@@ -14,13 +14,16 @@ struct HistoryBuildsFeature: View {
     
     var body: some View {
         HistoryBuildsView(viewModel: viewModel)
+            .navigationBarTitle("Build History")
     }
 }
 
 struct HistoryBuildsFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            HistoryBuildsFeature()
+            NavigationView {
+                HistoryBuildsFeature()
+            }
         }
     }
 }

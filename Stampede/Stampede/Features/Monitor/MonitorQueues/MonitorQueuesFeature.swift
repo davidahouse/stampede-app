@@ -34,6 +34,7 @@ struct MonitorQueuesFeature: View {
 
     var body: some View {
         MonitorQueuesView()
+            .navigationBarTitle("Queues")
         //        MonitorQueuesView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?
@@ -51,7 +52,9 @@ struct MonitorQueuesFeature: View {
 struct MonitorQueuesFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            MonitorQueuesFeature()
+            NavigationView {
+                MonitorQueuesFeature()
+            }
         }
     }
 }

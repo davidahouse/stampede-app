@@ -24,13 +24,13 @@ struct BuildView: View {
                     HStack {
                         Text("Owner")
                         Spacer()
-                        Text("davidahouse")
+                        Text(viewModel.buildStatus.buildDetails.owner)
                     }
 
                     HStack {
                         Text("Repository")
                         Spacer()
-                        Text(viewModel.buildStatus.buildRepository)
+                        Text(viewModel.buildStatus.buildDetails.repository)
                     }
 
                     HStack {
@@ -67,7 +67,7 @@ struct BuildView: View {
                         }
                     }
                 }
-        }.navigationBarTitle(viewModel.buildStatus.buildDetails.build_key + " / " + String(viewModel.buildStatus.buildDetails.build))
+        }
     }
 }
 

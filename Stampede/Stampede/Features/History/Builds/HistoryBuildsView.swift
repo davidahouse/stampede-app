@@ -22,6 +22,7 @@ struct HistoryBuildsView: View {
                 }
             }
         }
+        .listStyle(DefaultListStyle())
     }
 }
 

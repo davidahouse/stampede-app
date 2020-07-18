@@ -19,12 +19,17 @@ struct SettingsStampedeServerFeature: View {
 
     var body: some View {
         SettingsStampedeServerView(viewModel: SettingsStampedeServerViewModel(stampedeServerURL: defaults.host ?? "", subject: service.hostPassthroughSubject))
+            .navigationBarTitle("Stampede Server")
     }
 
 }
 
 struct SettingsStampedeServerFeature_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsStampedeServerFeature()
+        DevicePreviewer {
+            NavigationView {
+                SettingsStampedeServerFeature()
+            }
+        }
     }
 }

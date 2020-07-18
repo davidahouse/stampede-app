@@ -28,6 +28,7 @@ struct MonitorActiveBuildsView: View {
                 }
             }
         }
+        .listStyle(DefaultListStyle())
     }}
 
 #if DEBUG

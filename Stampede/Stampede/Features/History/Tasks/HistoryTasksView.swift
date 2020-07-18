@@ -20,6 +20,7 @@ struct HistoryTasksView: View {
                 }
             }
         }
+        .listStyle(DefaultListStyle())
     }
 }
 

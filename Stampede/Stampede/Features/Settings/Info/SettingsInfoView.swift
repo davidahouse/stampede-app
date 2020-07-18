@@ -20,16 +20,15 @@ struct SettingsInfoView: View {
 
     var body: some View {
         List {
-            Section(header: Text("About Stampede")) {
-                Text("Version: \(viewModel.appVersion)")
-                Text("Build: \(viewModel.appBuildNumber)")
-                Button("https://stampedeci.com", action: {
-                    UIApplication.shared.open(URL(string: "https://stampedeci.com")!, options: [:]) { _ in
+            Text("Version: \(viewModel.appVersion)")
+            Text("Build: \(viewModel.appBuildNumber)")
+            Button("https://stampedeci.com", action: {
+                UIApplication.shared.open(URL(string: "https://stampedeci.com")!, options: [:]) { _ in
 
-                    }
-                })
-            }
+                }
+            })
         }
+        .listStyle(DefaultListStyle())
     }
 }
 

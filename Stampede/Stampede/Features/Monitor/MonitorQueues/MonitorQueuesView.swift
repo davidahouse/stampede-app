@@ -26,6 +26,7 @@ struct MonitorQueuesView: View {
                 StandardCell(viewModel: item.toStandardCellViewModel())
             }
         }
+        .listStyle(DefaultListStyle())
     }
 }
 

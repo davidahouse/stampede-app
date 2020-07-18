@@ -14,11 +14,16 @@ struct SettingsInfoFeature: View {
     
     var body: some View {
         SettingsInfoView(viewModel: viewModel)
+            .navigationBarTitle("About Stampede")
     }
 }
 
 struct SettingsInfoFeature_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsInfoFeature()
+        DevicePreviewer {
+            NavigationView {
+                SettingsInfoFeature()
+            }
+        }
     }
 }

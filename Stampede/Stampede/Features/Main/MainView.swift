@@ -18,56 +18,52 @@ struct MainView: View {
     // MARK: - View
 
     var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("Repositories")) {
-                    NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
-                        Text("stampede-server")
-                    }
-                    NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
-                        Text("stampede-worker")
-                    }
+        List {
+            Section(header: Text("Repositories")) {
+                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
+                    Text("stampede-server")
                 }
-                Section(header: Text("Monitor")) {
-                    NavigationLink(destination: MonitorLiveFeature()) {
-                        Text("Live")
-                    }
-                    NavigationLink(destination: MonitorActiveBuildsFeature()) {
-                        Text("Active Builds")
-                    }
-                    NavigationLink(destination: MonitorActiveTasksFeature()) {
-                        Text("Active Tasks")
-                    }
-                    NavigationLink(destination: MonitorQueuesFeature()) {
-                        Text("Queues")
-                    }
-                }
-                Section(header: Text("History")) {
-                    NavigationLink(destination: HistoryBuildsFeature()) {
-                        Text("Builds")
-                    }
-                    NavigationLink(destination: HistoryTasksFeature()) {
-                        Text("Tasks")
-                    }
-                }
-                Section(header: Text("Settings")) {
-                    NavigationLink(destination: SettingsStampedeServerFeature()) {
-                        Text("Stampede Server")
-                    }
-                    NavigationLink(destination: SettingsRepositoriesFeature()) {
-                        Text("Repositories")
-                    }
-                    NavigationLink(destination: SettingsNotificationsFeature()) {
-                        Text("Notifications")
-                    }
-                    NavigationLink(destination: SettingsInfoFeature()) {
-                        Text("Info")
-                    }
+                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
+                    Text("stampede-worker")
                 }
             }
-            .listStyle(SidebarListStyle())
-            .navigationTitle("Stampede")
-        }
+            Section(header: Text("Monitor")) {
+                NavigationLink(destination: MonitorLiveFeature()) {
+                    Text("Live")
+                }
+                NavigationLink(destination: MonitorActiveBuildsFeature()) {
+                    Text("Active Builds")
+                }
+                NavigationLink(destination: MonitorActiveTasksFeature()) {
+                    Text("Active Tasks")
+                }
+                NavigationLink(destination: MonitorQueuesFeature()) {
+                    Text("Queues")
+                }
+            }
+            Section(header: Text("History")) {
+                NavigationLink(destination: HistoryBuildsFeature()) {
+                    Text("Builds")
+                }
+                NavigationLink(destination: HistoryTasksFeature()) {
+                    Text("Tasks")
+                }
+            }
+            Section(header: Text("Settings")) {
+                NavigationLink(destination: SettingsStampedeServerFeature()) {
+                    Text("Stampede Server")
+                }
+                NavigationLink(destination: SettingsRepositoriesFeature()) {
+                    Text("Repositories")
+                }
+                NavigationLink(destination: SettingsNotificationsFeature()) {
+                    Text("Notifications")
+                }
+                NavigationLink(destination: SettingsInfoFeature()) {
+                    Text("Info")
+                }
+            }
+        }.listStyle(SidebarListStyle())
     }
 }
 

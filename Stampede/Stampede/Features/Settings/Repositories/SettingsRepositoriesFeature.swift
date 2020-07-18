@@ -10,12 +10,22 @@ import SwiftUI
 
 struct SettingsRepositoriesFeature: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        SettingsRepositoriesView()
+            .navigationBarTitle("Repositories")
+            .navigationBarItems(trailing:
+                Button("Add") {
+                    print("hello")
+                }
+            )
     }
 }
 
 struct SettingsRepositoriesFeature_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsRepositoriesFeature()
+        DevicePreviewer {
+            NavigationView {
+                SettingsRepositoriesFeature()
+            }
+        }
     }
 }

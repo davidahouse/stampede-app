@@ -32,6 +32,7 @@ struct MonitorActiveBuildsFeature: View {
 
     var body: some View {
         MonitorActiveBuildsView()
+            .navigationBarTitle("Active Builds")
 //        MonitorActiveBuildsView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?
@@ -49,7 +50,9 @@ struct MonitorActiveBuildsFeature: View {
 struct MonitorActiveBuildsFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            MonitorActiveBuildsFeature()
+            NavigationView {
+                MonitorActiveBuildsFeature()
+            }
         }
     }
 }

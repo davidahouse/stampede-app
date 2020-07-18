@@ -92,7 +92,7 @@ struct RepositoryView: View {
                 }
             }
         }
-            .navigationBarTitle(repository.repository)
+        .listStyle(DefaultListStyle())
     }
     
     func buildsSection() -> AnyView {

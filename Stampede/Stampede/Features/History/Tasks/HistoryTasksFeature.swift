@@ -11,13 +11,16 @@ import SwiftUI
 struct HistoryTasksFeature: View {
     var body: some View {
         HistoryTasksView()
+            .navigationBarTitle("Task History")
     }
 }
 
 struct HistoryTasksFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            HistoryTasksFeature()
+            NavigationView {
+                HistoryTasksFeature()
+            }
         }
     }
 }

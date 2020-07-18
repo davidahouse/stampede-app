@@ -9,13 +9,20 @@
 import SwiftUI
 
 struct SettingsNotificationsView: View {
+    
+    @State var receiveNotifications: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Toggle("Receive Notifications", isOn: $receiveNotifications)
+        }
     }
 }
 
 struct SettingsNotificationsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsNotificationsView()
+        Previewer {
+            SettingsNotificationsView()
+        }
     }
 }

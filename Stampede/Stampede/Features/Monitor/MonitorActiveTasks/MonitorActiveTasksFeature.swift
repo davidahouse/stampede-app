@@ -34,6 +34,7 @@ struct MonitorActiveTasksFeature: View {
 
     var body: some View {
         MonitorActiveTasksView()
+            .navigationBarTitle("Active Tasks")
         //        MonitorActiveTasksView(viewModel: viewModel)
 //        .onAppear {
 //            // give the view model a new publisher?

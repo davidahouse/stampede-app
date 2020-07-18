@@ -17,7 +17,10 @@ struct MainFeature: View {
     // MARK: - View
 
     var body: some View {
-        MainView()
+        NavigationView {
+            MainView()
+            .navigationTitle("Stampede")
+        }
     }
 }
 

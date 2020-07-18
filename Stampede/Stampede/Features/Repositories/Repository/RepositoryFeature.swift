@@ -42,6 +42,7 @@ struct RepositoryFeature: View {
 //            self.viewModel.buildsPublisher = nil
 //            self.viewModel.recentPublisher = nil
 //        }
+            .navigationBarTitle(repository.repository)
     }
 }
 
@@ -49,7 +50,10 @@ struct RepositoryFeature: View {
 struct RepositoryFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
-            RepositoryFeature(repository: Repository.someRepository, builds: RepositoryBuild.someBuilds, recent: BuildStatus.recentBuilds)
+            NavigationView {
+                RepositoryFeature(repository: Repository.someRepository, builds: RepositoryBuild.someBuilds, recent:
+                                BuildStatus.recentBuilds)
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ struct BuildFeature: View {
 
     var body: some View {
         BuildView(viewModel: BuildViewModel(buildStatus: buildStatus))
+            .navigationBarTitle(buildStatus.buildIdentifier)
     }
 }
 

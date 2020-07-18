@@ -14,6 +14,7 @@ struct BuildTaskFeature: View {
 
     var body: some View {
         BuildTaskView(viewModel: BuildTaskViewModel(task: task))
+            .navigationBarTitle(task.task)
     }
 }
 
