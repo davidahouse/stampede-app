@@ -24,6 +24,7 @@ struct SettingsStampedeServerFeature: View {
 
 }
 
+#if DEBUG
 struct SettingsStampedeServerFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
@@ -33,3 +34,4 @@ struct SettingsStampedeServerFeature_Previews: PreviewProvider {
         }
     }
 }
+#endif

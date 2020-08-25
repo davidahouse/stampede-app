@@ -18,7 +18,7 @@ struct MonitorQueuesView: View {
 
     // MARK: - View
 
-    let queues = QueueSummary.someSummaries
+    let queues: [QueueSummary] = []
 
     var body: some View {
         List {

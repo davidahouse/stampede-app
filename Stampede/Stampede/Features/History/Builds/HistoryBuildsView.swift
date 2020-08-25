@@ -12,7 +12,7 @@ struct HistoryBuildsView: View {
     
     @ObservedObject var viewModel: HistoryBuildsViewModel
     
-    let activeBuilds: [BuildStatus] = BuildStatus.activeBuilds
+    let activeBuilds: [BuildStatus] = []
     
     var body: some View {
         List {
@@ -26,6 +26,7 @@ struct HistoryBuildsView: View {
     }
 }
 
+#if DEBUG
 struct HistoryBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -33,3 +34,4 @@ struct HistoryBuildsView_Previews: PreviewProvider {
         }
     }
 }
+#endif

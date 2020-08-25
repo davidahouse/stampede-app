@@ -18,6 +18,7 @@ struct SettingsInfoFeature: View {
     }
 }
 
+#if DEBUG
 struct SettingsInfoFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
@@ -27,3 +28,4 @@ struct SettingsInfoFeature_Previews: PreviewProvider {
         }
     }
 }
+#endif

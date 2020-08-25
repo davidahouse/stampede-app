@@ -30,6 +30,7 @@ struct SettingsStampedeServerView: View {
     }
 }
 
+#if DEBUG
 struct StampedeServerView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -39,3 +40,4 @@ struct StampedeServerView_Previews: PreviewProvider {
 
     }
 }
+#endif

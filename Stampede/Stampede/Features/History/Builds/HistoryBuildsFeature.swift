@@ -18,6 +18,7 @@ struct HistoryBuildsFeature: View {
     }
 }
 
+#if DEBUG
 struct HistoryBuildsFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
@@ -27,3 +28,4 @@ struct HistoryBuildsFeature_Previews: PreviewProvider {
         }
     }
 }
+#endif

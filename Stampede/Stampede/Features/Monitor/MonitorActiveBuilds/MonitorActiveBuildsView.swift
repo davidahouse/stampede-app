@@ -18,7 +18,7 @@ struct MonitorActiveBuildsView: View {
 
     // MARK: - View
 
-    let activeBuilds: [BuildStatus] = BuildStatus.activeBuilds
+    let activeBuilds: [BuildStatus] = []
 
     var body: some View {
         List {

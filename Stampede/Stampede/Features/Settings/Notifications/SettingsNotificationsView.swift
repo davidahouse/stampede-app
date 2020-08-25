@@ -19,6 +19,7 @@ struct SettingsNotificationsView: View {
     }
 }
 
+#if DEBUG
 struct SettingsNotificationsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -26,3 +27,4 @@ struct SettingsNotificationsView_Previews: PreviewProvider {
         }
     }
 }
+#endif

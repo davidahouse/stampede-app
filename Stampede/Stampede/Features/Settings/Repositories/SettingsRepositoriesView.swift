@@ -11,12 +11,14 @@ import SwiftUI
 struct SettingsRepositoriesView: View {
     var body: some View {
         List {
-            StandardCell(viewModel: StandardCellViewModel(Repository.someRepository))
+            // TODO: Needs view model
+            //            StandardCell(viewModel: StandardCellViewModel(Repository.someRepository))
         }
         .listStyle(DefaultListStyle())
     }
 }
 
+#if DEBUG
 struct SettingsRepositoriesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -24,3 +26,4 @@ struct SettingsRepositoriesView_Previews: PreviewProvider {
         }
     }
 }
+#endif
