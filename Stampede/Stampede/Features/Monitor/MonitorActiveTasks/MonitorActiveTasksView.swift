@@ -16,7 +16,7 @@ struct MonitorActiveTasksView: View {
 
     // MARK: - View
 
-    let tasks = TaskStatus.recentTasks
+    let tasks: [TaskStatus] = []
 
     var body: some View {
         List {

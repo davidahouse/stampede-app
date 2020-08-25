@@ -20,12 +20,13 @@ struct MainView: View {
     var body: some View {
         List {
             Section(header: Text("Repositories")) {
-                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
-                    Text("stampede-server")
-                }
-                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
-                    Text("stampede-worker")
-                }
+                // TODO: This list needs to come from a view model
+                //                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
+//                    Text("stampede-server")
+//                }
+//                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
+//                    Text("stampede-worker")
+//                }
             }
             Section(header: Text("Monitor")) {
                 NavigationLink(destination: MonitorLiveFeature()) {

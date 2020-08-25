@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HistoryTasksView: View {
 
-    let tasks = TaskStatus.recentTasks
+    let tasks: [TaskStatus] = []
 
     var body: some View {
         List {
@@ -24,6 +24,7 @@ struct HistoryTasksView: View {
     }
 }
 
+#if DEBUG
 struct HistoryTasksView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -31,3 +32,4 @@ struct HistoryTasksView_Previews: PreviewProvider {
         }
     }
 }
+#endif

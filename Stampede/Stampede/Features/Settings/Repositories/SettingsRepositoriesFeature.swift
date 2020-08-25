@@ -20,6 +20,7 @@ struct SettingsRepositoriesFeature: View {
     }
 }
 
+#if DEBUG
 struct SettingsRepositoriesFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
@@ -29,3 +30,4 @@ struct SettingsRepositoriesFeature_Previews: PreviewProvider {
         }
     }
 }
+#endif
