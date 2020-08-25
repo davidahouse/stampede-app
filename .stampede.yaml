@@ -12,12 +12,21 @@ pullrequests:
         projectFolder: Stampede
         scheme: Stampede
         project: Stampede
-        xcodeVersion: Xcode.app
+        xcodeVersion: Xcode-beta.app
 pullrequestedit:
   tasks:
     - id: pr-standards
       config:
         prMilestoneCheck: true
+branches:
+  main:
+    tasks:
+      - id: app-build-xcode
+        config:
+          projectFolder: Stampede
+          scheme: Stampede
+          project: Stampede
+          xcodeVersion: Xcode-beta.app
 releases:
   published:
     tasks:
