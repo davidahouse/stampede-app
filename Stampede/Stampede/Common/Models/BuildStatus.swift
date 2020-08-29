@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Combine
+import HouseKit
 
 public enum BuildStatusIndicator {
     case inProgress
@@ -77,6 +79,8 @@ public struct BuildStatus: Codable, Identifiable, Equatable {
         }
     }
 }
+
+typealias BuildStatusResponsePublisher = AnyPublisher<[BuildStatus], ServiceError>
 
 #if DEBUG
 

@@ -10,7 +10,13 @@ import SwiftUI
 
 struct HistoryBuildsFeature: View {
     
-    @State var viewModel = HistoryBuildsViewModel()
+    @EnvironmentObject var service: StampedeService
+    
+    let viewModel: HistoryBuildsViewModel
+
+    init(viewModel: HistoryBuildsViewModel? = nil) {
+        self.viewModel = viewModel ?? HistoryBuildsViewModel()
+    }
     
     var body: some View {
         HistoryBuildsView(viewModel: viewModel)

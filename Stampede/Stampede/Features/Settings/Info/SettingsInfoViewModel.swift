@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class SettingsInfoViewModel: BaseViewModel, ObservableObject {
+class SettingsInfoViewModel: ObservableObject {
 
     @Published var appVersion: String
     @Published var appBuildNumber: String
@@ -26,6 +26,5 @@ class SettingsInfoViewModel: BaseViewModel, ObservableObject {
         } else {
             appBuildNumber = ""
         }
-        super.init()
     }
 }

@@ -10,32 +10,50 @@ import SwiftUI
 
 struct MonitorActiveBuildsView: View {
 
-    // MARK: - Environment
+    @ObservedObject var viewModel: MonitorActiveBuildsViewModel
 
-    // MARK: - Observed Objects
-
-//    @ObservedObject var viewModel: BaseListViewModel<BuildStatus>
-
-    // MARK: - View
-
-    let activeBuilds: [BuildStatus] = []
-
+    init(viewModel: MonitorActiveBuildsViewModel, publisher: BuildStatusResponsePublisher? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.publisher = publisher
+    }
+    
     var body: some View {
-        List {
-            ForEach(activeBuilds, id: \.self) { item in
-                NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+        switch viewModel.state {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Basic list loading text")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let activeBuilds):
+            List {
+                if activeBuilds.count > 0 {
+                    ForEach(activeBuilds, id: \.self) { item in
+                        NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                            StandardCell(viewModel: item.toStandardCellViewModel())
+                        }
+                    }
+                } else {
+                    Text("No active builds found")
                 }
             }
+            .listStyle(DefaultListStyle())
         }
-        .listStyle(DefaultListStyle())
     }}
 
 #if DEBUG
 struct MonitorActiveBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorActiveBuildsView()
+            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.loading)
+            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.networkError)
+            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.someBuilds)
         }
     }
 }

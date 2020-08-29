@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "HouseKit",
+        "repositoryURL": "https://github.com/davidahouse/HouseKit",
+        "state": {
+          "branch": "main",
+          "revision": "d3787337b5fb943402e64fb901ac9710e07bab62",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -10,6 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-class MainViewModel: BaseViewModel, ObservableObject {
+class MainViewModel: ObservableObject {
 
 }

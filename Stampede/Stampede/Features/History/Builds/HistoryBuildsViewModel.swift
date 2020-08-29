@@ -8,11 +8,14 @@
 
 import Foundation
 import SwiftUI
+import HouseKit
 
-class HistoryBuildsViewModel: BaseViewModel, ObservableObject {
-    @Published var builds: [BuildStatus]
-    
-    init(builds: [BuildStatus] = []) {
-        self.builds = builds
-    }
+class HistoryBuildsViewModel: BaseViewModel<[BuildStatus]> { }
+
+#if DEBUG
+extension HistoryBuildsViewModel {
+    static let loading = HistoryBuildsViewModel(state: .loading)
+    static let networkError = HistoryBuildsViewModel(state: .networkError)
+    static let someBuilds = HistoryBuildsViewModel(state: .results(BuildStatus.recentBuilds))
 }
+#endif

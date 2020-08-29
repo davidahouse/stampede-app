@@ -10,17 +10,39 @@ import SwiftUI
 
 struct HistoryTasksView: View {
 
-    let tasks: [TaskStatus] = []
+    @ObservedObject var viewModel: HistoryTasksViewModel
 
+    init(viewModel: HistoryTasksViewModel, publisher: TaskStatusResponsePublisher? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.publisher = publisher
+    }
+    
     var body: some View {
-        List {
-            ForEach(tasks, id: \.self) { item in
-                NavigationLink(destination: BuildTaskFeature(task: item)) {
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+        switch viewModel.state {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        Image(systemName: "folder.circle")
+                            .frame(width: 100)
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let tasks):
+            List {
+                ForEach(tasks, id: \.self) { item in
+                    NavigationLink(destination: BuildTaskFeature(task: item)) {
+                        StandardCell(viewModel: item.toStandardCellViewModel())
+                    }
                 }
             }
+            .listStyle(DefaultListStyle())
         }
-        .listStyle(DefaultListStyle())
     }
 }
 
@@ -28,7 +50,9 @@ struct HistoryTasksView: View {
 struct HistoryTasksView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            HistoryTasksView()
+            HistoryTasksView(viewModel: HistoryTasksViewModel.loading)
+            HistoryTasksView(viewModel: HistoryTasksViewModel.networkError)
+            HistoryTasksView(viewModel: HistoryTasksViewModel.someTasks)
         }
     }
 }

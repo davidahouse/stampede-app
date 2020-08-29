@@ -16,7 +16,7 @@ enum FetchState {
     case hasResults
 }
 
-class RepositoryViewModel: BaseViewModel, ObservableObject {
+class RepositoryViewModel: ObservableObject {
 
     // MARK: - Published properties
     
@@ -60,7 +60,7 @@ class RepositoryViewModel: BaseViewModel, ObservableObject {
         }
     }
     
-    override func fetch() {
+    func fetch() {
 //        self.buildsPublisher?.sink(receiveCompletion: { result in
 //          if case let .failure(error) = result {
 //            print("Error receiving \(error)")

@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import HouseKit
+
+class HistoryTasksViewModel: BaseViewModel<[TaskStatus]> { }
+
+#if DEBUG
+extension HistoryTasksViewModel {
+    static let loading = HistoryTasksViewModel(state: .loading)
+    static let networkError = HistoryTasksViewModel(state: .networkError)
+    static let someTasks = HistoryTasksViewModel(state: .results(TaskStatus.recentTasks))
+}
+#endif

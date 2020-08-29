@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,9 @@
 		94E913AD24BB512B0056A150 /* BuildTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E913AA24BB512B0056A150 /* BuildTaskView.swift */; };
 		94E913AE24BB512B0056A150 /* BuildTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E913AB24BB512B0056A150 /* BuildTaskViewModel.swift */; };
 		94E913AF24BB512B0056A150 /* BuildTaskFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E913AC24BB512B0056A150 /* BuildTaskFeature.swift */; };
+		94FE1F4124FACE7A00AE4ED4 /* HouseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 94FE1F4024FACE7A00AE4ED4 /* HouseKit */; };
+		94FE1F4324FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE1F4224FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift */; };
+		94FE1F4524FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE1F4424FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift */; };
 		C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DCFD4239006B00078B23F /* BuildView.swift */; };
 		C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CD2395C8600060A6DD /* BuildFeature.swift */; };
 		C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */; };
@@ -106,7 +109,6 @@
 		C3CA2E2624BA9F7B0086B71D /* SettingsRepositoriesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2524BA9F7B0086B71D /* SettingsRepositoriesFeature.swift */; };
 		C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2724BA9F8C0086B71D /* SettingsRepositoriesView.swift */; };
 		C3CA2E2A24BA9F970086B71D /* SettingsRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2924BA9F970086B71D /* SettingsRepositoriesViewModel.swift */; };
-		C3D350EA23C1846500ADEDC9 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D350E923C1846500ADEDC9 /* BaseViewModel.swift */; };
 		C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D350F623C2B00600ADEDC9 /* CurrentThemeTests.swift */; };
 		C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76680245B0F300022E485 /* StampedeDefaults.swift */; };
 		C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7668A245B704D0022E485 /* NetworkErrorView.swift */; };
@@ -173,6 +175,8 @@
 		94E913AA24BB512B0056A150 /* BuildTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTaskView.swift; sourceTree = "<group>"; };
 		94E913AB24BB512B0056A150 /* BuildTaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTaskViewModel.swift; sourceTree = "<group>"; };
 		94E913AC24BB512B0056A150 /* BuildTaskFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTaskFeature.swift; sourceTree = "<group>"; };
+		94FE1F4224FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsViewModel.swift; sourceTree = "<group>"; };
+		94FE1F4424FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksViewModel.swift; sourceTree = "<group>"; };
 		C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA123BED33400AC542F /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA423BED39C00AC542F /* CurrentTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTheme.swift; sourceTree = "<group>"; };
@@ -237,7 +241,6 @@
 		C3CA2E2524BA9F7B0086B71D /* SettingsRepositoriesFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoriesFeature.swift; sourceTree = "<group>"; };
 		C3CA2E2724BA9F8C0086B71D /* SettingsRepositoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoriesView.swift; sourceTree = "<group>"; };
 		C3CA2E2924BA9F970086B71D /* SettingsRepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoriesViewModel.swift; sourceTree = "<group>"; };
-		C3D350E923C1846500ADEDC9 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		C3D350F623C2B00600ADEDC9 /* CurrentThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentThemeTests.swift; sourceTree = "<group>"; };
 		C3F76680245B0F300022E485 /* StampedeDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeDefaults.swift; sourceTree = "<group>"; };
 		C3F7668A245B704D0022E485 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94FE1F4124FACE7A00AE4ED4 /* HouseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +656,7 @@
 			children = (
 				C3816C6F248702AB00E6980B /* MonitorActiveBuildsFeature.swift */,
 				C3816C70248702AB00E6980B /* MonitorActiveBuildsView.swift */,
+				94FE1F4224FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift */,
 			);
 			path = MonitorActiveBuilds;
 			sourceTree = "<group>";
@@ -668,8 +673,9 @@
 		C3816C76248702AB00E6980B /* MonitorActiveTasks */ = {
 			isa = PBXGroup;
 			children = (
-				C3816C77248702AB00E6980B /* MonitorActiveTasksView.swift */,
 				C3816C78248702AB00E6980B /* MonitorActiveTasksFeature.swift */,
+				C3816C77248702AB00E6980B /* MonitorActiveTasksView.swift */,
+				94FE1F4424FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift */,
 			);
 			path = MonitorActiveTasks;
 			sourceTree = "<group>";
@@ -810,7 +816,6 @@
 		C3D350E823C1845800ADEDC9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C3D350E923C1846500ADEDC9 /* BaseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -876,6 +881,7 @@
 			);
 			name = Stampede;
 			packageProductDependencies = (
+				94FE1F4024FACE7A00AE4ED4 /* HouseKit */,
 			);
 			productName = "Stampede-Mobile";
 			productReference = C3349EB32350A92B00273730 /* Stampede.app */;
@@ -950,6 +956,7 @@
 			);
 			mainGroup = C3349E742350A90400273730;
 			packageReferences = (
+				94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */,
 			);
 			productRefGroup = C3349E7E2350A90400273730 /* Products */;
 			projectDirPath = "";
@@ -1030,6 +1037,7 @@
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
 				94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */,
+				94FE1F4324FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift in Sources */,
 				94B571F724BBBECD00CA13A4 /* Task.swift in Sources */,
 				C35D51B02353C5DF00FDA4A8 /* MainView.swift in Sources */,
 				C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */,
@@ -1063,7 +1071,6 @@
 				C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */,
 				94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */,
 				94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */,
-				C3D350EA23C1846500ADEDC9 /* BaseViewModel.swift in Sources */,
 				C38C888E24BA1B8F00F6E6C9 /* MainViewModel.swift in Sources */,
 				C3126DAA23BED8EF00AC542F /* NavbarButton.swift in Sources */,
 				9438376C2468515E00A90FF4 /* Previewer.swift in Sources */,
@@ -1085,6 +1092,7 @@
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,
 				C3CA2E2224BA9F600086B71D /* SettingsNotificationsView.swift in Sources */,
 				C3816C80248702AB00E6980B /* MonitorActiveTasksFeature.swift in Sources */,
+				94FE1F4524FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift in Sources */,
 				C3081ADF24563FC5000C20F1 /* StandardCell.swift in Sources */,
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,
 				C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */,
@@ -1460,6 +1468,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davidahouse/HouseKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		94FE1F4024FACE7A00AE4ED4 /* HouseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */;
+			productName = HouseKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C3349E752350A90400273730 /* Project object */;
 }

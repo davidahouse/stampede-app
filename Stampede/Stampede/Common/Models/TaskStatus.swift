@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import HouseKit
+import Combine
 
 public struct TaskStatus: Codable, Identifiable, Equatable {
     public let task_id: String
@@ -71,6 +73,8 @@ public struct TaskStatus: Codable, Identifiable, Equatable {
         return ""
     }
 }
+
+typealias TaskStatusResponsePublisher = AnyPublisher<[TaskStatus], ServiceError>
 
 #if DEBUG
 
