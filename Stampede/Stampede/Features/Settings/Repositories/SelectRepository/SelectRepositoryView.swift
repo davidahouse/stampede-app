@@ -1,8 +1,8 @@
 //
-//  SettingsRepositoriesView.swift
+//  SelectRepositoryView.swift
 //  Stampede
 //
-//  Created by David House on 7/11/20.
+//  Created by David House on 8/29/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
 
@@ -10,12 +10,14 @@ import SwiftUI
 import HouseKit
 import Combine
 
-struct SettingsRepositoriesView: View {
+struct SelectRepositoryView: View {
     
-    @ObservedObject var viewModel: SettingsRepositoriesViewModel
+    @ObservedObject var viewModel: SelectRepositoryViewModel
+    let onSelected: (Repository) -> Void
 
-    init(viewModel: SettingsRepositoriesViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
+    init(viewModel: SelectRepositoryViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, onSelected: @escaping (Repository) -> Void) {
         self.viewModel = viewModel
+        self.onSelected = onSelected
         self.viewModel.publisher = publisher
     }
     
@@ -38,6 +40,10 @@ struct SettingsRepositoriesView: View {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
                         StandardCell(viewModel: StandardCellViewModel(item))
+                            .contentShape(Rectangle())
+                            .onTapGesture(perform: {
+                                self.onSelected(item)
+                            })
                     }
                 } else {
                     Text("No repositories selected")
@@ -48,14 +54,10 @@ struct SettingsRepositoriesView: View {
     }
 }
 
-#if DEBUG
-struct SettingsRepositoriesView_Previews: PreviewProvider {
+struct SelectRepositoryView_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
-        }
+        SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading, onSelected: { _ in })
+        SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError, onSelected: { _ in })
+        SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories, onSelected: { _ in })
     }
 }
-#endif

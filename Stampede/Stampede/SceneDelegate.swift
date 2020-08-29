@@ -24,6 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     return StampedeDefaults()
                 }()
 
+                let repositoryList: RepositoryList = {
+                    return RepositoryList()
+                }()
+                
                 let service: StampedeService = {
                     if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"] {
                         if stampedeServer == "fixtures" {
@@ -44,6 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .environmentObject(service)
                     .environmentObject(defaults)
                     .environmentObject(theme)
+                    .environmentObject(repositoryList)
                 )
             }
             self.window = window

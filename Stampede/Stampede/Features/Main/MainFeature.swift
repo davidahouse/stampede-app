@@ -10,15 +10,19 @@ import SwiftUI
 
 struct MainFeature: View {
 
-    // MARK: - Initializer
-    init() {
-    }
+    @EnvironmentObject var repositoryList: RepositoryList
+    
+    let viewModel: MainViewModel
 
+    init(viewModel: MainViewModel? = nil) {
+        self.viewModel = viewModel ?? MainViewModel()
+    }
+    
     // MARK: - View
 
     var body: some View {
         NavigationView {
-            MainView()
+            MainView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
             .navigationTitle("Stampede")
         }
     }

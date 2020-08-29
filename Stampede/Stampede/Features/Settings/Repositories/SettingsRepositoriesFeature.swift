@@ -9,14 +9,31 @@
 import SwiftUI
 
 struct SettingsRepositoriesFeature: View {
+    
+    @EnvironmentObject var repositoryList: RepositoryList
+    @State var showingSelectRepository = false
+    
+    let viewModel: SettingsRepositoriesViewModel
+
+    init(viewModel: SettingsRepositoriesViewModel? = nil) {
+        self.viewModel = viewModel ?? SettingsRepositoriesViewModel()
+    }
+        
     var body: some View {
-        SettingsRepositoriesView()
+        SettingsRepositoriesView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
             .navigationBarTitle("Repositories")
             .navigationBarItems(trailing:
                 Button("Add") {
-                    print("hello")
+                    self.showingSelectRepository = true
                 }
             )
+            .sheet(isPresented: $showingSelectRepository, content: {
+                SelectRepositoryFeature(onSelected: { repository in
+                    repositoryList.addRepository(repository: repository)
+                    viewModel.fetch()
+                    self.showingSelectRepository = false
+                })
+            })
     }
 }
 

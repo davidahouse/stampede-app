@@ -21,7 +21,6 @@ public struct Repository: Codable, Identifiable, Equatable {
 extension Repository {
     public static let someRepository = Repository(owner: "davidahouse", repository: "some-repository")
     public static let anotherRepository = Repository(owner: "davidahouse", repository: "another-repository")
-
     public static let someRepositories = [Repository.someRepository, Repository.anotherRepository]
 }
 
