@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Combine
+import HouseKit
 
 public struct QueueSummaryStats: Codable, Equatable {
     public let waiting: Int
@@ -25,6 +27,8 @@ public struct QueueSummary: Codable, Equatable, Identifiable {
         return queue
     }
 }
+
+typealias QueueSummaryResponsePublisher = AnyPublisher<[QueueSummary], ServiceError>
 
 #if DEBUG
 

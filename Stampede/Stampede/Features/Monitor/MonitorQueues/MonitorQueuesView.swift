@@ -10,23 +10,41 @@ import SwiftUI
 
 struct MonitorQueuesView: View {
 
-    // MARK: - Environment
+    @ObservedObject var viewModel: MonitorQueuesViewModel
 
-    // MARK: - Observed Objects
-
-//    @ObservedObject var viewModel: BaseListViewModel<QueueSummary>
-
-    // MARK: - View
-
-    let queues: [QueueSummary] = []
+    init(viewModel: MonitorQueuesViewModel, publisher: QueueSummaryResponsePublisher? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.publisher = publisher
+    }
 
     var body: some View {
-        List {
-            ForEach(queues, id: \.self) { item in
-                StandardCell(viewModel: item.toStandardCellViewModel())
+        switch viewModel.state {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        Image(systemName: "folder.circle")
+                            .frame(width: 100)
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let queues):
+            List {
+                if queues.count > 0 {
+                    ForEach(queues, id: \.self) { item in
+                        StandardCell(viewModel: item.toStandardCellViewModel())
+                    }
+                } else {
+                    Text("No queues found")
+                }
             }
+            .listStyle(DefaultListStyle())
         }
-        .listStyle(DefaultListStyle())
     }
 }
 
@@ -34,7 +52,9 @@ struct MonitorQueuesView: View {
 struct MonitorQueuesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorQueuesView()
+            MonitorQueuesView(viewModel: MonitorQueuesViewModel.loading)
+            MonitorQueuesView(viewModel: MonitorQueuesViewModel.networkError)
+            MonitorQueuesView(viewModel: MonitorQueuesViewModel.someQueues)
         }
     }
 }

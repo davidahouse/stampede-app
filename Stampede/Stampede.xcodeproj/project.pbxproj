@@ -66,6 +66,7 @@
 		C3349EC22350A92C00273730 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3349EC02350A92C00273730 /* LaunchScreen.storyboard */; };
 		C3349ECD2350A92C00273730 /* Stampede_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349ECC2350A92C00273730 /* Stampede_Tests.swift */; };
 		C3349ED82350A92C00273730 /* Stampede_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349ED72350A92C00273730 /* Stampede_UITests.swift */; };
+		C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */; };
 		C3520CA323CE92B2004C0674 /* MainFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CA223CE92B2004C0674 /* MainFeatureTests.swift */; };
 		C3520CA523CE92D5004C0674 /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CA423CE92D5004C0674 /* MainViewTests.swift */; };
 		C3520CAF23CEA321004C0674 /* RepositoryFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CAE23CEA321004C0674 /* RepositoryFeatureTests.swift */; };
@@ -197,6 +198,7 @@
 		C3349ED32350A92C00273730 /* Stampede-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stampede-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3349ED72350A92C00273730 /* Stampede_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stampede_UITests.swift; sourceTree = "<group>"; };
 		C3349ED92350A92C00273730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorQueuesViewModel.swift; sourceTree = "<group>"; };
 		C3520CA223CE92B2004C0674 /* MainFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeatureTests.swift; sourceTree = "<group>"; };
 		C3520CA423CE92D5004C0674 /* MainViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTests.swift; sourceTree = "<group>"; };
 		C3520CAE23CEA321004C0674 /* RepositoryFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFeatureTests.swift; sourceTree = "<group>"; };
@@ -465,7 +467,6 @@
 				94B571E324BBBECD00CA13A4 /* StampedeAPI */,
 				94B571D324BBBEC200CA13A4 /* Constants.swift */,
 				9438376A246850E700A90FF4 /* Previews */,
-				C3D350E823C1845800ADEDC9 /* ViewModel */,
 				C3126DA323BED38F00AC542F /* Themes */,
 				946DAD2A23BEC7C200053335 /* ComponentViews */,
 				944FD36223AE70AD001A9FF8 /* Extensions */,
@@ -664,8 +665,9 @@
 		C3816C73248702AB00E6980B /* MonitorQueues */ = {
 			isa = PBXGroup;
 			children = (
-				C3816C74248702AB00E6980B /* MonitorQueuesView.swift */,
 				C3816C75248702AB00E6980B /* MonitorQueuesFeature.swift */,
+				C3816C74248702AB00E6980B /* MonitorQueuesView.swift */,
+				C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */,
 			);
 			path = MonitorQueues;
 			sourceTree = "<group>";
@@ -811,13 +813,6 @@
 				C3CA2E1624BA9EEE0086B71D /* HistoryTasksViewModel.swift */,
 			);
 			path = Tasks;
-			sourceTree = "<group>";
-		};
-		C3D350E823C1845800ADEDC9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C3D350F523C2AFF100ADEDC9 /* Themes */ = {
@@ -1093,6 +1088,7 @@
 				C3CA2E2224BA9F600086B71D /* SettingsNotificationsView.swift in Sources */,
 				C3816C80248702AB00E6980B /* MonitorActiveTasksFeature.swift in Sources */,
 				94FE1F4524FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift in Sources */,
+				C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */,
 				C3081ADF24563FC5000C20F1 /* StandardCell.swift in Sources */,
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,
 				C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */,
