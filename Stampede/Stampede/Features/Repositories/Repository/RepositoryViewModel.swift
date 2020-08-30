@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import HouseKit
 
 enum FetchState {
     case loading
@@ -19,7 +20,9 @@ enum FetchState {
 class RepositoryViewModel: ObservableObject {
 
     // MARK: - Published properties
-    
+
+    @Published public var activeBuildsState: ViewModelState<[BuildStatus]> = .loading
+
     @Published var fetchState: FetchState = .loading
     @Published var activeBuilds: [BuildStatus] = []
     @Published var repositoryBuilds: [RepositoryBuild] = []
@@ -28,6 +31,14 @@ class RepositoryViewModel: ObservableObject {
     @Published var pullRequestKeys: [BuildKey] = []
     
     // MARK: - Properties
+
+    private var disposables = Set<AnyCancellable>()
+
+    var activeBuildsPublisher: BuildStatusResponsePublisher? {
+        didSet {
+            self.fetchActiveBuilds()
+        }
+    }
 
     var buildsPublisher: AnyPublisher<[RepositoryBuild], StampedeError>? {
         didSet {
@@ -41,7 +52,15 @@ class RepositoryViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Initializer=
+    // MARK: - Initializer
+
+    init(activeBuildsState: ViewModelState<[BuildStatus]> = .loading,
+         activeBuildsPublisher: BuildStatusResponsePublisher? = nil) {
+        self.activeBuildsState = activeBuildsState
+        self.activeBuildsPublisher = activeBuildsPublisher
+        fetchActiveBuilds()
+    }
+
     init(activeBuilds: [BuildStatus]? = nil, repositoryBuilds: [RepositoryBuild]? = nil, branchKeys: [BuildKey]? = nil, releaseKeys: [BuildKey]? = nil, pullRequestKeys: [BuildKey]? = nil) {
         if let activeBuilds = activeBuilds {
             self.activeBuilds = activeBuilds
@@ -94,6 +113,21 @@ class RepositoryViewModel: ObservableObject {
 //                }
 //            }
 //        }).store(in: &self.disposables)
+    }
+
+    private func fetchActiveBuilds() {
+        self.activeBuildsPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.activeBuildsState = .networkError
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                self.activeBuildsState = .results(value)
+            }
+        }).store(in: &self.disposables)
     }
 }
 

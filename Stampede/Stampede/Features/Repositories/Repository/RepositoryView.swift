@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import HouseKit
+import Combine
 
 struct RepositoryView: View {
 
@@ -18,16 +20,17 @@ struct RepositoryView: View {
 
     @ObservedObject var viewModel: RepositoryViewModel
 
+    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.activeBuildsPublisher = activeBuildsPublisher
+    }
+
     // MARK: - View
 
     var body: some View {
         List {
             Section(header: Text("Active Builds")) {
-                ForEach(viewModel.activeBuilds, id: \.self) { item in
-                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                        StandardCell(viewModel: item.toStandardCellViewModel())
-                    }
-                }
+                activeBuildsList()
             }
 
             Section(header: Text("Repository Builds")) {
@@ -55,6 +58,31 @@ struct RepositoryView: View {
             }
         }
         .listStyle(DefaultListStyle())
+    }
+
+    @ViewBuilder private func activeBuildsList() -> some View {
+        switch viewModel.activeBuildsState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        Image(systemName: "folder.circle")
+                            .frame(width: 100)
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let activeBuilds):
+            ForEach(activeBuilds, id: \.self) { item in
+                NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                    StandardCell(viewModel: item.toStandardCellViewModel())
+                }
+            }
+        }
     }
 }
 
