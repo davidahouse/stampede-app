@@ -53,6 +53,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .environmentObject(theme)
                     .environmentObject(repositoryList)
                 )
+            } else {
+                window.rootViewController = UIHostingController(rootView: EmptyView())
             }
             self.window = window
             window.makeKeyAndVisible()

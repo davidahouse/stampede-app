@@ -16,6 +16,8 @@ extension View {
         return self
             .environmentObject(StampedeDefaults.someDefaults)
             .environmentObject(CurrentTheme())
+            .environmentObject(RepositoryList())
+            .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
     #endif
 }
