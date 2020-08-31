@@ -39,8 +39,12 @@ struct QueueSummaryCell: View {
     }
 }
 
+#if DEBUG
 struct QueueSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
-        QueueSummaryCell(queueSummary: QueueSummary.someSummary)
+        Previewer {
+            QueueSummaryCell(queueSummary: QueueSummary.someSummary)
+        }
     }
 }
+#endif

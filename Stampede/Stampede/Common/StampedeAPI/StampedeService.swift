@@ -26,8 +26,8 @@ public class StampedeService: ObservableObject {
         return provider.fetchRepositoriesPublisher()
     }
 
-    public func fetchRecentBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
-        return provider.fetchRecentBuildsPublisher(owner: owner, repository: repository)
+    public func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
+        return provider.fetchActiveBuildsPublisher(owner: owner, repository: repository)
     }
 
     public func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {

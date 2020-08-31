@@ -18,6 +18,8 @@
 		9438376C2468515E00A90FF4 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376B2468515E00A90FF4 /* Previewer.swift */; };
 		9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376D246859E400A90FF4 /* DevicePreviewer.swift */; };
 		943837702468713E00A90FF4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376F2468713E00A90FF4 /* View+Extension.swift */; };
+		944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */; };
+		944EF65924FD200C00357E9E /* RepositoryBuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */; };
 		94B571D424BBBEC200CA13A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D324BBBEC200CA13A4 /* Constants.swift */; };
 		94B571EB24BBBECD00CA13A4 /* HourlySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D624BBBECD00CA13A4 /* HourlySummary.swift */; };
 		94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571D724BBBECD00CA13A4 /* ConfigDefaults.swift */; };
@@ -32,12 +34,9 @@
 		94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E024BBBECD00CA13A4 /* TaskStatus.swift */; };
 		94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E124BBBECD00CA13A4 /* BuildStatus.swift */; };
 		94B571F724BBBECD00CA13A4 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E224BBBECD00CA13A4 /* Task.swift */; };
-		94B571F824BBBECD00CA13A4 /* StampedeServiceFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E424BBBECD00CA13A4 /* StampedeServiceFixtures.swift */; };
 		94B571F924BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */; };
-		94B571FA24BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E624BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift */; };
 		94B571FB24BBBECD00CA13A4 /* StampedeServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */; };
 		94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E824BBBECD00CA13A4 /* StampedeAPIEndpoint.swift */; };
-		94B571FD24BBBECD00CA13A4 /* StampedeServiceMockProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571E924BBBECD00CA13A4 /* StampedeServiceMockProvider.swift */; };
 		94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B571EA24BBBECD00CA13A4 /* StampedeService.swift */; };
 		94DB4DFF247C47B8001EF693 /* NetworkErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */; };
 		94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */; };
@@ -152,6 +151,8 @@
 		9438376B2468515E00A90FF4 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		9438376D246859E400A90FF4 /* DevicePreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreviewer.swift; sourceTree = "<group>"; };
 		9438376F2468713E00A90FF4 /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtureProvider.swift; sourceTree = "<group>"; };
+		944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBuildCell.swift; sourceTree = "<group>"; };
 		948DCFD4239006B00078B23F /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
 		94B571D324BBBEC200CA13A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94B571D624BBBECD00CA13A4 /* HourlySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlySummary.swift; sourceTree = "<group>"; };
@@ -167,12 +168,9 @@
 		94B571E024BBBECD00CA13A4 /* TaskStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		94B571E124BBBECD00CA13A4 /* BuildStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStatus.swift; sourceTree = "<group>"; };
 		94B571E224BBBECD00CA13A4 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		94B571E424BBBECD00CA13A4 /* StampedeServiceFixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtures.swift; sourceTree = "<group>"; };
 		94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceNetworkProvider.swift; sourceTree = "<group>"; };
-		94B571E624BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServicePreviewProvider.swift; sourceTree = "<group>"; };
 		94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceProvider.swift; sourceTree = "<group>"; };
 		94B571E824BBBECD00CA13A4 /* StampedeAPIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeAPIEndpoint.swift; sourceTree = "<group>"; };
-		94B571E924BBBECD00CA13A4 /* StampedeServiceMockProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeServiceMockProvider.swift; sourceTree = "<group>"; };
 		94B571EA24BBBECD00CA13A4 /* StampedeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeService.swift; sourceTree = "<group>"; };
 		94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewTests.swift; sourceTree = "<group>"; };
 		94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
@@ -443,13 +441,11 @@
 		94B571E324BBBECD00CA13A4 /* StampedeAPI */ = {
 			isa = PBXGroup;
 			children = (
-				94B571E424BBBECD00CA13A4 /* StampedeServiceFixtures.swift */,
-				94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */,
-				94B571E624BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift */,
-				94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */,
 				94B571E824BBBECD00CA13A4 /* StampedeAPIEndpoint.swift */,
-				94B571E924BBBECD00CA13A4 /* StampedeServiceMockProvider.swift */,
 				94B571EA24BBBECD00CA13A4 /* StampedeService.swift */,
+				94B571E724BBBECD00CA13A4 /* StampedeServiceProvider.swift */,
+				94B571E524BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift */,
+				944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */,
 			);
 			path = StampedeAPI;
 			sourceTree = "<group>";
@@ -514,6 +510,7 @@
 				C34755EB24FC85BD009B1FBF /* BuildStatusCell.swift */,
 				C34755ED24FC878B009B1FBF /* TaskStatusCell.swift */,
 				C34755EF24FC88E2009B1FBF /* QueueSummaryCell.swift */,
+				944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1043,9 +1040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94B571FA24BBBECD00CA13A4 /* StampedeServicePreviewProvider.swift in Sources */,
 				94B571F924BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift in Sources */,
-				94B571F824BBBECD00CA13A4 /* StampedeServiceFixtures.swift in Sources */,
 				C3AD03AD24887C4200EB881F /* QueueGaugeView.swift in Sources */,
 				C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */,
 				C38C889424BA224300F6E6C9 /* SettingsInfoViewModel.swift in Sources */,
@@ -1075,7 +1070,6 @@
 				C38C889024BA222500F6E6C9 /* SettingsInfoFeature.swift in Sources */,
 				9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */,
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
-				94B571FD24BBBECD00CA13A4 /* StampedeServiceMockProvider.swift in Sources */,
 				94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */,
 				94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */,
 				C3CA2E2024BA9F480086B71D /* SettingsNotificationsFeature.swift in Sources */,
@@ -1084,6 +1078,7 @@
 				C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */,
 				C34755EE24FC878B009B1FBF /* TaskStatusCell.swift in Sources */,
 				C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */,
+				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
 				C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */,
@@ -1101,6 +1096,7 @@
 				9438376C2468515E00A90FF4 /* Previewer.swift in Sources */,
 				943837702468713E00A90FF4 /* View+Extension.swift in Sources */,
 				C3CA2E2424BA9F6A0086B71D /* SettingsNotificationsViewModel.swift in Sources */,
+				944EF65924FD200C00357E9E /* RepositoryBuildCell.swift in Sources */,
 				94B571ED24BBBECD00CA13A4 /* StampedeError.swift in Sources */,
 				C3816C79248702AB00E6980B /* MonitorActiveBuildsFeature.swift in Sources */,
 				94B571D424BBBEC200CA13A4 /* Constants.swift in Sources */,

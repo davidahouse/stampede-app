@@ -20,9 +20,10 @@ struct RepositoryView: View {
 
     @ObservedObject var viewModel: RepositoryViewModel
 
-    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil) {
+    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil, repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil) {
         self.viewModel = viewModel
         self.viewModel.activeBuildsPublisher = activeBuildsPublisher
+        self.viewModel.repositoryBuildsPublisher = repositoryBuildsPublisher
     }
 
     // MARK: - View
@@ -34,10 +35,7 @@ struct RepositoryView: View {
             }
 
             Section(header: Text("Repository Builds")) {
-                ForEach(viewModel.repositoryBuilds, id: \.self) { item in
-                    Text("repository build cell")
-//                    StandardCell(viewModel: item.toStandardCellViewModel())
-                }
+                repositoryBuildsList()
             }
 
             Section(header: Text("Branches")) {
@@ -81,10 +79,41 @@ struct RepositoryView: View {
         case .networkError:
             Text("A network error has occurred")
         case .results(let activeBuilds):
-            ForEach(activeBuilds, id: \.self) { item in
-                NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                    BuildStatusCell(buildStatus: item)
+            if activeBuilds.count > 0 {
+                ForEach(activeBuilds, id: \.self) { item in
+                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                        BuildStatusCell(buildStatus: item)
+                    }
                 }
+            } else {
+                Text("No active builds found")
+            }
+        }
+    }
+    
+    @ViewBuilder private func repositoryBuildsList() -> some View {
+        switch viewModel.repositoryBuildsState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        Image(systemName: "folder.circle")
+                            .frame(width: 100)
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let builds):
+            if builds.count > 0 {
+                ForEach(builds, id: \.self) { item in
+                    RepositoryBuildCell(repositoryBuild: item)
+                }
+            } else {
+                Text("No repository builds found")
             }
         }
     }

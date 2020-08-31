@@ -10,7 +10,7 @@ import Foundation
 
 public enum StampedeAPIEndpoint {
     case repositories
-    case recentBuilds(String, String)
+    case activeBuilds(String, String)
     case repositoryBuilds(String, String)
     case monitorActiveBuilds
     case monitorActiveTasks
@@ -27,8 +27,8 @@ public enum StampedeAPIEndpoint {
         switch self {
         case .repositories:
             return URL(string: "\(host)/api/repositories")!
-        case let .recentBuilds(owner, repository):
-            return URL(string: "\(host)/api/repository/recentBuilds?owner=\(owner)&repository=\(repository)")!
+        case let .activeBuilds(owner, repository):
+            return URL(string: "\(host)/api/repository/activeBuilds?owner=\(owner)&repository=\(repository)")!
         case let .repositoryBuilds(owner, repository):
             return URL(string: "\(host)/api/repository/repositoryBuilds?owner=\(owner)&repository=\(repository)")!
         case .monitorActiveBuilds:

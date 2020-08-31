@@ -30,7 +30,7 @@ struct RepositoryFeature: View {
     // MARK: - View
 
     var body: some View {
-        RepositoryView(viewModel: viewModel)
+        RepositoryView(viewModel: viewModel, activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository), repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository))
             .navigationBarTitle(repository.repository)
     }
 }

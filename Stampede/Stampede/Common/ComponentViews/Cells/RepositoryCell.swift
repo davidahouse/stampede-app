@@ -22,8 +22,12 @@ struct RepositoryCell: View {
     }
 }
 
+#if DEBUG
 struct RepositoryCell_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryCell(repository: Repository.someRepository)
+        Previewer {
+            RepositoryCell(repository: Repository.someRepository)
+        }
     }
 }
+#endif

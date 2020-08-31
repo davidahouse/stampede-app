@@ -54,6 +54,7 @@ struct SelectRepositoryView: View {
     }
 }
 
+#if DEBUG
 struct SelectRepositoryView_Previews: PreviewProvider {
     static var previews: some View {
         SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading, onSelected: { _ in })
@@ -61,3 +62,4 @@ struct SelectRepositoryView_Previews: PreviewProvider {
         SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories, onSelected: { _ in })
     }
 }
+#endif

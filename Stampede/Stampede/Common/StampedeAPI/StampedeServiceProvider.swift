@@ -17,7 +17,7 @@ public protocol StampedeServiceProvider {
 
     // Repository
     func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>?
-    func fetchRecentBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>?
+    func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>?
     func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>?
 
     // Monitor

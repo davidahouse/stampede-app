@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+import HouseKit
 
 public struct RepositoryBuild: Codable, Identifiable, Equatable, Hashable {
     public let build: String
@@ -14,10 +16,31 @@ public struct RepositoryBuild: Codable, Identifiable, Equatable, Hashable {
         return "\(build)"
     }
 
+    public var completedAgo: String {
+        guard let completed = lastExecuted else {
+            return ""
+        }
+
+        let interval = Date().timeIntervalSince(completed)
+        return "\(intervalToString(interval)) ago"
+    }
+    
+    private func intervalToString(_ interval: TimeInterval) -> String {
+        if interval < 60 {
+            return "\(Int(round(interval))) sec(s)"
+        } else if interval < 3600 {
+            return "\(Int(round(interval / 60))) min(s)"
+        } else {
+            return "\(Int(round(interval / 3600))) hour(s)"
+        }
+    }
+    
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id.hashValue)
     }
 }
+
+typealias RepositoryBuildResponsePublisher = AnyPublisher<[RepositoryBuild], ServiceError>
 
 #if DEBUG
 

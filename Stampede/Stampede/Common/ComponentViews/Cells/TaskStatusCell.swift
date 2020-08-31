@@ -35,8 +35,12 @@ struct TaskStatusCell: View {
     }
 }
 
+#if DEBUG
 struct TaskStatusCell_Previews: PreviewProvider {
     static var previews: some View {
-        TaskStatusCell(taskStatus: TaskStatus.completedTask)
+        Previewer {
+            TaskStatusCell(taskStatus: TaskStatus.completedTask)
+        }
     }
 }
+#endif

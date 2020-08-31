@@ -31,8 +31,12 @@ struct BuildStatusCell: View {
     }
 }
 
+#if DEBUG
 struct BuildStatusCell_Previews: PreviewProvider {
     static var previews: some View {
-        BuildStatusCell(buildStatus: BuildStatus.someRecentBuild)
+        Previewer {
+            BuildStatusCell(buildStatus: BuildStatus.someRecentBuild)
+        }
     }
 }
+#endif

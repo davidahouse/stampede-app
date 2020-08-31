@@ -29,16 +29,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }()
                 
                 let service: StampedeService = {
+                    #if DEBUG
                     if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"] {
                         if stampedeServer == "fixtures" {
-                            return StampedeService(host: stampedeServer, provider: StampedeServiceNetworkProvider(host: "http://localhost:8845"))
-// TODO: Fix this once we have a fixtures service                            return StampedeServiceFixtures.mockService
+                            return StampedeService(host: stampedeServer, provider: StampedeServiceFixtureProvider())
                         } else {
                             return StampedeService(host: stampedeServer, provider: StampedeServiceNetworkProvider(host: stampedeServer))
                         }
                     } else {
                         return StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
                     }
+                    #else
+                    return StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
+                    #endif
                 }()
                 defaults.hostSubject = service.hostPassthroughSubject
 
