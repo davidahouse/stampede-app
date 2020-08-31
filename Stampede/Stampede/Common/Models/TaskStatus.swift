@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import HouseKit
+import Combine
 
-public struct TaskStatus: Codable, Identifiable, Equatable {
+public struct TaskStatus: Codable, Identifiable, Equatable, Hashable {
     public let task_id: String
     public let build_id: String
     public let owner: String?
@@ -70,7 +72,13 @@ public struct TaskStatus: Codable, Identifiable, Equatable {
     public var workerPath: String {
         return ""
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
+    }
 }
+
+typealias TaskStatusResponsePublisher = AnyPublisher<[TaskStatus], ServiceError>
 
 #if DEBUG
 

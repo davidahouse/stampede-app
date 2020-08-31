@@ -22,26 +22,15 @@ struct RepositoryFeature: View {
 
     // MARK: Initializer
 
-    init(repository: Repository, builds: [RepositoryBuild]? = nil, recent: [BuildStatus]? = nil) {
-        viewModel = RepositoryViewModel()
+    init(repository: Repository, viewModel: RepositoryViewModel? = nil) {
+        self.viewModel = viewModel ?? RepositoryViewModel()
         self.repository = repository
     }
 
     // MARK: - View
 
     var body: some View {
-        RepositoryView(viewModel: viewModel)
-//        .onAppear {
-//            // give the view model a new publisher?
-//            self.viewModel.buildsPublisher = self.service.fetchRepositoryBuildsPublisher(owner: self.repository.owner, repository: self.repository.repository)
-//            self.viewModel.recentPublisher = self.service.fetchRecentBuildsPublisher(owner: self.repository.owner, repository: self.repository.repository)
-//        }
-//        .onDisappear {
-//            // invalidate the publisher as we don't want
-//            // the view to refresh while not visible?
-//            self.viewModel.buildsPublisher = nil
-//            self.viewModel.recentPublisher = nil
-//        }
+        RepositoryView(viewModel: viewModel, activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository), repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository))
             .navigationBarTitle(repository.repository)
     }
 }
@@ -51,8 +40,7 @@ struct RepositoryFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
             NavigationView {
-                RepositoryFeature(repository: Repository.someRepository, builds: RepositoryBuild.someBuilds, recent:
-                                BuildStatus.recentBuilds)
+                RepositoryFeature(repository: Repository.someRepository)
             }
         }
     }

@@ -6,26 +6,22 @@
 //
 
 import Foundation
+import Combine
+import HouseKit
 
-public struct RepositoryBuild: Codable, Identifiable, Equatable {
+public struct RepositoryBuild: Codable, Identifiable, Equatable, Hashable {
     public let build: String
-    public let status: String
-    public let message: String?
-    public let buildID: String?
-    public let started_at: Date?
+    public let lastExecuted: Date?
     public var id: String {
-        if let buildID = buildID {
-            return "\(buildID)"
-        } else {
-            return "\(build)"
-        }
+        return "\(build)"
     }
-    
-    public var startedAgo: String {
-        guard let started_at = started_at else {
+
+    public var completedAgo: String {
+        guard let completed = lastExecuted else {
             return ""
         }
-        let interval = Date().timeIntervalSince(started_at)
+
+        let interval = Date().timeIntervalSince(completed)
         return "\(intervalToString(interval)) ago"
     }
     
@@ -38,18 +34,22 @@ public struct RepositoryBuild: Codable, Identifiable, Equatable {
             return "\(Int(round(interval / 3600))) hour(s)"
         }
     }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
+    }
 }
+
+typealias RepositoryBuildResponsePublisher = AnyPublisher<[RepositoryBuild], ServiceError>
 
 #if DEBUG
 
 extension RepositoryBuild {
-    public static let someManualBuild = RepositoryBuild(build: "some-build", status: "idle", message: nil, buildID: nil, started_at: Date().addingTimeInterval(-60*5))
-    public static let someScheduledBuild = RepositoryBuild(build: "some-scheduled-build", status: "scheduled", message: "⏰ Build is scheduled to run at 9am every day", buildID: nil, started_at: Date().addingTimeInterval(-60*5))
-    public static let someActiveBuild = RepositoryBuild(build: "some-active-build", status: "active", message: nil, buildID: "some-active-build-id", started_at: Date().addingTimeInterval(-60*5))
+    public static let someBuild = RepositoryBuild(build: "some-build", lastExecuted: Date().addingTimeInterval(-60*5))
+    public static let someOtherBuild = RepositoryBuild(build: "some-other-build", lastExecuted: nil)
 
-    public static let someBuilds = [RepositoryBuild.someManualBuild,
-                                    RepositoryBuild.someActiveBuild,
-                                    RepositoryBuild.someScheduledBuild]
+    public static let someBuilds = [RepositoryBuild.someBuild,
+                                    RepositoryBuild.someOtherBuild]
 }
 
 #endif

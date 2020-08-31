@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import HouseKit
 
 enum FetchState {
     case loading
@@ -16,91 +17,83 @@ enum FetchState {
     case hasResults
 }
 
-class RepositoryViewModel: BaseViewModel, ObservableObject {
+class RepositoryViewModel: ObservableObject {
 
     // MARK: - Published properties
-    
-    @Published var fetchState: FetchState = .loading
-    @Published var activeBuilds: [BuildStatus] = []
-    @Published var repositoryBuilds: [RepositoryBuild] = []
+
+    @Published public var activeBuildsState: ViewModelState<[BuildStatus]> = .loading
+    @Published public var repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading
+
     @Published var branchKeys: [BuildKey] = []
     @Published var releaseKeys: [BuildKey] = []
     @Published var pullRequestKeys: [BuildKey] = []
     
     // MARK: - Properties
 
-    var buildsPublisher: AnyPublisher<[RepositoryBuild], StampedeError>? {
+    private var disposables = Set<AnyCancellable>()
+
+    var activeBuildsPublisher: BuildStatusResponsePublisher? {
         didSet {
-            self.fetch()
+            self.fetchActiveBuilds()
         }
     }
 
-    var recentPublisher: AnyPublisher<[BuildStatus], StampedeError>? {
+    var repositoryBuildsPublisher: RepositoryBuildResponsePublisher? {
         didSet {
-            self.fetch()
+            self.fetchRepositoryBuilds()
         }
     }
     
-    // MARK: - Initializer=
-    init(activeBuilds: [BuildStatus]? = nil, repositoryBuilds: [RepositoryBuild]? = nil, branchKeys: [BuildKey]? = nil, releaseKeys: [BuildKey]? = nil, pullRequestKeys: [BuildKey]? = nil) {
-        if let activeBuilds = activeBuilds {
-            self.activeBuilds = activeBuilds
-        }
-        if let repositoryBuilds = repositoryBuilds {
-            self.repositoryBuilds = repositoryBuilds
-        }
-        if let branchKeys = branchKeys {
-            self.branchKeys = branchKeys
-        }
-        if let releaseKeys = releaseKeys {
-            self.releaseKeys = releaseKeys
-        }
-        if let pullRequestKeys = pullRequestKeys {
-            self.pullRequestKeys = pullRequestKeys
-        }
+    // MARK: - Initializer
+
+    init(activeBuildsState: ViewModelState<[BuildStatus]> = .loading,
+         activeBuildsPublisher: BuildStatusResponsePublisher? = nil,
+         repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading,
+         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil) {
+        self.activeBuildsState = activeBuildsState
+        self.activeBuildsPublisher = activeBuildsPublisher
+        self.repositoryBuildsState = repositoryBuildsState
+        self.repositoryBuildsPublisher = repositoryBuildsPublisher
+        fetchActiveBuilds()
+        fetchRepositoryBuilds()
+    }
+
+    private func fetchActiveBuilds() {
+        self.activeBuildsPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.activeBuildsState = .networkError
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                self.activeBuildsState = .results(value)
+            }
+        }).store(in: &self.disposables)
     }
     
-    override func fetch() {
-//        self.buildsPublisher?.sink(receiveCompletion: { result in
-//          if case let .failure(error) = result {
-//            print("Error receiving \(error)")
-//            DispatchQueue.main.async {
-//                self.builds = .networkError
-//            }
-//          }
-//        }, receiveValue: { value in
-//            DispatchQueue.main.async {
-//                if value.count > 0 {
-//                    self.builds = .hasResults(results: value)
-//                } else {
-//                    self.builds = .empty(message: "No builds found")
-//                }
-//            }
-//        }).store(in: &self.disposables)
-//
-//        self.recentPublisher?.sink(receiveCompletion: { result in
-//          if case let .failure(error) = result {
-//            print("Error receiving \(error)")
-//            DispatchQueue.main.async {
-//                self.recent = .networkError
-//            }
-//          }
-//        }, receiveValue: { value in
-//            DispatchQueue.main.async {
-//                if value.count > 0 {
-//                    self.recent = .hasResults(results: value)
-//                } else {
-//                    self.recent = .empty(message: "No recent builds found")
-//                }
-//            }
-//        }).store(in: &self.disposables)
+    private func fetchRepositoryBuilds() {
+        self.repositoryBuildsPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.repositoryBuildsState = .networkError
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                self.repositoryBuildsState = .results(value)
+            }
+        }).store(in: &self.disposables)
     }
 }
 
 #if DEBUG
 
 extension RepositoryViewModel {
-    static var someViewModel = RepositoryViewModel(activeBuilds: BuildStatus.activeBuilds, repositoryBuilds: RepositoryBuild.someBuilds, branchKeys: BuildKey.someBranchKeys, releaseKeys: BuildKey.someReleaseKeys, pullRequestKeys: BuildKey.somePRKeys)
+    static var someViewModel = RepositoryViewModel(activeBuildsState: .results(BuildStatus.activeBuilds),
+                                                   repositoryBuildsState: .results(RepositoryBuild.someBuilds))
 //    static var someViewModelOnlyBuilds = RepositoryViewModel(builds: RepositoryBuild.someBuilds)
 //    static var someViewModelOnlyRecents = RepositoryViewModel(recent: BuildStatus.recentBuilds)
 }

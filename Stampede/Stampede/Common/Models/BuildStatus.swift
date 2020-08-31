@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Combine
+import HouseKit
 
 public enum BuildStatusIndicator {
     case inProgress
@@ -14,7 +16,7 @@ public enum BuildStatusIndicator {
     case failure
 }
 
-public struct BuildStatus: Codable, Identifiable, Equatable {
+public struct BuildStatus: Codable, Identifiable, Equatable, Hashable {
     public var id: String {
         return buildID
     }
@@ -76,7 +78,13 @@ public struct BuildStatus: Codable, Identifiable, Equatable {
             return "\(Int(round(interval / 3600))) hour(s)"
         }
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
+    }
 }
+
+typealias BuildStatusResponsePublisher = AnyPublisher<[BuildStatus], ServiceError>
 
 #if DEBUG
 

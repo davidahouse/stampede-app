@@ -24,16 +24,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     return StampedeDefaults()
                 }()
 
+                let repositoryList: RepositoryList = {
+                    return RepositoryList()
+                }()
+                
                 let service: StampedeService = {
+                    #if DEBUG
                     if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"] {
-                        if stampedeServer == "mock" {
-                            return StampedeServiceFixtures.mockService
+                        if stampedeServer == "fixtures" {
+                            return StampedeService(host: stampedeServer, provider: StampedeServiceFixtureProvider())
                         } else {
-                            return StampedeService(host: stampedeServer)
+                            return StampedeService(host: stampedeServer, provider: StampedeServiceNetworkProvider(host: stampedeServer))
                         }
                     } else {
-                        return StampedeService(host: defaults.host)
+                        return StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
                     }
+                    #else
+                    return StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
+                    #endif
                 }()
                 defaults.hostSubject = service.hostPassthroughSubject
 
@@ -43,6 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .environmentObject(service)
                     .environmentObject(defaults)
                     .environmentObject(theme)
+                    .environmentObject(repositoryList)
                 )
             }
             self.window = window

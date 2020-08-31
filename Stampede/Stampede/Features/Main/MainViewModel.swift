@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 import Combine
+import HouseKit
 
-class MainViewModel: BaseViewModel, ObservableObject {
-
-}
+class MainViewModel: BaseViewModel<[Repository]> { }

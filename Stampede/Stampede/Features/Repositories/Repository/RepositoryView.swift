@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import HouseKit
+import Combine
 
 struct RepositoryView: View {
 
@@ -18,43 +20,102 @@ struct RepositoryView: View {
 
     @ObservedObject var viewModel: RepositoryViewModel
 
+    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil, repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.activeBuildsPublisher = activeBuildsPublisher
+        self.viewModel.repositoryBuildsPublisher = repositoryBuildsPublisher
+    }
+
     // MARK: - View
 
     var body: some View {
         List {
             Section(header: Text("Active Builds")) {
-                ForEach(viewModel.activeBuilds, id: \.self) { item in
-                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                        StandardCell(viewModel: item.toStandardCellViewModel())
-                    }
-                }
+                activeBuildsList()
             }
 
             Section(header: Text("Repository Builds")) {
-                ForEach(viewModel.repositoryBuilds, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
-                }
+                repositoryBuildsList()
             }
 
             Section(header: Text("Branches")) {
                 ForEach(viewModel.branchKeys, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("build key cell")
+                    //StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
 
             Section(header: Text("Releases")) {
                 ForEach(viewModel.releaseKeys, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("build key cell")
+//                    StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
 
             Section(header: Text("Pull Requests")) {
                 ForEach(viewModel.pullRequestKeys, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("build key cell")
+//                    StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
         }
         .listStyle(DefaultListStyle())
+    }
+
+    @ViewBuilder private func activeBuildsList() -> some View {
+        switch viewModel.activeBuildsState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        Image(systemName: "folder.circle")
+                            .frame(width: 100)
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let activeBuilds):
+            if activeBuilds.count > 0 {
+                ForEach(activeBuilds, id: \.self) { item in
+                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                        BuildStatusCell(buildStatus: item)
+                    }
+                }
+            } else {
+                Text("No active builds found")
+            }
+        }
+    }
+    
+    @ViewBuilder private func repositoryBuildsList() -> some View {
+        switch viewModel.repositoryBuildsState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        Image(systemName: "folder.circle")
+                            .frame(width: 100)
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let builds):
+            if builds.count > 0 {
+                ForEach(builds, id: \.self) { item in
+                    RepositoryBuildCell(repositoryBuild: item)
+                }
+            } else {
+                Text("No repository builds found")
+            }
+        }
     }
 }
 

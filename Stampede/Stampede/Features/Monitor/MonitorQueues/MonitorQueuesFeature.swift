@@ -11,40 +11,19 @@ import Combine
 
 struct MonitorQueuesFeature: View {
 
-    // MARK: - Environment
-
     @EnvironmentObject var service: StampedeService
 
-    // MARK: Properties
+    let viewModel: MonitorQueuesViewModel
 
-//    let viewModel: BaseListViewModel<QueueSummary>
-
-    // MARK: Initializer
-
-//    init(state: StandardListState<QueueSummary>? = nil) {
-//        if let state = state {
-//            viewModel = BaseListViewModel<QueueSummary>(state: state)
-//        } else {
-//            viewModel = BaseListViewModel<QueueSummary>()
-//        }
-//        viewModel.shouldRefresh = true
-//    }
+    init(viewModel: MonitorQueuesViewModel? = nil) {
+        self.viewModel = viewModel ?? MonitorQueuesViewModel()
+    }
 
     // MARK: - View
 
     var body: some View {
-        MonitorQueuesView()
+        MonitorQueuesView(viewModel: viewModel, publisher: service.fetchMonitorQueuesPublisher())
             .navigationBarTitle("Queues")
-        //        MonitorQueuesView(viewModel: viewModel)
-//        .onAppear {
-//            // give the view model a new publisher?
-//            self.viewModel.publisher = self.service.fetchMonitorQueuesPublisher()
-//        }
-//        .onDisappear {
-//            // invalidate the publisher as we don't want
-//            // the view to refresh while not visible?
-//            self.viewModel.publisher = nil
-//        }
     }
 }
 

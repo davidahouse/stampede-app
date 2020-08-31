@@ -15,7 +15,7 @@ struct MonitorLiveViewModelQueue: Hashable {
     let history: [QueueGaugeInfo]
 }
 
-class MonitorLiveViewModel: BaseViewModel, ObservableObject {
+class MonitorLiveViewModel: ObservableObject {
 
     // MARK: - Published properties
     @Published var queueGauges: [MonitorLiveViewModelQueue]
@@ -36,13 +36,13 @@ class MonitorLiveViewModel: BaseViewModel, ObservableObject {
 
     var workersPublisher: AnyPublisher<[WorkerStatus], StampedeError>? {
         didSet {
-            self.fetch()
+            // self.fetch()
         }
     }
 
     var queuesPublisher: AnyPublisher<[QueueSummary], StampedeError>? {
         didSet {
-            self.fetch()
+            // self.fetch()
         }
     }
 
@@ -53,44 +53,43 @@ class MonitorLiveViewModel: BaseViewModel, ObservableObject {
         } else {
             self.queueGauges = []
         }
-        super.init(shouldRefresh: true)
     }
 
-    override func fetch() {
-        self.workersPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.workers = []
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                if value.count > 0 {
-                    self.workers = value
-                } else {
-                    self.workers = []
-                }
-            }
-        }).store(in: &self.disposables)
-
-        self.queuesPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.queues = []
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                if value.count > 0 {
-                    self.queues = value
-                } else {
-                    self.queues = []
-                }
-            }
-        }).store(in: &self.disposables)
-    }
+//    func fetch() {
+//        self.workersPublisher?.sink(receiveCompletion: { result in
+//          if case let .failure(error) = result {
+//            print("Error receiving \(error)")
+//            DispatchQueue.main.async {
+//                self.workers = []
+//            }
+//          }
+//        }, receiveValue: { value in
+//            DispatchQueue.main.async {
+//                if value.count > 0 {
+//                    self.workers = value
+//                } else {
+//                    self.workers = []
+//                }
+//            }
+//        }).store(in: &self.disposables)
+//
+//        self.queuesPublisher?.sink(receiveCompletion: { result in
+//          if case let .failure(error) = result {
+//            print("Error receiving \(error)")
+//            DispatchQueue.main.async {
+//                self.queues = []
+//            }
+//          }
+//        }, receiveValue: { value in
+//            DispatchQueue.main.async {
+//                if value.count > 0 {
+//                    self.queues = value
+//                } else {
+//                    self.queues = []
+//                }
+//            }
+//        }).store(in: &self.disposables)
+//    }
 
     private func recalculate() {
         var updatedQueues: [MonitorLiveViewModelQueue] = []

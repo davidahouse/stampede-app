@@ -6,9 +6,18 @@
 //  Copyright © 2019 David House. All rights reserved.
 //
 import SwiftUI
+import Combine
+import HouseKit
 
 struct MainView: View {
 
+    @ObservedObject var viewModel: MainViewModel
+
+    init(viewModel: MainViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.publisher = publisher
+    }
+    
     // MARK: - Environment
 
     @EnvironmentObject var theme: CurrentTheme
@@ -20,13 +29,16 @@ struct MainView: View {
     var body: some View {
         List {
             Section(header: Text("Repositories")) {
-                // TODO: This list needs to come from a view model
-                //                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
-//                    Text("stampede-server")
-//                }
-//                NavigationLink(destination: RepositoryFeature(repository: Repository.someRepository)) {
-//                    Text("stampede-worker")
-//                }
+                switch viewModel.state {
+                case .loading, .networkError:
+                    EmptyView()
+                case .results(let repositories):
+                    ForEach(repositories, id: \.self) { item in
+                        NavigationLink(destination: RepositoryFeature(repository: item)) {
+                            RepositoryCell(repository: item)
+                        }
+                    }
+                }
             }
             Section(header: Text("Monitor")) {
                 NavigationLink(destination: MonitorLiveFeature()) {
@@ -72,7 +84,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {        
         Previewer {
-            MainView()
+            MainView(viewModel: MainViewModel(state: .results(Repository.someRepositories)))
         }
     }
 }

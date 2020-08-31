@@ -10,39 +10,17 @@ import SwiftUI
 
 struct MonitorActiveBuildsFeature: View {
 
-    // MARK: - Environment
-
     @EnvironmentObject var service: StampedeService
+    
+    let viewModel: MonitorActiveBuildsViewModel
 
-    // MARK: Properties
-
-//    let viewModel: BaseListViewModel<BuildStatus>
-
-    // MARK: Initializer
-
-//    init(state: StandardListState<BuildStatus>? = nil) {
-//        if let state = state {
-//            viewModel = BaseListViewModel<BuildStatus>(state: state)
-//        } else {
-//            viewModel = BaseListViewModel<BuildStatus>()
-//        }
-//        viewModel.shouldRefresh = true
-//    }
-    // MARK: - View
-
+    init(viewModel: MonitorActiveBuildsViewModel? = nil) {
+        self.viewModel = viewModel ?? MonitorActiveBuildsViewModel()
+    }
+    
     var body: some View {
-        MonitorActiveBuildsView()
+        MonitorActiveBuildsView(viewModel: viewModel, publisher: service.fetchActiveBuildsPublisher())
             .navigationBarTitle("Active Builds")
-//        MonitorActiveBuildsView(viewModel: viewModel)
-//        .onAppear {
-//            // give the view model a new publisher?
-//            self.viewModel.publisher = self.service.fetchActiveBuildsPublisher()
-//        }
-//        .onDisappear {
-//            // invalidate the publisher as we don't want
-//            // the view to refresh while not visible?
-//            self.viewModel.publisher = nil
-//        }
     }
 }
 

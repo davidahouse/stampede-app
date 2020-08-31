@@ -11,18 +11,37 @@ import SwiftUI
 struct HistoryBuildsView: View {
     
     @ObservedObject var viewModel: HistoryBuildsViewModel
-    
-    let activeBuilds: [BuildStatus] = []
+
+    init(viewModel: HistoryBuildsViewModel, publisher: BuildStatusResponsePublisher? = nil) {
+        self.viewModel = viewModel
+        self.viewModel.publisher = publisher
+    }
     
     var body: some View {
-        List {
-            ForEach(activeBuilds, id: \.self) { item in
-                NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+        switch viewModel.state {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Basic list loading text")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let activeBuilds):
+            List {
+                ForEach(activeBuilds, id: \.self) { item in
+                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                        Text("test")
+                        //BuildStatusCell(buildStatus: item)
+                    }
                 }
             }
+            .listStyle(DefaultListStyle())
         }
-        .listStyle(DefaultListStyle())
     }
 }
 
@@ -30,7 +49,9 @@ struct HistoryBuildsView: View {
 struct HistoryBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel(builds: BuildStatus.activeBuilds))
+            HistoryBuildsView(viewModel: HistoryBuildsViewModel.loading)
+            HistoryBuildsView(viewModel: HistoryBuildsViewModel.networkError)
+            HistoryBuildsView(viewModel: HistoryBuildsViewModel.someBuilds)
         }
     }
 }

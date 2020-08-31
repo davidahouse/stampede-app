@@ -9,8 +9,17 @@
 import SwiftUI
 
 struct HistoryTasksFeature: View {
+    
+    @EnvironmentObject var service: StampedeService
+    
+    let viewModel: HistoryTasksViewModel
+
+    init(viewModel: HistoryTasksViewModel? = nil) {
+        self.viewModel = viewModel ?? HistoryTasksViewModel()
+    }
+    
     var body: some View {
-        HistoryTasksView()
+        HistoryTasksView(viewModel: viewModel, publisher: service.fetchHistoryTasksPublisher())
             .navigationBarTitle("Task History")
     }
 }

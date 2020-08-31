@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class SettingsStampedeServerViewModel: BaseViewModel, ObservableObject {
+class SettingsStampedeServerViewModel: ObservableObject {
 
     // MARK: - Published properties
 
@@ -30,7 +30,6 @@ class SettingsStampedeServerViewModel: BaseViewModel, ObservableObject {
     init(stampedeServerURL: String = "", subject: PassthroughSubject<String, Never>? = nil) {
         self.stampedeServerURL = stampedeServerURL
         self.subject = subject
-        super.init()
     }
 }
 

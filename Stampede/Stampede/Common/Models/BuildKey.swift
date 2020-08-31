@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct BuildKey: Codable, Identifiable, Equatable {
+public struct BuildKey: Codable, Identifiable, Equatable, Hashable {
     public let build_key: String
     public let started_at: Date?
     
@@ -33,14 +33,7 @@ public struct BuildKey: Codable, Identifiable, Equatable {
             return "\(Int(round(interval / 3600))) hour(s)"
         }
     }
-}
 
-extension BuildKey: StandardCellModelable {
-
-    func toStandardCellViewModel() -> StandardCellViewModel {
-        return StandardCellViewModel(self)
-    }
-    
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id.hashValue)
     }

@@ -7,3 +7,6 @@
 //
 
 import Foundation
+import HouseKit
+
+class SettingsRepositoriesViewModel: BaseViewModel<[Repository]> { }

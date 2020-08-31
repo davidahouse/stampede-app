@@ -14,7 +14,6 @@ extension View {
     #if DEBUG
     func previewDependencies() -> some View {
         return self
-            .environmentObject(StampedeServiceFixtures.mockPreviewService)
             .environmentObject(StampedeDefaults.someDefaults)
             .environmentObject(CurrentTheme())
     }
