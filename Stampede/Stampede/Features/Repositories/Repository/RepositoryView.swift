@@ -35,25 +35,29 @@ struct RepositoryView: View {
 
             Section(header: Text("Repository Builds")) {
                 ForEach(viewModel.repositoryBuilds, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("repository build cell")
+//                    StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
 
             Section(header: Text("Branches")) {
                 ForEach(viewModel.branchKeys, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("build key cell")
+                    //StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
 
             Section(header: Text("Releases")) {
                 ForEach(viewModel.releaseKeys, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("build key cell")
+//                    StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
 
             Section(header: Text("Pull Requests")) {
                 ForEach(viewModel.pullRequestKeys, id: \.self) { item in
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    Text("build key cell")
+//                    StandardCell(viewModel: item.toStandardCellViewModel())
                 }
             }
         }
@@ -79,7 +83,7 @@ struct RepositoryView: View {
         case .results(let activeBuilds):
             ForEach(activeBuilds, id: \.self) { item in
                 NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                    StandardCell(viewModel: item.toStandardCellViewModel())
+                    BuildStatusCell(buildStatus: item)
                 }
             }
         }

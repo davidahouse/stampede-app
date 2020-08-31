@@ -38,7 +38,7 @@ struct MonitorActiveTasksView: View {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
                         NavigationLink(destination: BuildTaskFeature(task: item)) {
-                            StandardCell(viewModel: item.toStandardCellViewModel())
+                            TaskStatusCell(taskStatus: item)
                         }
                     }
                 } else {

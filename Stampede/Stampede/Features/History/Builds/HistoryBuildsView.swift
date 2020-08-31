@@ -35,7 +35,8 @@ struct HistoryBuildsView: View {
             List {
                 ForEach(activeBuilds, id: \.self) { item in
                     NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                        StandardCell(viewModel: item.toStandardCellViewModel())
+                        Text("test")
+                        //BuildStatusCell(buildStatus: item)
                     }
                 }
             }

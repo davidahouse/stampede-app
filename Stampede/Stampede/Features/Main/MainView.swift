@@ -35,7 +35,7 @@ struct MainView: View {
                 case .results(let repositories):
                     ForEach(repositories, id: \.self) { item in
                         NavigationLink(destination: RepositoryFeature(repository: item)) {
-                            StandardCell(viewModel: StandardCellViewModel(item))
+                            RepositoryCell(repository: item)
                         }
                     }
                 }

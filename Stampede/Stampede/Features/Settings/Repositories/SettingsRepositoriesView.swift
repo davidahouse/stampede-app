@@ -37,7 +37,7 @@ struct SettingsRepositoriesView: View {
             List {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
-                        StandardCell(viewModel: StandardCellViewModel(item))
+                        RepositoryCell(repository: item)
                     }
                 } else {
                     Text("No repositories selected")

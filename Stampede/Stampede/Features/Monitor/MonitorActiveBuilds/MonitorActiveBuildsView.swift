@@ -36,7 +36,7 @@ struct MonitorActiveBuildsView: View {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
                         NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                            StandardCell(viewModel: item.toStandardCellViewModel())
+                            BuildStatusCell(buildStatus: item)
                         }
                     }
                 } else {

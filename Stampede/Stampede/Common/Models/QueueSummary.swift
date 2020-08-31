@@ -19,12 +19,16 @@ public struct QueueSummaryStats: Codable, Equatable {
     public let paused: Int
 }
 
-public struct QueueSummary: Codable, Equatable, Identifiable {
+public struct QueueSummary: Codable, Equatable, Identifiable, Hashable {
     public let queue: String
     public let stats: QueueSummaryStats
     
     public var id: String {
         return queue
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
     }
 }
 

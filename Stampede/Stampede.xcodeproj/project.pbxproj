@@ -57,8 +57,6 @@
 		C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */; };
 		C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21C42395B7270060A6DD /* RepositoryFeature.swift */; };
 		C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D51AC2353A40200FDA4A8 /* RepositoryView.swift */; };
-		C3081ADF24563FC5000C20F1 /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E37CF723BF7D07000CB1AD /* StandardCell.swift */; };
-		C3081AE124563FCC000C20F1 /* StandardCellViewModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F25BD23C2286400EC3E36 /* StandardCellViewModel+Extension.swift */; };
 		C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */; };
 		C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA123BED33400AC542F /* SecondaryLabel.swift */; };
 		C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA423BED39C00AC542F /* CurrentTheme.swift */; };
@@ -71,6 +69,10 @@
 		C3349ECD2350A92C00273730 /* Stampede_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349ECC2350A92C00273730 /* Stampede_Tests.swift */; };
 		C3349ED82350A92C00273730 /* Stampede_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349ED72350A92C00273730 /* Stampede_UITests.swift */; };
 		C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */; };
+		C34755EA24FC8446009B1FBF /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34755E924FC8446009B1FBF /* RepositoryCell.swift */; };
+		C34755EC24FC85BD009B1FBF /* BuildStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34755EB24FC85BD009B1FBF /* BuildStatusCell.swift */; };
+		C34755EE24FC878B009B1FBF /* TaskStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34755ED24FC878B009B1FBF /* TaskStatusCell.swift */; };
+		C34755F024FC88E2009B1FBF /* QueueSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34755EF24FC88E2009B1FBF /* QueueSummaryCell.swift */; };
 		C3520CA323CE92B2004C0674 /* MainFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CA223CE92B2004C0674 /* MainFeatureTests.swift */; };
 		C3520CA523CE92D5004C0674 /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CA423CE92D5004C0674 /* MainViewTests.swift */; };
 		C3520CAF23CEA321004C0674 /* RepositoryFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CAE23CEA321004C0674 /* RepositoryFeatureTests.swift */; };
@@ -138,7 +140,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		941F25BD23C2286400EC3E36 /* StandardCellViewModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StandardCellViewModel+Extension.swift"; sourceTree = "<group>"; };
 		941F25C323C23B6400EC3E36 /* EmptyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyList.swift; sourceTree = "<group>"; };
 		941F25CA23C2A5FF00EC3E36 /* EmptyListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListTests.swift; sourceTree = "<group>"; };
 		941F25CD23C2A63700EC3E36 /* NavbarButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarButtonTests.swift; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		94B571EA24BBBECD00CA13A4 /* StampedeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampedeService.swift; sourceTree = "<group>"; };
 		94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewTests.swift; sourceTree = "<group>"; };
 		94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
-		94E37CF723BF7D07000CB1AD /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
 		94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueLabel.swift; sourceTree = "<group>"; };
 		94E913AA24BB512B0056A150 /* BuildTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTaskView.swift; sourceTree = "<group>"; };
 		94E913AB24BB512B0056A150 /* BuildTaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTaskViewModel.swift; sourceTree = "<group>"; };
@@ -207,6 +207,10 @@
 		C3349ED72350A92C00273730 /* Stampede_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stampede_UITests.swift; sourceTree = "<group>"; };
 		C3349ED92350A92C00273730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorQueuesViewModel.swift; sourceTree = "<group>"; };
+		C34755E924FC8446009B1FBF /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		C34755EB24FC85BD009B1FBF /* BuildStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildStatusCell.swift; sourceTree = "<group>"; };
+		C34755ED24FC878B009B1FBF /* TaskStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusCell.swift; sourceTree = "<group>"; };
+		C34755EF24FC88E2009B1FBF /* QueueSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueSummaryCell.swift; sourceTree = "<group>"; };
 		C3520CA223CE92B2004C0674 /* MainFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeatureTests.swift; sourceTree = "<group>"; };
 		C3520CA423CE92D5004C0674 /* MainViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTests.swift; sourceTree = "<group>"; };
 		C3520CAE23CEA321004C0674 /* RepositoryFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFeatureTests.swift; sourceTree = "<group>"; };
@@ -359,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				9438376F2468713E00A90FF4 /* View+Extension.swift */,
-				941F25BD23C2286400EC3E36 /* StandardCellViewModel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,7 +510,10 @@
 		C3126D9E23BED24900AC542F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				94E37CF723BF7D07000CB1AD /* StandardCell.swift */,
+				C34755E924FC8446009B1FBF /* RepositoryCell.swift */,
+				C34755EB24FC85BD009B1FBF /* BuildStatusCell.swift */,
+				C34755ED24FC878B009B1FBF /* TaskStatusCell.swift */,
+				C34755EF24FC88E2009B1FBF /* QueueSummaryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1053,6 +1059,7 @@
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
 				94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */,
 				94FE1F4324FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift in Sources */,
+				C34755F024FC88E2009B1FBF /* QueueSummaryCell.swift in Sources */,
 				94B571F724BBBECD00CA13A4 /* Task.swift in Sources */,
 				C35D51B02353C5DF00FDA4A8 /* MainView.swift in Sources */,
 				C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */,
@@ -1075,6 +1082,7 @@
 				C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */,
 				94FE1F4A24FB18EA00AE4ED4 /* SelectRepositoryFeature.swift in Sources */,
 				C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */,
+				C34755EE24FC878B009B1FBF /* TaskStatusCell.swift in Sources */,
 				C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
@@ -1084,6 +1092,7 @@
 				94B571EB24BBBECD00CA13A4 /* HourlySummary.swift in Sources */,
 				C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */,
 				94E913AF24BB512B0056A150 /* BuildTaskFeature.swift in Sources */,
+				C34755EA24FC8446009B1FBF /* RepositoryCell.swift in Sources */,
 				C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */,
 				94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */,
 				94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */,
@@ -1097,11 +1106,11 @@
 				94B571D424BBBEC200CA13A4 /* Constants.swift in Sources */,
 				C3CA2E1524BA9EE30086B71D /* HistoryTasksView.swift in Sources */,
 				C3816C7D248702AB00E6980B /* MonitorQueuesView.swift in Sources */,
+				C34755EC24FC85BD009B1FBF /* BuildStatusCell.swift in Sources */,
 				94FE1F4724FB081500AE4ED4 /* RepositoryList.swift in Sources */,
 				94B571F024BBBECD00CA13A4 /* BuildDetails.swift in Sources */,
 				C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */,
 				94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */,
-				C3081AE124563FCC000C20F1 /* StandardCellViewModel+Extension.swift in Sources */,
 				C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */,
 				94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */,
 				94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */,
@@ -1112,7 +1121,6 @@
 				94FE1F4E24FB190200AE4ED4 /* SelectRepositoryViewModel.swift in Sources */,
 				94FE1F4524FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift in Sources */,
 				C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */,
-				C3081ADF24563FC5000C20F1 /* StandardCell.swift in Sources */,
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,
 				94FE1F4C24FB18F700AE4ED4 /* SelectRepositoryView.swift in Sources */,
 				C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */,

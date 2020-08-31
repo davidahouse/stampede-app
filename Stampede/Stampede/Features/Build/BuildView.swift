@@ -63,7 +63,7 @@ struct BuildView: View {
                 Section(header: Text("Tasks")) {
                     ForEach(viewModel.buildStatus.tasks) { task in
                         NavigationLink(destination: BuildTaskFeature(task: task)) {
-                            StandardCell(viewModel: StandardCellViewModel(task))
+                            TaskStatusCell(taskStatus: task)
                         }
                     }
                 }

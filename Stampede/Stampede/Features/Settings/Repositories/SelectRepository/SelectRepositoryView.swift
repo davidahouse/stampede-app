@@ -39,7 +39,7 @@ struct SelectRepositoryView: View {
             List {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
-                        StandardCell(viewModel: StandardCellViewModel(item))
+                        RepositoryCell(repository: item)
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
                                 self.onSelected(item)

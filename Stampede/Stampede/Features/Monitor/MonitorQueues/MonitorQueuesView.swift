@@ -37,7 +37,7 @@ struct MonitorQueuesView: View {
             List {
                 if queues.count > 0 {
                     ForEach(queues, id: \.self) { item in
-                        StandardCell(viewModel: item.toStandardCellViewModel())
+                        QueueSummaryCell(queueSummary: item)
                     }
                 } else {
                     Text("No queues found")

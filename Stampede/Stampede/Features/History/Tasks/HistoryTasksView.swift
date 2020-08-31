@@ -37,7 +37,7 @@ struct HistoryTasksView: View {
             List {
                 ForEach(tasks, id: \.self) { item in
                     NavigationLink(destination: BuildTaskFeature(task: item)) {
-                        StandardCell(viewModel: item.toStandardCellViewModel())
+                        TaskStatusCell(taskStatus: item)
                     }
                 }
             }
