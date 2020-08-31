@@ -28,6 +28,7 @@ branches:
           project: Stampede
           xcodeVersion: Xcode-beta.app
           productName: Stampede
+          infoPlist: Stampede/Info.plist
 releases:
   published:
     tasks:
