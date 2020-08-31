@@ -27,6 +27,7 @@ branches:
           scheme: Stampede
           project: Stampede
           xcodeVersion: Xcode-beta.app
+	  productName: Stampede
 releases:
   published:
     tasks:
