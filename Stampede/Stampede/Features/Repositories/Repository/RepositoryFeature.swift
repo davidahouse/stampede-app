@@ -30,7 +30,13 @@ struct RepositoryFeature: View {
     // MARK: - View
 
     var body: some View {
-        RepositoryView(viewModel: viewModel, activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository), repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository))
+        RepositoryView(viewModel: viewModel,
+                       activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository),
+                       repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository),
+                       branchKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push"),
+                       releaseKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release"),
+                       pullRequestKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
+                       )
             .navigationBarTitle(repository.repository)
     }
 }

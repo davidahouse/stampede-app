@@ -34,6 +34,10 @@ public class StampedeService: ObservableObject {
         return provider.fetchRepositoryBuildsPublisher(owner: owner, repository: repository)
     }
 
+    public func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
+        return provider.fetchBuildKeysPublisher(owner: owner, repository: repository, source: source)
+    }
+
     public func fetchAdminTasksPublisher() -> AnyPublisher<[Task], ServiceError>? {
         return provider.fetchAdminTasksPublisher()
     }

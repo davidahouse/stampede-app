@@ -119,49 +119,10 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
         return request(url: StampedeAPIEndpoint.historyHourlySummary.url(host: host))
     }
 
-//    private func request<T: Decodable>(endpoint: StampedeAPIEndpoint) -> AnyPublisher<T, StampedeError> {
-//        guard let host = host else {
-//            let publisher = AnyPublisher<T, StampedeError>(Fail<T, StampedeError>(error: StampedeError.network(description: "Host not set yet")))
-//            return publisher
-//        }
-//
-//        let url = endpoint.url(host: host)
-//        debugPrint(">>> \(url)")
-//
-//        let publisher: AnyPublisher<T, StampedeError> =
-//            session.dataTaskPublisher(for: URLRequest(url: url))
-//              .mapError { error in
-//                .network(description: error.localizedDescription)
-//              }
-//              .flatMap(maxPublishers: .max(1)) { pair in
-//
-//                decode(pair.data)
-//              }
-//                .receive(on: RunLoop.main)
-//              .eraseToAnyPublisher()
-//        return publisher
-//    }
+    public func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
+        guard let host = host else {
+            return AnyPublisher<[BuildKey], ServiceError>(Future<[BuildKey], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
+        }
+        return request(url: StampedeAPIEndpoint.buildKeys(owner, repository, source).url(host: host))
+    }
 }
-
-//@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
-//public func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, StampedeError> {
-//  let decoder = JSONDecoder()
-//  decoder.dateDecodingStrategy = .formatted(Constants.iso8601Full)
-//  return Just(data)
-//    .decode(type: T.self, decoder: decoder)
-//    .mapError { error in
-//        if let decodingError = error as? DecodingError {
-//            switch decodingError {
-//            case .dataCorrupted(let context):
-//                return .parsing(description: "Data corrupted error \(context.debugDescription)")
-//            case .typeMismatch(let typeMismatch, let context):
-//                return .parsing(description: "Type \(typeMismatch) mismatch: \(context.debugDescription) in path: \(context.codingPath)")
-//            default:
-//                return .parsing(description: "\(decodingError)")
-//            }
-//        } else {
-//            return .parsing(description: error.localizedDescription)
-//        }
-//    }
-//    .eraseToAnyPublisher()
-//}

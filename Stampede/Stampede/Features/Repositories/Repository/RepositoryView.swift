@@ -20,10 +20,17 @@ struct RepositoryView: View {
 
     @ObservedObject var viewModel: RepositoryViewModel
 
-    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil, repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil) {
+    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil,
+         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil,
+         branchKeysPublisher: BuildKeyResponsePublisher? = nil,
+         releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
+         pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
         self.viewModel = viewModel
         self.viewModel.activeBuildsPublisher = activeBuildsPublisher
         self.viewModel.repositoryBuildsPublisher = repositoryBuildsPublisher
+        self.viewModel.branchKeysPublisher = branchKeysPublisher
+        self.viewModel.releaseKeysPublisher = releaseKeysPublisher
+        self.viewModel.pullRequestKeysPublisher = pullRequestKeysPublisher
     }
 
     // MARK: - View

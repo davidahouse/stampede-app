@@ -26,6 +26,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var configDefaults = ConfigDefaults.someDefaults
     var configOverrides = ConfigOverrides.someOverrides
     var configQueues = Queue.someQueues
+    var buildKeys = BuildKey.someBranchKeys
     
     var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
     
@@ -79,6 +80,10 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     
     func fetchAdminQueuesPublisher() -> AnyPublisher<[Queue], ServiceError>? {
         return fetchPublisher(configQueues)
+    }
+
+    func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
+        return fetchPublisher(buildKeys)
     }
 }
 #endif
