@@ -114,6 +114,7 @@
 		C3CA2E2624BA9F7B0086B71D /* SettingsRepositoriesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2524BA9F7B0086B71D /* SettingsRepositoriesFeature.swift */; };
 		C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2724BA9F8C0086B71D /* SettingsRepositoriesView.swift */; };
 		C3CA2E2A24BA9F970086B71D /* SettingsRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E2924BA9F970086B71D /* SettingsRepositoriesViewModel.swift */; };
+		C3D150882506569B0080FC53 /* BuildKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D150872506569B0080FC53 /* BuildKeyCell.swift */; };
 		C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D350F623C2B00600ADEDC9 /* CurrentThemeTests.swift */; };
 		C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76680245B0F300022E485 /* StampedeDefaults.swift */; };
 		C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7668A245B704D0022E485 /* NetworkErrorView.swift */; };
@@ -251,6 +252,7 @@
 		C3CA2E2524BA9F7B0086B71D /* SettingsRepositoriesFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoriesFeature.swift; sourceTree = "<group>"; };
 		C3CA2E2724BA9F8C0086B71D /* SettingsRepositoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoriesView.swift; sourceTree = "<group>"; };
 		C3CA2E2924BA9F970086B71D /* SettingsRepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoriesViewModel.swift; sourceTree = "<group>"; };
+		C3D150872506569B0080FC53 /* BuildKeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildKeyCell.swift; sourceTree = "<group>"; };
 		C3D350F623C2B00600ADEDC9 /* CurrentThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentThemeTests.swift; sourceTree = "<group>"; };
 		C3F76680245B0F300022E485 /* StampedeDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeDefaults.swift; sourceTree = "<group>"; };
 		C3F7668A245B704D0022E485 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				C34755ED24FC878B009B1FBF /* TaskStatusCell.swift */,
 				C34755EF24FC88E2009B1FBF /* QueueSummaryCell.swift */,
 				944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */,
+				C3D150872506569B0080FC53 /* BuildKeyCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				94E913AD24BB512B0056A150 /* BuildTaskView.swift in Sources */,
 				C3816C7E248702AB00E6980B /* MonitorQueuesFeature.swift in Sources */,
 				94B571FB24BBBECD00CA13A4 /* StampedeServiceProvider.swift in Sources */,
+				C3D150882506569B0080FC53 /* BuildKeyCell.swift in Sources */,
 				C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */,
 				C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */,
 			);

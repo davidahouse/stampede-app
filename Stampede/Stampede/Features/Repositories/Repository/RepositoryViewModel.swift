@@ -24,9 +24,9 @@ class RepositoryViewModel: ObservableObject {
     @Published public var activeBuildsState: ViewModelState<[BuildStatus]> = .loading
     @Published public var repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading
 
-    @Published var branchKeys: [BuildKey] = []
-    @Published var releaseKeys: [BuildKey] = []
-    @Published var pullRequestKeys: [BuildKey] = []
+    @Published public var branchKeysState: ViewModelState<[BuildKey]> = .loading
+    @Published public var releaseKeysState: ViewModelState<[BuildKey]> = .loading
+    @Published public var pullRequestKeysState: ViewModelState<[BuildKey]> = .loading
     
     // MARK: - Properties
 
@@ -43,17 +43,47 @@ class RepositoryViewModel: ObservableObject {
             self.fetchRepositoryBuilds()
         }
     }
-    
+
+    var branchKeysPublisher: BuildKeyResponsePublisher? {
+        didSet {
+            self.fetchBranchKeys()
+        }
+    }
+
+    var releaseKeysPublisher: BuildKeyResponsePublisher? {
+        didSet {
+            self.fetchReleaseKeys()
+        }
+    }
+
+    var pullRequestKeysPublisher: BuildKeyResponsePublisher? {
+        didSet {
+            self.fetchPullRequestKeys()
+        }
+    }
+
     // MARK: - Initializer
 
     init(activeBuildsState: ViewModelState<[BuildStatus]> = .loading,
          activeBuildsPublisher: BuildStatusResponsePublisher? = nil,
          repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading,
-         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil) {
+         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil,
+         branchKeysState: ViewModelState<[BuildKey]> = .loading,
+         branchKeysPublisher: BuildKeyResponsePublisher? = nil,
+        releaseKeysState: ViewModelState<[BuildKey]> = .loading,
+        releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
+            pullRequestKeysState: ViewModelState<[BuildKey]> = .loading,
+            pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
         self.activeBuildsState = activeBuildsState
         self.activeBuildsPublisher = activeBuildsPublisher
         self.repositoryBuildsState = repositoryBuildsState
         self.repositoryBuildsPublisher = repositoryBuildsPublisher
+        self.branchKeysState = branchKeysState
+        self.branchKeysPublisher = branchKeysPublisher
+        self.releaseKeysState = releaseKeysState
+        self.releaseKeysPublisher = releaseKeysPublisher
+        self.pullRequestKeysState = pullRequestKeysState
+        self.pullRequestKeysPublisher = pullRequestKeysPublisher
         fetchActiveBuilds()
         fetchRepositoryBuilds()
     }
@@ -84,6 +114,51 @@ class RepositoryViewModel: ObservableObject {
         }, receiveValue: { value in
             DispatchQueue.main.async {
                 self.repositoryBuildsState = .results(value)
+            }
+        }).store(in: &self.disposables)
+    }
+
+    private func fetchBranchKeys() {
+        self.branchKeysPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.branchKeysState = .networkError
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                self.branchKeysState = .results(value)
+            }
+        }).store(in: &self.disposables)
+    }
+
+    private func fetchReleaseKeys() {
+        self.releaseKeysPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.releaseKeysState = .networkError
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                self.releaseKeysState = .results(value)
+            }
+        }).store(in: &self.disposables)
+    }
+
+    private func fetchPullRequestKeys() {
+        self.pullRequestKeysPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.pullRequestKeysState = .networkError
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                self.pullRequestKeysState = .results(value)
             }
         }).store(in: &self.disposables)
     }

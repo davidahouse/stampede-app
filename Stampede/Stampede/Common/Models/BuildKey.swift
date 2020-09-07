@@ -7,17 +7,19 @@
 //
 
 import Foundation
+import Combine
+import HouseKit
 
 public struct BuildKey: Codable, Identifiable, Equatable, Hashable {
-    public let build_key: String
-    public let started_at: Date?
+    public let buildKey: String
+    public let lastExecuted: Date?
     
     public var id: String {
-        return build_key
+        return buildKey
     }
     
     public var startedAgo: String {
-        guard let started_at = started_at else {
+        guard let started_at = lastExecuted else {
             return ""
         }
         let interval = Date().timeIntervalSince(started_at)
@@ -39,21 +41,23 @@ public struct BuildKey: Codable, Identifiable, Equatable, Hashable {
     }
 }
 
+typealias BuildKeyResponsePublisher = AnyPublisher<[BuildKey], ServiceError>
+
 #if DEBUG
 extension BuildKey {
     static let someBranchKeys = [
-        BuildKey(build_key: "development", started_at: Date().addingTimeInterval(-60*5)),
-        BuildKey(build_key: "main", started_at: Date().addingTimeInterval(-60*105))
+        BuildKey(buildKey: "development", lastExecuted: Date().addingTimeInterval(-60*5)),
+        BuildKey(buildKey: "main", lastExecuted: Date().addingTimeInterval(-60*105))
     ]
     static let someReleaseKeys = [
-        BuildKey(build_key: "v5.41", started_at: Date().addingTimeInterval(-33)),
-        BuildKey(build_key: "v5.40", started_at: Date().addingTimeInterval(-60*105)),
-        BuildKey(build_key: "v5.39", started_at: Date().addingTimeInterval(-60*5))
+        BuildKey(buildKey: "v5.41", lastExecuted: Date().addingTimeInterval(-33)),
+        BuildKey(buildKey: "v5.40", lastExecuted: Date().addingTimeInterval(-60*105)),
+        BuildKey(buildKey: "v5.39", lastExecuted: Date().addingTimeInterval(-60*5))
     ]
     static let somePRKeys = [
-        BuildKey(build_key: "pullrequest-42", started_at: Date().addingTimeInterval(-33)),
-        BuildKey(build_key: "pullrequest-41", started_at: Date().addingTimeInterval(-60*105)),
-        BuildKey(build_key: "pullrequest-43", started_at: Date().addingTimeInterval(-60*5))
+        BuildKey(buildKey: "pullrequest-42", lastExecuted: Date().addingTimeInterval(-33)),
+        BuildKey(buildKey: "pullrequest-41", lastExecuted: Date().addingTimeInterval(-60*105)),
+        BuildKey(buildKey: "pullrequest-43", lastExecuted: Date().addingTimeInterval(-60*5))
     ]
 }
 #endif

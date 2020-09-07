@@ -39,24 +39,15 @@ struct RepositoryView: View {
             }
 
             Section(header: Text("Branches")) {
-                ForEach(viewModel.branchKeys, id: \.self) { item in
-                    Text("build key cell")
-                    //StandardCell(viewModel: item.toStandardCellViewModel())
-                }
+                branchBuildsList()
             }
 
             Section(header: Text("Releases")) {
-                ForEach(viewModel.releaseKeys, id: \.self) { item in
-                    Text("build key cell")
-//                    StandardCell(viewModel: item.toStandardCellViewModel())
-                }
+                releaseBuildsList()
             }
 
             Section(header: Text("Pull Requests")) {
-                ForEach(viewModel.pullRequestKeys, id: \.self) { item in
-                    Text("build key cell")
-//                    StandardCell(viewModel: item.toStandardCellViewModel())
-                }
+                pullRequestBuildsList()
             }
         }
         .listStyle(DefaultListStyle())
@@ -114,6 +105,81 @@ struct RepositoryView: View {
                 }
             } else {
                 Text("No repository builds found")
+            }
+        }
+    }
+
+    @ViewBuilder private func branchBuildsList() -> some View {
+        switch viewModel.branchKeysState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let keys):
+            if keys.count > 0 {
+                ForEach(keys, id: \.self) { item in
+                    BuildKeyCell(buildKey: item)
+                }
+            } else {
+                Text("No branch builds found")
+            }
+        }
+    }
+
+    @ViewBuilder private func releaseBuildsList() -> some View {
+        switch viewModel.releaseKeysState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let keys):
+            if keys.count > 0 {
+                ForEach(keys, id: \.self) { item in
+                    BuildKeyCell(buildKey: item)
+                }
+            } else {
+                Text("No release builds found")
+            }
+        }
+    }
+
+    @ViewBuilder private func pullRequestBuildsList() -> some View {
+        switch viewModel.pullRequestKeysState {
+        case .loading:
+            List {
+                ForEach(0..<10) { _ in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Task")
+                        }
+                    }
+                }
+            }.redacted(reason: .placeholder)
+        case .networkError:
+            Text("A network error has occurred")
+        case .results(let keys):
+            if keys.count > 0 {
+                ForEach(keys, id: \.self) { item in
+                    BuildKeyCell(buildKey: item)
+                }
+            } else {
+                Text("No pull request builds found")
             }
         }
     }
