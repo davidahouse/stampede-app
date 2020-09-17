@@ -13,6 +13,10 @@ pullrequests:
         scheme: Stampede
         project: Stampede
         xcodeVersion: Xcode-beta.app
+  notifications:
+    all:
+      - slack-stampede-dev
+      - prcomment
 pullrequestedit:
   tasks:
     - id: pr-standards
