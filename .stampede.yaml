@@ -15,8 +15,8 @@ pullrequests:
         xcodeVersion: Xcode-beta.app
   notifications:
     all:
-      - slack-stampede-dev
-      - prcomment
+      - id: slack-stampede-dev
+      - id: prcomment
 pullrequestedit:
   tasks:
     - id: pr-standards
