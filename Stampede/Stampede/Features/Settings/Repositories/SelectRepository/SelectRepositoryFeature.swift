@@ -29,6 +29,10 @@ struct SelectRepositoryFeature: View {
 
 struct SelectRepositoryFeature_Previews: PreviewProvider {
     static var previews: some View {
-        SelectRepositoryFeature(onSelected: { _ in })
+        DevicePreviewer {
+            NavigationView {
+                SelectRepositoryFeature(onSelected: { _ in })
+            }
+        }
     }
 }
