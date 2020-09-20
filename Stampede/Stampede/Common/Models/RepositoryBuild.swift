@@ -47,6 +47,9 @@ typealias RepositoryBuildResponsePublisher = AnyPublisher<[RepositoryBuild], Ser
 extension RepositoryBuild {
     public static let someBuild = RepositoryBuild(build: "some-build", lastExecuted: Date().addingTimeInterval(-60*5))
     public static let someOtherBuild = RepositoryBuild(build: "some-other-build", lastExecuted: nil)
+    public static let someBuildCompletedSecondsAgo = RepositoryBuild(build: "some-build", lastExecuted: Date().addingTimeInterval(-12))
+    public static let someBuildCompletedMinutesAgo = RepositoryBuild(build: "some-build", lastExecuted: Date().addingTimeInterval(-12*60))
+    public static let someBuildCompletedHoursAgo = RepositoryBuild(build: "some-build", lastExecuted: Date().addingTimeInterval(-12*60*60))
 
     public static let someBuilds = [RepositoryBuild.someBuild,
                                     RepositoryBuild.someOtherBuild]

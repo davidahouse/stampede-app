@@ -98,6 +98,14 @@ extension BuildStatus {
 
     public static let activeBuilds = [BuildStatus.someActiveBuild, BuildStatus.someActiveSuccessBuild, BuildStatus.someActiveFailedBuild]
     public static let recentBuilds = [BuildStatus.someRecentBuild, BuildStatus.someRecentSuccessBuild, BuildStatus.someRecentFailedBuild]
+    
+    public static let buildStartedSecondsAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildStartedSecondsAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])
+    public static let buildStartedMinutesAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildStartedMinutesAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])
+    public static let buildStartedHoursAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildStartedHoursAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])
+    
+    public static let buildCompletedSecondsAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildCompletedSecondsAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])
+    public static let buildCompletedMinutesAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildCompletedMinutesAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])
+    public static let buildCompletedHoursAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildCompletedHoursAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])
 }
 
 #endif

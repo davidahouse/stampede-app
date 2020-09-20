@@ -90,6 +90,18 @@ extension TaskStatus {
     public static let activeTasks = [TaskStatus.queuedTask, TaskStatus.inProgressTask]
     public static let recentTasks = [TaskStatus.completedTask, TaskStatus.failedTask]
     public static let noTasks: [TaskStatus] = []
+    
+    public static let taskWithNoOwner = TaskStatus(task_id: "123", build_id: "1245", owner: nil, repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date(), started_at: nil, finished_at: nil, completed_at: nil, node: nil)
+    public static let taskWithNoRepository = TaskStatus(task_id: "123", build_id: "1245", owner: "some-owner", repository: nil, build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date(), started_at: nil, finished_at: nil, completed_at: nil, node: nil)
+    public static let taskWithNoBuildKey = TaskStatus(task_id: "123", build_id: "1245", owner: "some-owner", repository: "some-repo", build_key: nil, task: "some-task", status: "started", conclusion: nil, queued_at: Date(), started_at: nil, finished_at: nil, completed_at: nil, node: nil)
+
+    public static let taskStartedSecondsAgo = TaskStatus(task_id: "8679", build_id: "12345", owner: "some-org", repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date().addingTimeInterval(-12), started_at: Date().addingTimeInterval(-12), finished_at: nil, completed_at: nil, node: "some-node")
+    public static let taskStartedMinutesAgo = TaskStatus(task_id: "8679", build_id: "12345", owner: "some-org", repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date().addingTimeInterval(-12), started_at: Date().addingTimeInterval(-12*60), finished_at: nil, completed_at: nil, node: "some-node")
+    public static let taskStartedHoursAgo = TaskStatus(task_id: "8679", build_id: "12345", owner: "some-org", repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date().addingTimeInterval(-12), started_at: Date().addingTimeInterval(-12*60*60), finished_at: nil, completed_at: nil, node: "some-node")
+    
+    public static let taskCompletedInSeconds = TaskStatus(task_id: "8679", build_id: "12345", owner: "some-org", repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date().addingTimeInterval(-12), started_at: Date().addingTimeInterval(-11), finished_at: Date().addingTimeInterval(-10), completed_at: Date().addingTimeInterval(-9), node: "some-node")
+    public static let taskCompletedInMinutes = TaskStatus(task_id: "8679", build_id: "12345", owner: "some-org", repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date().addingTimeInterval(-12*60), started_at: Date().addingTimeInterval(-11*60), finished_at: Date().addingTimeInterval(-10), completed_at: Date().addingTimeInterval(-9), node: "some-node")
+    public static let taskCompletedInHours = TaskStatus(task_id: "8679", build_id: "12345", owner: "some-org", repository: "some-repo", build_key: "some-key", task: "some-task", status: "started", conclusion: nil, queued_at: Date().addingTimeInterval(-12*60*60), started_at: Date().addingTimeInterval(-11*60*60), finished_at: Date().addingTimeInterval(-10), completed_at: Date().addingTimeInterval(-9), node: "some-node")
 }
 
 #endif
