@@ -150,6 +150,8 @@
 		C3DDDCBE2518110B005C8189 /* SettingsStampedeServerFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDDCBD2518110B005C8189 /* SettingsStampedeServerFeatureTests.swift */; };
 		C3DDDCC625181136005C8189 /* SettingsStampedeServerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDDCC525181136005C8189 /* SettingsStampedeServerViewTests.swift */; };
 		C3DDDCCB25181409005C8189 /* StampedeErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDDCCA25181409005C8189 /* StampedeErrorTests.swift */; };
+		C3DDDCD1251821C6005C8189 /* StampedeAPIEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDDCD0251821C6005C8189 /* StampedeAPIEndpointTests.swift */; };
+		C3DDDCD92518236B005C8189 /* StampedeServiceNetworkProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDDCD82518236B005C8189 /* StampedeServiceNetworkProviderTests.swift */; };
 		C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76680245B0F300022E485 /* StampedeDefaults.swift */; };
 		C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7668A245B704D0022E485 /* NetworkErrorView.swift */; };
 		C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F83EC5239407290057A0FB /* MainFeature.swift */; };
@@ -322,6 +324,8 @@
 		C3DDDCBD2518110B005C8189 /* SettingsStampedeServerFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerFeatureTests.swift; sourceTree = "<group>"; };
 		C3DDDCC525181136005C8189 /* SettingsStampedeServerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerViewTests.swift; sourceTree = "<group>"; };
 		C3DDDCCA25181409005C8189 /* StampedeErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeErrorTests.swift; sourceTree = "<group>"; };
+		C3DDDCD0251821C6005C8189 /* StampedeAPIEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeAPIEndpointTests.swift; sourceTree = "<group>"; };
+		C3DDDCD82518236B005C8189 /* StampedeServiceNetworkProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeServiceNetworkProviderTests.swift; sourceTree = "<group>"; };
 		C3F76680245B0F300022E485 /* StampedeDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeDefaults.swift; sourceTree = "<group>"; };
 		C3F7668A245B704D0022E485 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		C3F83EC5239407290057A0FB /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 		941F25C523C2A39200EC3E36 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C3DDDCCF251821B4005C8189 /* StampedeAPI */,
 				949CC968251783F900BEC54E /* Models */,
 				C3D350F523C2AFF100ADEDC9 /* Themes */,
 				941F25C623C2A39B00EC3E36 /* ComponentViews */,
@@ -1042,6 +1047,15 @@
 			path = StampedeServer;
 			sourceTree = "<group>";
 		};
+		C3DDDCCF251821B4005C8189 /* StampedeAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C3DDDCD0251821C6005C8189 /* StampedeAPIEndpointTests.swift */,
+				C3DDDCD82518236B005C8189 /* StampedeServiceNetworkProviderTests.swift */,
+			);
+			path = StampedeAPI;
+			sourceTree = "<group>";
+		};
 		C3F76679245A43170022E485 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1324,6 +1338,8 @@
 				C3DDDC4625180B60005C8189 /* HourlySummaryTests.swift in Sources */,
 				C3B1D62B23AE8598002CCE66 /* XCTestCase+Extension.swift in Sources */,
 				C3DDDC7125180ED8005C8189 /* HistoryTasksViewTests.swift in Sources */,
+				C3DDDCD92518236B005C8189 /* StampedeServiceNetworkProviderTests.swift in Sources */,
+				C3DDDCD1251821C6005C8189 /* StampedeAPIEndpointTests.swift in Sources */,
 				C3DDDC8E25180FB7005C8189 /* SettingsNotificationsViewTests.swift in Sources */,
 				949CC97A2517982D00BEC54E /* TaskStatusTests.swift in Sources */,
 				C3DDDCB8251810DB005C8189 /* SettingsInfoViewTests.swift in Sources */,

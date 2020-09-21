@@ -13,16 +13,12 @@ import HouseKit
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServiceProvider {
 
-    let session: URLSession
-//    private var disposables = Set<AnyCancellable>()
-
     public let hostPassthroughSubject = PassthroughSubject<String, Never>()
     private var host: String?
 //    private var hostSink: AnyCancellable?
 
     public init(host: String? = nil) {
         self.host = host
-        self.session = URLSession(configuration: URLSessionConfiguration.default)
 //        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
 //            self.host = value
 //        })
