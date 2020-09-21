@@ -13,6 +13,12 @@ pullrequests:
         scheme: Stampede
         project: Stampede
         xcodeVersion: Xcode-beta.app
+    - id: lines-of-code
+      config:
+        excludeFolders: HouseKit
+  notifications:
+    all:
+      - id: prcomment
 pullrequestedit:
   tasks:
     - id: pr-standards
@@ -29,6 +35,21 @@ branches:
           xcodeVersion: Xcode-beta.app
           productName: Stampede
           infoPlist: Stampede/Info.plist
+      - id: lines-of-code
+        config:
+          excludeFolders: HouseKit
+      - id: swiftlint
+        config:
+          projectFolder: Stampede
+      - id: unit-tests-xcode
+        config:
+          projectFolder: Stampede
+          scheme: Stampede
+          project: Stampede
+          xcodeVersion: Xcode-beta.app
+    notifications:
+      all:
+        - id: slack-stampede-dev
 releases:
   published:
     tasks:
