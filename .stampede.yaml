@@ -13,6 +13,7 @@ pullrequests:
         scheme: Stampede
         project: Stampede
         xcodeVersion: Xcode-beta.app
+        simulator: iPhone 11
     - id: lines-of-code
       config:
         excludeFolders: HouseKit
@@ -47,6 +48,7 @@ branches:
           scheme: Stampede
           project: Stampede
           xcodeVersion: Xcode-beta.app
+          simulator: iPhone 11
     notifications:
       all:
         - id: slack-stampede-dev
