@@ -70,10 +70,10 @@ class RepositoryViewModel: ObservableObject {
          repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil,
          branchKeysState: ViewModelState<[BuildKey]> = .loading,
          branchKeysPublisher: BuildKeyResponsePublisher? = nil,
-        releaseKeysState: ViewModelState<[BuildKey]> = .loading,
-        releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
-            pullRequestKeysState: ViewModelState<[BuildKey]> = .loading,
-            pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
+         releaseKeysState: ViewModelState<[BuildKey]> = .loading,
+         releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
+         pullRequestKeysState: ViewModelState<[BuildKey]> = .loading,
+         pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
         self.activeBuildsState = activeBuildsState
         self.activeBuildsPublisher = activeBuildsPublisher
         self.repositoryBuildsState = repositoryBuildsState

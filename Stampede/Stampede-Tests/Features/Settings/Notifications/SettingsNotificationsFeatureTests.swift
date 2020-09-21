@@ -1,0 +1,18 @@
+//
+//  SettingsNotificationsFeatureTests.swift
+//  Stampede-Tests
+//
+//  Created by David House on 9/20/20.
+//  Copyright © 2020 David House. All rights reserved.
+//
+
+import XCTest
+@testable import Stampede
+
+class SettingsNotificationsFeatureTests: XCTestCase {
+
+    func testCapturePreviews() {
+        capture(SettingsNotificationFeature_Previews.previews,
+                   title: "SettingsNotificationFeature_Previews")
+    }
+}

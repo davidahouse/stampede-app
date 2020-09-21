@@ -31,7 +31,7 @@ struct SettingsStampedeServerView: View {
 }
 
 #if DEBUG
-struct StampedeServerView_Previews: PreviewProvider {
+struct SettingsStampedeServerView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
             SettingsStampedeServerView(viewModel: SettingsStampedeServerViewModel.someViewModel)

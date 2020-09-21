@@ -59,5 +59,11 @@ extension BuildKey {
         BuildKey(buildKey: "pullrequest-41", lastExecuted: Date().addingTimeInterval(-60*105)),
         BuildKey(buildKey: "pullrequest-43", lastExecuted: Date().addingTimeInterval(-60*5))
     ]
+    
+    static let someBuildKey = BuildKey(buildKey: "development", lastExecuted: Date().addingTimeInterval(-60*5))
+    static let someBuildKeyWithNoLastExecuted = BuildKey(buildKey: "development", lastExecuted: nil)
+    static let lastExecutedSecondsAgo = BuildKey(buildKey: "development", lastExecuted: Date().addingTimeInterval(-12))
+    static let lastExecutedMinutesAgo = BuildKey(buildKey: "development", lastExecuted: Date().addingTimeInterval(-12*60))
+    static let lastExecutedHoursAgo = BuildKey(buildKey: "development", lastExecuted: Date().addingTimeInterval(-12*60*60))
 }
 #endif

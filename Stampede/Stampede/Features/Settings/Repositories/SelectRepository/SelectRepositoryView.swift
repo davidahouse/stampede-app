@@ -57,9 +57,11 @@ struct SelectRepositoryView: View {
 #if DEBUG
 struct SelectRepositoryView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading, onSelected: { _ in })
-        SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError, onSelected: { _ in })
-        SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories, onSelected: { _ in })
+        Previewer {
+            SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading, onSelected: { _ in })
+            SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError, onSelected: { _ in })
+            SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories, onSelected: { _ in })
+        }
     }
 }
 #endif
