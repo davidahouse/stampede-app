@@ -69,7 +69,9 @@
 		C3349EBC2350A92C00273730 /* AssetsMobile.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3349EBB2350A92C00273730 /* AssetsMobile.xcassets */; };
 		C3349EBF2350A92C00273730 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3349EBE2350A92C00273730 /* Preview Assets.xcassets */; };
 		C3349EC22350A92C00273730 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3349EC02350A92C00273730 /* LaunchScreen.storyboard */; };
-		C3349ED82350A92C00273730 /* Stampede_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349ED72350A92C00273730 /* Stampede_UITests.swift */; };
+		C33C012E25198ECD00F7AC62 /* BDDTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C012D25198ECD00F7AC62 /* BDDTestCase.swift */; };
+		C33C013725198FB100F7AC62 /* ScenarioMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C013625198FB100F7AC62 /* ScenarioMainScreen.swift */; };
+		C33C0142251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C0141251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift */; };
 		C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */; };
 		C34755EA24FC8446009B1FBF /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34755E924FC8446009B1FBF /* RepositoryCell.swift */; };
 		C34755EC24FC85BD009B1FBF /* BuildStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34755EB24FC85BD009B1FBF /* BuildStatusCell.swift */; };
@@ -241,8 +243,10 @@
 		C3349EC82350A92C00273730 /* Stampede-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stampede-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3349ECE2350A92C00273730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3349ED32350A92C00273730 /* Stampede-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stampede-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3349ED72350A92C00273730 /* Stampede_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stampede_UITests.swift; sourceTree = "<group>"; };
 		C3349ED92350A92C00273730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C33C012D25198ECD00F7AC62 /* BDDTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDDTestCase.swift; sourceTree = "<group>"; };
+		C33C013625198FB100F7AC62 /* ScenarioMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioMainScreen.swift; sourceTree = "<group>"; };
+		C33C0141251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScenarioMainScreen+Extension.swift"; sourceTree = "<group>"; };
 		C347520F24FAF819000F48B7 /* MonitorQueuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorQueuesViewModel.swift; sourceTree = "<group>"; };
 		C34755E924FC8446009B1FBF /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		C34755EB24FC85BD009B1FBF /* BuildStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildStatusCell.swift; sourceTree = "<group>"; };
@@ -677,10 +681,20 @@
 		C3349ED62350A92C00273730 /* Stampede-UITests */ = {
 			isa = PBXGroup;
 			children = (
-				C3349ED72350A92C00273730 /* Stampede_UITests.swift */,
+				C33C013525198F4100F7AC62 /* Main */,
 				C3349ED92350A92C00273730 /* Info.plist */,
+				C33C012D25198ECD00F7AC62 /* BDDTestCase.swift */,
 			);
 			path = "Stampede-UITests";
+			sourceTree = "<group>";
+		};
+		C33C013525198F4100F7AC62 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C33C013625198FB100F7AC62 /* ScenarioMainScreen.swift */,
+				C33C0141251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		C3520CA623CE9310004C0674 /* Repositories */ = {
@@ -1393,7 +1407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3349ED82350A92C00273730 /* Stampede_UITests.swift in Sources */,
+				C33C013725198FB100F7AC62 /* ScenarioMainScreen.swift in Sources */,
+				C33C0142251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift in Sources */,
+				C33C012E25198ECD00F7AC62 /* BDDTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

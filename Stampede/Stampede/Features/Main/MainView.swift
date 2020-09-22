@@ -36,45 +36,45 @@ struct MainView: View {
                     ForEach(repositories, id: \.self) { item in
                         NavigationLink(destination: RepositoryFeature(repository: item)) {
                             RepositoryCell(repository: item)
-                        }
+                        }.accessibilityIdentifier(item.id)
                     }
                 }
             }
             Section(header: Text("Monitor")) {
                 NavigationLink(destination: MonitorLiveFeature()) {
                     Text("Live")
-                }
+                }.accessibility(identifier: "monitor-live")
                 NavigationLink(destination: MonitorActiveBuildsFeature()) {
                     Text("Active Builds")
-                }
+                }.accessibility(identifier: "monitor-active-builds")
                 NavigationLink(destination: MonitorActiveTasksFeature()) {
                     Text("Active Tasks")
-                }
+                }.accessibility(identifier: "monitor-active-tasks")
                 NavigationLink(destination: MonitorQueuesFeature()) {
                     Text("Queues")
-                }
+                }.accessibility(identifier: "monitor-queues")
             }
             Section(header: Text("History")) {
                 NavigationLink(destination: HistoryBuildsFeature()) {
                     Text("Builds")
-                }
+                }.accessibility(identifier: "history-builds")
                 NavigationLink(destination: HistoryTasksFeature()) {
                     Text("Tasks")
-                }
+                }.accessibility(identifier: "history-tasks")
             }
             Section(header: Text("Settings")) {
                 NavigationLink(destination: SettingsStampedeServerFeature()) {
                     Text("Stampede Server")
-                }
+                }.accessibility(identifier: "settings-stampede-server")
                 NavigationLink(destination: SettingsRepositoriesFeature()) {
                     Text("Repositories")
-                }
+                }.accessibility(identifier: "settings-repositories")
                 NavigationLink(destination: SettingsNotificationsFeature()) {
                     Text("Notifications")
-                }
+                }.accessibility(identifier: "settings-notifications")
                 NavigationLink(destination: SettingsInfoFeature()) {
                     Text("Info")
-                }
+                }.accessibility(identifier: "settings-info")
             }
         }.listStyle(SidebarListStyle())
     }
