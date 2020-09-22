@@ -18,7 +18,7 @@ struct RepositoryCell: View {
                 PrimaryLabel(repository.owner)
                 SecondaryLabel(repository.repository)
             }
-        }
+        }.accessibility(identifier: repository.id)
     }
 }
 
