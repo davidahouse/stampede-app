@@ -10,11 +10,20 @@ import Foundation
 import Combine
 import HouseKit
 
+protocol RepositoryListProvider {
+    func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]
+    func fileExists(atPath path: String) -> Bool
+    func write(_ data: Data, to: URL) throws
+    func read(from: URL) throws -> Data
+}
+
 class RepositoryList: ObservableObject {
     
+    private let provider: RepositoryListProvider
     private var repositories: [Repository] = []
     
-    init(repositories: [Repository]? = nil) {
+    init(repositories: [Repository]? = nil, provider: RepositoryListProvider = FileManager.default) {
+        self.provider = provider
         if let repositories = repositories {
             self.repositories = repositories
         } else {
@@ -34,14 +43,12 @@ class RepositoryList: ObservableObject {
     
     func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError> {
         return AnyPublisher<[Repository], ServiceError>(Future<[Repository], ServiceError> { promise in
-            DispatchQueue.main.async {
                 promise(.success(self.repositories))
-            }
         })
     }
     
     private func save() {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let paths = provider.urls(for: .documentDirectory, in: .userDomainMask)
         guard let path = paths.first else {
             return
         }
@@ -49,28 +56,38 @@ class RepositoryList: ObservableObject {
         do {
             let encoder = JSONEncoder()
             let encoded = try encoder.encode(repositories)
-            try encoded.write(to: filePath)
+            try provider.write(encoded, to: filePath)
         } catch {
             print("Error saving repository list")
         }
     }
     
     private func load() {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let paths = provider.urls(for: .documentDirectory, in: .userDomainMask)
         guard let path = paths.first else {
             return
         }
         let filePath = path.appendingPathComponent("repositories.dat")
-        guard FileManager.default.fileExists(atPath: filePath.path) else {
+        guard provider.fileExists(atPath: filePath.path) else {
             repositories = []
             return
         }
         do {
-            let rawData = try Data(contentsOf: filePath)
+            let rawData = try provider.read(from: filePath)
             let decoder = JSONDecoder()
             repositories = try decoder.decode([Repository].self, from: rawData)
         } catch {
             print("Error reading repository list")
         }
+    }
+}
+
+extension FileManager: RepositoryListProvider {
+    func write(_ data: Data, to: URL) throws {
+        try data.write(to: to)
+    }
+    
+    func read(from: URL) throws -> Data {
+        return try Data(contentsOf: from)
     }
 }
