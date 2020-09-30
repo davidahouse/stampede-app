@@ -23,6 +23,7 @@ struct BuildKeyCell: View {
 
 }
 
+#if DEBUG
 struct BuildKeyCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -30,3 +31,4 @@ struct BuildKeyCell_Previews: PreviewProvider {
         }
     }
 }
+#endif

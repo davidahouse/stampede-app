@@ -27,6 +27,7 @@ struct SelectRepositoryFeature: View {
     }
 }
 
+#if DEBUG
 struct SelectRepositoryFeature_Previews: PreviewProvider {
     static var previews: some View {
         DevicePreviewer {
@@ -36,3 +37,4 @@ struct SelectRepositoryFeature_Previews: PreviewProvider {
         }
     }
 }
+#endif
