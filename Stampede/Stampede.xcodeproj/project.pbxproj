@@ -17,6 +17,7 @@
 		9438376C2468515E00A90FF4 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376B2468515E00A90FF4 /* Previewer.swift */; };
 		9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376D246859E400A90FF4 /* DevicePreviewer.swift */; };
 		943837702468713E00A90FF4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376F2468713E00A90FF4 /* View+Extension.swift */; };
+		943C3DB42524A90F00C35FB6 /* RepositoryListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */; };
 		944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */; };
 		944EF65924FD200C00357E9E /* RepositoryBuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */; };
 		949CC96A2517840F00BEC54E /* RepositoryBuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949CC9692517840F00BEC54E /* RepositoryBuildTests.swift */; };
@@ -188,6 +189,7 @@
 		9438376B2468515E00A90FF4 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		9438376D246859E400A90FF4 /* DevicePreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreviewer.swift; sourceTree = "<group>"; };
 		9438376F2468713E00A90FF4 /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListTests.swift; sourceTree = "<group>"; };
 		944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtureProvider.swift; sourceTree = "<group>"; };
 		944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBuildCell.swift; sourceTree = "<group>"; };
 		948DCFD4239006B00078B23F /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 		941F25C523C2A39200EC3E36 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				943C3DB22524A8F800C35FB6 /* LocalStorage */,
 				C3DDDCCF251821B4005C8189 /* StampedeAPI */,
 				949CC968251783F900BEC54E /* Models */,
 				C3D350F523C2AFF100ADEDC9 /* Themes */,
@@ -426,6 +429,14 @@
 				9438376D246859E400A90FF4 /* DevicePreviewer.swift */,
 			);
 			path = Previews;
+			sourceTree = "<group>";
+		};
+		943C3DB22524A8F800C35FB6 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */,
+			);
+			path = LocalStorage;
 			sourceTree = "<group>";
 		};
 		944FD36223AE70AD001A9FF8 /* Extensions */ = {
@@ -1357,6 +1368,7 @@
 				C3DDDC8E25180FB7005C8189 /* SettingsNotificationsViewTests.swift in Sources */,
 				949CC97A2517982D00BEC54E /* TaskStatusTests.swift in Sources */,
 				C3DDDCB8251810DB005C8189 /* SettingsInfoViewTests.swift in Sources */,
+				943C3DB42524A90F00C35FB6 /* RepositoryListTests.swift in Sources */,
 				C3940D94248BDE6E00979967 /* MonitorLiveViewTests.swift in Sources */,
 				C3816C92248702BC00E6980B /* MonitorActiveTasksFeatureTests.swift in Sources */,
 				C3DDDCA225181055005C8189 /* SelectRepositoryFeatureTests.swift in Sources */,
