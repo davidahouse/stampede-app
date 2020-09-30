@@ -27,7 +27,7 @@ extension ScenarioMainScreen {
     // THEN ACCESSORS
 
     func thenTheFavoriteRepositoryIsDisplayed() {
-        waitForButton("davidahouse-stampede-server")
+        waitForButton("davidahouse-some-repository")
     }
 
     func thenTheMonitorLiveButtonIsDisplayed() {

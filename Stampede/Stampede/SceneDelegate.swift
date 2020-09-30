@@ -25,6 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }()
 
                 let repositoryList: RepositoryList = {
+                    #if DEBUG
+                    if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
+                            return RepositoryList(repositories: [Repository.someRepository])
+                    }
+                    #endif
                     return RepositoryList()
                 }()
                 
