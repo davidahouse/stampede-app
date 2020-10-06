@@ -20,19 +20,7 @@ public struct RepositoryBuild: Codable, Identifiable, Equatable, Hashable {
         guard let completed = lastExecuted else {
             return ""
         }
-
-        let interval = Date().timeIntervalSince(completed)
-        return "\(intervalToString(interval)) ago"
-    }
-    
-    private func intervalToString(_ interval: TimeInterval) -> String {
-        if interval < 60 {
-            return "\(Int(round(interval))) sec(s)"
-        } else if interval < 3600 {
-            return "\(Int(round(interval / 60))) min(s)"
-        } else {
-            return "\(Int(round(interval / 3600))) hour(s)"
-        }
+        return completed.ago()
     }
     
     public func hash(into hasher: inout Hasher) {

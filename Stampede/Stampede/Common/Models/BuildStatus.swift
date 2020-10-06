@@ -38,17 +38,16 @@ public struct BuildStatus: Codable, Identifiable, Equatable, Hashable {
     }
 
     public var startedAgo: String {
-        let interval = Date().timeIntervalSince(buildDetails.started_at)
-        return "\(intervalToString(interval)) ago"
+        return buildDetails.started_at.ago()
     }
 
     public var duration: String {
         if let completed = buildDetails.completed_at {
             let interval = completed.timeIntervalSince(buildDetails.started_at)
-            return intervalToString(interval)
+            return interval.duration()
         } else {
             let interval = Date().timeIntervalSince(buildDetails.started_at)
-            return intervalToString(interval)
+            return interval.duration()
         }
     }
     
@@ -56,9 +55,7 @@ public struct BuildStatus: Codable, Identifiable, Equatable, Hashable {
         guard let completed = buildDetails.completed_at else {
             return "still running"
         }
-
-        let interval = Date().timeIntervalSince(completed)
-        return "\(intervalToString(interval)) ago"
+        return completed.ago()
     }
     
     public var buildIdentifier: String {
@@ -67,16 +64,6 @@ public struct BuildStatus: Codable, Identifiable, Equatable, Hashable {
     
     public var buildRepository: String {
         return "\(buildDetails.owner) / \(buildDetails.repository)"
-    }
-
-    private func intervalToString(_ interval: TimeInterval) -> String {
-        if interval < 60 {
-            return "\(Int(round(interval))) sec(s)"
-        } else if interval < 3600 {
-            return "\(Int(round(interval / 60))) min(s)"
-        } else {
-            return "\(Int(round(interval / 3600))) hour(s)"
-        }
     }
 
     public func hash(into hasher: inout Hasher) {
