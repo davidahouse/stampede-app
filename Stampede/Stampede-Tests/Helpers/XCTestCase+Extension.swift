@@ -30,4 +30,12 @@ extension XCTestCase {
             add(attachment)
         }
     }
+    
+    func captureScreen(title: String) {
+        let screenshot = XCUIScreen.main.screenshot()
+        let attachment = XCTAttachment(screenshot: screenshot)
+        attachment.name = title
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
 }

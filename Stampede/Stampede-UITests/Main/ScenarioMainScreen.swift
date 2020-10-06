@@ -14,6 +14,7 @@ class ScenarioMainScreen: BDDTestCase {
         givenTheMainScreenIsDisplayed()
         andTheRepositoriesSectionIsVisible()
         thenTheFavoriteRepositoryIsDisplayed()
+        captureScreen(title: "Main Screen")
     }
 
     func testMainScreenContainsRouteToMonitorLiveScreen() throws {

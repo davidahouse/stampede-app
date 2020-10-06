@@ -21,6 +21,7 @@
 		944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */; };
 		944EF65924FD200C00357E9E /* RepositoryBuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */; };
 		946F3A7B252C99AF008C20EF /* BuildViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F3A7A252C99AF008C20EF /* BuildViewModelTests.swift */; };
+		946F3A7F252CA408008C20EF /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */; };
 		949CC96A2517840F00BEC54E /* RepositoryBuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949CC9692517840F00BEC54E /* RepositoryBuildTests.swift */; };
 		949CC975251797A100BEC54E /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949CC974251797A100BEC54E /* RepositoryTests.swift */; };
 		949CC97A2517982D00BEC54E /* TaskStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949CC9792517982D00BEC54E /* TaskStatusTests.swift */; };
@@ -1423,6 +1424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				946F3A7F252CA408008C20EF /* XCTestCase+Extension.swift in Sources */,
 				C33C013725198FB100F7AC62 /* ScenarioMainScreen.swift in Sources */,
 				C33C0142251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift in Sources */,
 				C33C012E25198ECD00F7AC62 /* BDDTestCase.swift in Sources */,
