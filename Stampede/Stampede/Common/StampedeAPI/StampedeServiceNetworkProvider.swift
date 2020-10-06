@@ -15,13 +15,14 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
 
     public let hostPassthroughSubject = PassthroughSubject<String, Never>()
     private var host: String?
-//    private var hostSink: AnyCancellable?
+    private var hostSink: AnyCancellable?
 
     public init(host: String? = nil) {
         self.host = host
-//        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
-//            self.host = value
-//        })
+        super.init()
+        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
+           self.host = value
+        })
     }
 
     public func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
