@@ -41,8 +41,7 @@ public struct TaskStatus: Codable, Identifiable, Equatable, Hashable {
         guard let started = started_at else {
             return ""
         }
-        let interval = Date().timeIntervalSince(started)
-        return "\(intervalToString(interval)) ago"
+        return started.ago()
     }
 
     public var duration: String {
@@ -52,20 +51,10 @@ public struct TaskStatus: Codable, Identifiable, Equatable, Hashable {
 
         if let completed = completed_at {
             let interval = completed.timeIntervalSince(started)
-            return intervalToString(interval)
+            return interval.duration()
         } else {
             let interval = Date().timeIntervalSince(started)
-            return intervalToString(interval)
-        }
-    }
-
-    private func intervalToString(_ interval: TimeInterval) -> String {
-        if interval < 60 {
-            return "\(Int(round(interval))) sec(s)"
-        } else if interval < 3600 {
-            return "\(Int(round(interval / 60))) min(s)"
-        } else {
-            return "\(Int(round(interval / 3600))) hour(s)"
+            return interval.duration()
         }
     }
 

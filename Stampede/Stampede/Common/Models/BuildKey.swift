@@ -22,20 +22,9 @@ public struct BuildKey: Codable, Identifiable, Equatable, Hashable {
         guard let started_at = lastExecuted else {
             return ""
         }
-        let interval = Date().timeIntervalSince(started_at)
-        return "\(intervalToString(interval)) ago"
+        return started_at.ago()
     }
     
-    private func intervalToString(_ interval: TimeInterval) -> String {
-        if interval < 60 {
-            return "\(Int(round(interval))) sec(s)"
-        } else if interval < 3600 {
-            return "\(Int(round(interval / 60))) min(s)"
-        } else {
-            return "\(Int(round(interval / 3600))) hour(s)"
-        }
-    }
-
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id.hashValue)
     }
