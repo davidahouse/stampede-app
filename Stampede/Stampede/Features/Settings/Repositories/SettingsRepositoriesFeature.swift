@@ -12,15 +12,20 @@ import Combine
 import HouseKit
 
 class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
-        
-    var publisher: AnyPublisher<[Repository], ServiceError>?
-    private var disposables = Set<AnyCancellable>()
+
+    // MARK: - Private properties
+    
+    private var viewModel = SettingsRepositoriesViewModel()
+    
+    // MARK: - Overrides
 
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
                                     SettingsRepositoriesView(viewModel: viewModel, delegate: self)
                                     .dependenciesToEnvironment(dependencies))
     }
+    
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,63 +35,22 @@ class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
         navigationItem.rightBarButtonItem = addButton
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        reloadList()
+    }
+
+    // MARK: - Private methods
+    
     @objc
-    func didSelectAdd(sender: Any) {
+    private func didSelectAdd(sender: Any) {
         let selectRepository = SelectRepositoryFeature(dependencies: dependencies, delegate: self)
         present(selectRepository, animated: true) { }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        reloadList()
-    }
-    
-    let viewModel = SettingsRepositoriesViewModel()
-    
     private func reloadList() {
-        publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
-        self.publisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.viewModel.state = .networkError
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.viewModel.state = .results(value)
-            }
-        }).store(in: &self.disposables)
+        viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
     }
-    
-//    var body: some View {
-//        SettingsRepositoriesView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
-//            .navigationBarTitle("Repositories")
-//            .navigationBarItems(trailing:
-//                Button("Add") {
-//                    self.showingSelectRepository = true
-//                }
-//            )
-//            .sheet(isPresented: $showingSelectRepository, content: {
-//                SelectRepositoryFeature(onSelected: { repository in
-//                    repositoryList.addRepository(repository: repository)
-//                    viewModel.fetch()
-//                    self.showingSelectRepository = false
-//                })
-//            })
-//    }
 }
-
-//#if DEBUG
-//struct SettingsRepositoriesFeature_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DevicePreviewer {
-//            NavigationView {
-//                SettingsRepositoriesFeature()
-//            }
-//        }
-//    }
-//}
-//#endif
 
 extension SettingsRepositoriesFeature: SettingsRepositoriesViewDelegate {
 

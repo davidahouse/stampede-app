@@ -12,14 +12,20 @@ import HouseKit
 
 class MainFeature: BaseFeature<Dependencies> {
 
-    var viewModel = MainViewModel(state: .loading)
+    // MARK: - Private Properties
+    
+    private var viewModel = MainViewModel(state: .loading)
 
+    // MARK: - Overrides
+    
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
                                     MainView(viewModel: viewModel, delegate: self)
                                     .dependenciesToEnvironment(dependencies))
     }
 
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Stampede"
@@ -28,54 +34,53 @@ class MainFeature: BaseFeature<Dependencies> {
 
     override func viewDidAppear(_ animated: Bool) {
         viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
-//
-//        publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
-//        self.publisher?.sink(receiveCompletion: { result in
-//          if case let .failure(error) = result {
-//            print("Error receiving \(error)")
-//            DispatchQueue.main.async {
-//                self.viewModel.repositories = []
-//            }
-//          }
-//        }, receiveValue: { value in
-//            DispatchQueue.main.async {
-//                self.viewModel.repositories = value
-//            }
-//        }).store(in: &self.disposables)
     }
-
-//    @EnvironmentObject var repositoryList: RepositoryList
-//
-//    let viewModel: MainViewModel
-//
-//    init(viewModel: MainViewModel? = nil) {
-//        self.viewModel = viewModel ?? MainViewModel()
-//    }
-//
-//    // MARK: - View
-//
-//    var body: some View {
-//        NavigationView {
-//            MainView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
-//            .navigationTitle("Stampede")
-//        }
-//    }
 }
 
 extension MainFeature: MainViewDelegate {
     
+    func didSelectRepository(_ repository: Repository) {
+        
+    }
+
+    func didSelectMonitorLive() {
+        
+    }
+
+    func didSelectMonitorActiveBuilds() {
+        
+    }
+
+    func didSelectMonitorActiveTasks() {
+        
+    }
+
+    func didSelectMonitorQueues() {
+        
+    }
+
+    func didSelectHistoryBuilds() {
+        
+    }
+
+    func didSelectHistoryTasks() {
+        
+    }
+
+    func didSelectSettingsStampedeServer() {
+        
+    }
+
+    func didSelectSettingsNotifications() {
+        
+    }
+
+    func didSelectSettingsInfo() {
+        
+    }
+
     func didSelectSettingsRepositories() {
         let settingsRepositoriesFeature = SettingsRepositoriesFeature(dependencies: dependencies)
         navigationController?.pushViewController(settingsRepositoriesFeature, animated: true)
     }
 }
-
-//#if DEBUG
-//struct MainFeature_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DevicePreviewer {
-//            MainFeature()
-//        }
-//    }
-//}
-//#endif

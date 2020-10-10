@@ -10,26 +10,47 @@ import Combine
 import HouseKit
 
 protocol MainViewDelegate: class {
+    // Favorite Repositories
+    func didSelectRepository(_ repository: Repository)
+    
+    // Monitor
+    func didSelectMonitorLive()
+    func didSelectMonitorActiveBuilds()
+    func didSelectMonitorActiveTasks()
+    func didSelectMonitorQueues()
+    
+    // History
+    func didSelectHistoryBuilds()
+    func didSelectHistoryTasks()
+    
+    // Settings
+    func didSelectSettingsStampedeServer()
     func didSelectSettingsRepositories()
+    func didSelectSettingsNotifications()
+    func didSelectSettingsInfo()
 }
 
 struct MainView: View {
 
-    @ObservedObject var viewModel: MainViewModel
-    weak var delegate: MainViewDelegate?
-
-    init(viewModel: MainViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, delegate: MainViewDelegate? = nil) {
-        self.viewModel = viewModel
-//        self.viewModel.publisher = publisher
-        self.delegate = delegate
-    }
+    // MARK: - View Model
     
+    @ObservedObject var viewModel: MainViewModel
+
     // MARK: - Environment
 
     @EnvironmentObject var theme: CurrentTheme
+    
+    // MARK: - Private properties
+    
+    private weak var delegate: MainViewDelegate?
 
-    // MARK: - Properties
-
+    // MARK: - Initializer
+    
+    init(viewModel: MainViewModel, delegate: MainViewDelegate? = nil) {
+        self.viewModel = viewModel
+        self.delegate = delegate
+    }
+    
     // MARK: - View
 
     var body: some View {
@@ -42,59 +63,57 @@ struct MainView: View {
                     Text("Network Error...")
                 case .results(let repositories):
                     ForEach(repositories, id: \.self) { item in
+                        Button(action: {
+                            self.delegate?.didSelectRepository(item)
+                        }) {
                             RepositoryCell(repository: item)
-                        .accessibilityIdentifier(item.id)
+                        }.accessibilityIdentifier(item.id)
                     }
                 }
             }
             Section(header: Text("Monitor")) {
-                Button("Live", action: {})
-                Button("Active Builds", action: {})
-                Button("Active Tasks", action: {})
-                Button("Queues", action: {})
-
-//                NavigationLink(destination: MonitorLiveFeature()) {
-//                    Text("Live")
-//                }.accessibility(identifier: "monitor-live")
-//                NavigationLink(destination: MonitorActiveBuildsFeature()) {
-//                    Text("Active Builds")
-//                }.accessibility(identifier: "monitor-active-builds")
-//                NavigationLink(destination: MonitorActiveTasksFeature()) {
-//                    Text("Active Tasks")
-//                }.accessibility(identifier: "monitor-active-tasks")
-//                NavigationLink(destination: MonitorQueuesFeature()) {
-//                    Text("Queues")
-//                }.accessibility(identifier: "monitor-queues")
+                Button("Live", action: {
+                    delegate?.didSelectMonitorLive()
+                })
+                    .accessibility(identifier: "monitor-live")
+                Button("Active Builds", action: {
+                    delegate?.didSelectMonitorActiveBuilds()
+                })
+                    .accessibility(identifier: "monitor-active-builds")
+                Button("Active Tasks", action: {
+                    delegate?.didSelectMonitorActiveTasks()
+                })
+                    .accessibility(identifier: "monitor-active-tasks")
+                Button("Queues", action: {
+                    delegate?.didSelectMonitorQueues()
+                })
+                    .accessibility(identifier: "monitor-queues")
             }
             Section(header: Text("History")) {
-                Button("Builds", action: {})
-                Button("Tasks", action: {})
-//                NavigationLink(destination: HistoryBuildsFeature()) {
-//                    Text("Builds")
-//                }.accessibility(identifier: "history-builds")
-//                NavigationLink(destination: HistoryTasksFeature()) {
-//                    Text("Tasks")
-//                }.accessibility(identifier: "history-tasks")
+                Button("Builds", action: {
+                    delegate?.didSelectHistoryBuilds()
+                })
+                    .accessibility(identifier: "history-builds")
+                Button("Tasks", action: {
+                    delegate?.didSelectHistoryTasks()
+                })
+                    .accessibility(identifier: "history-tasks")
             }
             Section(header: Text("Settings")) {
-                Button("Stampede Server", action: {})
+                Button("Stampede Server", action: {
+                    delegate?.didSelectSettingsStampedeServer()
+                })
+                    .accessibility(identifier: "settings-stampede-server")
                 Button("Repositories", action: {
                     delegate?.didSelectSettingsRepositories()
                 })
-                Button("Notifications", action: {})
-                Button("Info", action: {})
-//                NavigationLink(destination: SettingsStampedeServerFeature()) {
-//                    Text("Stampede Server")
-//                }.accessibility(identifier: "settings-stampede-server")
-//                NavigationLink(destination: SettingsRepositoriesFeature()) {
-//                    Text("Repositories")
-//                }.accessibility(identifier: "settings-repositories")
-//                NavigationLink(destination: SettingsNotificationsFeature()) {
-//                    Text("Notifications")
-//                }.accessibility(identifier: "settings-notifications")
-//                NavigationLink(destination: SettingsInfoFeature()) {
-//                    Text("Info")
-//                }.accessibility(identifier: "settings-info")
+                .accessibility(identifier: "settings-repositories")
+                Button("Notifications", action: {
+                    delegate?.didSelectSettingsNotifications()
+                }).accessibility(identifier: "settings-notifications")
+                Button("Info", action: {
+                    delegate?.didSelectSettingsInfo()
+                }).accessibility(identifier: "settings-info")
             }
         }.listStyle(GroupedListStyle())
     }

@@ -24,15 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
                 let rootNavVC = MainNavigationController(rootViewController: MainFeature(dependencies: dependencies))
                 window.rootViewController = rootNavVC
-
-//                window.rootViewController = UIHostingController(rootView: MainFeature()
-//                    .environmentObject(service)
-//                    .environmentObject(defaults)
-//                    .environmentObject(theme)
-//                    .environmentObject(repositoryList)
-                //)
             } else {
-                window.rootViewController = UIHostingController(rootView: EmptyView())
+                window.rootViewController = UIViewController()
             }
             self.window = window
             window.makeKeyAndVisible()

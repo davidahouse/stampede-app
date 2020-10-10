@@ -13,21 +13,21 @@ import HouseKit
 
 class SelectRepositoryFeature: BaseFeature<Dependencies> {
     
-    let viewModel = SelectRepositoryViewModel(state: .loading)
-    var publisher: AnyPublisher<[Repository], ServiceError>?
-    private var disposables = Set<AnyCancellable>()
-    weak var delegate: SelectRepositoryDelegate?
+    // MARK: - Private Properties
+    
+    private let viewModel = SelectRepositoryViewModel(state: .loading)
+    private weak var delegate: SelectRepositoryDelegate?
 
+    // MARK: - Overrides
+    
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
                                     SelectRepositoryView(viewModel: viewModel, delegate: delegate)
-//                                    { repository in
-//                                        self.dependencies.repositoryList.addRepository(repository: repository)
-//                                        self.dismiss(animated: true, completion: {})
-//                                    })
-                                    .dependenciesToEnvironment(dependencies))
+                                        .dependenciesToEnvironment(dependencies))
     }
 
+    // MARK: - Initializers
+    
     init(dependencies: Dependencies, delegate: SelectRepositoryDelegate?) {
         self.delegate = delegate
         super.init(dependencies: dependencies)
@@ -37,6 +37,8 @@ class SelectRepositoryFeature: BaseFeature<Dependencies> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Favorite"
@@ -44,45 +46,6 @@ class SelectRepositoryFeature: BaseFeature<Dependencies> {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        publisher = dependencies.service.fetchRepositoriesPublisher()
-        self.publisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.viewModel.state = .networkError
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.viewModel.state = .results(value)
-            }
-        }).store(in: &self.disposables)
+        viewModel.publisher = dependencies.service.fetchRepositoriesPublisher()
     }
-    
-//    let viewModel: SelectRepositoryViewModel
-//    let onSelected: (Repository) -> Void
-//    
-//    init(viewModel: SelectRepositoryViewModel? = nil, onSelected: @escaping (Repository) -> Void) {
-//        self.viewModel = viewModel ?? SelectRepositoryViewModel()
-//        self.onSelected = onSelected
-//    }
-//        
-//    var body: some View {
-//        NavigationView {
-//            SelectRepositoryView(viewModel: viewModel, publisher: service.fetchRepositoriesPublisher(), onSelected: onSelected)
-//                .navigationBarTitle("Select Repository")
-//        }
-//    }
 }
-
-//#if DEBUG
-//struct SelectRepositoryFeature_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DevicePreviewer {
-//            NavigationView {
-//                SelectRepositoryFeature(onSelected: { _ in })
-//            }
-//        }
-//    }
-//}
-//#endif

@@ -16,14 +16,22 @@ protocol SettingsRepositoriesViewDelegate: class {
 
 struct SettingsRepositoriesView: View {
 
-    weak var delegate: SettingsRepositoriesViewDelegate?
+    // MARK: - View Model
 
     @ObservedObject var viewModel: SettingsRepositoriesViewModel
 
-    init(viewModel: SettingsRepositoriesViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, delegate: SettingsRepositoriesViewDelegate? = nil) {
+    // MARK: - Private Properties
+    
+    private weak var delegate: SettingsRepositoriesViewDelegate?
+
+    // MARK: - Initializer
+    
+    init(viewModel: SettingsRepositoriesViewModel, delegate: SettingsRepositoriesViewDelegate? = nil) {
         self.viewModel = viewModel
         self.delegate = delegate
     }
+    
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {
@@ -53,10 +61,9 @@ struct SettingsRepositoriesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
             SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
+            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
             SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
-//            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
-//            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
-//            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results([])))
         }
     }
 }

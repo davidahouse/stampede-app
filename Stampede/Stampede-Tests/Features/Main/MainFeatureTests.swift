@@ -9,7 +9,4 @@
 import XCTest
 @testable import Stampede
 
-class MainFeatureTests: XCTestCase {
-
-    // TODO: What kind of tests do we want here?
-}
+class MainFeatureTests: XCTestCase { }

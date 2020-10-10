@@ -16,14 +16,22 @@ protocol SelectRepositoryDelegate: class {
 
 struct SelectRepositoryView: View {
     
+    // MARK: - View Model
+    
     @ObservedObject var viewModel: SelectRepositoryViewModel
+    
+    // MARK: - Private Properties
+    
     weak var delegate: SelectRepositoryDelegate?
 
-    init(viewModel: SelectRepositoryViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, delegate: SelectRepositoryDelegate? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: SelectRepositoryViewModel, delegate: SelectRepositoryDelegate? = nil) {
         self.viewModel = viewModel
         self.delegate = delegate
-        self.viewModel.publisher = publisher
     }
+
+    // MARK: - View
     
     var body: some View {
         switch viewModel.state {
