@@ -10,12 +10,17 @@ import SwiftUI
 
 struct HistoryBuildsView: View {
     
+    // MARK: - View Model
+    
     @ObservedObject var viewModel: HistoryBuildsViewModel
 
-    init(viewModel: HistoryBuildsViewModel, publisher: BuildStatusResponsePublisher? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: HistoryBuildsViewModel) {
         self.viewModel = viewModel
-        self.viewModel.publisher = publisher
     }
+
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {
@@ -35,8 +40,7 @@ struct HistoryBuildsView: View {
             List {
                 ForEach(activeBuilds, id: \.self) { item in
                     NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                        Text("test")
-                        //BuildStatusCell(buildStatus: item)
+                        BuildStatusCell(buildStatus: item)
                     }
                 }
             }

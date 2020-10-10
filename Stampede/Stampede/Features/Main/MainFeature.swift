@@ -44,39 +44,48 @@ extension MainFeature: MainViewDelegate {
     }
 
     func didSelectMonitorLive() {
-        
+        let monitorLiveFeature = MonitorLiveFeature(dependencies: dependencies)
+        navigationController?.pushViewController(monitorLiveFeature, animated: true)
     }
 
     func didSelectMonitorActiveBuilds() {
-        
+        let monitorActiveBuilds = MonitorActiveBuildsFeature(dependencies: dependencies)
+        navigationController?.pushViewController(monitorActiveBuilds, animated: true)
     }
 
     func didSelectMonitorActiveTasks() {
-        
+        let monitorActiveTasks = MonitorActiveTasksFeature(dependencies: dependencies)
+        navigationController?.pushViewController(monitorActiveTasks, animated: true)
     }
 
     func didSelectMonitorQueues() {
-        
+        let monitorQueues = MonitorQueuesFeature(dependencies: dependencies)
+        navigationController?.pushViewController(monitorQueues, animated: true)
     }
 
     func didSelectHistoryBuilds() {
-        
+        let historyBuilds = HistoryBuildsFeature(dependencies: dependencies)
+        navigationController?.pushViewController(historyBuilds, animated: true)
     }
 
     func didSelectHistoryTasks() {
-        
+        let historyTasks = HistoryTasksFeature(dependencies: dependencies)
+        navigationController?.pushViewController(historyTasks, animated: true)
     }
 
     func didSelectSettingsStampedeServer() {
-        
+        let stampedeServer = SettingsStampedeServerFeature(dependencies: dependencies)
+        navigationController?.pushViewController(stampedeServer, animated: true)
     }
 
     func didSelectSettingsNotifications() {
-        
+        let notifications = SettingsNotificationsFeature(dependencies: dependencies)
+        navigationController?.pushViewController(notifications, animated: true)
     }
 
     func didSelectSettingsInfo() {
-        
+        let info = SettingsInfoFeature(dependencies: dependencies)
+        navigationController?.pushViewController(info, animated: true)
     }
 
     func didSelectSettingsRepositories() {

@@ -10,13 +10,18 @@ import SwiftUI
 
 struct MonitorActiveTasksView: View {
 
+    // MARK: - View Model
+    
     @ObservedObject var viewModel: MonitorActiveTasksViewModel
 
-    init(viewModel: MonitorActiveTasksViewModel, publisher: TaskStatusResponsePublisher? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: MonitorActiveTasksViewModel) {
         self.viewModel = viewModel
-        self.viewModel.publisher = publisher
     }
 
+    // MARK: - Body
+    
     var body: some View {
         switch viewModel.state {
         case .loading:

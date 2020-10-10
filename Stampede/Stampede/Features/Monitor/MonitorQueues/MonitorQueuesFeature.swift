@@ -5,36 +5,33 @@
 //  Created by David House on 12/6/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 import Combine
 
-struct MonitorQueuesFeature: View {
+class MonitorQueuesFeature: BaseFeature<Dependencies> {
 
-    @EnvironmentObject var service: StampedeService
+    // MARK: - Private Properties
+    
+    private var viewModel = MonitorQueuesViewModel(state: .loading)
 
-    let viewModel: MonitorQueuesViewModel
-
-    init(viewModel: MonitorQueuesViewModel? = nil) {
-        self.viewModel = viewModel ?? MonitorQueuesViewModel()
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    MonitorQueuesView(viewModel: viewModel)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Queue Status"
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 
-    // MARK: - View
-
-    var body: some View {
-        MonitorQueuesView(viewModel: viewModel, publisher: service.fetchMonitorQueuesPublisher())
-            .navigationBarTitle("Queues")
-    }
-}
-
-#if DEBUG
-struct MonitorQueuesFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                MonitorQueuesFeature()
-            }
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchMonitorQueuesPublisher()
     }
 }
-#endif

@@ -5,33 +5,31 @@
 //  Created by David House on 7/11/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct HistoryBuildsFeature: View {
+class HistoryBuildsFeature: BaseFeature<Dependencies> {
     
-    @EnvironmentObject var service: StampedeService
+    // MARK: - Private Properties
     
-    let viewModel: HistoryBuildsViewModel
+    private var viewModel = HistoryBuildsViewModel(state: .loading)
 
-    init(viewModel: HistoryBuildsViewModel? = nil) {
-        self.viewModel = viewModel ?? HistoryBuildsViewModel()
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    HistoryBuildsView(viewModel: viewModel)
+                                    .dependenciesToEnvironment(dependencies))
     }
     
-    var body: some View {
-        HistoryBuildsView(viewModel: viewModel)
-            .navigationBarTitle("Build History")
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Build History"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
     }
 }
-
-#if DEBUG
-struct HistoryBuildsFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                HistoryBuildsFeature()
-            }
-        }
-    }
-}
-#endif

@@ -10,12 +10,17 @@ import SwiftUI
 
 struct HistoryTasksView: View {
 
+    // MARK: - View Model
+    
     @ObservedObject var viewModel: HistoryTasksViewModel
 
-    init(viewModel: HistoryTasksViewModel, publisher: TaskStatusResponsePublisher? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: HistoryTasksViewModel) {
         self.viewModel = viewModel
-        self.viewModel.publisher = publisher
     }
+
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {

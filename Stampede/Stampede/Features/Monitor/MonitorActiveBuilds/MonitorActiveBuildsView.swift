@@ -10,12 +10,17 @@ import SwiftUI
 
 struct MonitorActiveBuildsView: View {
 
+    // MARK: - View Model
+    
     @ObservedObject var viewModel: MonitorActiveBuildsViewModel
 
-    init(viewModel: MonitorActiveBuildsViewModel, publisher: BuildStatusResponsePublisher? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: MonitorActiveBuildsViewModel) {
         self.viewModel = viewModel
-        self.viewModel.publisher = publisher
     }
+
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {

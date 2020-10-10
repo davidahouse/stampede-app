@@ -5,24 +5,29 @@
 //  Created by David House on 7/11/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct SettingsNotificationsFeature: View {
-    var body: some View {
-        SettingsNotificationsView()
-            .navigationBarTitle("Notifications")
+class SettingsNotificationsFeature: BaseFeature<Dependencies> {
+    
+    // MARK: - Private Properties
+    
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    SettingsNotificationsView()
+                                    .dependenciesToEnvironment(dependencies))
     }
-}
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Notifications"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
 
-#if DEBUG
-struct SettingsNotificationFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                SettingsNotificationsFeature()
-            }
-        }
+    override func viewDidAppear(_ animated: Bool) {
     }
 }
-#endif

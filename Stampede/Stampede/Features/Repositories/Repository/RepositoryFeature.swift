@@ -5,10 +5,10 @@
 //  Created by David House on 12/2/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct RepositoryFeature: View {
+class RepositoryFeature: BaseFeature<Dependencies> {
 
     let repository: Repository
 
@@ -20,25 +20,33 @@ struct RepositoryFeature: View {
 
     let viewModel: RepositoryViewModel
 
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    RepositoryView(viewModel: viewModel)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
     // MARK: Initializer
 
-    init(repository: Repository, viewModel: RepositoryViewModel? = nil) {
-        self.viewModel = viewModel ?? RepositoryViewModel()
-        self.repository = repository
-    }
+//    init(repository: Repository, viewModel: RepositoryViewModel? = nil) {
+//        self.viewModel = viewModel ?? RepositoryViewModel()
+//        self.repository = repository
+//    }
 
-    // MARK: - View
-
-    var body: some View {
-        RepositoryView(viewModel: viewModel,
-                       activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository),
-                       repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository),
-                       branchKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push"),
-                       releaseKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release"),
-                       pullRequestKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
-                       )
-            .navigationBarTitle(repository.repository)
-    }
+//    // MARK: - View
+//
+//    var body: some View {
+//        RepositoryView(viewModel: viewModel,
+//                       activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository),
+//                       repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository),
+//                       branchKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push"),
+//                       releaseKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release"),
+//                       pullRequestKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
+//                       )
+//            .navigationBarTitle(repository.repository)
+//    }
 }
 
 #if DEBUG

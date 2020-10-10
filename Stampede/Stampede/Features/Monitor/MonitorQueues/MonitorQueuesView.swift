@@ -10,13 +10,18 @@ import SwiftUI
 
 struct MonitorQueuesView: View {
 
+    // MARK: - View Model
+    
     @ObservedObject var viewModel: MonitorQueuesViewModel
 
-    init(viewModel: MonitorQueuesViewModel, publisher: QueueSummaryResponsePublisher? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: MonitorQueuesViewModel) {
         self.viewModel = viewModel
-        self.viewModel.publisher = publisher
     }
 
+    // MARK: - Body
+    
     var body: some View {
         switch viewModel.state {
         case .loading:

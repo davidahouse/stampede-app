@@ -5,38 +5,33 @@
 //  Created by David House on 12/6/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 import Combine
 
-struct MonitorActiveTasksFeature: View {
+class MonitorActiveTasksFeature: BaseFeature<Dependencies> {
 
-    // MARK: - Environment
+    // MARK: - Private Properties
     
-    @EnvironmentObject var service: StampedeService
-    
-    let viewModel: MonitorActiveTasksViewModel
+    private var viewModel = MonitorActiveTasksViewModel(state: .loading)
 
-    init(viewModel: MonitorActiveTasksViewModel? = nil) {
-        self.viewModel = viewModel ?? MonitorActiveTasksViewModel()
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    MonitorActiveTasksView(viewModel: viewModel)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Active Tasks"
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 
-    // MARK: - View
-
-    var body: some View {
-        MonitorActiveTasksView(viewModel: viewModel, publisher: service.fetchActiveTasksPublisher())
-            .navigationBarTitle("Active Tasks")
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchActiveTasksPublisher()
     }
 }
-
-#if DEBUG
-struct MonitorActiveTasksFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                MonitorActiveTasksFeature()
-            }
-        }
-    }
-}
-#endif

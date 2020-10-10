@@ -5,33 +5,32 @@
 //  Created by David House on 12/3/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct MonitorActiveBuildsFeature: View {
+class MonitorActiveBuildsFeature: BaseFeature<Dependencies> {
 
-    @EnvironmentObject var service: StampedeService
+    // MARK: - Private Properties
     
-    let viewModel: MonitorActiveBuildsViewModel
+    private var viewModel = MonitorActiveBuildsViewModel(state: .loading)
 
-    init(viewModel: MonitorActiveBuildsViewModel? = nil) {
-        self.viewModel = viewModel ?? MonitorActiveBuildsViewModel()
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    MonitorActiveBuildsView(viewModel: viewModel)
+                                    .dependenciesToEnvironment(dependencies))
     }
     
-    var body: some View {
-        MonitorActiveBuildsView(viewModel: viewModel, publisher: service.fetchActiveBuildsPublisher())
-            .navigationBarTitle("Active Builds")
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Active Builds"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchActiveBuildsPublisher()
     }
 }
-
-#if DEBUG
-struct MonitorActiveBuildsFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                MonitorActiveBuildsFeature()
-            }
-        }
-    }
-}
-#endif
