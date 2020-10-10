@@ -16,21 +16,12 @@ struct SettingsRepositoriesView: View {
 
     init(viewModel: SettingsRepositoriesViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
         self.viewModel = viewModel
-        self.viewModel.publisher = publisher
     }
     
     var body: some View {
         switch viewModel.state {
         case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Owner - Repository")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
+            Text("Loading...")
         case .networkError:
             Text("A network error has occurred")
         case .results(let repositories):
@@ -53,8 +44,10 @@ struct SettingsRepositoriesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
             SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
             SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+//            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
+//            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
+//            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
         }
     }
 }

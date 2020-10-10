@@ -11,8 +11,5 @@ import XCTest
 
 class MainFeatureTests: XCTestCase {
 
-    func testCapturePreviews() {
-        capture(MainFeature_Previews.previews,
-                   title: "MainFeature_Previews")
-    }
+    // TODO: What kind of tests do we want here?
 }

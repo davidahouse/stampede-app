@@ -9,13 +9,19 @@ import SwiftUI
 import Combine
 import HouseKit
 
+protocol MainViewDelegate: class {
+    func didSelectSettingsRepositories()
+}
+
 struct MainView: View {
 
     @ObservedObject var viewModel: MainViewModel
+    weak var delegate: MainViewDelegate?
 
-    init(viewModel: MainViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
+    init(viewModel: MainViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, delegate: MainViewDelegate? = nil) {
         self.viewModel = viewModel
 //        self.viewModel.publisher = publisher
+        self.delegate = delegate
     }
     
     // MARK: - Environment
@@ -66,7 +72,9 @@ struct MainView: View {
             }
             Section(header: Text("Settings")) {
                 Button("Stampede Server", action: {})
-                Button("Repositories", action: {})
+                Button("Repositories", action: {
+                    delegate?.didSelectSettingsRepositories()
+                })
                 Button("Notifications", action: {})
                 Button("Info", action: {})
 //                NavigationLink(destination: SettingsStampedeServerFeature()) {

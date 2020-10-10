@@ -24,15 +24,7 @@ struct SelectRepositoryView: View {
     var body: some View {
         switch viewModel.state {
         case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Owner - Repository")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
+            Text("Loading ...")
         case .networkError:
             Text("A network error has occurred")
         case .results(let repositories):

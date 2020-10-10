@@ -18,19 +18,18 @@ class MainFeature: BaseFeature<Dependencies> {
 
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MainView(viewModel: viewModel)
+                                    MainView(viewModel: viewModel, delegate: self)
                                     .dependenciesToEnvironment(dependencies))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
-
         title = "Stampede"
         navigationItem.largeTitleDisplayMode = .automatic
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
         self.publisher?.sink(receiveCompletion: { result in
           if case let .failure(error) = result {
             print("Error receiving \(error)")
@@ -61,6 +60,14 @@ class MainFeature: BaseFeature<Dependencies> {
 //            .navigationTitle("Stampede")
 //        }
 //    }
+}
+
+extension MainFeature: MainViewDelegate {
+    
+    func didSelectSettingsRepositories() {
+        let settingsRepositoriesFeature = SettingsRepositoriesFeature(dependencies: dependencies)
+        navigationController?.pushViewController(settingsRepositoriesFeature, animated: true)
+    }
 }
 
 //#if DEBUG
