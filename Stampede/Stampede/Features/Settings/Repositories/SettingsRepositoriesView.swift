@@ -10,12 +10,19 @@ import SwiftUI
 import HouseKit
 import Combine
 
+protocol SettingsRepositoriesViewDelegate: class {
+    func didDeleteRepositories(_ indexSet: IndexSet)
+}
+
 struct SettingsRepositoriesView: View {
-    
+
+    weak var delegate: SettingsRepositoriesViewDelegate?
+
     @ObservedObject var viewModel: SettingsRepositoriesViewModel
 
-    init(viewModel: SettingsRepositoriesViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
+    init(viewModel: SettingsRepositoriesViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, delegate: SettingsRepositoriesViewDelegate? = nil) {
         self.viewModel = viewModel
+        self.delegate = delegate
     }
     
     var body: some View {
@@ -29,7 +36,9 @@ struct SettingsRepositoriesView: View {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
                         RepositoryCell(repository: item)
-                    }
+                    }.onDelete(perform: { indexSet in
+                        self.delegate?.didDeleteRepositories(indexSet)
+                    })
                 } else {
                     Text("No repositories selected")
                 }

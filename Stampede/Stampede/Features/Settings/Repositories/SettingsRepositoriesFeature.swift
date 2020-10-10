@@ -18,7 +18,7 @@ class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
 
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    SettingsRepositoriesView(viewModel: viewModel)
+                                    SettingsRepositoriesView(viewModel: viewModel, delegate: self)
                                     .dependenciesToEnvironment(dependencies))
     }
 
@@ -32,10 +32,8 @@ class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
 
     @objc
     func didSelectAdd(sender: Any) {
-        let selectRepository = SelectRepositoryFeature(dependencies: dependencies)
-        present(selectRepository, animated: true) {
-            
-        }
+        let selectRepository = SelectRepositoryFeature(dependencies: dependencies, delegate: self)
+        present(selectRepository, animated: true) { }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +57,6 @@ class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
             }
         }).store(in: &self.disposables)
     }
-    
     
 //    var body: some View {
 //        SettingsRepositoriesView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
@@ -90,3 +87,20 @@ class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
 //    }
 //}
 //#endif
+
+extension SettingsRepositoriesFeature: SettingsRepositoriesViewDelegate {
+
+    func didDeleteRepositories(_ indexSet: IndexSet) {
+        dependencies.repositoryList.removeRepositories(indexSet)
+        reloadList()
+    }
+}
+
+extension SettingsRepositoriesFeature: SelectRepositoryDelegate {
+
+    func didSelectRepository(_ repository: Repository) {
+        dependencies.repositoryList.addRepository(repository: repository)
+        dismiss(animated: true, completion: {})
+        reloadList()
+    }
+}

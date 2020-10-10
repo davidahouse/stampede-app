@@ -9,12 +9,16 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Combine
+import HouseKit
 
-class BaseFeature<T>: UIViewController {
+class BaseFeature<D>: UIViewController {
 
-    let dependencies: T
+    // MARK: - Public properties
 
-    init(dependencies: T) {
+    let dependencies: D
+
+    init(dependencies: D) {
         self.dependencies = dependencies
         super.init(nibName: nil, bundle: nil)
     }

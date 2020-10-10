@@ -10,14 +10,18 @@ import SwiftUI
 import HouseKit
 import Combine
 
+protocol SelectRepositoryDelegate: class {
+    func didSelectRepository(_ repository: Repository)
+}
+
 struct SelectRepositoryView: View {
     
     @ObservedObject var viewModel: SelectRepositoryViewModel
-    let onSelected: (Repository) -> Void
+    weak var delegate: SelectRepositoryDelegate?
 
-    init(viewModel: SelectRepositoryViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, onSelected: @escaping (Repository) -> Void) {
+    init(viewModel: SelectRepositoryViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, delegate: SelectRepositoryDelegate? = nil) {
         self.viewModel = viewModel
-        self.onSelected = onSelected
+        self.delegate = delegate
         self.viewModel.publisher = publisher
     }
     
@@ -34,7 +38,7 @@ struct SelectRepositoryView: View {
                         RepositoryCell(repository: item)
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
-                                self.onSelected(item)
+                                delegate?.didSelectRepository(item)
                             })
                     }
                 } else {
@@ -50,9 +54,9 @@ struct SelectRepositoryView: View {
 struct SelectRepositoryView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading, onSelected: { _ in })
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError, onSelected: { _ in })
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories, onSelected: { _ in })
+            SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading)
+            SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError)
+            SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories)
         }
     }
 }

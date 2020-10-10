@@ -16,16 +16,27 @@ class SelectRepositoryFeature: BaseFeature<Dependencies> {
     let viewModel = SelectRepositoryViewModel(state: .loading)
     var publisher: AnyPublisher<[Repository], ServiceError>?
     private var disposables = Set<AnyCancellable>()
+    weak var delegate: SelectRepositoryDelegate?
 
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    SelectRepositoryView(viewModel: viewModel, onSelected: { repository in
-                                        self.dependencies.repositoryList.addRepository(repository: repository)
-                                        self.dismiss(animated: true, completion: {})
-                                    })
+                                    SelectRepositoryView(viewModel: viewModel, delegate: delegate)
+//                                    { repository in
+//                                        self.dependencies.repositoryList.addRepository(repository: repository)
+//                                        self.dismiss(animated: true, completion: {})
+//                                    })
                                     .dependenciesToEnvironment(dependencies))
     }
 
+    init(dependencies: Dependencies, delegate: SelectRepositoryDelegate?) {
+        self.delegate = delegate
+        super.init(dependencies: dependencies)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Favorite"

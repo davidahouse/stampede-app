@@ -40,6 +40,11 @@ class RepositoryList: ObservableObject {
         repositories.removeAll(where: { $0.id == repository.id })
         save()
     }
+
+    func removeRepositories(_ indexSet: IndexSet) {
+        repositories.remove(atOffsets: indexSet)
+        save()
+    }
     
     func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError> {
         return AnyPublisher<[Repository], ServiceError>(Future<[Repository], ServiceError> { promise in

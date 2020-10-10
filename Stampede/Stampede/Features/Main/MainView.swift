@@ -35,11 +35,17 @@ struct MainView: View {
     var body: some View {
         List {
             Section(header: Text("Repositories")) {
-                ForEach(viewModel.repositories, id: \.self) { item in
-//                        NavigationLink(destination: RepositoryFeature(repository: item)) {
+                switch viewModel.state {
+                case .loading:
+                    Text("Loading...")
+                case .networkError:
+                    Text("Network Error...")
+                case .results(let repositories):
+                    ForEach(repositories, id: \.self) { item in
                             RepositoryCell(repository: item)
                         .accessibilityIdentifier(item.id)
                     }
+                }
             }
             Section(header: Text("Monitor")) {
                 Button("Live", action: {})
@@ -95,10 +101,11 @@ struct MainView: View {
 }
 
 #if DEBUG
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {        
         Previewer {
-            MainView(viewModel: MainViewModel(repositories: Repository.someRepositories))
+            MainView(viewModel: MainViewModel(state: .results(Repository.someRepositories)))
         }
     }
 }

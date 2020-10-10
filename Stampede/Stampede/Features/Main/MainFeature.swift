@@ -12,9 +12,7 @@ import HouseKit
 
 class MainFeature: BaseFeature<Dependencies> {
 
-    var viewModel = MainViewModel()
-    var publisher: AnyPublisher<[Repository], ServiceError>?
-    private var disposables = Set<AnyCancellable>()
+    var viewModel = MainViewModel(state: .loading)
 
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
@@ -29,19 +27,21 @@ class MainFeature: BaseFeature<Dependencies> {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
-        self.publisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.viewModel.repositories = []
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.viewModel.repositories = value
-            }
-        }).store(in: &self.disposables)
+        viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
+//
+//        publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
+//        self.publisher?.sink(receiveCompletion: { result in
+//          if case let .failure(error) = result {
+//            print("Error receiving \(error)")
+//            DispatchQueue.main.async {
+//                self.viewModel.repositories = []
+//            }
+//          }
+//        }, receiveValue: { value in
+//            DispatchQueue.main.async {
+//                self.viewModel.repositories = value
+//            }
+//        }).store(in: &self.disposables)
     }
 
 //    @EnvironmentObject var repositoryList: RepositoryList
