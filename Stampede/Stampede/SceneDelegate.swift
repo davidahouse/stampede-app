@@ -51,13 +51,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 defaults.hostSubject = service.hostPassthroughSubject
 
                 let theme = CurrentTheme()
+                let dependencies = Dependencies()
 
-                window.rootViewController = UIHostingController(rootView: MainFeature()
-                    .environmentObject(service)
-                    .environmentObject(defaults)
-                    .environmentObject(theme)
-                    .environmentObject(repositoryList)
-                )
+                let rootNavVC = MainNavigationController(rootViewController: MainFeature(dependencies: dependencies))
+                window.rootViewController = rootNavVC
+
+//                window.rootViewController = UIHostingController(rootView: MainFeature()
+//                    .environmentObject(service)
+//                    .environmentObject(defaults)
+//                    .environmentObject(theme)
+//                    .environmentObject(repositoryList)
+                //)
             } else {
                 window.rootViewController = UIHostingController(rootView: EmptyView())
             }

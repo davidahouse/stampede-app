@@ -67,6 +67,10 @@
 		C30DBF95252D297700021863 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBF94252D297700021863 /* DateExtensionTests.swift */; };
 		C30DBF9D252D2B4500021863 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBF9C252D2B4500021863 /* TimeInterval+Extension.swift */; };
 		C30DBFA2252D306B00021863 /* TimeIntervalExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFA1252D306B00021863 /* TimeIntervalExtensionTests.swift */; };
+		C30DBFDE2532236C00021863 /* BaseFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFDD2532236C00021863 /* BaseFeature.swift */; };
+		C30DBFE6253223E500021863 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFE5253223E500021863 /* UIView+Extension.swift */; };
+		C30DBFEE25322D9500021863 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFED25322D9500021863 /* MainNavigationController.swift */; };
+		C30DBFF32532308900021863 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFF22532308900021863 /* Dependencies.swift */; };
 		C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */; };
 		C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA123BED33400AC542F /* SecondaryLabel.swift */; };
 		C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA423BED39C00AC542F /* CurrentTheme.swift */; };
@@ -239,6 +243,10 @@
 		C30DBF94252D297700021863 /* DateExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionTests.swift; sourceTree = "<group>"; };
 		C30DBF9C252D2B4500021863 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		C30DBFA1252D306B00021863 /* TimeIntervalExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensionTests.swift; sourceTree = "<group>"; };
+		C30DBFDD2532236C00021863 /* BaseFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeature.swift; sourceTree = "<group>"; };
+		C30DBFE5253223E500021863 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C30DBFED25322D9500021863 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		C30DBFF22532308900021863 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA123BED33400AC542F /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA423BED39C00AC542F /* CurrentTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTheme.swift; sourceTree = "<group>"; };
@@ -457,6 +465,7 @@
 				9438376F2468713E00A90FF4 /* View+Extension.swift */,
 				C30DBF8E252D28A200021863 /* Date+Extension.swift */,
 				C30DBF9C252D2B4500021863 /* TimeInterval+Extension.swift */,
+				C30DBFE5253223E500021863 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -604,6 +613,8 @@
 				946DAD2A23BEC7C200053335 /* ComponentViews */,
 				944FD36223AE70AD001A9FF8 /* Extensions */,
 				94655E76236E378C00C3DE2F /* LocalStorage */,
+				C30DBFDD2532236C00021863 /* BaseFeature.swift */,
+				C30DBFF22532308900021863 /* Dependencies.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -785,6 +796,7 @@
 				C35D51AF2353C5DF00FDA4A8 /* MainView.swift */,
 				C3F83EC5239407290057A0FB /* MainFeature.swift */,
 				C38C888D24BA1B8F00F6E6C9 /* MainViewModel.swift */,
+				C30DBFED25322D9500021863 /* MainNavigationController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1286,10 +1298,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				94B571F924BBBECD00CA13A4 /* StampedeServiceNetworkProvider.swift in Sources */,
+				C30DBFE6253223E500021863 /* UIView+Extension.swift in Sources */,
 				C3AD03AD24887C4200EB881F /* QueueGaugeView.swift in Sources */,
 				C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */,
 				C38C889424BA224300F6E6C9 /* SettingsInfoViewModel.swift in Sources */,
 				C3CA2E1324BA9ED70086B71D /* HistoryTasksFeature.swift in Sources */,
+				C30DBFDE2532236C00021863 /* BaseFeature.swift in Sources */,
 				C38C889224BA223200F6E6C9 /* SettingsInfoView.swift in Sources */,
 				C3AD03A924885D4600EB881F /* MonitorLiveFeature.swift in Sources */,
 				9421332E24C33F820043FBD2 /* BuildKey.swift in Sources */,
@@ -1313,6 +1327,7 @@
 				C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */,
 				94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */,
 				C38C889024BA222500F6E6C9 /* SettingsInfoFeature.swift in Sources */,
+				C30DBFF32532308900021863 /* Dependencies.swift in Sources */,
 				9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */,
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
 				94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */,
@@ -1333,6 +1348,7 @@
 				C30DBF8F252D28A200021863 /* Date+Extension.swift in Sources */,
 				C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */,
 				94E913AF24BB512B0056A150 /* BuildTaskFeature.swift in Sources */,
+				C30DBFEE25322D9500021863 /* MainNavigationController.swift in Sources */,
 				C34755EA24FC8446009B1FBF /* RepositoryCell.swift in Sources */,
 				C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */,
 				94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */,

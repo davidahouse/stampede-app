@@ -10,7 +10,12 @@ import Foundation
 import SwiftUI
 
 extension View {
-    
+
+    func dependenciesToEnvironment(_ dependencies: Dependencies) -> some View {
+        return self
+            .environmentObject(dependencies.theme)
+    }
+
     #if DEBUG
     func previewDependencies() -> some View {
         return self

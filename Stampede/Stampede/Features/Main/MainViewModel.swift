@@ -11,4 +11,11 @@ import SwiftUI
 import Combine
 import HouseKit
 
-class MainViewModel: BaseViewModel<[Repository]> { }
+class MainViewModel: ObservableObject {
+
+    @Published var repositories: [Repository]
+
+    init(repositories: [Repository] = []) {
+        self.repositories = repositories
+    }
+}
