@@ -24,7 +24,9 @@ class MonitorActiveBuildsFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MonitorActiveBuildsView(viewModel: viewModel, router: self)
+                                    MonitorActiveBuildsView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

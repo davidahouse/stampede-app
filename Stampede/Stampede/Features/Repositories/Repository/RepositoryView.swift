@@ -11,21 +11,11 @@ import HouseKit
 import Combine
 
 struct RepositoryView: View {
-
-    // MARK: - Private Properties
-    
-    let router: Router?
     
     // MARK: - Observed objects
 
-    @ObservedObject var viewModel: RepositoryViewModel
-
-    // MARK: - Initializer
-    
-    init(viewModel: RepositoryViewModel, router: Router? = nil) {
-        self.viewModel = viewModel
-        self.router = router
-    }
+    @EnvironmentObject var viewModel: RepositoryViewModel
+    @EnvironmentObject var router: Router
 
     // MARK: - View
 
@@ -74,7 +64,7 @@ struct RepositoryView: View {
             if activeBuilds.count > 0 {
                 ForEach(activeBuilds, id: \.self) { item in
                     Button(action: {
-                        router?.route(to: .buildDetails(item))
+                        router.route(to: .buildDetails(item))
                     }, label: {
                         BuildStatusCell(buildStatus: item)
                     })
@@ -192,8 +182,7 @@ struct RepositoryView: View {
 struct RepositoryView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            RepositoryView(viewModel:
-                        RepositoryViewModel.someViewModel)
+            RepositoryView().environmentObject(RepositoryViewModel.someViewModel)
         }
     }
 }

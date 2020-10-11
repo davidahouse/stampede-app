@@ -18,7 +18,7 @@ struct SelectRepositoryView: View {
     
     // MARK: - View Model
     
-    @ObservedObject var viewModel: SelectRepositoryViewModel
+    @EnvironmentObject var viewModel: SelectRepositoryViewModel
     
     // MARK: - Private Properties
     
@@ -26,8 +26,7 @@ struct SelectRepositoryView: View {
 
     // MARK: - Initializer
     
-    init(viewModel: SelectRepositoryViewModel, delegate: SelectRepositoryDelegate? = nil) {
-        self.viewModel = viewModel
+    init(delegate: SelectRepositoryDelegate? = nil) {
         self.delegate = delegate
     }
 
@@ -62,9 +61,9 @@ struct SelectRepositoryView: View {
 struct SelectRepositoryView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading)
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError)
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories)
+            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.loading)
+            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.networkError)
+            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.someRepositories)
         }
     }
 }

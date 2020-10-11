@@ -25,7 +25,9 @@ class MonitorQueuesFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MonitorQueuesView(viewModel: viewModel)
+                                    MonitorQueuesView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

@@ -14,11 +14,7 @@ struct MonitorLiveView: View {
 
     // MARK: - Observed Objects
 
-    @ObservedObject var viewModel: MonitorLiveViewModel
-    
-    init(viewModel: MonitorLiveViewModel) {
-        self.viewModel = viewModel
-    }
+    @EnvironmentObject var viewModel: MonitorLiveViewModel
     
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 300))

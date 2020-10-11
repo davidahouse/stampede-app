@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
-protocol Router: class {
-    func route(to: Route)
+enum RouteMethod {
+    case push
+    case present
 }
 
 enum Route {

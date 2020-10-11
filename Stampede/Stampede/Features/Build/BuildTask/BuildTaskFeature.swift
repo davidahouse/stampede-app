@@ -24,7 +24,9 @@ class BuildTaskFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    BuildTaskView(viewModel: viewModel)
+                                    BuildTaskView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
 

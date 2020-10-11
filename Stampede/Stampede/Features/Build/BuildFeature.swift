@@ -24,7 +24,9 @@ class BuildFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    BuildView(viewModel: viewModel, router: self)
+                                    BuildView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
 

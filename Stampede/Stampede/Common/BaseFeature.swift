@@ -17,10 +17,13 @@ class BaseFeature: UIViewController {
     // MARK: - Public properties
 
     let dependencies: Dependencies
+    let router: Router
 
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
+        router = Router()
         super.init(nibName: nil, bundle: nil)
+        router.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -42,21 +45,24 @@ class BaseFeature: UIViewController {
         childViewController.didMove(toParent: self)
         childViewController.view.pinEdges(to: view)
     }
-    
-    func push(to route: Route) {
+}
+
+extension BaseFeature: RouterDelegate {
+    func shouldRoute(to: Route) -> Bool {
+        return true
+    }
+
+    func routeMethod(for: Route) -> RouteMethod {
+        return .push
+    }
+
+    func push(route: Route) {
         let destination = route.featureController(dependencies)
         navigationController?.pushViewController(destination, animated: true)
     }
-    
-    func present(with route: Route) {
+
+    func present(route: Route) {
         let destination = route.featureController(dependencies)
         present(destination, animated: true, completion: {})
-    }
-}
-
-extension BaseFeature: Router {
-    
-    func route(to route: Route) {
-        push(to: route)
     }
 }

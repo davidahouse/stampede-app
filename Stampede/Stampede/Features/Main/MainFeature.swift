@@ -20,7 +20,9 @@ class MainFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MainView(viewModel: viewModel, router: self)
+                                    MainView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
 

@@ -12,18 +12,8 @@ struct MonitorActiveTasksView: View {
 
     // MARK: - View Model
     
-    @ObservedObject var viewModel: MonitorActiveTasksViewModel
-
-    // MARK: - Properties
-    
-    weak var router: Router?
-    
-    // MARK: - Initializer
-    
-    init(viewModel: MonitorActiveTasksViewModel, router: Router? = nil) {
-        self.viewModel = viewModel
-        self.router = router
-    }
+    @EnvironmentObject var viewModel: MonitorActiveTasksViewModel
+    @EnvironmentObject var router: Router
 
     // MARK: - Body
     
@@ -48,7 +38,7 @@ struct MonitorActiveTasksView: View {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
                         Button(action: {
-                            router?.route(to: .taskDetails(item))
+                            router.route(to: .taskDetails(item))
                         }, label: {
                             TaskStatusCell(taskStatus: item)
                         })
@@ -66,9 +56,9 @@ struct MonitorActiveTasksView: View {
 struct MonitorActiveTasksView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorActiveTasksView(viewModel: MonitorActiveTasksViewModel.loading)
-            MonitorActiveTasksView(viewModel: MonitorActiveTasksViewModel.networkError)
-            MonitorActiveTasksView(viewModel: MonitorActiveTasksViewModel.someTasks)
+            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.loading)
+            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.networkError)
+            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.someTasks)
         }
     }
 }

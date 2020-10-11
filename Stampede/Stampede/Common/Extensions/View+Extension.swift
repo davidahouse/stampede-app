@@ -22,6 +22,7 @@ extension View {
             .environmentObject(StampedeDefaults.someDefaults)
             .environmentObject(CurrentTheme())
             .environmentObject(RepositoryList())
+            .environmentObject(Router())
             .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
     #endif

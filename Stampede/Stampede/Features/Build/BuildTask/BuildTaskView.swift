@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BuildTaskView: View {
 
-    @ObservedObject var viewModel: BuildTaskViewModel
+    @EnvironmentObject var viewModel: BuildTaskViewModel
 
     var body: some View {
         List {
@@ -62,7 +62,7 @@ struct BuildTaskView: View {
 struct BuildTaskView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            BuildTaskView(viewModel: BuildTaskViewModel(task: TaskStatus.completedTask))
+            BuildTaskView().environmentObject(BuildTaskViewModel(task: TaskStatus.completedTask))
         }
     }
 }

@@ -25,7 +25,9 @@ class MonitorActiveTasksFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MonitorActiveTasksView(viewModel: viewModel, router: self)
+                                    MonitorActiveTasksView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

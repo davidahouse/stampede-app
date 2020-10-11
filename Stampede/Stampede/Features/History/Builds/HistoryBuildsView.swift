@@ -9,21 +9,11 @@
 import SwiftUI
 
 struct HistoryBuildsView: View {
-    
-    // MARK: - Private Properties
-    
-    private let router: Router?
-    
+
     // MARK: - View Model
     
-    @ObservedObject var viewModel: HistoryBuildsViewModel
-
-    // MARK: - Initializer
-    
-    init(viewModel: HistoryBuildsViewModel, router: Router? = nil) {
-        self.viewModel = viewModel
-        self.router = router
-    }
+    @EnvironmentObject var viewModel: HistoryBuildsViewModel
+    @EnvironmentObject var router: Router
 
     // MARK: - Body
     
@@ -45,7 +35,7 @@ struct HistoryBuildsView: View {
             List {
                 ForEach(activeBuilds, id: \.self) { item in
                     Button(action: {
-                        router?.route(to: .buildDetails(item))
+                        router.route(to: .buildDetails(item))
                     }, label: {
                         BuildStatusCell(buildStatus: item)
                     })
@@ -60,9 +50,9 @@ struct HistoryBuildsView: View {
 struct HistoryBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel.loading)
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel.networkError)
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel.someBuilds)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.loading)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.networkError)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.someBuilds)
         }
     }
 }

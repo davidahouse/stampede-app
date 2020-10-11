@@ -12,13 +12,7 @@ struct MonitorQueuesView: View {
 
     // MARK: - View Model
     
-    @ObservedObject var viewModel: MonitorQueuesViewModel
-
-    // MARK: - Initializer
-    
-    init(viewModel: MonitorQueuesViewModel) {
-        self.viewModel = viewModel
-    }
+    @EnvironmentObject var viewModel: MonitorQueuesViewModel
 
     // MARK: - Body
     
@@ -57,9 +51,9 @@ struct MonitorQueuesView: View {
 struct MonitorQueuesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorQueuesView(viewModel: MonitorQueuesViewModel.loading)
-            MonitorQueuesView(viewModel: MonitorQueuesViewModel.networkError)
-            MonitorQueuesView(viewModel: MonitorQueuesViewModel.someQueues)
+            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.loading)
+            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.networkError)
+            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.someQueues)
         }
     }
 }

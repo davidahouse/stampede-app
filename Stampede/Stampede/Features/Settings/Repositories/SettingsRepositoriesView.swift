@@ -18,7 +18,7 @@ struct SettingsRepositoriesView: View {
 
     // MARK: - View Model
 
-    @ObservedObject var viewModel: SettingsRepositoriesViewModel
+    @EnvironmentObject var viewModel: SettingsRepositoriesViewModel
 
     // MARK: - Private Properties
     
@@ -26,8 +26,7 @@ struct SettingsRepositoriesView: View {
 
     // MARK: - Initializer
     
-    init(viewModel: SettingsRepositoriesViewModel, delegate: SettingsRepositoriesViewDelegate? = nil) {
-        self.viewModel = viewModel
+    init(delegate: SettingsRepositoriesViewDelegate? = nil) {
         self.delegate = delegate
     }
     
@@ -60,10 +59,10 @@ struct SettingsRepositoriesView: View {
 struct SettingsRepositoriesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results([])))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .loading))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .networkError))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results([])))
         }
     }
 }

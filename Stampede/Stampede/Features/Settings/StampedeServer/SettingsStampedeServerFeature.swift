@@ -24,7 +24,9 @@ class SettingsStampedeServerFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    SettingsStampedeServerView(viewModel: viewModel)
+                                    SettingsStampedeServerView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

@@ -24,7 +24,9 @@ class HistoryBuildsFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    HistoryBuildsView(viewModel: viewModel, router: self)
+                                    HistoryBuildsView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

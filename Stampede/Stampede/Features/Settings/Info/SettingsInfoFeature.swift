@@ -24,7 +24,9 @@ class SettingsInfoFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    SettingsInfoView(viewModel: viewModel)
+                                    SettingsInfoView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

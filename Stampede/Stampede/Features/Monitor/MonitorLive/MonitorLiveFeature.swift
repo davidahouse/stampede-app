@@ -25,7 +25,8 @@ class MonitorLiveFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MonitorLiveView(viewModel: viewModel)
+                                    MonitorLiveView()
+                                    .environmentObject(viewModel)
                                     .dependenciesToEnvironment(dependencies))
     }
 

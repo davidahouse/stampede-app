@@ -12,18 +12,8 @@ struct MonitorActiveBuildsView: View {
 
     // MARK: - View Model
     
-    @ObservedObject var viewModel: MonitorActiveBuildsViewModel
-
-    // MARK: - Properties
-    
-    weak var router: Router?
-    
-    // MARK: - Initializer
-    
-    init(viewModel: MonitorActiveBuildsViewModel, router: Router? = nil) {
-        self.viewModel = viewModel
-        self.router = router
-    }
+    @EnvironmentObject var viewModel: MonitorActiveBuildsViewModel
+    @EnvironmentObject var router: Router
 
     // MARK: - Body
     
@@ -46,7 +36,7 @@ struct MonitorActiveBuildsView: View {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
                         Button(action: {
-                            router?.route(to: .buildDetails(item))
+                            router.route(to: .buildDetails(item))
                         }, label: {
                             BuildStatusCell(buildStatus: item)
                         })
@@ -63,9 +53,9 @@ struct MonitorActiveBuildsView: View {
 struct MonitorActiveBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.loading)
-            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.networkError)
-            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.someBuilds)
+            MonitorActiveBuildsView().environmentObject(MonitorActiveBuildsViewModel.loading)
+            MonitorActiveBuildsView().environmentObject(MonitorActiveBuildsViewModel.networkError)
+            MonitorActiveBuildsView().environmentObject(MonitorActiveBuildsViewModel.someBuilds)
         }
     }
 }

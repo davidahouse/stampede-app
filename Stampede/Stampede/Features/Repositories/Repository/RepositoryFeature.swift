@@ -41,7 +41,9 @@ class RepositoryFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    RepositoryView(viewModel: viewModel, router: self)
+                                    RepositoryView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

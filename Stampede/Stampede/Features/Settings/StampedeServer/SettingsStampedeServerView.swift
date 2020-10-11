@@ -14,7 +14,7 @@ struct SettingsStampedeServerView: View {
 
     // MARK: - Observed Objects
 
-    @ObservedObject var viewModel: SettingsStampedeServerViewModel
+    @EnvironmentObject var viewModel: SettingsStampedeServerViewModel
 
     // MARK: - View
 
@@ -34,8 +34,8 @@ struct SettingsStampedeServerView: View {
 struct SettingsStampedeServerView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            SettingsStampedeServerView(viewModel: SettingsStampedeServerViewModel.someViewModel)
-            SettingsStampedeServerView(viewModel: SettingsStampedeServerViewModel.someViewModelWithNoHost).environmentObject(StampedeDefaults.defaultsWithNoHost)
+            SettingsStampedeServerView().environmentObject(SettingsStampedeServerViewModel.someViewModel)
+            SettingsStampedeServerView().environmentObject(SettingsStampedeServerViewModel.someViewModelWithNoHost).environmentObject(StampedeDefaults.defaultsWithNoHost)
         }
 
     }

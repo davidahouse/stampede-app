@@ -72,6 +72,7 @@
 		C30DBFE6253223E500021863 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFE5253223E500021863 /* UIView+Extension.swift */; };
 		C30DBFEE25322D9500021863 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFED25322D9500021863 /* MainNavigationController.swift */; };
 		C30DBFF32532308900021863 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFF22532308900021863 /* Dependencies.swift */; };
+		C30DC0072533B4F900021863 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DC0062533B4F900021863 /* Router.swift */; };
 		C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */; };
 		C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA123BED33400AC542F /* SecondaryLabel.swift */; };
 		C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA423BED39C00AC542F /* CurrentTheme.swift */; };
@@ -249,6 +250,7 @@
 		C30DBFE5253223E500021863 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C30DBFED25322D9500021863 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		C30DBFF22532308900021863 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		C30DC0062533B4F900021863 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA123BED33400AC542F /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA423BED39C00AC542F /* CurrentTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTheme.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				C30DBFDD2532236C00021863 /* BaseFeature.swift */,
 				C30DBFF22532308900021863 /* Dependencies.swift */,
 				9455103E253383A7007A1299 /* Route.swift */,
+				C30DC0062533B4F900021863 /* Router.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1382,6 +1385,7 @@
 				C3816C80248702AB00E6980B /* MonitorActiveTasksFeature.swift in Sources */,
 				C30DBF9D252D2B4500021863 /* TimeInterval+Extension.swift in Sources */,
 				94FE1F4E24FB190200AE4ED4 /* SelectRepositoryViewModel.swift in Sources */,
+				C30DC0072533B4F900021863 /* Router.swift in Sources */,
 				94FE1F4524FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift in Sources */,
 				C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */,
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,

@@ -27,7 +27,9 @@ class SettingsRepositoriesFeature: BaseFeature {
 
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    SettingsRepositoriesView(viewModel: viewModel, delegate: self)
+                                    SettingsRepositoriesView(delegate: self)
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
                                     .dependenciesToEnvironment(dependencies))
     }
     

@@ -22,7 +22,9 @@ class SelectRepositoryFeature: BaseFeature {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    SelectRepositoryView(viewModel: viewModel, delegate: delegate)
+                                    SelectRepositoryView(delegate: delegate)
+                                        .environmentObject(viewModel)
+                                        .environmentObject(router)
                                         .dependenciesToEnvironment(dependencies))
     }
 
