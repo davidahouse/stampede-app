@@ -11,7 +11,7 @@ import SwiftUI
 import Combine
 import HouseKit
 
-class SelectRepositoryFeature: BaseFeature<Dependencies> {
+class SelectRepositoryFeature: BaseFeature {
     
     // MARK: - Private Properties
     

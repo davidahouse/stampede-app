@@ -10,14 +10,19 @@ import SwiftUI
 
 struct HistoryTasksView: View {
 
+    // MARK: - Private properties
+    
+    private let router: Router?
+    
     // MARK: - View Model
     
     @ObservedObject var viewModel: HistoryTasksViewModel
 
     // MARK: - Initializer
     
-    init(viewModel: HistoryTasksViewModel) {
+    init(viewModel: HistoryTasksViewModel, router: Router? = nil) {
         self.viewModel = viewModel
+        self.router = router
     }
 
     // MARK: - Body
@@ -41,9 +46,11 @@ struct HistoryTasksView: View {
         case .results(let tasks):
             List {
                 ForEach(tasks, id: \.self) { item in
-                    NavigationLink(destination: BuildTaskFeature(task: item)) {
+                    Button(action: {
+                        router?.route(to: .taskDetails(item))
+                    }, label: {
                         TaskStatusCell(taskStatus: item)
-                    }
+                    })
                 }
             }
             .listStyle(DefaultListStyle())

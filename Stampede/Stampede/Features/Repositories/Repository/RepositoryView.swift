@@ -12,25 +12,19 @@ import Combine
 
 struct RepositoryView: View {
 
-    // MARK: - Environment
-
-    // MARK: - Properties
-
+    // MARK: - Private Properties
+    
+    let router: Router?
+    
     // MARK: - Observed objects
 
     @ObservedObject var viewModel: RepositoryViewModel
 
-    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil,
-         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil,
-         branchKeysPublisher: BuildKeyResponsePublisher? = nil,
-         releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
-         pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
+    // MARK: - Initializer
+    
+    init(viewModel: RepositoryViewModel, router: Router? = nil) {
         self.viewModel = viewModel
-        self.viewModel.activeBuildsPublisher = activeBuildsPublisher
-        self.viewModel.repositoryBuildsPublisher = repositoryBuildsPublisher
-        self.viewModel.branchKeysPublisher = branchKeysPublisher
-        self.viewModel.releaseKeysPublisher = releaseKeysPublisher
-        self.viewModel.pullRequestKeysPublisher = pullRequestKeysPublisher
+        self.router = router
     }
 
     // MARK: - View
@@ -79,9 +73,11 @@ struct RepositoryView: View {
         case .results(let activeBuilds):
             if activeBuilds.count > 0 {
                 ForEach(activeBuilds, id: \.self) { item in
-                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                    Button(action: {
+                        router?.route(to: .buildDetails(item))
+                    }, label: {
                         BuildStatusCell(buildStatus: item)
-                    }
+                    })
                 }
             } else {
                 Text("No active builds found")

@@ -9,27 +9,6 @@ import SwiftUI
 import Combine
 import HouseKit
 
-protocol MainViewDelegate: class {
-    // Favorite Repositories
-    func didSelectRepository(_ repository: Repository)
-    
-    // Monitor
-    func didSelectMonitorLive()
-    func didSelectMonitorActiveBuilds()
-    func didSelectMonitorActiveTasks()
-    func didSelectMonitorQueues()
-    
-    // History
-    func didSelectHistoryBuilds()
-    func didSelectHistoryTasks()
-    
-    // Settings
-    func didSelectSettingsStampedeServer()
-    func didSelectSettingsRepositories()
-    func didSelectSettingsNotifications()
-    func didSelectSettingsInfo()
-}
-
 struct MainView: View {
 
     // MARK: - View Model
@@ -42,13 +21,13 @@ struct MainView: View {
     
     // MARK: - Private properties
     
-    private weak var delegate: MainViewDelegate?
+    private let router: Router?
 
     // MARK: - Initializer
     
-    init(viewModel: MainViewModel, delegate: MainViewDelegate? = nil) {
+    init(viewModel: MainViewModel, router: Router? = nil) {
         self.viewModel = viewModel
-        self.delegate = delegate
+        self.router = router
     }
     
     // MARK: - View
@@ -64,55 +43,55 @@ struct MainView: View {
                 case .results(let repositories):
                     ForEach(repositories, id: \.self) { item in
                         Button(action: {
-                            self.delegate?.didSelectRepository(item)
-                        }) {
+                            self.router?.route(to: .repositoryDetails(item))
+                        }, label: {
                             RepositoryCell(repository: item)
-                        }.accessibilityIdentifier(item.id)
+                        }).accessibilityIdentifier(item.id)
                     }
                 }
             }
             Section(header: Text("Monitor")) {
                 Button("Live", action: {
-                    delegate?.didSelectMonitorLive()
+                    router?.route(to: .monitorLive)
                 })
                     .accessibility(identifier: "monitor-live")
                 Button("Active Builds", action: {
-                    delegate?.didSelectMonitorActiveBuilds()
+                    router?.route(to: .monitorActiveBuilds)
                 })
                     .accessibility(identifier: "monitor-active-builds")
                 Button("Active Tasks", action: {
-                    delegate?.didSelectMonitorActiveTasks()
+                    router?.route(to: .monitorActiveTasks)
                 })
                     .accessibility(identifier: "monitor-active-tasks")
                 Button("Queues", action: {
-                    delegate?.didSelectMonitorQueues()
+                    router?.route(to: .monitorActiveTasks)
                 })
                     .accessibility(identifier: "monitor-queues")
             }
             Section(header: Text("History")) {
                 Button("Builds", action: {
-                    delegate?.didSelectHistoryBuilds()
+                    router?.route(to: .historyBuilds)
                 })
                     .accessibility(identifier: "history-builds")
                 Button("Tasks", action: {
-                    delegate?.didSelectHistoryTasks()
+                    router?.route(to: .historyTasks)
                 })
                     .accessibility(identifier: "history-tasks")
             }
             Section(header: Text("Settings")) {
                 Button("Stampede Server", action: {
-                    delegate?.didSelectSettingsStampedeServer()
+                    router?.route(to: .settingsStampedeServer)
                 })
                     .accessibility(identifier: "settings-stampede-server")
                 Button("Repositories", action: {
-                    delegate?.didSelectSettingsRepositories()
+                    router?.route(to: .settingsRepositories)
                 })
                 .accessibility(identifier: "settings-repositories")
                 Button("Notifications", action: {
-                    delegate?.didSelectSettingsNotifications()
+                    router?.route(to: .settingsNotifications)
                 }).accessibility(identifier: "settings-notifications")
                 Button("Info", action: {
-                    delegate?.didSelectSettingsInfo()
+                    router?.route(to: .settingsInfo)
                 }).accessibility(identifier: "settings-info")
             }
         }.listStyle(GroupedListStyle())

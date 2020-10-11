@@ -8,8 +8,14 @@
 import UIKit
 import SwiftUI
 
-class SettingsStampedeServerFeature: BaseFeature<Dependencies> {
+class SettingsStampedeServerFeature: BaseFeature {
 
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return SettingsStampedeServerFeature(dependencies: dependencies)
+    }
+    
     // MARK: - Private Properties
     
     private var viewModel = SettingsStampedeServerViewModel()

@@ -9,8 +9,14 @@ import UIKit
 import SwiftUI
 import Combine
 
-class MonitorLiveFeature: BaseFeature<Dependencies> {
+class MonitorLiveFeature: BaseFeature {
 
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return MonitorLiveFeature(dependencies: dependencies)
+    }
+    
     // MARK: - Private Properties
     
     private var viewModel = MonitorLiveViewModel(state: .loading)

@@ -11,8 +11,14 @@ import SwiftUI
 import Combine
 import HouseKit
 
-class SettingsRepositoriesFeature: BaseFeature<Dependencies> {
+class SettingsRepositoriesFeature: BaseFeature {
 
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return SettingsRepositoriesFeature(dependencies: dependencies)
+    }
+    
     // MARK: - Private properties
     
     private var viewModel = SettingsRepositoriesViewModel()

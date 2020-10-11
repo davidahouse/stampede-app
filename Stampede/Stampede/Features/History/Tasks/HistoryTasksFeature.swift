@@ -8,7 +8,13 @@
 import UIKit
 import SwiftUI
 
-class HistoryTasksFeature: BaseFeature<Dependencies> {
+class HistoryTasksFeature: BaseFeature {
+    
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return HistoryTasksFeature(dependencies: dependencies)
+    }
     
     // MARK: - Private Properties
     
@@ -18,7 +24,7 @@ class HistoryTasksFeature: BaseFeature<Dependencies> {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    HistoryTasksView(viewModel: viewModel)
+                                    HistoryTasksView(viewModel: viewModel, router: self)
                                     .dependenciesToEnvironment(dependencies))
     }
     

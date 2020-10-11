@@ -10,6 +10,4 @@ import XCTest
 @testable import Stampede
 
 class SelectRepositoryFeatureTests: XCTestCase {
-
-
 }

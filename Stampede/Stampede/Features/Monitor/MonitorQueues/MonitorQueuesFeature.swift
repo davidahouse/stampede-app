@@ -9,8 +9,14 @@ import UIKit
 import SwiftUI
 import Combine
 
-class MonitorQueuesFeature: BaseFeature<Dependencies> {
+class MonitorQueuesFeature: BaseFeature {
 
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return MonitorQueuesFeature(dependencies: dependencies)
+    }
+    
     // MARK: - Private Properties
     
     private var viewModel = MonitorQueuesViewModel(state: .loading)

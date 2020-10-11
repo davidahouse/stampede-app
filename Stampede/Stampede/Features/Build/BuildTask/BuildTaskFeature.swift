@@ -5,25 +5,45 @@
 //  Created by David House on 12/2/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct BuildTaskFeature: View {
+class BuildTaskFeature: BaseFeature {
+    
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies, task: TaskStatus) -> BaseFeature {
+        return BuildTaskFeature(dependencies: dependencies, task: task)
+    }
+    
+    // MARK: - Private Properties
+    
+    private var viewModel: BuildTaskViewModel
 
-    let task: TaskStatus
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    BuildTaskView(viewModel: viewModel)
+                                    .dependenciesToEnvironment(dependencies))
+    }
 
-    var body: some View {
-        BuildTaskView(viewModel: BuildTaskViewModel(task: task))
-            .navigationBarTitle(task.task)
+    // MARK: - Initializer
+    
+    init(dependencies: Dependencies, task: TaskStatus) {
+        viewModel = BuildTaskViewModel(task: task)
+        super.init(dependencies: dependencies)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = viewModel.task.task
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 }
-
-#if DEBUG
-struct BuildTaskFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            BuildTaskFeature(task: TaskStatus.completedTask)
-        }
-    }
-}
-#endif

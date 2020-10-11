@@ -8,7 +8,13 @@
 import UIKit
 import SwiftUI
 
-class SettingsNotificationsFeature: BaseFeature<Dependencies> {
+class SettingsNotificationsFeature: BaseFeature {
+    
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return SettingsNotificationsFeature(dependencies: dependencies)
+    }
     
     // MARK: - Private Properties
     

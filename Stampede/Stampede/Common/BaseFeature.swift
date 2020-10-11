@@ -12,13 +12,13 @@ import SwiftUI
 import Combine
 import HouseKit
 
-class BaseFeature<D>: UIViewController {
+class BaseFeature: UIViewController {
 
     // MARK: - Public properties
 
-    let dependencies: D
+    let dependencies: Dependencies
 
-    init(dependencies: D) {
+    init(dependencies: Dependencies) {
         self.dependencies = dependencies
         super.init(nibName: nil, bundle: nil)
     }
@@ -41,5 +41,22 @@ class BaseFeature<D>: UIViewController {
         view.addSubview(childViewController.view)
         childViewController.didMove(toParent: self)
         childViewController.view.pinEdges(to: view)
+    }
+    
+    func push(to route: Route) {
+        let destination = route.featureController(dependencies)
+        navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    func present(with route: Route) {
+        let destination = route.featureController(dependencies)
+        present(destination, animated: true, completion: {})
+    }
+}
+
+extension BaseFeature: Router {
+    
+    func route(to route: Route) {
+        push(to: route)
     }
 }

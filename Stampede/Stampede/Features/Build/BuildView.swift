@@ -10,12 +10,20 @@ import SwiftUI
 
 struct BuildView: View {
 
-    // MARK: - Environment
+    // MARK: - Properties
+    
+    let router: Router?
 
     // MARK: - Observed Objects
 
     @ObservedObject var viewModel: BuildViewModel
 
+    // Initializer
+    init(viewModel: BuildViewModel, router: Router? = nil) {
+        self.viewModel = viewModel
+        self.router = router
+    }
+    
     // MARK: - View
 
     var body: some View {
@@ -62,9 +70,11 @@ struct BuildView: View {
 
                 Section(header: Text("Tasks")) {
                     ForEach(viewModel.buildStatus.tasks) { task in
-                        NavigationLink(destination: BuildTaskFeature(task: task)) {
+                        Button(action: {
+                            router?.route(to: .taskDetails(task))
+                        }, label: {
                             TaskStatusCell(taskStatus: task)
-                        }
+                        })
                     }
                 }
         }

@@ -8,8 +8,14 @@
 import UIKit
 import SwiftUI
 
-class SettingsInfoFeature: BaseFeature<Dependencies> {
+class SettingsInfoFeature: BaseFeature {
 
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return SettingsInfoFeature(dependencies: dependencies)
+    }
+    
     // MARK: - Private Properties
     
     private var viewModel = SettingsInfoViewModel()

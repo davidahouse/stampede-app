@@ -14,10 +14,15 @@ struct MonitorActiveTasksView: View {
     
     @ObservedObject var viewModel: MonitorActiveTasksViewModel
 
+    // MARK: - Properties
+    
+    weak var router: Router?
+    
     // MARK: - Initializer
     
-    init(viewModel: MonitorActiveTasksViewModel) {
+    init(viewModel: MonitorActiveTasksViewModel, router: Router? = nil) {
         self.viewModel = viewModel
+        self.router = router
     }
 
     // MARK: - Body
@@ -42,9 +47,11 @@ struct MonitorActiveTasksView: View {
             List {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
-                        NavigationLink(destination: BuildTaskFeature(task: item)) {
+                        Button(action: {
+                            router?.route(to: .taskDetails(item))
+                        }, label: {
                             TaskStatusCell(taskStatus: item)
-                        }
+                        })
                     }
                 } else {
                     Text("No active tasks found")

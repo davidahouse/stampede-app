@@ -14,10 +14,15 @@ struct MonitorActiveBuildsView: View {
     
     @ObservedObject var viewModel: MonitorActiveBuildsViewModel
 
+    // MARK: - Properties
+    
+    weak var router: Router?
+    
     // MARK: - Initializer
     
-    init(viewModel: MonitorActiveBuildsViewModel) {
+    init(viewModel: MonitorActiveBuildsViewModel, router: Router? = nil) {
         self.viewModel = viewModel
+        self.router = router
     }
 
     // MARK: - Body
@@ -40,9 +45,11 @@ struct MonitorActiveBuildsView: View {
             List {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
-                        NavigationLink(destination: BuildFeature(buildStatus: item)) {
+                        Button(action: {
+                            router?.route(to: .buildDetails(item))
+                        }, label: {
                             BuildStatusCell(buildStatus: item)
-                        }
+                        })
                     }
                 } else {
                     Text("No active builds found")

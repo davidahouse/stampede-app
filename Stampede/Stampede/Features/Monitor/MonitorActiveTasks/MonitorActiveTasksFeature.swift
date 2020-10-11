@@ -9,8 +9,14 @@ import UIKit
 import SwiftUI
 import Combine
 
-class MonitorActiveTasksFeature: BaseFeature<Dependencies> {
+class MonitorActiveTasksFeature: BaseFeature {
 
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return MonitorActiveTasksFeature(dependencies: dependencies)
+    }
+    
     // MARK: - Private Properties
     
     private var viewModel = MonitorActiveTasksViewModel(state: .loading)
@@ -19,7 +25,7 @@ class MonitorActiveTasksFeature: BaseFeature<Dependencies> {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MonitorActiveTasksView(viewModel: viewModel)
+                                    MonitorActiveTasksView(viewModel: viewModel, router: self)
                                     .dependenciesToEnvironment(dependencies))
     }
     

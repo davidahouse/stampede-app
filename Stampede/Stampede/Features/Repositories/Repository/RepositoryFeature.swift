@@ -8,7 +8,13 @@
 import UIKit
 import SwiftUI
 
-class RepositoryFeature: BaseFeature<Dependencies> {
+class RepositoryFeature: BaseFeature {
+    
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies, repository: Repository) -> BaseFeature {
+        return RepositoryFeature(dependencies: dependencies, repository: repository)
+    }
 
     let repository: Repository
 
@@ -18,45 +24,40 @@ class RepositoryFeature: BaseFeature<Dependencies> {
 
     // MARK: Properties
 
-    let viewModel: RepositoryViewModel
+    private var viewModel = RepositoryViewModel()
 
+    // MARK: - Initializer
+    
+    init(dependencies: Dependencies, repository: Repository) {
+        self.repository = repository
+        super.init(dependencies: dependencies)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Overrides
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    RepositoryView(viewModel: viewModel)
+                                    RepositoryView(viewModel: viewModel, router: self)
                                     .dependenciesToEnvironment(dependencies))
     }
     
-    // MARK: Initializer
-
-//    init(repository: Repository, viewModel: RepositoryViewModel? = nil) {
-//        self.viewModel = viewModel ?? RepositoryViewModel()
-//        self.repository = repository
-//    }
-
-//    // MARK: - View
-//
-//    var body: some View {
-//        RepositoryView(viewModel: viewModel,
-//                       activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository),
-//                       repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository),
-//                       branchKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push"),
-//                       releaseKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release"),
-//                       pullRequestKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
-//                       )
-//            .navigationBarTitle(repository.repository)
-//    }
-}
-
-#if DEBUG
-struct RepositoryFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                RepositoryFeature(repository: Repository.someRepository)
-            }
-        }
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = repository.repository
+        navigationItem.largeTitleDisplayMode = .automatic
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.activeBuildsPublisher = dependencies.service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository)
+        viewModel.repositoryBuildsPublisher = dependencies.service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository)
+        viewModel.branchKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push")
+        viewModel.releaseKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release")
+        viewModel.pullRequestKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
+    }    
 }
-#endif

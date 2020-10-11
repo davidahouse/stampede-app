@@ -20,6 +20,7 @@
 		943C3DB42524A90F00C35FB6 /* RepositoryListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */; };
 		944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */; };
 		944EF65924FD200C00357E9E /* RepositoryBuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */; };
+		9455103F253383A7007A1299 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9455103E253383A7007A1299 /* Route.swift */; };
 		946F3A7B252C99AF008C20EF /* BuildViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F3A7A252C99AF008C20EF /* BuildViewModelTests.swift */; };
 		946F3A7F252CA408008C20EF /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */; };
 		949CC96A2517840F00BEC54E /* RepositoryBuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949CC9692517840F00BEC54E /* RepositoryBuildTests.swift */; };
@@ -202,6 +203,7 @@
 		943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListTests.swift; sourceTree = "<group>"; };
 		944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtureProvider.swift; sourceTree = "<group>"; };
 		944EF65824FD200C00357E9E /* RepositoryBuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBuildCell.swift; sourceTree = "<group>"; };
+		9455103E253383A7007A1299 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		946F3A7A252C99AF008C20EF /* BuildViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildViewModelTests.swift; sourceTree = "<group>"; };
 		948DCFD4239006B00078B23F /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
 		949CC9692517840F00BEC54E /* RepositoryBuildTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBuildTests.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				94655E76236E378C00C3DE2F /* LocalStorage */,
 				C30DBFDD2532236C00021863 /* BaseFeature.swift */,
 				C30DBFF22532308900021863 /* Dependencies.swift */,
+				9455103E253383A7007A1299 /* Route.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1338,6 +1341,7 @@
 				C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */,
 				C34755EE24FC878B009B1FBF /* TaskStatusCell.swift in Sources */,
 				C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */,
+				9455103F253383A7007A1299 /* Route.swift in Sources */,
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,

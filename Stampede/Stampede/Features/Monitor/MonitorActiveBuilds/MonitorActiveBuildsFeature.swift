@@ -8,7 +8,13 @@
 import UIKit
 import SwiftUI
 
-class MonitorActiveBuildsFeature: BaseFeature<Dependencies> {
+class MonitorActiveBuildsFeature: BaseFeature {
+
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return MonitorActiveBuildsFeature(dependencies: dependencies)
+    }
 
     // MARK: - Private Properties
     
@@ -18,7 +24,7 @@ class MonitorActiveBuildsFeature: BaseFeature<Dependencies> {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    MonitorActiveBuildsView(viewModel: viewModel)
+                                    MonitorActiveBuildsView(viewModel: viewModel, router: self)
                                     .dependenciesToEnvironment(dependencies))
     }
     

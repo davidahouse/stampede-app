@@ -8,8 +8,14 @@
 import UIKit
 import SwiftUI
 
-class HistoryBuildsFeature: BaseFeature<Dependencies> {
+class HistoryBuildsFeature: BaseFeature {
     
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return HistoryBuildsFeature(dependencies: dependencies)
+    }
+
     // MARK: - Private Properties
     
     private var viewModel = HistoryBuildsViewModel(state: .loading)
@@ -18,7 +24,7 @@ class HistoryBuildsFeature: BaseFeature<Dependencies> {
     
     override func makeChildViewController() -> UIViewController {
         return UIHostingController(rootView:
-                                    HistoryBuildsView(viewModel: viewModel)
+                                    HistoryBuildsView(viewModel: viewModel, router: self)
                                     .dependenciesToEnvironment(dependencies))
     }
     
