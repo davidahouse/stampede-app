@@ -35,11 +35,7 @@ struct MonitorActiveBuildsView: View {
             List {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
-                        Button(action: {
-                            router.route(to: .buildDetails(item))
-                        }, label: {
-                            BuildStatusCell(buildStatus: item)
-                        })
+                        BuildStatusCell(buildStatus: item)
                     }
                 } else {
                     Text("No active builds found")

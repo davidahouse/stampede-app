@@ -34,11 +34,7 @@ struct HistoryBuildsView: View {
         case .results(let activeBuilds):
             List {
                 ForEach(activeBuilds, id: \.self) { item in
-                    Button(action: {
-                        router.route(to: .buildDetails(item))
-                    }, label: {
-                        BuildStatusCell(buildStatus: item)
-                    })
+                    BuildStatusCell(buildStatus: item)
                 }
             }
             .listStyle(DefaultListStyle())

@@ -40,48 +40,20 @@ struct MainView: View {
                 }
             }
             Section(header: Text("Monitor")) {
-                Button("Live", action: {
-                    router.route(to: .monitorLive)
-                })
-                    .accessibility(identifier: "monitor-live")
-                Button("Active Builds", action: {
-                    router.route(to: .monitorActiveBuilds)
-                })
-                    .accessibility(identifier: "monitor-active-builds")
-                Button("Active Tasks", action: {
-                    router.route(to: .monitorActiveTasks)
-                })
-                    .accessibility(identifier: "monitor-active-tasks")
-                Button("Queues", action: {
-                    router.route(to: .monitorActiveTasks)
-                })
-                    .accessibility(identifier: "monitor-queues")
+                FeatureRouteCell(title: "Live", route: .monitorLive)
+                FeatureRouteCell(title: "Active Builds", route: .monitorActiveBuilds)
+                FeatureRouteCell(title: "Active Tasks", route: .monitorActiveTasks)
+                FeatureRouteCell(title: "Queues", route: .monitorQueues)
             }
             Section(header: Text("History")) {
-                Button("Builds", action: {
-                    router.route(to: .historyBuilds)
-                })
-                    .accessibility(identifier: "history-builds")
-                Button("Tasks", action: {
-                    router.route(to: .historyTasks)
-                })
-                    .accessibility(identifier: "history-tasks")
+                FeatureRouteCell(title: "Builds", route: .historyBuilds)
+                FeatureRouteCell(title: "Tasks", route: .historyTasks)
             }
             Section(header: Text("Settings")) {
-                Button("Stampede Server", action: {
-                    router.route(to: .settingsStampedeServer)
-                })
-                    .accessibility(identifier: "settings-stampede-server")
-                Button("Repositories", action: {
-                    router.route(to: .settingsRepositories)
-                })
-                .accessibility(identifier: "settings-repositories")
-                Button("Notifications", action: {
-                    router.route(to: .settingsNotifications)
-                }).accessibility(identifier: "settings-notifications")
-                Button("Info", action: {
-                    router.route(to: .settingsInfo)
-                }).accessibility(identifier: "settings-info")
+                FeatureRouteCell(title: "Stampede Server", route: .settingsStampedeServer)
+                FeatureRouteCell(title: "Repositories", route: .settingsRepositories)
+                FeatureRouteCell(title: "Notifications", route: .settingsNotifications)
+                FeatureRouteCell(title: "Info", route: .settingsInfo)
             }
         }.listStyle(GroupedListStyle())
     }

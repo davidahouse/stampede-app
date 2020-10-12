@@ -10,24 +10,31 @@ import SwiftUI
 
 struct BuildStatusCell: View {
 
+    @EnvironmentObject var router: Router
+    
     let buildStatus: BuildStatus
 
     var body: some View {
-        HStack {
-            switch buildStatus.statusIndicator {
-            case .inProgress:
-                CurrentTheme.Icons.inProgress.image().font(Font.system(size: 32, weight: .regular))
-            case .failure:
-                CurrentTheme.Icons.failure.image().font(Font.system(size: 32, weight: .regular))
-            case .success:
-                CurrentTheme.Icons.success.image().font(Font.system(size: 32, weight: .regular))
+        Button(action: {
+            router.route(to: .buildDetails(buildStatus))
+        }, label: {
+            HStack {
+                switch buildStatus.statusIndicator {
+                case .inProgress:
+                    CurrentTheme.Icons.inProgress.image().font(Font.system(size: 32, weight: .regular))
+                case .failure:
+                    CurrentTheme.Icons.failure.image().font(Font.system(size: 32, weight: .regular))
+                case .success:
+                    CurrentTheme.Icons.success.image().font(Font.system(size: 32, weight: .regular))
+                }
+                VStack(alignment: .leading) {
+                    PrimaryLabel(buildStatus.buildIdentifier)
+                }
+                Spacer()
+                ValueLabel(buildStatus.startedAgo)
+                Image(systemName: "chevron.right")
             }
-            VStack(alignment: .leading) {
-                PrimaryLabel(buildStatus.buildIdentifier)
-            }
-            Spacer()
-            ValueLabel(buildStatus.startedAgo)
-        }
+        })
     }
 }
 
