@@ -38,7 +38,7 @@ struct MonitorLiveView: View {
 //                    }
 //                }
 //            }
-        Text("Results?")
+            Text("Results?")
         }
     }
 }

@@ -30,6 +30,23 @@ extension XCTestCase {
             add(attachment)
         }
     }
+
+    func capture(_ feature: UIViewController, title: String) {
+        let window = UIWindow()
+        window.rootViewController = feature
+//        window.addSubview(feature.view)
+        RunLoop.current.run(until: Date())
+        UIGraphicsBeginImageContextWithOptions(feature.view.bounds.size, feature.view.isOpaque, 0)
+        feature.view.drawHierarchy(in: feature.view.bounds, afterScreenUpdates: true)
+        let snapshotImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        window.rootViewController = nil
+
+        let attachment = XCTAttachment(image: snapshotImage)
+        attachment.name = title
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
     
     func captureScreen(title: String) {
         let screenshot = XCUIScreen.main.screenshot()

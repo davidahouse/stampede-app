@@ -46,8 +46,6 @@ class RepositoryListFixture: RepositoryList, ObservableObject {
                 promise(.success(self.repositories))
         })
     }
-    
-    
 }
 
 class RepositoryListFixtureProvider: RepositoryListProvider {

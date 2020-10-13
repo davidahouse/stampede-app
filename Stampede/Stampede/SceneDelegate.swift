@@ -23,9 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
                 let dependencies: Dependencies = {
                     if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
-                        return FixtureDependencies()
+                        return Dependencies(repositoryList: RepositoryListFixture())
                     } else {
-                        return BaseDependencies()
+                        return Dependencies()
                     }
                 }()
 

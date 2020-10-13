@@ -9,27 +9,18 @@
 import Foundation
 import SwiftUI
 
-protocol Dependencies {
-    var defaults: StampedeDefaults { get }
-    var service: StampedeService { get }
-    var repositoryList: RepositoryList { get }
-    var theme: CurrentTheme { get }
-}
-
-class BaseDependencies: Dependencies {
+class Dependencies {
     let defaults: StampedeDefaults = {
         return StampedeDefaults()
     }()
     
     let service: StampedeService
-    
-    let repositoryList: RepositoryList = {
-        return BaseRepositoryList()
-    }()
     let theme: CurrentTheme
+    let repositoryList: RepositoryList
 
-    init(serviceProvider: StampedeServiceProvider? = nil) {
+    init(serviceProvider: StampedeServiceProvider? = nil, repositoryList: RepositoryList = BaseRepositoryList()) {
         theme = CurrentTheme()
+        self.repositoryList = repositoryList
         if let serviceProvider = serviceProvider {
             service = StampedeService(provider: serviceProvider)
         } else {
@@ -47,27 +38,6 @@ class BaseDependencies: Dependencies {
             service = StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
             #endif
         }
-        defaults.hostSubject = service.hostPassthroughSubject
-    }
-}
-
-class FixtureDependencies: Dependencies {
-    let defaults: StampedeDefaults = {
-        return StampedeDefaults()
-    }()
-    
-    let service: StampedeService
-    
-    let repositoryList: RepositoryList = {
-        return RepositoryListFixture()
-    }()
-    let theme: CurrentTheme
-
-    let fixtureProvider = StampedeServiceFixtureProvider()
-    
-    init() {
-        theme = CurrentTheme()
-        service = StampedeService(host: "fixtures", provider: fixtureProvider)
         defaults.hostSubject = service.hostPassthroughSubject
     }
 }

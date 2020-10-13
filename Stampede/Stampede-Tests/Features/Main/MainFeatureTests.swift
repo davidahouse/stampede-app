@@ -13,11 +13,13 @@ class MainFeatureTests: XCTestCase {
     
     var mainFeature: MainFeature!
     var window: UIWindow!
-    var dependencies = FixtureDependencies()
+    var dependencies: Dependencies!
+    var repositoryList = RepositoryListFixture()
     
     override func setUp() {
         super.setUp()
         window = UIWindow()
+        dependencies = Dependencies(repositoryList: repositoryList)
         mainFeature = MainFeature(dependencies: dependencies)
     }
 
@@ -27,12 +29,12 @@ class MainFeatureTests: XCTestCase {
     }
     
     func testFeatureCanCreateAChildViewController() {
-        loadView()
-        XCTAssertGreaterThan(mainFeature.view.subviews.count, 0)
+        capture(mainFeature, title: "MainFeature")
     }
     
     func testWhenViewAppearsThenViewModelAssignedAPublisher() {
         loadView()
+        XCTAssertTrue(repositoryList.fetchRepositoriesPublisherCalled)
     }
     
     private func loadView() {
