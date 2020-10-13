@@ -21,7 +21,11 @@ class RepositoryListFixture: RepositoryList, ObservableObject {
     var fetchRepositoriesPublisherCalled = false
     
     required init(repositories: [Repository]? = nil, provider: RepositoryListProvider = RepositoryListFixtureProvider()) {
-        self.repositories = Repository.someRepositories
+        #if DEBUG
+            self.repositories = Repository.someRepositories
+        #else
+            self.repositories = []
+        #endif
         self.provider = provider
     }
     

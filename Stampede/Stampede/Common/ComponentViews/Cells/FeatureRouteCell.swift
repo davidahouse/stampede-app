@@ -29,6 +29,7 @@ struct FeatureRouteCell: View {
     }
 }
 
+#if DEBUG
 struct FeatureRouteCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -36,3 +37,4 @@ struct FeatureRouteCell_Previews: PreviewProvider {
         }
     }
 }
+#endif
