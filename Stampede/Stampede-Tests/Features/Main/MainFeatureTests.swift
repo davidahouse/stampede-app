@@ -9,4 +9,34 @@
 import XCTest
 @testable import Stampede
 
-class MainFeatureTests: XCTestCase { }
+class MainFeatureTests: XCTestCase {
+    
+    var mainFeature: MainFeature!
+    var window: UIWindow!
+    var dependencies = FixtureDependencies()
+    
+    override func setUp() {
+        super.setUp()
+        window = UIWindow()
+        mainFeature = MainFeature(dependencies: dependencies)
+    }
+
+    override func tearDown() {
+        window = nil
+        super.tearDown()
+    }
+    
+    func testFeatureCanCreateAChildViewController() {
+        loadView()
+        XCTAssertGreaterThan(mainFeature.view.subviews.count, 0)
+    }
+    
+    func testWhenViewAppearsThenViewModelAssignedAPublisher() {
+        loadView()
+    }
+    
+    private func loadView() {
+        window.addSubview(mainFeature.view)
+        RunLoop.current.run(until: Date())
+    }
+}

@@ -17,12 +17,20 @@ protocol RepositoryListProvider {
     func read(from: URL) throws -> Data
 }
 
-class RepositoryList: ObservableObject {
+protocol RepositoryList {
+    init(repositories: [Repository]?, provider: RepositoryListProvider)
+    func addRepository(repository: Repository)
+    func removeRepository(repository: Repository)
+    func removeRepositories(_ indexSet: IndexSet)
+    func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>
+}
+
+class BaseRepositoryList: RepositoryList, ObservableObject {
     
     private let provider: RepositoryListProvider
     private var repositories: [Repository] = []
     
-    init(repositories: [Repository]? = nil, provider: RepositoryListProvider = FileManager.default) {
+    required init(repositories: [Repository]? = nil, provider: RepositoryListProvider = FileManager.default) {
         self.provider = provider
         if let repositories = repositories {
             self.repositories = repositories

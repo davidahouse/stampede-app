@@ -20,7 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             if !areTestsRunning() && !arePreviewsRunning() {
-                let dependencies = Dependencies()
+                
+                let dependencies: Dependencies = {
+                    if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
+                        return FixtureDependencies()
+                    } else {
+                        return BaseDependencies()
+                    }
+                }()
 
                 let rootNavVC = MainNavigationController(rootViewController: MainFeature(dependencies: dependencies))
                 window.rootViewController = rootNavVC

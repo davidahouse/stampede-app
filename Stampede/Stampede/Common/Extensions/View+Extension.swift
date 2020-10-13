@@ -21,7 +21,7 @@ extension View {
         return self
             .environmentObject(StampedeDefaults.someDefaults)
             .environmentObject(CurrentTheme())
-            .environmentObject(RepositoryList())
+            .environmentObject(RepositoryListFixture())
             .environmentObject(Router())
             .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
