@@ -1,15 +1,14 @@
 //
-//  RepositoryCell.swift
+//  FavoriteRepositoryCell.swift
 //  Stampede
 //
-//  Created by David House on 8/30/20.
+//  Created by David House on 10/12/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
 
 import SwiftUI
 
-struct RepositoryCell: View {
-
+struct FavoriteRepositoryCell: View {
     let repository: Repository
 
     var body: some View {
@@ -19,16 +18,16 @@ struct RepositoryCell: View {
                 SecondaryLabel(repository.repository)
             }
             Spacer()
-            Image(systemName: "chevron.right")
+            Image(systemName: "star.fill").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
         }.accessibility(identifier: repository.id)
     }
 }
 
 #if DEBUG
-struct RepositoryCell_Previews: PreviewProvider {
+struct FavoriteRepositoryCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            RepositoryCell(repository: Repository.someRepository)
+            FavoriteRepositoryCell(repository: Repository.someRepository)
         }
     }
 }

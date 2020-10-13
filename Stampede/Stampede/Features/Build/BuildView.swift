@@ -10,11 +10,10 @@ import SwiftUI
 
 struct BuildView: View {
 
-    // MARK: - Environment
-
     // MARK: - Observed Objects
 
-    @ObservedObject var viewModel: BuildViewModel
+    @EnvironmentObject var viewModel: BuildViewModel
+    @EnvironmentObject var router: Router
 
     // MARK: - View
 
@@ -62,9 +61,11 @@ struct BuildView: View {
 
                 Section(header: Text("Tasks")) {
                     ForEach(viewModel.buildStatus.tasks) { task in
-                        NavigationLink(destination: BuildTaskFeature(task: task)) {
+                        Button(action: {
+                            router.route(to: .taskDetails(task))
+                        }, label: {
                             TaskStatusCell(taskStatus: task)
-                        }
+                        })
                     }
                 }
         }
@@ -75,8 +76,8 @@ struct BuildView: View {
 struct BuildView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            BuildView(viewModel: BuildViewModel(buildStatus: BuildStatus.someActiveBuild))
-            BuildView(viewModel: BuildViewModel(buildStatus: BuildStatus.someRecentSuccessBuild))
+            BuildView().environmentObject(BuildViewModel(buildStatus: BuildStatus.someActiveBuild))
+            BuildView().environmentObject(BuildViewModel(buildStatus: BuildStatus.someRecentSuccessBuild))
         }
     }
 }

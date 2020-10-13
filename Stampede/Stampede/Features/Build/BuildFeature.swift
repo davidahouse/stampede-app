@@ -8,26 +8,44 @@
 
 import SwiftUI
 
-struct BuildFeature: View {
+class BuildFeature: BaseFeature {
 
-    // MARK: - Properties
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies, build: BuildStatus) -> BaseFeature {
+        return BuildFeature(dependencies: dependencies, buildStatus: build)
+    }
+    
+    // MARK: - Private Properties
+    
+    private var viewModel: BuildViewModel
 
-    let buildStatus: BuildStatus
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    BuildView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
+    }
 
-    // MARK: - View
-
-    var body: some View {
-        BuildView(viewModel: BuildViewModel(buildStatus: buildStatus))
-            .navigationBarTitle(buildStatus.buildIdentifier)
+    // MARK: - Initializer
+    
+    init(dependencies: Dependencies, buildStatus: BuildStatus) {
+        viewModel = BuildViewModel(buildStatus: buildStatus)
+        super.init(dependencies: dependencies)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = viewModel.buildStatus.buildIdentifier
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 }
-
-#if DEBUG
-struct BuildFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            BuildFeature(buildStatus: BuildStatus.someActiveBuild)
-        }
-    }
-}
-#endif

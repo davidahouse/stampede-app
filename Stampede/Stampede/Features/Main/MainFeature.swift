@@ -5,35 +5,36 @@
 //  Created by David House on 12/1/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
+import Combine
+import HouseKit
 
-struct MainFeature: View {
+class MainFeature: BaseFeature {
 
-    @EnvironmentObject var repositoryList: RepositoryList
+    // MARK: - Private Properties
     
-    let viewModel: MainViewModel
+    private var viewModel = MainViewModel(state: .loading)
 
-    init(viewModel: MainViewModel? = nil) {
-        self.viewModel = viewModel ?? MainViewModel()
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    MainView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
     }
-    
-    // MARK: - View
 
-    var body: some View {
-        NavigationView {
-            MainView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
-            .navigationTitle("Stampede")
-        }
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Stampede"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
     }
 }
-
-#if DEBUG
-struct MainFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            MainFeature()
-        }
-    }
-}
-#endif

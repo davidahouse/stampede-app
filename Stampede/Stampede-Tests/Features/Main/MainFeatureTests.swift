@@ -10,9 +10,35 @@ import XCTest
 @testable import Stampede
 
 class MainFeatureTests: XCTestCase {
+    
+    var mainFeature: MainFeature!
+    var window: UIWindow!
+    var dependencies: Dependencies!
+    var repositoryList = RepositoryListFixture()
+    
+    override func setUp() {
+        super.setUp()
+        window = UIWindow()
+        dependencies = Dependencies(repositoryList: repositoryList)
+        mainFeature = MainFeature(dependencies: dependencies)
+    }
 
-    func testCapturePreviews() {
-        capture(MainFeature_Previews.previews,
-                   title: "MainFeature_Previews")
+    override func tearDown() {
+        window = nil
+        super.tearDown()
+    }
+    
+    func testFeatureCanCreateAChildViewController() {
+        capture(mainFeature, title: "MainFeature")
+    }
+    
+    func testWhenViewAppearsThenViewModelAssignedAPublisher() {
+        loadView()
+        XCTAssertTrue(repositoryList.fetchRepositoriesPublisherCalled)
+    }
+    
+    private func loadView() {
+        window.addSubview(mainFeature.view)
+        RunLoop.current.run(until: Date())
     }
 }

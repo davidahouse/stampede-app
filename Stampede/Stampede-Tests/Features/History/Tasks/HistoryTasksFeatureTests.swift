@@ -10,9 +10,4 @@ import XCTest
 @testable import Stampede
 
 class HistoryTasksFeatureTests: XCTestCase {
-
-    func testCapturePreviews() {
-        capture(HistoryTasksFeature_Previews.previews,
-                   title: "HistoryTasksFeature_Previews")
-    }
 }

@@ -5,33 +5,40 @@
 //  Created by David House on 12/3/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct MonitorActiveBuildsFeature: View {
+class MonitorActiveBuildsFeature: BaseFeature {
 
-    @EnvironmentObject var service: StampedeService
+    // MARK: - Static methods
     
-    let viewModel: MonitorActiveBuildsViewModel
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return MonitorActiveBuildsFeature(dependencies: dependencies)
+    }
 
-    init(viewModel: MonitorActiveBuildsViewModel? = nil) {
-        self.viewModel = viewModel ?? MonitorActiveBuildsViewModel()
+    // MARK: - Private Properties
+    
+    private var viewModel = MonitorActiveBuildsViewModel(state: .loading)
+
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    MonitorActiveBuildsView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
     }
     
-    var body: some View {
-        MonitorActiveBuildsView(viewModel: viewModel, publisher: service.fetchActiveBuildsPublisher())
-            .navigationBarTitle("Active Builds")
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Active Builds"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchActiveBuildsPublisher()
     }
 }
-
-#if DEBUG
-struct MonitorActiveBuildsFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                MonitorActiveBuildsFeature()
-            }
-        }
-    }
-}
-#endif

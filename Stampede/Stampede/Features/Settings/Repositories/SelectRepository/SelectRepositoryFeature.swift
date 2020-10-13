@@ -6,35 +6,48 @@
 //  Copyright © 2020 David House. All rights reserved.
 //
 
+import UIKit
 import SwiftUI
+import Combine
+import HouseKit
 
-struct SelectRepositoryFeature: View {
-    @EnvironmentObject var service: StampedeService
+class SelectRepositoryFeature: BaseFeature {
     
-    let viewModel: SelectRepositoryViewModel
-    let onSelected: (Repository) -> Void
+    // MARK: - Private Properties
     
-    init(viewModel: SelectRepositoryViewModel? = nil, onSelected: @escaping (Repository) -> Void) {
-        self.viewModel = viewModel ?? SelectRepositoryViewModel()
-        self.onSelected = onSelected
+    private let viewModel = SelectRepositoryViewModel(state: .loading)
+    private weak var delegate: SelectRepositoryDelegate?
+
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    SelectRepositoryView(delegate: delegate)
+                                        .environmentObject(viewModel)
+                                        .environmentObject(router)
+                                        .dependenciesToEnvironment(dependencies))
     }
-        
-    var body: some View {
-        NavigationView {
-            SelectRepositoryView(viewModel: viewModel, publisher: service.fetchRepositoriesPublisher(), onSelected: onSelected)
-                .navigationBarTitle("Select Repository")
-        }
+
+    // MARK: - Initializers
+    
+    init(dependencies: Dependencies, delegate: SelectRepositoryDelegate?) {
+        self.delegate = delegate
+        super.init(dependencies: dependencies)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Add Favorite"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchRepositoriesPublisher()
     }
 }
-
-#if DEBUG
-struct SelectRepositoryFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                SelectRepositoryFeature(onSelected: { _ in })
-            }
-        }
-    }
-}
-#endif

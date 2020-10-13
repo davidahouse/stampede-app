@@ -64,28 +64,9 @@ class RepositoryViewModel: ObservableObject {
 
     // MARK: - Initializer
 
-    init(activeBuildsState: ViewModelState<[BuildStatus]> = .loading,
-         activeBuildsPublisher: BuildStatusResponsePublisher? = nil,
-         repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading,
-         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil,
-         branchKeysState: ViewModelState<[BuildKey]> = .loading,
-         branchKeysPublisher: BuildKeyResponsePublisher? = nil,
-         releaseKeysState: ViewModelState<[BuildKey]> = .loading,
-         releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
-         pullRequestKeysState: ViewModelState<[BuildKey]> = .loading,
-         pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
+    init(activeBuildsState: ViewModelState<[BuildStatus]> = .loading, repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading) {
         self.activeBuildsState = activeBuildsState
-        self.activeBuildsPublisher = activeBuildsPublisher
         self.repositoryBuildsState = repositoryBuildsState
-        self.repositoryBuildsPublisher = repositoryBuildsPublisher
-        self.branchKeysState = branchKeysState
-        self.branchKeysPublisher = branchKeysPublisher
-        self.releaseKeysState = releaseKeysState
-        self.releaseKeysPublisher = releaseKeysPublisher
-        self.pullRequestKeysState = pullRequestKeysState
-        self.pullRequestKeysPublisher = pullRequestKeysPublisher
-        fetchActiveBuilds()
-        fetchRepositoryBuilds()
     }
 
     private func fetchActiveBuilds() {

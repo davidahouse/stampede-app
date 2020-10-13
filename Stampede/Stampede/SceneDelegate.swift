@@ -20,46 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             if !areTestsRunning() && !arePreviewsRunning() {
-                let defaults: StampedeDefaults = {
-                    return StampedeDefaults()
-                }()
-
-                let repositoryList: RepositoryList = {
-                    #if DEBUG
-                    if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
-                            return RepositoryList(repositories: [Repository.someRepository])
-                    }
-                    #endif
-                    return RepositoryList()
-                }()
                 
-                let service: StampedeService = {
-                    #if DEBUG
-                    if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"] {
-                        if stampedeServer == "fixtures" {
-                            return StampedeService(host: stampedeServer, provider: StampedeServiceFixtureProvider())
-                        } else {
-                            return StampedeService(host: stampedeServer, provider: StampedeServiceNetworkProvider(host: stampedeServer))
-                        }
+                let dependencies: Dependencies = {
+                    if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
+                        return Dependencies(repositoryList: RepositoryListFixture())
                     } else {
-                        return StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
+                        return Dependencies()
                     }
-                    #else
-                    return StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
-                    #endif
                 }()
-                defaults.hostSubject = service.hostPassthroughSubject
 
-                let theme = CurrentTheme()
-
-                window.rootViewController = UIHostingController(rootView: MainFeature()
-                    .environmentObject(service)
-                    .environmentObject(defaults)
-                    .environmentObject(theme)
-                    .environmentObject(repositoryList)
-                )
+                let rootNavVC = MainNavigationController(rootViewController: MainFeature(dependencies: dependencies))
+                window.rootViewController = rootNavVC
             } else {
-                window.rootViewController = UIHostingController(rootView: EmptyView())
+                window.rootViewController = UIViewController()
             }
             self.window = window
             window.makeKeyAndVisible()

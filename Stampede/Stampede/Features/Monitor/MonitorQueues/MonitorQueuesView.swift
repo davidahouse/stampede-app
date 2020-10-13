@@ -10,13 +10,12 @@ import SwiftUI
 
 struct MonitorQueuesView: View {
 
-    @ObservedObject var viewModel: MonitorQueuesViewModel
+    // MARK: - View Model
+    
+    @EnvironmentObject var viewModel: MonitorQueuesViewModel
 
-    init(viewModel: MonitorQueuesViewModel, publisher: QueueSummaryResponsePublisher? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
-    }
-
+    // MARK: - Body
+    
     var body: some View {
         switch viewModel.state {
         case .loading:
@@ -52,9 +51,9 @@ struct MonitorQueuesView: View {
 struct MonitorQueuesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorQueuesView(viewModel: MonitorQueuesViewModel.loading)
-            MonitorQueuesView(viewModel: MonitorQueuesViewModel.networkError)
-            MonitorQueuesView(viewModel: MonitorQueuesViewModel.someQueues)
+            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.loading)
+            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.networkError)
+            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.someQueues)
         }
     }
 }

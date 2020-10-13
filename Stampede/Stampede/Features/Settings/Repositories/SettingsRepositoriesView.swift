@@ -10,35 +10,42 @@ import SwiftUI
 import HouseKit
 import Combine
 
-struct SettingsRepositoriesView: View {
-    
-    @ObservedObject var viewModel: SettingsRepositoriesViewModel
+protocol SettingsRepositoriesViewDelegate: class {
+    func didDeleteRepositories(_ indexSet: IndexSet)
+}
 
-    init(viewModel: SettingsRepositoriesViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
+struct SettingsRepositoriesView: View {
+
+    // MARK: - View Model
+
+    @EnvironmentObject var viewModel: SettingsRepositoriesViewModel
+
+    // MARK: - Private Properties
+    
+    private weak var delegate: SettingsRepositoriesViewDelegate?
+
+    // MARK: - Initializer
+    
+    init(delegate: SettingsRepositoriesViewDelegate? = nil) {
+        self.delegate = delegate
     }
+    
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {
         case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Owner - Repository")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
+            Text("Loading...")
         case .networkError:
             Text("A network error has occurred")
         case .results(let repositories):
             List {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
-                        RepositoryCell(repository: item)
-                    }
+                        FavoriteRepositoryCell(repository: item)
+                    }.onDelete(perform: { indexSet in
+                        self.delegate?.didDeleteRepositories(indexSet)
+                    })
                 } else {
                     Text("No repositories selected")
                 }
@@ -52,9 +59,10 @@ struct SettingsRepositoriesView: View {
 struct SettingsRepositoriesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .loading))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .networkError))
-            SettingsRepositoriesView(viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .loading))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .networkError))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results([])))
         }
     }
 }

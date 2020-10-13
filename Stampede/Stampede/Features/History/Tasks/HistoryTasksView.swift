@@ -10,12 +10,12 @@ import SwiftUI
 
 struct HistoryTasksView: View {
 
-    @ObservedObject var viewModel: HistoryTasksViewModel
+    // MARK: - View Model
+    
+    @EnvironmentObject var viewModel: HistoryTasksViewModel
+    @EnvironmentObject var router: Router
 
-    init(viewModel: HistoryTasksViewModel, publisher: TaskStatusResponsePublisher? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
-    }
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {
@@ -36,9 +36,11 @@ struct HistoryTasksView: View {
         case .results(let tasks):
             List {
                 ForEach(tasks, id: \.self) { item in
-                    NavigationLink(destination: BuildTaskFeature(task: item)) {
+                    Button(action: {
+                        router.route(to: .taskDetails(item))
+                    }, label: {
                         TaskStatusCell(taskStatus: item)
-                    }
+                    })
                 }
             }
             .listStyle(DefaultListStyle())
@@ -50,9 +52,9 @@ struct HistoryTasksView: View {
 struct HistoryTasksView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            HistoryTasksView(viewModel: HistoryTasksViewModel.loading)
-            HistoryTasksView(viewModel: HistoryTasksViewModel.networkError)
-            HistoryTasksView(viewModel: HistoryTasksViewModel.someTasks)
+            HistoryTasksView().environmentObject(HistoryTasksViewModel.loading)
+            HistoryTasksView().environmentObject(HistoryTasksViewModel.networkError)
+            HistoryTasksView().environmentObject(HistoryTasksViewModel.someTasks)
         }
     }
 }

@@ -16,7 +16,7 @@ struct SettingsInfoView: View {
 
     // MARK: - Observed Objects
 
-    @ObservedObject var viewModel: SettingsInfoViewModel
+    @EnvironmentObject var viewModel: SettingsInfoViewModel
 
     var body: some View {
         List {
@@ -34,6 +34,6 @@ struct SettingsInfoView: View {
 
 struct SettingsInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsInfoView(viewModel: SettingsInfoViewModel())
+        SettingsInfoView().environmentObject(SettingsInfoViewModel())
     }
 }

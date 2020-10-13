@@ -5,38 +5,41 @@
 //  Created by David House on 12/6/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 import Combine
 
-struct MonitorActiveTasksFeature: View {
+class MonitorActiveTasksFeature: BaseFeature {
 
-    // MARK: - Environment
+    // MARK: - Static methods
     
-    @EnvironmentObject var service: StampedeService
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return MonitorActiveTasksFeature(dependencies: dependencies)
+    }
     
-    let viewModel: MonitorActiveTasksViewModel
+    // MARK: - Private Properties
+    
+    private var viewModel = MonitorActiveTasksViewModel(state: .loading)
 
-    init(viewModel: MonitorActiveTasksViewModel? = nil) {
-        self.viewModel = viewModel ?? MonitorActiveTasksViewModel()
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    MonitorActiveTasksView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Active Tasks"
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 
-    // MARK: - View
-
-    var body: some View {
-        MonitorActiveTasksView(viewModel: viewModel, publisher: service.fetchActiveTasksPublisher())
-            .navigationBarTitle("Active Tasks")
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchActiveTasksPublisher()
     }
 }
-
-#if DEBUG
-struct MonitorActiveTasksFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                MonitorActiveTasksFeature()
-            }
-        }
-    }
-}
-#endif

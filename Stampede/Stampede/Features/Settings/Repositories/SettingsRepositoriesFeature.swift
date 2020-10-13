@@ -6,45 +6,73 @@
 //  Copyright © 2020 David House. All rights reserved.
 //
 
+import UIKit
 import SwiftUI
+import Combine
+import HouseKit
 
-struct SettingsRepositoriesFeature: View {
-    
-    @EnvironmentObject var repositoryList: RepositoryList
-    @State var showingSelectRepository = false
-    
-    let viewModel: SettingsRepositoriesViewModel
+class SettingsRepositoriesFeature: BaseFeature {
 
-    init(viewModel: SettingsRepositoriesViewModel? = nil) {
-        self.viewModel = viewModel ?? SettingsRepositoriesViewModel()
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return SettingsRepositoriesFeature(dependencies: dependencies)
     }
-        
-    var body: some View {
-        SettingsRepositoriesView(viewModel: viewModel, publisher: repositoryList.fetchRepositoriesPublisher())
-            .navigationBarTitle("Repositories")
-            .navigationBarItems(trailing:
-                Button("Add") {
-                    self.showingSelectRepository = true
-                }
-            )
-            .sheet(isPresented: $showingSelectRepository, content: {
-                SelectRepositoryFeature(onSelected: { repository in
-                    repositoryList.addRepository(repository: repository)
-                    viewModel.fetch()
-                    self.showingSelectRepository = false
-                })
-            })
+    
+    // MARK: - Private properties
+    
+    private var viewModel = SettingsRepositoriesViewModel()
+    
+    // MARK: - Overrides
+
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    SettingsRepositoriesView(delegate: self)
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Favorite Repositories"
+        navigationItem.largeTitleDisplayMode = .automatic
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SettingsRepositoriesFeature.didSelectAdd(sender:)))
+        navigationItem.rightBarButtonItem = addButton
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        reloadList()
+    }
+
+    // MARK: - Private methods
+    
+    @objc
+    private func didSelectAdd(sender: Any) {
+        let selectRepository = SelectRepositoryFeature(dependencies: dependencies, delegate: self)
+        present(selectRepository, animated: true) { }
+    }
+
+    private func reloadList() {
+        viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
     }
 }
 
-#if DEBUG
-struct SettingsRepositoriesFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                SettingsRepositoriesFeature()
-            }
-        }
+extension SettingsRepositoriesFeature: SettingsRepositoriesViewDelegate {
+
+    func didDeleteRepositories(_ indexSet: IndexSet) {
+        dependencies.repositoryList.removeRepositories(indexSet)
+        reloadList()
     }
 }
-#endif
+
+extension SettingsRepositoriesFeature: SelectRepositoryDelegate {
+
+    func didSelectRepository(_ repository: Repository) {
+        dependencies.repositoryList.addRepository(repository: repository)
+        dismiss(animated: true, completion: {})
+        reloadList()
+    }
+}

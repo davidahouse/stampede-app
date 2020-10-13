@@ -10,13 +10,13 @@ import SwiftUI
 
 struct MonitorActiveTasksView: View {
 
-    @ObservedObject var viewModel: MonitorActiveTasksViewModel
+    // MARK: - View Model
+    
+    @EnvironmentObject var viewModel: MonitorActiveTasksViewModel
+    @EnvironmentObject var router: Router
 
-    init(viewModel: MonitorActiveTasksViewModel, publisher: TaskStatusResponsePublisher? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
-    }
-
+    // MARK: - Body
+    
     var body: some View {
         switch viewModel.state {
         case .loading:
@@ -37,9 +37,11 @@ struct MonitorActiveTasksView: View {
             List {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
-                        NavigationLink(destination: BuildTaskFeature(task: item)) {
+                        Button(action: {
+                            router.route(to: .taskDetails(item))
+                        }, label: {
                             TaskStatusCell(taskStatus: item)
-                        }
+                        })
                     }
                 } else {
                     Text("No active tasks found")
@@ -54,9 +56,9 @@ struct MonitorActiveTasksView: View {
 struct MonitorActiveTasksView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorActiveTasksView(viewModel: MonitorActiveTasksViewModel.loading)
-            MonitorActiveTasksView(viewModel: MonitorActiveTasksViewModel.networkError)
-            MonitorActiveTasksView(viewModel: MonitorActiveTasksViewModel.someTasks)
+            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.loading)
+            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.networkError)
+            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.someTasks)
         }
     }
 }

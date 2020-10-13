@@ -5,10 +5,16 @@
 //  Created by David House on 12/2/19.
 //  Copyright © 2019 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct RepositoryFeature: View {
+class RepositoryFeature: BaseFeature {
+    
+    // MARK: - Static methods
+    
+    static func makeFeature(_ dependencies: Dependencies, repository: Repository) -> BaseFeature {
+        return RepositoryFeature(dependencies: dependencies, repository: repository)
+    }
 
     let repository: Repository
 
@@ -18,37 +24,42 @@ struct RepositoryFeature: View {
 
     // MARK: Properties
 
-    let viewModel: RepositoryViewModel
+    private var viewModel = RepositoryViewModel()
 
-    // MARK: Initializer
-
-    init(repository: Repository, viewModel: RepositoryViewModel? = nil) {
-        self.viewModel = viewModel ?? RepositoryViewModel()
+    // MARK: - Initializer
+    
+    init(dependencies: Dependencies, repository: Repository) {
         self.repository = repository
+        super.init(dependencies: dependencies)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    RepositoryView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = repository.repository
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 
-    // MARK: - View
-
-    var body: some View {
-        RepositoryView(viewModel: viewModel,
-                       activeBuildsPublisher: service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository),
-                       repositoryBuildsPublisher: service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository),
-                       branchKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push"),
-                       releaseKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release"),
-                       pullRequestKeysPublisher: service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
-                       )
-            .navigationBarTitle(repository.repository)
-    }
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.activeBuildsPublisher = dependencies.service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository)
+        viewModel.repositoryBuildsPublisher = dependencies.service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository)
+        viewModel.branchKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push")
+        viewModel.releaseKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release")
+        viewModel.pullRequestKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
+    }    
 }
-
-#if DEBUG
-struct RepositoryFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                RepositoryFeature(repository: Repository.someRepository)
-            }
-        }
-    }
-}
-#endif

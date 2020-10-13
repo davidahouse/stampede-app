@@ -10,29 +10,32 @@ import SwiftUI
 import HouseKit
 import Combine
 
+protocol SelectRepositoryDelegate: class {
+    func didSelectRepository(_ repository: Repository)
+}
+
 struct SelectRepositoryView: View {
     
-    @ObservedObject var viewModel: SelectRepositoryViewModel
-    let onSelected: (Repository) -> Void
+    // MARK: - View Model
+    
+    @EnvironmentObject var viewModel: SelectRepositoryViewModel
+    
+    // MARK: - Private Properties
+    
+    weak var delegate: SelectRepositoryDelegate?
 
-    init(viewModel: SelectRepositoryViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil, onSelected: @escaping (Repository) -> Void) {
-        self.viewModel = viewModel
-        self.onSelected = onSelected
-        self.viewModel.publisher = publisher
+    // MARK: - Initializer
+    
+    init(delegate: SelectRepositoryDelegate? = nil) {
+        self.delegate = delegate
     }
+
+    // MARK: - View
     
     var body: some View {
         switch viewModel.state {
         case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Owner - Repository")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
+            Text("Loading ...")
         case .networkError:
             Text("A network error has occurred")
         case .results(let repositories):
@@ -42,7 +45,7 @@ struct SelectRepositoryView: View {
                         RepositoryCell(repository: item)
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
-                                self.onSelected(item)
+                                delegate?.didSelectRepository(item)
                             })
                     }
                 } else {
@@ -58,9 +61,9 @@ struct SelectRepositoryView: View {
 struct SelectRepositoryView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.loading, onSelected: { _ in })
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.networkError, onSelected: { _ in })
-            SelectRepositoryView(viewModel: SelectRepositoryViewModel.someRepositories, onSelected: { _ in })
+            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.loading)
+            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.networkError)
+            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.someRepositories)
         }
     }
 }

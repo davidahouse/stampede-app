@@ -23,7 +23,7 @@ class SettingsStampedeServerViewModel: ObservableObject {
 
     // MARK: - Properties
 
-    let subject: PassthroughSubject<String, Never>?
+    var subject: PassthroughSubject<String, Never>?
 
     // MARK: - Initializer
 

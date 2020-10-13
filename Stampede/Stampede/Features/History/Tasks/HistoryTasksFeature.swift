@@ -5,33 +5,40 @@
 //  Created by David House on 7/11/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct HistoryTasksFeature: View {
+class HistoryTasksFeature: BaseFeature {
     
-    @EnvironmentObject var service: StampedeService
+    // MARK: - Static methods
     
-    let viewModel: HistoryTasksViewModel
-
-    init(viewModel: HistoryTasksViewModel? = nil) {
-        self.viewModel = viewModel ?? HistoryTasksViewModel()
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return HistoryTasksFeature(dependencies: dependencies)
     }
     
-    var body: some View {
-        HistoryTasksView(viewModel: viewModel, publisher: service.fetchHistoryTasksPublisher())
-            .navigationBarTitle("Task History")
+    // MARK: - Private Properties
+    
+    private var viewModel = HistoryTasksViewModel(state: .loading)
+
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    HistoryTasksView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Task History"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchHistoryTasksPublisher()
     }
 }
-
-#if DEBUG
-struct HistoryTasksFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                HistoryTasksFeature()
-            }
-        }
-    }
-}
-#endif

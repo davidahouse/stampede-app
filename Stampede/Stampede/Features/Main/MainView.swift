@@ -11,18 +11,13 @@ import HouseKit
 
 struct MainView: View {
 
-    @ObservedObject var viewModel: MainViewModel
-
-    init(viewModel: MainViewModel, publisher: AnyPublisher<[Repository], ServiceError>? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
-    }
-    
     // MARK: - Environment
 
     @EnvironmentObject var theme: CurrentTheme
+    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var router: Router
 
-    // MARK: - Properties
+    // MARK: - Private properties
 
     // MARK: - View
 
@@ -30,61 +25,47 @@ struct MainView: View {
         List {
             Section(header: Text("Repositories")) {
                 switch viewModel.state {
-                case .loading, .networkError:
-                    EmptyView()
+                case .loading:
+                    Text("Loading...")
+                case .networkError:
+                    Text("Network Error...")
                 case .results(let repositories):
                     ForEach(repositories, id: \.self) { item in
-                        NavigationLink(destination: RepositoryFeature(repository: item)) {
+                        Button(action: {
+                            self.router.route(to: .repositoryDetails(item))
+                        }, label: {
                             RepositoryCell(repository: item)
-                        }.accessibilityIdentifier(item.id)
+                        }).accessibilityIdentifier(item.id)
                     }
                 }
             }
             Section(header: Text("Monitor")) {
-                NavigationLink(destination: MonitorLiveFeature()) {
-                    Text("Live")
-                }.accessibility(identifier: "monitor-live")
-                NavigationLink(destination: MonitorActiveBuildsFeature()) {
-                    Text("Active Builds")
-                }.accessibility(identifier: "monitor-active-builds")
-                NavigationLink(destination: MonitorActiveTasksFeature()) {
-                    Text("Active Tasks")
-                }.accessibility(identifier: "monitor-active-tasks")
-                NavigationLink(destination: MonitorQueuesFeature()) {
-                    Text("Queues")
-                }.accessibility(identifier: "monitor-queues")
+                FeatureRouteCell(title: "Live", route: .monitorLive)
+                FeatureRouteCell(title: "Active Builds", route: .monitorActiveBuilds)
+                FeatureRouteCell(title: "Active Tasks", route: .monitorActiveTasks)
+                FeatureRouteCell(title: "Queues", route: .monitorQueues)
             }
             Section(header: Text("History")) {
-                NavigationLink(destination: HistoryBuildsFeature()) {
-                    Text("Builds")
-                }.accessibility(identifier: "history-builds")
-                NavigationLink(destination: HistoryTasksFeature()) {
-                    Text("Tasks")
-                }.accessibility(identifier: "history-tasks")
+                FeatureRouteCell(title: "Builds", route: .historyBuilds)
+                FeatureRouteCell(title: "Tasks", route: .historyTasks)
             }
             Section(header: Text("Settings")) {
-                NavigationLink(destination: SettingsStampedeServerFeature()) {
-                    Text("Stampede Server")
-                }.accessibility(identifier: "settings-stampede-server")
-                NavigationLink(destination: SettingsRepositoriesFeature()) {
-                    Text("Repositories")
-                }.accessibility(identifier: "settings-repositories")
-                NavigationLink(destination: SettingsNotificationsFeature()) {
-                    Text("Notifications")
-                }.accessibility(identifier: "settings-notifications")
-                NavigationLink(destination: SettingsInfoFeature()) {
-                    Text("Info")
-                }.accessibility(identifier: "settings-info")
+                FeatureRouteCell(title: "Stampede Server", route: .settingsStampedeServer)
+                FeatureRouteCell(title: "Repositories", route: .settingsRepositories)
+                FeatureRouteCell(title: "Notifications", route: .settingsNotifications)
+                FeatureRouteCell(title: "Info", route: .settingsInfo)
             }
-        }.listStyle(SidebarListStyle())
+        }.listStyle(GroupedListStyle())
     }
 }
 
 #if DEBUG
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {        
         Previewer {
-            MainView(viewModel: MainViewModel(state: .results(Repository.someRepositories)))
+            MainView()
+                .environmentObject(MainViewModel(state: .results(Repository.someRepositories)))
         }
     }
 }

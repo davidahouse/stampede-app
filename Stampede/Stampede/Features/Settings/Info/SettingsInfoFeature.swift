@@ -5,27 +5,39 @@
 //  Created by David House on 7/11/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
-
+import UIKit
 import SwiftUI
 
-struct SettingsInfoFeature: View {
+class SettingsInfoFeature: BaseFeature {
 
-    @State var viewModel: SettingsInfoViewModel = SettingsInfoViewModel()
+    // MARK: - Static methods
     
-    var body: some View {
-        SettingsInfoView(viewModel: viewModel)
-            .navigationBarTitle("About Stampede")
+    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+        return SettingsInfoFeature(dependencies: dependencies)
     }
-}
+    
+    // MARK: - Private Properties
+    
+    private var viewModel = SettingsInfoViewModel()
+    
+    // MARK: - Overrides
+    
+    override func makeChildViewController() -> UIViewController {
+        return UIHostingController(rootView:
+                                    SettingsInfoView()
+                                    .environmentObject(viewModel)
+                                    .environmentObject(router)
+                                    .dependenciesToEnvironment(dependencies))
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Stampede Info"
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
 
-#if DEBUG
-struct SettingsInfoFeature_Previews: PreviewProvider {
-    static var previews: some View {
-        DevicePreviewer {
-            NavigationView {
-                SettingsInfoFeature()
-            }
-        }
+    override func viewDidAppear(_ animated: Bool) {
     }
 }
-#endif

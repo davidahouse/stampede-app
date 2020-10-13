@@ -11,27 +11,11 @@ import HouseKit
 import Combine
 
 struct RepositoryView: View {
-
-    // MARK: - Environment
-
-    // MARK: - Properties
-
+    
     // MARK: - Observed objects
 
-    @ObservedObject var viewModel: RepositoryViewModel
-
-    init(viewModel: RepositoryViewModel, activeBuildsPublisher: BuildStatusResponsePublisher? = nil,
-         repositoryBuildsPublisher: RepositoryBuildResponsePublisher? = nil,
-         branchKeysPublisher: BuildKeyResponsePublisher? = nil,
-         releaseKeysPublisher: BuildKeyResponsePublisher? = nil,
-         pullRequestKeysPublisher: BuildKeyResponsePublisher? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.activeBuildsPublisher = activeBuildsPublisher
-        self.viewModel.repositoryBuildsPublisher = repositoryBuildsPublisher
-        self.viewModel.branchKeysPublisher = branchKeysPublisher
-        self.viewModel.releaseKeysPublisher = releaseKeysPublisher
-        self.viewModel.pullRequestKeysPublisher = pullRequestKeysPublisher
-    }
+    @EnvironmentObject var viewModel: RepositoryViewModel
+    @EnvironmentObject var router: Router
 
     // MARK: - View
 
@@ -79,9 +63,7 @@ struct RepositoryView: View {
         case .results(let activeBuilds):
             if activeBuilds.count > 0 {
                 ForEach(activeBuilds, id: \.self) { item in
-                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                        BuildStatusCell(buildStatus: item)
-                    }
+                    BuildStatusCell(buildStatus: item)
                 }
             } else {
                 Text("No active builds found")
@@ -196,8 +178,7 @@ struct RepositoryView: View {
 struct RepositoryView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            RepositoryView(viewModel:
-                        RepositoryViewModel.someViewModel)
+            RepositoryView().environmentObject(RepositoryViewModel.someViewModel)
         }
     }
 }

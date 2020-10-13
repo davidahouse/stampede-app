@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct HistoryBuildsView: View {
-    
-    @ObservedObject var viewModel: HistoryBuildsViewModel
 
-    init(viewModel: HistoryBuildsViewModel, publisher: BuildStatusResponsePublisher? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
-    }
+    // MARK: - View Model
+    
+    @EnvironmentObject var viewModel: HistoryBuildsViewModel
+    @EnvironmentObject var router: Router
+
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {
@@ -34,10 +34,7 @@ struct HistoryBuildsView: View {
         case .results(let activeBuilds):
             List {
                 ForEach(activeBuilds, id: \.self) { item in
-                    NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                        Text("test")
-                        //BuildStatusCell(buildStatus: item)
-                    }
+                    BuildStatusCell(buildStatus: item)
                 }
             }
             .listStyle(DefaultListStyle())
@@ -49,9 +46,9 @@ struct HistoryBuildsView: View {
 struct HistoryBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel.loading)
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel.networkError)
-            HistoryBuildsView(viewModel: HistoryBuildsViewModel.someBuilds)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.loading)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.networkError)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.someBuilds)
         }
     }
 }

@@ -31,42 +31,42 @@ extension ScenarioMainScreen {
     }
 
     func thenTheMonitorLiveButtonIsDisplayed() {
-        waitForButton("monitor-live")
+        waitForButton("Live")
     }
 
     func thenTheMonitorActiveBuildsButtonIsDisplayed() {
-        waitForButton("monitor-active-builds")
+        waitForButton("Active Builds")
     }
 
     func thenTheMonitorActiveTasksButtonIsDisplayed() {
-        waitForButton("monitor-active-tasks")
+        waitForButton("Active Tasks")
     }
 
     func thenTheMonitorQueuesButtonIsDisplayed() {
-        waitForButton("monitor-queues")
+        waitForButton("Queues")
     }
 
     func thenTheHistoryBuildsButtonIsDisplayed() {
-        waitForButton("history-builds")
+        waitForButton("Builds")
     }
 
     func thenTheHistoryTasksButtonIsDisplayed() {
-        waitForButton("history-tasks")
+        waitForButton("Tasks")
     }
 
     func thenTheSettingsStampedeServerButtonIsDisplayed() {
-        waitForButton("settings-stampede-server")
+        waitForButton("Stampede Server")
     }
 
     func thenTheSettingsRepositoriesButtonIsDisplayed() {
-        waitForButton("settings-repositories")
+        waitForButton("Repositories")
     }
 
     func thenTheSettigsNotificationsButtonIsDisplayed() {
-        waitForButton("settings-notifications")
+        waitForButton("Notifications")
     }
 
     func thenTheSettingsInfoButtonIsDisplayed() {
-        waitForButton("settings-info")
+        waitForButton("Info")
     }
 }

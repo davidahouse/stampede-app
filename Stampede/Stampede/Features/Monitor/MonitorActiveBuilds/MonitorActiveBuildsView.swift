@@ -10,12 +10,12 @@ import SwiftUI
 
 struct MonitorActiveBuildsView: View {
 
-    @ObservedObject var viewModel: MonitorActiveBuildsViewModel
+    // MARK: - View Model
+    
+    @EnvironmentObject var viewModel: MonitorActiveBuildsViewModel
+    @EnvironmentObject var router: Router
 
-    init(viewModel: MonitorActiveBuildsViewModel, publisher: BuildStatusResponsePublisher? = nil) {
-        self.viewModel = viewModel
-        self.viewModel.publisher = publisher
-    }
+    // MARK: - Body
     
     var body: some View {
         switch viewModel.state {
@@ -35,9 +35,7 @@ struct MonitorActiveBuildsView: View {
             List {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
-                        NavigationLink(destination: BuildFeature(buildStatus: item)) {
-                            BuildStatusCell(buildStatus: item)
-                        }
+                        BuildStatusCell(buildStatus: item)
                     }
                 } else {
                     Text("No active builds found")
@@ -51,9 +49,9 @@ struct MonitorActiveBuildsView: View {
 struct MonitorActiveBuildsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.loading)
-            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.networkError)
-            MonitorActiveBuildsView(viewModel: MonitorActiveBuildsViewModel.someBuilds)
+            MonitorActiveBuildsView().environmentObject(MonitorActiveBuildsViewModel.loading)
+            MonitorActiveBuildsView().environmentObject(MonitorActiveBuildsViewModel.networkError)
+            MonitorActiveBuildsView().environmentObject(MonitorActiveBuildsViewModel.someBuilds)
         }
     }
 }
