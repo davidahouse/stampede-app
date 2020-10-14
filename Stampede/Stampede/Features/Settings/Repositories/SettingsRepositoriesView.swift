@@ -33,12 +33,7 @@ struct SettingsRepositoriesView: View {
     // MARK: - Body
     
     var body: some View {
-        switch viewModel.state {
-        case .loading:
-            Text("Loading...")
-        case .networkError:
-            Text("A network error has occurred")
-        case .results(let repositories):
+        BaseView(viewModel: viewModel) { repositories in
             List {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in

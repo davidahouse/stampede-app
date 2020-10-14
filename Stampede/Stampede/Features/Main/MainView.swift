@@ -24,12 +24,7 @@ struct MainView: View {
     var body: some View {
         List {
             Section(header: Text("Repositories")) {
-                switch viewModel.state {
-                case .loading:
-                    Text("Loading...")
-                case .networkError:
-                    Text("Network Error...")
-                case .results(let repositories):
+                BaseView(viewModel: viewModel, content: { repositories in
                     ForEach(repositories, id: \.self) { item in
                         Button(action: {
                             self.router.route(to: .repositoryDetails(item))
@@ -37,7 +32,7 @@ struct MainView: View {
                             RepositoryCell(repository: item)
                         }).accessibilityIdentifier(item.id)
                     }
-                }
+                })
             }
             Section(header: Text("Monitor")) {
                 FeatureRouteCell(title: "Live", route: .monitorLive)

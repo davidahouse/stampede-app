@@ -17,22 +17,7 @@ struct MonitorQueuesView: View {
     // MARK: - Body
     
     var body: some View {
-        switch viewModel.state {
-        case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        Image(systemName: "folder.circle")
-                            .frame(width: 100)
-                        VStack(alignment: .leading) {
-                            Text("Task")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
-        case .networkError:
-            Text("A network error has occurred")
-        case .results(let queues):
+        BaseView(viewModel: viewModel, content: { queues in
             List {
                 if queues.count > 0 {
                     ForEach(queues, id: \.self) { item in
@@ -43,7 +28,7 @@ struct MonitorQueuesView: View {
                 }
             }
             .listStyle(DefaultListStyle())
-        }
+        })
     }
 }
 
