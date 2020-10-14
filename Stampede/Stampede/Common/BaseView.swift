@@ -23,7 +23,7 @@ struct BaseView<T, Content: View>: View {
         case .loading:
             Text("Loading...")
         case .networkError:
-            Text("Network error...")
+            NetworkErrorView()
         case .results(let object):
             content(object)
         }

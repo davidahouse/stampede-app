@@ -26,7 +26,7 @@ struct MonitorLiveView: View {
         case .loading:
             Text("Loading...")
         case .networkError:
-            Text("Network Error...")
+            NetworkErrorView()
         case .results(let results):
 //            ScrollView {
 //                LazyVGrid(columns: columns) {
