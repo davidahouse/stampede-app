@@ -43,7 +43,24 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var fetchBuildKeysPublisherCalled = false
 
     var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
-    
+
+    private var host: String? {
+        didSet {
+            if let host = host, host.contains("error") {
+                self.error = .network(description: "some network error happened")
+            }
+        }
+    }
+    private var hostSink: AnyCancellable?
+
+    public init(host: String? = nil) {
+        self.host = host
+        super.init()
+        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
+           self.host = value
+        })
+    }
+
     func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
         fetchRepositoriesPublisherCalled = true
         return fetchPublisher(repositories)
