@@ -18,22 +18,7 @@ struct HistoryTasksView: View {
     // MARK: - Body
     
     var body: some View {
-        switch viewModel.state {
-        case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        Image(systemName: "folder.circle")
-                            .frame(width: 100)
-                        VStack(alignment: .leading) {
-                            Text("Task")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
-        case .networkError:
-            Text("A network error has occurred")
-        case .results(let tasks):
+        BaseView(viewModel: viewModel, content: { tasks in
             List {
                 ForEach(tasks, id: \.self) { item in
                     Button(action: {
@@ -44,7 +29,7 @@ struct HistoryTasksView: View {
                 }
             }
             .listStyle(DefaultListStyle())
-        }
+        })
     }
 }
 

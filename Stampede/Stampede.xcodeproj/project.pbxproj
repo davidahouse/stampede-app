@@ -111,6 +111,8 @@
 		C3816C91248702BC00E6980B /* MonitorQueuesFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C88248702BC00E6980B /* MonitorQueuesFeatureTests.swift */; };
 		C3816C92248702BC00E6980B /* MonitorActiveTasksFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C8A248702BC00E6980B /* MonitorActiveTasksFeatureTests.swift */; };
 		C3816C93248702BC00E6980B /* MonitorActiveTasksViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C8B248702BC00E6980B /* MonitorActiveTasksViewTests.swift */; };
+		C3850A25253739100057F500 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3850A24253739100057F500 /* BaseView.swift */; };
+		C3850A2A25373C620057F500 /* BaseSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3850A2925373C620057F500 /* BaseSubView.swift */; };
 		C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */; };
 		C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */; };
 		C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */; };
@@ -302,6 +304,8 @@
 		C3816C88248702BC00E6980B /* MonitorQueuesFeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorQueuesFeatureTests.swift; sourceTree = "<group>"; };
 		C3816C8A248702BC00E6980B /* MonitorActiveTasksFeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksFeatureTests.swift; sourceTree = "<group>"; };
 		C3816C8B248702BC00E6980B /* MonitorActiveTasksViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksViewTests.swift; sourceTree = "<group>"; };
+		C3850A24253739100057F500 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C3850A2925373C620057F500 /* BaseSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSubView.swift; sourceTree = "<group>"; };
 		C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerFeature.swift; sourceTree = "<group>"; };
 		C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerView.swift; sourceTree = "<group>"; };
 		C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerViewModel.swift; sourceTree = "<group>"; };
@@ -628,6 +632,8 @@
 				C30DBFF22532308900021863 /* Dependencies.swift */,
 				9455103E253383A7007A1299 /* Route.swift */,
 				C30DC0062533B4F900021863 /* Router.swift */,
+				C3850A24253739100057F500 /* BaseView.swift */,
+				C3850A2925373C620057F500 /* BaseSubView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1324,6 +1330,7 @@
 				9421332E24C33F820043FBD2 /* BuildKey.swift in Sources */,
 				94B571F324BBBECD00CA13A4 /* Repository.swift in Sources */,
 				C3804FD0248EEB55008A302B /* QueueChartView.swift in Sources */,
+				C3850A2A25373C620057F500 /* BaseSubView.swift in Sources */,
 				94C0908D253485E8001E0B37 /* FeatureRouteCell.swift in Sources */,
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
@@ -1354,6 +1361,7 @@
 				C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */,
 				C34755EE24FC878B009B1FBF /* TaskStatusCell.swift in Sources */,
 				C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */,
+				C3850A25253739100057F500 /* BaseView.swift in Sources */,
 				9455103F253383A7007A1299 /* Route.swift in Sources */,
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,

@@ -18,20 +18,7 @@ struct MonitorActiveBuildsView: View {
     // MARK: - Body
     
     var body: some View {
-        switch viewModel.state {
-        case .loading:
-            List {
-                ForEach(0..<10) { _ in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Basic list loading text")
-                        }
-                    }
-                }
-            }.redacted(reason: .placeholder)
-        case .networkError:
-            Text("A network error has occurred")
-        case .results(let activeBuilds):
+        BaseView(viewModel: viewModel, content: { activeBuilds in
             List {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
@@ -42,7 +29,7 @@ struct MonitorActiveBuildsView: View {
                 }
             }
             .listStyle(DefaultListStyle())
-        }
+        })
     }}
 
 #if DEBUG
