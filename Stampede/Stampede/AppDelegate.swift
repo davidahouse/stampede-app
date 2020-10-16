@@ -15,7 +15,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
+//
+//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+//        // Get URL components from the incoming user activity.
+//        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+//            let incomingURL = userActivity.webpageURL,
+//            let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true) else {
+//            return false
+//        }
+//
+//        // Check for specific URL components that you need.
+//        guard let path = components.path,
+//        let params = components.queryItems else {
+//            return false
+//        }
+//        print("path = \(path)")
+//        print("params = \(params)")
+//        return false
+//    }
+//
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        // Determine who sent the URL.
+//            let sendingAppID = options[.sourceApplication]
+//            print("source application = \(sendingAppID ?? "Unknown")")
+//
+//            // Process the URL.
+//            guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+//                let path = components.path,
+//                let params = components.queryItems else {
+//                    print("Invalid URL or album path missing")
+//                    return false
+//            }
+//
+//        print("path = \(path)")
+//        print("params = \(params)")
+//        return true
+//    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

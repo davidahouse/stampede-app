@@ -67,4 +67,18 @@ enum Route {
             return SettingsInfoFeature.makeFeature(dependencies)
         }
     }
+    
+    static func fromURL(_ url: URL) -> Route? {
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        switch url.path {
+        case "/build":
+            if let buildID = components?.queryItems?.filter({ $0.name == "buildID" }).first {
+                return nil
+            } else {
+                return nil
+            }
+        default:
+            return nil
+        }
+    }
 }
