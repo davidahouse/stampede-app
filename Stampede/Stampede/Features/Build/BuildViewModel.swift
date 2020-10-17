@@ -9,20 +9,23 @@
 import Foundation
 import SwiftUI
 
-class BuildViewModel: ObservableObject {
+class BuildViewModel: BaseViewModel<BuildStatus> { } {
 
     // MARK: - Published
-
-    @Published var buildStatus: BuildStatus
     
     var statusImage: some View {
-        switch buildStatus.statusIndicator {
-        case .inProgress:
-            return CurrentTheme.Icons.inProgress.image()
-        case .failure:
-            return CurrentTheme.Icons.failure.image()
-        case .success:
-            return CurrentTheme.Icons.success.image()
+        switch state {
+        case .results(let buildStatus):
+            switch buildStatus.statusIndicator {
+            case .inProgress:
+                return CurrentTheme.Icons.inProgress.image()
+            case .failure:
+                return CurrentTheme.Icons.failure.image()
+            case .success:
+                return CurrentTheme.Icons.success.image()
+            }
+        default:
+            return CurrentTheme.Icons.warningStatus.image()
         }
     }
 

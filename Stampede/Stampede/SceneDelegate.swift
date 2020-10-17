@@ -58,24 +58,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
     }
-
-    func scene(_ scene: UIScene, willContinueUserActivityWithType userActivityType: String) {
-        
-        print("willContinue")
-    }
     
     /**
      This method is called if the app is already running and we want to deep link into it.
      */
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
-        print("open URL contexts!")
-        
         if let first = URLContexts.first {
-            
-            
-            
-            
         }
     }
     
