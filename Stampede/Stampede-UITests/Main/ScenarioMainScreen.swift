@@ -43,37 +43,37 @@ class ScenarioMainScreen: BDDTestCase {
 
     func testMainScreenContainsRouteToHistoryBuildsScreen() throws {
         givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
+        andTheHistorySectionIsVisible()
         thenTheHistoryBuildsButtonIsDisplayed()
     }
 
     func testMainScreenContainsRouteToHistoryTasksScreen() throws {
         givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
+        andTheHistorySectionIsVisible()
         thenTheHistoryTasksButtonIsDisplayed()
     }
 
     func testMainScreenContainsRouteToSettingsStampedeServerScreen() throws {
         givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
+        andTheSettingsSectionIsVisible()
         thenTheSettingsStampedeServerButtonIsDisplayed()
     }
 
     func testMainScreenContainsRouteToSettingsRepositoriesScreen() throws {
         givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
+        andTheSettingsSectionIsVisible()
         thenTheSettingsRepositoriesButtonIsDisplayed()
     }
 
     func testMainScreenContainsRouteToSettingsNotificationsScreen() throws {
         givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
+        andTheSettingsSectionIsVisible()
         thenTheSettigsNotificationsButtonIsDisplayed()
     }
 
     func testMainScreenContainsRouteToSettingsInfoScreen() throws {
         givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
+        andTheSettingsSectionIsVisible()
         thenTheSettingsInfoButtonIsDisplayed()
     }
 }

@@ -13,48 +13,62 @@ struct BuildTaskView: View {
     @EnvironmentObject var viewModel: BuildTaskViewModel
 
     var body: some View {
-        List {
-            Section(header: Text("Task Information")) {
-                HStack {
-                    PrimaryLabel("Task")
-                    Spacer()
-                    PrimaryLabel(viewModel.task.task)
-                }
+        BaseView(viewModel: viewModel, content: { taskDetails in
+            List {
+                Section(header: Text("Task Information")) {
+                    HStack {
+                        PrimaryLabel("Task")
+                        Spacer()
+                        PrimaryLabel(taskDetails.task.task)
+                    }
 
-                HStack {
-                    PrimaryLabel("Conclusion")
-                    Spacer()
-                    ValueLabel(viewModel.task.conclusion ?? "")
-                }
+                    HStack {
+                        PrimaryLabel("Conclusion")
+                        Spacer()
+                        ValueLabel(taskDetails.task.conclusion ?? "")
+                    }
 
-                HStack {
-                    PrimaryLabel("Node")
-                    Spacer()
-                    ValueLabel(viewModel.task.node ?? "")
-                }
+                    HStack {
+                        PrimaryLabel("Node")
+                        Spacer()
+                        ValueLabel(taskDetails.task.node ?? "")
+                    }
 
-                HStack {
-                    PrimaryLabel("Duration")
-                    Spacer()
-                    ValueLabel(viewModel.task.duration)
+                    HStack {
+                        PrimaryLabel("Duration")
+                        Spacer()
+                        ValueLabel(taskDetails.task.duration)
+                    }
+
+                    ForEach(taskDetails.scmDetails, id: \.self) { detail in
+                        HStack {
+                            PrimaryLabel(detail.title)
+                            Spacer()
+                            ValueLabel(detail.value)
+                        }
+                    }
+                }
+                if taskDetails.artifacts.count > 0 {
+                    Section(header: Text("Artifacts")) {
+                        ForEach(taskDetails.artifacts, id: \.self) { artifact in
+                            HStack {
+                                PrimaryLabel(artifact.title)
+                                Spacer()
+                                ValueLabel(artifact.type)
+                            }
+                        }
+                    }
+                }
+                Section(header: Text("Summary")) {
+                    Text(taskDetails.summary)
+                }
+                if taskDetails.text != "" {
+                    Section(header: Text("Text")) {
+                        Text(taskDetails.text)
+                    }
                 }
             }
-            Section(header: Text("Task Config")) {
-                Text("Hello")
-            }
-            Section(header: Text("Task Results")) {
-                Text("Hello")
-            }
-            Section(header: Text("Artifacts")) {
-                Text("Hello")
-            }
-            Section(header: Text("Summary")) {
-                Text("Hello")
-            }
-            Section(header: Text("Text")) {
-                Text("Hello")
-            }
-        }
+        })
     }
 }
 
@@ -62,7 +76,7 @@ struct BuildTaskView: View {
 struct BuildTaskView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            BuildTaskView().environmentObject(BuildTaskViewModel(task: TaskStatus.completedTask))
+            BuildTaskView().environmentObject(BuildTaskViewModel(state: .results(TaskDetails.someTaskDetails)))
         }
     }
 }
