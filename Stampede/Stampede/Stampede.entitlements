@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>stampede:www.stampedeci.com</string>
+		<string>stampede:stampedeci.com</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
