@@ -12,9 +12,27 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var mainFeature: MainFeature?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
+        if let userActivity = connectionOptions.userActivities.first,
+               userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+               let incomingURL = userActivity.webpageURL,
+               let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true) {
+           
+            // Handle this link!
+            
+            // Check for specific URL components that you need.
+           guard let path = components.path,
+               let params = components.queryItems else {
+               return
+           }
+           print("scene path = \(path)")
+           print("scene params = \(params)")
+            return
+        }
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -29,7 +47,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     }
                 }()
 
-                let rootNavVC = MainNavigationController(rootViewController: MainFeature(dependencies: dependencies))
+                mainFeature = MainFeature(dependencies: dependencies)
+                let rootNavVC = MainNavigationController(rootViewController: mainFeature!)
                 window.rootViewController = rootNavVC
             } else {
                 window.rootViewController = UIViewController()
@@ -37,9 +56,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
-
     }
-
+    
+    /**
+     This method is called if the app is already running and we want to deep link into it.
+     */
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let first = URLContexts.first, let route = Route.fromURL(first.url) {
+            mainFeature?.push(route: route)
+        }
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

@@ -20,6 +20,7 @@ public protocol StampedeServiceProvider {
     func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>?
     func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>?
     func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>?
+    func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>?
 
     // Monitor
     func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>?

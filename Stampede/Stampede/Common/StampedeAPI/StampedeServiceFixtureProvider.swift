@@ -27,6 +27,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var configOverrides = ConfigOverrides.someOverrides
     var configQueues = Queue.someQueues
     var buildKeys = BuildKey.someBranchKeys
+    var buildDetails = BuildStatus.buildCompletedHoursAgo
 
     var fetchRepositoriesPublisherCalled = false
     var fetchActiveBuildsPublisherCalled = false
@@ -41,6 +42,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var fetchAdminConfigOverridesPublisherCalled = false
     var fetchAdminQueuesPublisherCalled = false
     var fetchBuildKeysPublisherCalled = false
+    var fetchBuildDetailsPublisherCalled = false
 
     var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
 
@@ -74,6 +76,11 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {
         fetchRepositoryBuildsPublisherCalled = true
         return fetchPublisher(repositoryBuilds)
+    }
+    
+    func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>? {
+        fetchBuildDetailsPublisherCalled = true
+        return fetchPublisher(buildDetails)
     }
     
     func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>? {

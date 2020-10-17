@@ -45,6 +45,13 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
         }
         return request(url: StampedeAPIEndpoint.repositoryBuilds(owner, repository).url(host: host))
     }
+    
+    public func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>? {
+        guard let host = host else {
+            return AnyPublisher<BuildStatus, ServiceError>(Future<BuildStatus, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
+        }
+        return request(url: StampedeAPIEndpoint.buildDetails(buildID).url(host: host))
+    }
 
     public func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>? {
         guard let host = host else {

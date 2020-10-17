@@ -19,7 +19,7 @@ class BuildViewModelTests: XCTestCase {
             BuildStatus.someRecentFailedBuild
         ]
         for status in buildStatuses {
-            let viewModel = BuildViewModel(buildStatus: status)
+            let viewModel = BuildViewModel(state: .results(status))
             _ = viewModel.statusImage
         }
     }

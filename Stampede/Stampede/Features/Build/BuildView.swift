@@ -18,18 +18,19 @@ struct BuildView: View {
     // MARK: - View
 
     var body: some View {
-        List {
+        BaseView(viewModel: viewModel, content: { buildStatus in
+            List {
                 Section(header: Text("Build Details")) {
                     HStack {
                         Text("Owner")
                         Spacer()
-                        Text(viewModel.buildStatus.buildDetails.owner)
+                        Text(buildStatus.buildDetails.owner)
                     }
 
                     HStack {
                         Text("Repository")
                         Spacer()
-                        Text(viewModel.buildStatus.buildDetails.repository)
+                        Text(buildStatus.buildDetails.repository)
                     }
 
                     HStack {
@@ -41,10 +42,10 @@ struct BuildView: View {
                     HStack {
                         Text("Started At")
                         Spacer()
-                        PrimaryLabel("\(viewModel.buildStatus.buildDetails.started_at)")
+                        PrimaryLabel("\(buildStatus.buildDetails.started_at)")
                     }
 
-                    if let completed_at = viewModel.buildStatus.buildDetails.completed_at {
+                    if let completed_at = buildStatus.buildDetails.completed_at {
                         HStack {
                             Text("Completed At")
                             Spacer()
@@ -60,7 +61,7 @@ struct BuildView: View {
                 }
 
                 Section(header: Text("Tasks")) {
-                    ForEach(viewModel.buildStatus.tasks) { task in
+                    ForEach(buildStatus.tasks) { task in
                         Button(action: {
                             router.route(to: .taskDetails(task))
                         }, label: {
@@ -68,7 +69,8 @@ struct BuildView: View {
                         })
                     }
                 }
-        }
+            }
+        })
     }
 }
 
@@ -76,8 +78,8 @@ struct BuildView: View {
 struct BuildView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            BuildView().environmentObject(BuildViewModel(buildStatus: BuildStatus.someActiveBuild))
-            BuildView().environmentObject(BuildViewModel(buildStatus: BuildStatus.someRecentSuccessBuild))
+            BuildView().environmentObject(BuildViewModel(state: .results(BuildStatus.someActiveBuild)))
+            BuildView().environmentObject(BuildViewModel(state: .results(BuildStatus.someRecentSuccessBuild)))
         }
     }
 }

@@ -19,6 +19,7 @@ enum Route {
     // Repository and Builds
     case repositoryDetails(_ repository: Repository)
     case buildDetails(_ buildStatus: BuildStatus)
+    case buildDetailsFromID(_ buildID: String)
     case taskDetails(_ task: TaskStatus)
     
     // Monitor
@@ -43,6 +44,8 @@ enum Route {
             return RepositoryFeature.makeFeature(dependencies, repository: repository)
         case .buildDetails(let buildStatus):
             return BuildFeature.makeFeature(dependencies, build: buildStatus)
+        case .buildDetailsFromID(let buildID):
+            return BuildFeature.makeFeature(dependencies, buildID: buildID)
         case .taskDetails(let task):
             return BuildTaskFeature.makeFeature(dependencies, task: task)
         case .monitorLive:
@@ -65,6 +68,20 @@ enum Route {
             return SettingsNotificationsFeature.makeFeature(dependencies)
         case .settingsInfo:
             return SettingsInfoFeature.makeFeature(dependencies)
+        }
+    }
+    
+    static func fromURL(_ url: URL) -> Route? {
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        switch url.path {
+        case "/build":
+            if let buildIDQueryItem = components?.queryItems?.filter({ $0.name == "buildID" }).first, let buildID = buildIDQueryItem.value {
+                return .buildDetailsFromID(buildID)
+            } else {
+                return nil
+            }
+        default:
+            return nil
         }
     }
 }
