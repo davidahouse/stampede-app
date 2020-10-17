@@ -63,7 +63,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      This method is called if the app is already running and we want to deep link into it.
      */
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let first = URLContexts.first {
+        if let first = URLContexts.first, let route = Route.fromURL(first.url) {
+            mainFeature?.push(route: route)
         }
     }
     

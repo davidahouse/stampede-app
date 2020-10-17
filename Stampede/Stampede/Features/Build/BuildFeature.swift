@@ -16,9 +16,14 @@ class BuildFeature: BaseFeature {
         return BuildFeature(dependencies: dependencies, buildStatus: build)
     }
     
+    static func makeFeature(_ dependencies: Dependencies, buildID: String) -> BaseFeature {
+        return BuildFeature(dependencies: dependencies, buildID: buildID)
+    }
+    
     // MARK: - Private Properties
     
     private var viewModel: BuildViewModel
+    private var buildID: String?
 
     // MARK: - Overrides
     
@@ -33,8 +38,16 @@ class BuildFeature: BaseFeature {
     // MARK: - Initializer
     
     init(dependencies: Dependencies, buildStatus: BuildStatus) {
-        viewModel = BuildViewModel(buildStatus: buildStatus)
+        viewModel = BuildViewModel(state: .results(buildStatus))
         super.init(dependencies: dependencies)
+        title = buildStatus.buildIdentifier
+    }
+    
+    init(dependencies: Dependencies, buildID: String) {
+        viewModel = BuildViewModel(state: .loading)
+        self.buildID = buildID
+        super.init(dependencies: dependencies)
+        title = buildID
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +58,12 @@ class BuildFeature: BaseFeature {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.buildStatus.buildIdentifier
         navigationItem.largeTitleDisplayMode = .automatic
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let buildID = buildID {
+            viewModel.publisher = dependencies.service.fetchBuildDetailsPublisher(buildID: buildID)
+        }
     }
 }

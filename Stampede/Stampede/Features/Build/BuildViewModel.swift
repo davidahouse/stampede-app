@@ -8,8 +8,9 @@
 
 import Foundation
 import SwiftUI
+import HouseKit
 
-class BuildViewModel: BaseViewModel<BuildStatus> { } {
+class BuildViewModel: BaseViewModel<BuildStatus> {
 
     // MARK: - Published
     
@@ -27,11 +28,5 @@ class BuildViewModel: BaseViewModel<BuildStatus> { } {
         default:
             return CurrentTheme.Icons.warningStatus.image()
         }
-    }
-
-    // MARK: - Initializer
-
-    init(buildStatus: BuildStatus) {
-        self.buildStatus = buildStatus
     }
 }
