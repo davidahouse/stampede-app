@@ -125,6 +125,9 @@
 		C3AD03A924885D4600EB881F /* MonitorLiveFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03A824885D4600EB881F /* MonitorLiveFeature.swift */; };
 		C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */; };
 		C3AD03AD24887C4200EB881F /* QueueGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03AC24887C4200EB881F /* QueueGaugeView.swift */; };
+		C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1225D253B5E7C005FD154 /* TaskDetails.swift */; };
+		C3B12263253B5FD2005FD154 /* TaskSCMDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */; };
+		C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12267253B600E005FD154 /* TaskArtifact.swift */; };
 		C3B1D62B23AE8598002CCE66 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */; };
 		C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */; };
 		C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */; };
@@ -318,6 +321,9 @@
 		C3AD03A824885D4600EB881F /* MonitorLiveFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveFeature.swift; sourceTree = "<group>"; };
 		C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveViewModel.swift; sourceTree = "<group>"; };
 		C3AD03AC24887C4200EB881F /* QueueGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueGaugeView.swift; sourceTree = "<group>"; };
+		C3B1225D253B5E7C005FD154 /* TaskDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetails.swift; sourceTree = "<group>"; };
+		C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSCMDetails.swift; sourceTree = "<group>"; };
+		C3B12267253B600E005FD154 /* TaskArtifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskArtifact.swift; sourceTree = "<group>"; };
 		C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsFeature.swift; sourceTree = "<group>"; };
 		C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsView.swift; sourceTree = "<group>"; };
@@ -571,6 +577,9 @@
 				94B571E124BBBECD00CA13A4 /* BuildStatus.swift */,
 				94B571E224BBBECD00CA13A4 /* Task.swift */,
 				9421332D24C33F820043FBD2 /* BuildKey.swift */,
+				C3B1225D253B5E7C005FD154 /* TaskDetails.swift */,
+				C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */,
+				C3B12267253B600E005FD154 /* TaskArtifact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1339,6 +1348,7 @@
 				C34755F024FC88E2009B1FBF /* QueueSummaryCell.swift in Sources */,
 				94B571F724BBBECD00CA13A4 /* Task.swift in Sources */,
 				C35D51B02353C5DF00FDA4A8 /* MainView.swift in Sources */,
+				C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */,
 				C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */,
 				94B571F124BBBECD00CA13A4 /* RepositoryBuild.swift in Sources */,
 				C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */,
@@ -1366,6 +1376,7 @@
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
+				C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */,
 				C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */,
 				C3CA2E1024BA9EC00086B71D /* HistoryBuildsViewModel.swift in Sources */,
 				C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */,
@@ -1400,6 +1411,7 @@
 				94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */,
 				94E913AE24BB512B0056A150 /* BuildTaskViewModel.swift in Sources */,
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,
+				C3B12263253B5FD2005FD154 /* TaskSCMDetails.swift in Sources */,
 				C3CA2E2224BA9F600086B71D /* SettingsNotificationsView.swift in Sources */,
 				C3816C80248702AB00E6980B /* MonitorActiveTasksFeature.swift in Sources */,
 				C30DBF9D252D2B4500021863 /* TimeInterval+Extension.swift in Sources */,

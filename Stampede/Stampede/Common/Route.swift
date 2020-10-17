@@ -20,7 +20,7 @@ enum Route {
     case repositoryDetails(_ repository: Repository)
     case buildDetails(_ buildStatus: BuildStatus)
     case buildDetailsFromID(_ buildID: String)
-    case taskDetails(_ task: TaskStatus)
+    case taskDetails(_ taskID: String)
     
     // Monitor
     case monitorLive
@@ -46,8 +46,8 @@ enum Route {
             return BuildFeature.makeFeature(dependencies, build: buildStatus)
         case .buildDetailsFromID(let buildID):
             return BuildFeature.makeFeature(dependencies, buildID: buildID)
-        case .taskDetails(let task):
-            return BuildTaskFeature.makeFeature(dependencies, task: task)
+        case .taskDetails(let taskID):
+            return BuildTaskFeature.makeFeature(dependencies, taskID: taskID)
         case .monitorLive:
             return MonitorLiveFeature.makeFeature(dependencies)
         case .monitorActiveBuilds:

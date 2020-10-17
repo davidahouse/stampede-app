@@ -12,13 +12,14 @@ class BuildTaskFeature: BaseFeature {
     
     // MARK: - Static methods
     
-    static func makeFeature(_ dependencies: Dependencies, task: TaskStatus) -> BaseFeature {
-        return BuildTaskFeature(dependencies: dependencies, task: task)
+    static func makeFeature(_ dependencies: Dependencies, taskID: String) -> BaseFeature {
+        return BuildTaskFeature(dependencies: dependencies, taskID: taskID)
     }
     
     // MARK: - Private Properties
     
     private var viewModel: BuildTaskViewModel
+    private var taskID: String
 
     // MARK: - Overrides
     
@@ -32,8 +33,9 @@ class BuildTaskFeature: BaseFeature {
 
     // MARK: - Initializer
     
-    init(dependencies: Dependencies, task: TaskStatus) {
-        viewModel = BuildTaskViewModel(task: task)
+    init(dependencies: Dependencies, taskID: String) {
+        viewModel = BuildTaskViewModel(state: .loading)
+        self.taskID = taskID
         super.init(dependencies: dependencies)
     }
     
@@ -45,7 +47,10 @@ class BuildTaskFeature: BaseFeature {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.task.task
         navigationItem.largeTitleDisplayMode = .automatic
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchTaskDetailsPublisher(taskID: taskID)
     }
 }

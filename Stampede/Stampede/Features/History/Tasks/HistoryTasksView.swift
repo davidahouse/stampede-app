@@ -22,7 +22,7 @@ struct HistoryTasksView: View {
             List {
                 ForEach(tasks, id: \.self) { item in
                     Button(action: {
-                        router.route(to: .taskDetails(item))
+                        router.route(to: .taskDetails(item.task_id))
                     }, label: {
                         TaskStatusCell(taskStatus: item)
                     })

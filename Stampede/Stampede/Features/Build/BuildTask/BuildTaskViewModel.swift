@@ -7,12 +7,6 @@
 //
 
 import Foundation
+import HouseKit
 
-class BuildTaskViewModel: ObservableObject {
-
-    @Published var task: TaskStatus
-
-    init(task: TaskStatus) {
-        self.task = task
-    }
-}
+class BuildTaskViewModel: BaseViewModel<TaskDetails> { }
