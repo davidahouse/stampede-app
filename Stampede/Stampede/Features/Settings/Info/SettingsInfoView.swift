@@ -48,12 +48,6 @@ struct SettingsInfoView: View {
                     Text("Scene Delegate received unknown activity type")
                 }
                 Text("Deep Link Path: " + SceneDelegate.deepLinkPath)
-                if AppDelegate.didReceiveLaunchOptions {
-                    Text("App Delegate received launch options")
-                }
-                if AppDelegate.didReceiveContinueUserActivity {
-                    Text("App Delegate received continue user activity")
-                }
             }
         }
         .listStyle(DefaultListStyle())
