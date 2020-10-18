@@ -17,6 +17,7 @@ class Dependencies {
     let service: StampedeService
     let theme: CurrentTheme
     let repositoryList: RepositoryList
+    let debugInfo = DebugInfo()
 
     init(serviceProvider: StampedeServiceProvider? = nil, repositoryList: RepositoryList = BaseRepositoryList()) {
         theme = CurrentTheme()

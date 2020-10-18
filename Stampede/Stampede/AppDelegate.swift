@@ -10,13 +10,20 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static var didReceiveLaunchOptions = false
+    static var didReceiveContinueUserActivity = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if launchOptions != nil {
+            AppDelegate.didReceiveLaunchOptions = true
+        }
         return true
     }
 
     func application(_ application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
+        AppDelegate.didReceiveContinueUserActivity = true
         return true
     }
     

@@ -14,24 +14,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var mainFeature: MainFeature?
 
+    static var didReceiveUserActivities = false
+    static var didReceiveURLContexts = false
+    static var didFailToHandleURLContexts = false
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        if let userActivity = connectionOptions.userActivities.first,
-               userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-               let incomingURL = userActivity.webpageURL,
-               let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true) {
-           
-            // Handle this link!
-            
-            // Check for specific URL components that you need.
-           guard let path = components.path,
-               let params = components.queryItems else {
-               return
-           }
-           print("scene path = \(path)")
-           print("scene params = \(params)")
-            return
+        if let userActivity = connectionOptions.userActivities.first {
+            SceneDelegate.didReceiveUserActivities = true
         }
+        
+//        if let userActivity = connectionOptions.userActivities.first,
+//               userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+//               let incomingURL = userActivity.webpageURL,
+//               let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true) {
+//
+//            // Handle this link!
+//
+//            // Check for specific URL components that you need.
+//           guard let path = components.path,
+//               let params = components.queryItems else {
+//               return
+//           }
+//           print("scene path = \(path)")
+//           print("scene params = \(params)")
+//            return
+//        }
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -62,8 +70,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      This method is called if the app is already running and we want to deep link into it.
      */
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        SceneDelegate.didReceiveURLContexts = true
         if let first = URLContexts.first, let route = Route.fromURL(first.url) {
             mainFeature?.push(route: route)
+        } else {
+            SceneDelegate.didFailToHandleURLContexts = true
         }
     }
     

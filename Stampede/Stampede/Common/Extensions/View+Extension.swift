@@ -14,6 +14,7 @@ extension View {
     func dependenciesToEnvironment(_ dependencies: Dependencies) -> some View {
         return self
             .environmentObject(dependencies.theme)
+            .environmentObject(dependencies.debugInfo)
     }
 
     #if DEBUG

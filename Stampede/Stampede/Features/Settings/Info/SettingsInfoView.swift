@@ -17,6 +17,7 @@ struct SettingsInfoView: View {
     // MARK: - Observed Objects
 
     @EnvironmentObject var viewModel: SettingsInfoViewModel
+    @EnvironmentObject var debugInfo: DebugInfo
 
     var body: some View {
         List {
@@ -27,6 +28,24 @@ struct SettingsInfoView: View {
 
                 }
             })
+            ForEach(debugInfo.messages, id: \.self) { message in
+                Text(message)
+            }
+            if SceneDelegate.didReceiveUserActivities {
+                Text("Scene Delegate received user activities")
+            }
+            if SceneDelegate.didReceiveURLContexts {
+                Text("Scene Delegate received URL contexts")
+            }
+            if SceneDelegate.didFailToHandleURLContexts {
+                Text("Scene Delegate failed to handle URL contexts")
+            }
+            if AppDelegate.didReceiveLaunchOptions {
+                Text("App Delegate received launch options")
+            }
+            if AppDelegate.didReceiveContinueUserActivity {
+                Text("App Delegate received continue user activity")
+            }
         }
         .listStyle(DefaultListStyle())
     }

@@ -49,6 +49,7 @@
 		94C0909225348923001E0B37 /* FavoriteRepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C0909125348923001E0B37 /* FavoriteRepositoryCell.swift */; };
 		94C090972534A774001E0B37 /* RepositoryListFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C090962534A774001E0B37 /* RepositoryListFixture.swift */; };
 		94D4FFE72517FA0D0011AAB7 /* BuildKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D4FFE62517FA0D0011AAB7 /* BuildKeyTests.swift */; };
+		94D7441C253CA1E900B5813F /* DebugInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D7441B253CA1E900B5813F /* DebugInfo.swift */; };
 		94DB4DFF247C47B8001EF693 /* NetworkErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */; };
 		94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */; };
 		94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */; };
@@ -241,6 +242,7 @@
 		94C0909125348923001E0B37 /* FavoriteRepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryCell.swift; sourceTree = "<group>"; };
 		94C090962534A774001E0B37 /* RepositoryListFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListFixture.swift; sourceTree = "<group>"; };
 		94D4FFE62517FA0D0011AAB7 /* BuildKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildKeyTests.swift; sourceTree = "<group>"; };
+		94D7441B253CA1E900B5813F /* DebugInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugInfo.swift; sourceTree = "<group>"; };
 		94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewTests.swift; sourceTree = "<group>"; };
 		94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueLabel.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 				C3F76680245B0F300022E485 /* StampedeDefaults.swift */,
 				94FE1F4624FB081500AE4ED4 /* RepositoryList.swift */,
 				94C090962534A774001E0B37 /* RepositoryListFixture.swift */,
+				94D7441B253CA1E900B5813F /* DebugInfo.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -1340,6 +1343,7 @@
 				94B571F324BBBECD00CA13A4 /* Repository.swift in Sources */,
 				C3804FD0248EEB55008A302B /* QueueChartView.swift in Sources */,
 				C3850A2A25373C620057F500 /* BaseSubView.swift in Sources */,
+				94D7441C253CA1E900B5813F /* DebugInfo.swift in Sources */,
 				94C0908D253485E8001E0B37 /* FeatureRouteCell.swift in Sources */,
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
