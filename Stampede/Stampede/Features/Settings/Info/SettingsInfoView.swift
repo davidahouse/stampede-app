@@ -56,6 +56,8 @@ struct SettingsInfoView: View {
 
 struct SettingsInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsInfoView().environmentObject(SettingsInfoViewModel())
+        Previewer {
+            SettingsInfoView().environmentObject(SettingsInfoViewModel())
+        }
     }
 }
