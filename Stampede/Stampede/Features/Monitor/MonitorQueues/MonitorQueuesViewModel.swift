@@ -14,7 +14,7 @@ class MonitorQueuesViewModel: BaseViewModel<[QueueSummary]> { }
 #if DEBUG
 extension MonitorQueuesViewModel {
     static let loading = MonitorQueuesViewModel(state: .loading)
-    static let networkError = MonitorQueuesViewModel(state: .networkError)
+    static let networkError = MonitorQueuesViewModel(state: .networkError(.network(description: "some error")))
     static let someQueues = MonitorQueuesViewModel(state: .results(QueueSummary.someSummaries))
 }
 #endif

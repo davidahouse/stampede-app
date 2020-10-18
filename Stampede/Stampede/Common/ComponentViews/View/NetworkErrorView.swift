@@ -7,10 +7,17 @@
 //
 
 import SwiftUI
+import HouseKit
 
 struct NetworkErrorView: View {
+    
+    let error: ServiceError
+    
     var body: some View {
-        PrimaryLabel("Network error received. Check your stampede server url in settings.")
+        VStack {
+            PrimaryLabel("Network error received. Check your stampede server url in settings.")
+            SecondaryLabel(error.errorDescription ?? "")
+        }
     }
 }
 
@@ -18,7 +25,7 @@ struct NetworkErrorView: View {
 struct NetworkErrorView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            NetworkErrorView()
+            NetworkErrorView(error: .network(description: "error description here"))
         }
     }
 }

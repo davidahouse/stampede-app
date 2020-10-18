@@ -55,7 +55,7 @@ struct SettingsRepositoriesView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
             SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .loading))
-            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .networkError))
+            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .networkError(.network(description: "some error"))))
             SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
             SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results([])))
         }

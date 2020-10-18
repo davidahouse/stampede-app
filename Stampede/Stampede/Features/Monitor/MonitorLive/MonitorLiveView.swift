@@ -25,8 +25,8 @@ struct MonitorLiveView: View {
         switch viewModel.state {
         case .loading:
             Text("Loading...")
-        case .networkError:
-            NetworkErrorView()
+        case .networkError(let error):
+            NetworkErrorView(error: error)
         case .results(let results):
 //            ScrollView {
 //                LazyVGrid(columns: columns) {

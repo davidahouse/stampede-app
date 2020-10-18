@@ -14,7 +14,7 @@ class MonitorActiveBuildsViewModel: BaseViewModel<[BuildStatus]> { }
 #if DEBUG
 extension MonitorActiveBuildsViewModel {
     static let loading = MonitorActiveBuildsViewModel(state: .loading)
-    static let networkError = MonitorActiveBuildsViewModel(state: .networkError)
+    static let networkError = MonitorActiveBuildsViewModel(state: .networkError(.network(description: "some error")))
     static let someBuilds = MonitorActiveBuildsViewModel(state: .results(BuildStatus.recentBuilds))
 }
 #endif

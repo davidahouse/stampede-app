@@ -15,7 +15,7 @@ class HistoryBuildsViewModel: BaseViewModel<[BuildStatus]> { }
 #if DEBUG
 extension HistoryBuildsViewModel {
     static let loading = HistoryBuildsViewModel(state: .loading)
-    static let networkError = HistoryBuildsViewModel(state: .networkError)
+    static let networkError = HistoryBuildsViewModel(state: .networkError(.network(description: "some error")))
     static let someBuilds = HistoryBuildsViewModel(state: .results(BuildStatus.recentBuilds))
 }
 #endif

@@ -74,7 +74,7 @@ class RepositoryViewModel: ObservableObject {
           if case let .failure(error) = result {
             print("Error receiving \(error)")
             DispatchQueue.main.async {
-                self.activeBuildsState = .networkError
+                self.activeBuildsState = .networkError(error)
             }
           }
         }, receiveValue: { value in
@@ -89,7 +89,7 @@ class RepositoryViewModel: ObservableObject {
           if case let .failure(error) = result {
             print("Error receiving \(error)")
             DispatchQueue.main.async {
-                self.repositoryBuildsState = .networkError
+                self.repositoryBuildsState = .networkError(error)
             }
           }
         }, receiveValue: { value in
@@ -104,7 +104,7 @@ class RepositoryViewModel: ObservableObject {
           if case let .failure(error) = result {
             print("Error receiving \(error)")
             DispatchQueue.main.async {
-                self.branchKeysState = .networkError
+                self.branchKeysState = .networkError(error)
             }
           }
         }, receiveValue: { value in
@@ -119,7 +119,7 @@ class RepositoryViewModel: ObservableObject {
           if case let .failure(error) = result {
             print("Error receiving \(error)")
             DispatchQueue.main.async {
-                self.releaseKeysState = .networkError
+                self.releaseKeysState = .networkError(error)
             }
           }
         }, receiveValue: { value in
@@ -134,7 +134,7 @@ class RepositoryViewModel: ObservableObject {
           if case let .failure(error) = result {
             print("Error receiving \(error)")
             DispatchQueue.main.async {
-                self.pullRequestKeysState = .networkError
+                self.pullRequestKeysState = .networkError(error)
             }
           }
         }, receiveValue: { value in
