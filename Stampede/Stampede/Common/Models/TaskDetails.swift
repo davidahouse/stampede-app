@@ -24,7 +24,7 @@ typealias TaskDetailsResponsePublisher = AnyPublisher<TaskDetails, ServiceError>
 extension TaskDetails {
     static let someTaskDetails = TaskDetails(task: TaskStatus.completedTask,
                                              summary: "some summary text",
-                                             text: "some text",
+                                             text: "### Text header\n\n- list item\n- another list item",
                                              artifacts: TaskArtifact.someArtifacts,
                                              scmDetails: TaskSCMDetails.someDetails)
 }

@@ -129,6 +129,8 @@
 		C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1225D253B5E7C005FD154 /* TaskDetails.swift */; };
 		C3B12263253B5FD2005FD154 /* TaskSCMDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */; };
 		C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12267253B600E005FD154 /* TaskArtifact.swift */; };
+		C3B12279253CD57B005FD154 /* MarkdownContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12278253CD57B005FD154 /* MarkdownContentView.swift */; };
+		C3B1227F253CD897005FD154 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = C3B1227E253CD897005FD154 /* SwiftyMarkdown */; };
 		C3B1D62B23AE8598002CCE66 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */; };
 		C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */; };
 		C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */; };
@@ -326,6 +328,7 @@
 		C3B1225D253B5E7C005FD154 /* TaskDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetails.swift; sourceTree = "<group>"; };
 		C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSCMDetails.swift; sourceTree = "<group>"; };
 		C3B12267253B600E005FD154 /* TaskArtifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskArtifact.swift; sourceTree = "<group>"; };
+		C3B12278253CD57B005FD154 /* MarkdownContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContentView.swift; sourceTree = "<group>"; };
 		C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsFeature.swift; sourceTree = "<group>"; };
 		C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsView.swift; sourceTree = "<group>"; };
@@ -384,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FE1F4124FACE7A00AE4ED4 /* HouseKit in Frameworks */,
+				C3B1227F253CD897005FD154 /* SwiftyMarkdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1167,6 +1171,7 @@
 				C3F7668A245B704D0022E485 /* NetworkErrorView.swift */,
 				C3AD03AC24887C4200EB881F /* QueueGaugeView.swift */,
 				C3804FCF248EEB55008A302B /* QueueChartView.swift */,
+				C3B12278253CD57B005FD154 /* MarkdownContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1190,6 +1195,7 @@
 			name = Stampede;
 			packageProductDependencies = (
 				94FE1F4024FACE7A00AE4ED4 /* HouseKit */,
+				C3B1227E253CD897005FD154 /* SwiftyMarkdown */,
 			);
 			productName = "Stampede-Mobile";
 			productReference = C3349EB32350A92B00273730 /* Stampede.app */;
@@ -1265,6 +1271,7 @@
 			mainGroup = C3349E742350A90400273730;
 			packageReferences = (
 				94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */,
+				C3B1227D253CD897005FD154 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
 			);
 			productRefGroup = C3349E7E2350A90400273730 /* Products */;
 			projectDirPath = "";
@@ -1426,6 +1433,7 @@
 				C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */,
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,
 				94FE1F4C24FB18F700AE4ED4 /* SelectRepositoryView.swift in Sources */,
+				C3B12279253CD57B005FD154 /* MarkdownContentView.swift in Sources */,
 				C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */,
 				C3AD03A724885D2D00EB881F /* MonitorLiveView.swift in Sources */,
 				94E913AD24BB512B0056A150 /* BuildTaskView.swift in Sources */,
@@ -1852,6 +1860,14 @@
 				kind = branch;
 			};
 		};
+		C3B1227D253CD897005FD154 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimonFairbairn/SwiftyMarkdown";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1859,6 +1875,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */;
 			productName = HouseKit;
+		};
+		C3B1227E253CD897005FD154 /* SwiftyMarkdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B1227D253CD897005FD154 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
+			productName = SwiftyMarkdown;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

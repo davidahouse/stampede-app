@@ -9,6 +9,15 @@
           "revision": "de3c8c732ebcd7f737946970c1b07687b5b79824",
           "version": null
         }
+      },
+      {
+        "package": "SwiftyMarkdown",
+        "repositoryURL": "https://github.com/SimonFairbairn/SwiftyMarkdown",
+        "state": {
+          "branch": null,
+          "revision": "5b0a1e76332a633726f9f9a00b4bbd840166bccf",
+          "version": "1.2.3"
+        }
       }
     ]
   },
