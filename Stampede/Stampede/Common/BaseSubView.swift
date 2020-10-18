@@ -22,8 +22,8 @@ struct BaseSubView<T, Content: View>: View {
         switch state {
         case .loading:
             Text("Loading...")
-        case .networkError:
-            NetworkErrorView()
+        case .networkError(let error):
+            NetworkErrorView(error: error)
         case .results(let object):
             content(object)
         }

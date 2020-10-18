@@ -14,7 +14,7 @@ class MonitorActiveTasksViewModel: BaseViewModel<[TaskStatus]> { }
 #if DEBUG
 extension MonitorActiveTasksViewModel {
     static let loading = MonitorActiveTasksViewModel(state: .loading)
-    static let networkError = MonitorActiveTasksViewModel(state: .networkError)
+    static let networkError = MonitorActiveTasksViewModel(state: .networkError(.network(description: "some error")))
     static let someTasks = MonitorActiveTasksViewModel(state: .results(TaskStatus.recentTasks))
 }
 #endif
