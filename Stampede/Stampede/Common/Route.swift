@@ -74,7 +74,7 @@ enum Route {
     static func fromURL(_ url: URL) -> Route? {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         switch url.path {
-        case "/build":
+        case "/repositories/buildDetails":
             if let buildIDQueryItem = components?.queryItems?.filter({ $0.name == "buildID" }).first, let buildID = buildIDQueryItem.value {
                 return .buildDetailsFromID(buildID)
             } else {

@@ -31,20 +31,29 @@ struct SettingsInfoView: View {
             ForEach(debugInfo.messages, id: \.self) { message in
                 Text(message)
             }
-            if SceneDelegate.didReceiveUserActivities {
-                Text("Scene Delegate received user activities")
-            }
-            if SceneDelegate.didReceiveURLContexts {
-                Text("Scene Delegate received URL contexts")
-            }
-            if SceneDelegate.didFailToHandleURLContexts {
-                Text("Scene Delegate failed to handle URL contexts")
-            }
-            if AppDelegate.didReceiveLaunchOptions {
-                Text("App Delegate received launch options")
-            }
-            if AppDelegate.didReceiveContinueUserActivity {
-                Text("App Delegate received continue user activity")
+            Group {
+                if SceneDelegate.didReceiveUserActivities {
+                    Text("Scene Delegate received user activities")
+                }
+                if SceneDelegate.didReceiveURLContexts {
+                    Text("Scene Delegate received URL contexts")
+                }
+                if SceneDelegate.didFailToHandleURLContexts {
+                    Text("Scene Delegate failed to handle URL contexts")
+                }
+                if SceneDelegate.didReceiveBrowsingWebActivityType {
+                    Text("Scene Delegate received browsing web activity type")
+                }
+                if SceneDelegate.didReceiveUnknownActivityType {
+                    Text("Scene Delegate received unknown activity type")
+                }
+                Text("Deep Link Path: " + SceneDelegate.deepLinkPath)
+                if AppDelegate.didReceiveLaunchOptions {
+                    Text("App Delegate received launch options")
+                }
+                if AppDelegate.didReceiveContinueUserActivity {
+                    Text("App Delegate received continue user activity")
+                }
             }
         }
         .listStyle(DefaultListStyle())

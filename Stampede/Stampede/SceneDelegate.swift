@@ -17,11 +17,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     static var didReceiveUserActivities = false
     static var didReceiveURLContexts = false
     static var didFailToHandleURLContexts = false
+    static var didReceiveBrowsingWebActivityType = false
+    static var didReceiveUnknownActivityType = false
+    static var deepLinkPath = ""
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
+        var initialFeature: Route?
+        
         if let userActivity = connectionOptions.userActivities.first {
             SceneDelegate.didReceiveUserActivities = true
+            
+            switch userActivity.activityType {
+            case NSUserActivityTypeBrowsingWeb:
+                SceneDelegate.didReceiveBrowsingWebActivityType = true
+                if let incomingURL = userActivity.webpageURL {
+                    
+                    if let route = Route.fromURL(incomingURL) {
+                        initialFeature = route
+                    }
+                    SceneDelegate.deepLinkPath = incomingURL.path
+                }
+            default:
+                SceneDelegate.didReceiveUnknownActivityType = true
+            }
         }
         
 //        if let userActivity = connectionOptions.userActivities.first,
@@ -58,6 +77,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 mainFeature = MainFeature(dependencies: dependencies)
                 let rootNavVC = MainNavigationController(rootViewController: mainFeature!)
                 window.rootViewController = rootNavVC
+                if let initial = initialFeature {
+                    DispatchQueue.main.async {
+                        self.mainFeature?.push(route: initial)
+                    }
+                }
             } else {
                 window.rootViewController = UIViewController()
             }
