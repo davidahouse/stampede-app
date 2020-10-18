@@ -60,11 +60,11 @@ struct BuildTaskView: View {
                     }
                 }
                 Section(header: Text("Summary")) {
-                    Text(taskDetails.summary)
+                    MarkdownContentView(markdown: taskDetails.summary)
                 }
                 if taskDetails.text != "" {
                     Section(header: Text("Text")) {
-                        Text(taskDetails.text)
+                        MarkdownContentView(markdown: taskDetails.text)
                     }
                 }
             }
