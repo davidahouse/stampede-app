@@ -54,6 +54,7 @@ struct SettingsInfoView: View {
     }
 }
 
+#if DEBUG
 struct SettingsInfoView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
@@ -61,3 +62,4 @@ struct SettingsInfoView_Previews: PreviewProvider {
         }
     }
 }
+#endif
