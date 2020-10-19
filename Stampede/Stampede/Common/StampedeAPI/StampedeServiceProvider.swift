@@ -23,6 +23,9 @@ public protocol StampedeServiceProvider {
     func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>?
     func fetchTaskDetailsPublisher(taskID: String) -> AnyPublisher<TaskDetails, ServiceError>?
 
+    // Artifact
+    func fetchArtifactClocPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactCloc, ServiceError>?
+
     // Monitor
     func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>?
     func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>?

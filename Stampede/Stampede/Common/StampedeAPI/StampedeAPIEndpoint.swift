@@ -16,6 +16,8 @@ public enum StampedeAPIEndpoint {
     case buildKeys(String, String, String)
     case buildDetails(String)
     case taskDetails(String)
+    // Artifacts
+    case artifactContents(String, String)
     // Monitor
     case monitorActiveBuilds
     case monitorActiveTasks
@@ -32,6 +34,7 @@ public enum StampedeAPIEndpoint {
 
     public func url(host: String) -> URL {
         switch self {
+        // Repository
         case .repositories:
             return URL(string: "\(host)/api/repositories")!
         case let .activeBuilds(owner, repository):
@@ -44,6 +47,13 @@ public enum StampedeAPIEndpoint {
             return URL(string: "\(host)/api/repository/buildDetails?buildID=\(buildID)")!
         case let .taskDetails(taskID):
             return URL(string: "\(host)/api/repository/taskDetails?taskID=\(taskID)")!
+
+        // Artifacts
+        case .artifactContents(let taskID, let title):
+            let encodedTitle = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            return URL(string: "\(host)/api/repository/taskArtifactContents?taskID=\(taskID)&title=\(encodedTitle)")!
+
+        // Monitor
         case .monitorActiveBuilds:
             return URL(string: "\(host)/api/monitor/activeBuilds")!
         case .monitorActiveTasks:
@@ -52,10 +62,14 @@ public enum StampedeAPIEndpoint {
             return URL(string: "\(host)/api/monitor/workerStatus")!
         case .monitorQueues:
             return URL(string: "\(host)/api/monitor/queueSummary")!
+
+        // History
         case .historyTasks:
             return URL(string: "\(host)/api/history/tasks")!
         case .historyHourlySummary:
             return URL(string: "\(host)/api/history/hourlySummary")!
+
+        // Admin
         case .adminTasks:
             return URL(string: "\(host)/api/admin/tasks")!
         case .adminConfigDefaults:

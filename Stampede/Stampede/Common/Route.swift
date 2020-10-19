@@ -21,7 +21,10 @@ enum Route {
     case buildDetails(_ buildStatus: BuildStatus)
     case buildDetailsFromID(_ buildID: String)
     case taskDetails(_ taskID: String)
-    
+
+    // Artifact
+    case artifactCloc(taskID: String, title: String)
+
     // Monitor
     case monitorLive
     case monitorActiveBuilds
@@ -40,6 +43,7 @@ enum Route {
     
     func featureController(_ dependencies: Dependencies) -> UIViewController {
         switch self {
+        // Repository
         case .repositoryDetails(let repository):
             return RepositoryFeature.makeFeature(dependencies, repository: repository)
         case .buildDetails(let buildStatus):
@@ -48,6 +52,12 @@ enum Route {
             return BuildFeature.makeFeature(dependencies, buildID: buildID)
         case .taskDetails(let taskID):
             return BuildTaskFeature.makeFeature(dependencies, taskID: taskID)
+
+        // Artifact
+        case .artifactCloc(let taskID, let title):
+            return ArtifactClocFeature.makeFeature(dependencies, taskID: taskID, title: title)
+
+        // Monitor
         case .monitorLive:
             return MonitorLiveFeature.makeFeature(dependencies)
         case .monitorActiveBuilds:
@@ -56,10 +66,14 @@ enum Route {
             return MonitorActiveTasksFeature.makeFeature(dependencies)
         case .monitorQueues:
             return MonitorQueuesFeature.makeFeature(dependencies)
+
+        // History
         case .historyTasks:
             return HistoryTasksFeature.makeFeature(dependencies)
         case .historyBuilds:
             return HistoryBuildsFeature.makeFeature(dependencies)
+
+        // Settings
         case .settingsStampedeServer:
             return SettingsStampedeServerFeature.makeFeature(dependencies)
         case .settingsRepositories:
