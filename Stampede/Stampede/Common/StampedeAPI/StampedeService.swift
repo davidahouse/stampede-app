@@ -46,6 +46,10 @@ public class StampedeService: ObservableObject {
         return provider.fetchTaskDetailsPublisher(taskID: taskID)
     }
 
+    func fetchArtifactClocPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactCloc, ServiceError>? {
+        return provider.fetchArtifactClocPublisher(taskID: taskID, title: title)
+    }
+
     public func fetchAdminTasksPublisher() -> AnyPublisher<[Task], ServiceError>? {
         return provider.fetchAdminTasksPublisher()
     }

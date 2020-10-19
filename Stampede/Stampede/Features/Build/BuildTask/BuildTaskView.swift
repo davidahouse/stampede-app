@@ -11,23 +11,15 @@ import SwiftUI
 struct BuildTaskView: View {
 
     @EnvironmentObject var viewModel: BuildTaskViewModel
+    @EnvironmentObject var router: Router
 
     var body: some View {
         BaseView(viewModel: viewModel, content: { taskDetails in
             List {
                 BuildTaskInformationView(taskStatus: taskDetails.task)
                 BuildTaskSCMDetailsView(scmDetails: taskDetails.scmDetails)
-
                 if taskDetails.artifacts.count > 0 {
-                    Section(header: Text("Artifacts")) {
-                        ForEach(taskDetails.artifacts, id: \.self) { artifact in
-                            HStack {
-                                PrimaryLabel(artifact.title)
-                                Spacer()
-                                ValueLabel(artifact.type)
-                            }
-                        }
-                    }
+                    BuildTaskArtifactsView(taskID: taskDetails.task.task_id, artifacts: taskDetails.artifacts)
                 }
                 Section(header: Text("Summary")) {
                     MarkdownContentView(markdown: taskDetails.summary)
@@ -102,6 +94,39 @@ struct BuildTaskSCMDetailsView: View {
                     PrimaryLabel(detail.title)
                     Spacer()
                     ValueLabel(detail.value)
+                }
+            }
+        }
+    }
+}
+
+struct BuildTaskArtifactsView: View {
+
+    let taskID: String
+    let artifacts: [TaskArtifact]
+
+    @EnvironmentObject var router: Router
+
+    var body: some View {
+        Section(header: Text("Artifacts")) {
+            ForEach(artifacts, id: \.self) { artifact in
+                if artifact.type == "cloc" {
+                    Button(action: {
+                        router.route(to: .artifactCloc(taskID: taskID, title: artifact.title))
+                    }, label: {
+                        HStack {
+                            PrimaryLabel(artifact.title)
+                            Spacer()
+                            ValueLabel(artifact.type)
+                            Image(systemName: "chevron.right")
+                        }
+                    })
+                } else {
+                    HStack {
+                        PrimaryLabel(artifact.title)
+                        Spacer()
+                        ValueLabel(artifact.type)
+                    }
                 }
             }
         }

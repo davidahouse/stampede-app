@@ -131,6 +131,10 @@
 		C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12267253B600E005FD154 /* TaskArtifact.swift */; };
 		C3B12279253CD57B005FD154 /* MarkdownContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12278253CD57B005FD154 /* MarkdownContentView.swift */; };
 		C3B1227F253CD897005FD154 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = C3B1227E253CD897005FD154 /* SwiftyMarkdown */; };
+		C3B1228C253D03A0005FD154 /* ArtifactClocFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1228B253D03A0005FD154 /* ArtifactClocFeature.swift */; };
+		C3B12294253D044A005FD154 /* ArtifactClocViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12293253D044A005FD154 /* ArtifactClocViewModel.swift */; };
+		C3B1229A253D0479005FD154 /* ArtifactCloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12299253D0479005FD154 /* ArtifactCloc.swift */; };
+		C3B1229F253D05F2005FD154 /* ArtifactClocView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1229E253D05F2005FD154 /* ArtifactClocView.swift */; };
 		C3B1D62B23AE8598002CCE66 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */; };
 		C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */; };
 		C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */; };
@@ -329,6 +333,10 @@
 		C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSCMDetails.swift; sourceTree = "<group>"; };
 		C3B12267253B600E005FD154 /* TaskArtifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskArtifact.swift; sourceTree = "<group>"; };
 		C3B12278253CD57B005FD154 /* MarkdownContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContentView.swift; sourceTree = "<group>"; };
+		C3B1228B253D03A0005FD154 /* ArtifactClocFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocFeature.swift; sourceTree = "<group>"; };
+		C3B12293253D044A005FD154 /* ArtifactClocViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocViewModel.swift; sourceTree = "<group>"; };
+		C3B12299253D0479005FD154 /* ArtifactCloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactCloc.swift; sourceTree = "<group>"; };
+		C3B1229E253D05F2005FD154 /* ArtifactClocView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocView.swift; sourceTree = "<group>"; };
 		C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsFeature.swift; sourceTree = "<group>"; };
 		C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsView.swift; sourceTree = "<group>"; };
@@ -570,6 +578,7 @@
 		94B571D524BBBECD00CA13A4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3B12298253D0465005FD154 /* Artifact */,
 				94B571D624BBBECD00CA13A4 /* HourlySummary.swift */,
 				94B571D724BBBECD00CA13A4 /* ConfigDefaults.swift */,
 				94B571D824BBBECD00CA13A4 /* StampedeError.swift */,
@@ -799,6 +808,7 @@
 		C35D51962352ABCA00FDA4A8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3B12289253D0382005FD154 /* Artifacts */,
 				C35D51AE2353C5CF00FDA4A8 /* Main */,
 				94840C9D24BB4FF300DE481C /* Build */,
 				C35D51972352ABD600FDA4A8 /* Repositories */,
@@ -983,6 +993,32 @@
 				C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */,
 			);
 			path = MonitorLive;
+			sourceTree = "<group>";
+		};
+		C3B12289253D0382005FD154 /* Artifacts */ = {
+			isa = PBXGroup;
+			children = (
+				C3B1228A253D038A005FD154 /* Cloc */,
+			);
+			path = Artifacts;
+			sourceTree = "<group>";
+		};
+		C3B1228A253D038A005FD154 /* Cloc */ = {
+			isa = PBXGroup;
+			children = (
+				C3B1228B253D03A0005FD154 /* ArtifactClocFeature.swift */,
+				C3B12293253D044A005FD154 /* ArtifactClocViewModel.swift */,
+				C3B1229E253D05F2005FD154 /* ArtifactClocView.swift */,
+			);
+			path = Cloc;
+			sourceTree = "<group>";
+		};
+		C3B12298253D0465005FD154 /* Artifact */ = {
+			isa = PBXGroup;
+			children = (
+				C3B12299253D0479005FD154 /* ArtifactCloc.swift */,
+			);
+			path = Artifact;
 			sourceTree = "<group>";
 		};
 		C3B1D62923AE8579002CCE66 /* Helpers */ = {
@@ -1354,6 +1390,7 @@
 				94C0908D253485E8001E0B37 /* FeatureRouteCell.swift in Sources */,
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
+				C3B1229F253D05F2005FD154 /* ArtifactClocView.swift in Sources */,
 				94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */,
 				94FE1F4324FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift in Sources */,
 				C34755F024FC88E2009B1FBF /* QueueSummaryCell.swift in Sources */,
@@ -1367,6 +1404,7 @@
 				C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */,
 				C3CA2E2A24BA9F970086B71D /* SettingsRepositoriesViewModel.swift in Sources */,
 				C3CA2E2624BA9F7B0086B71D /* SettingsRepositoriesFeature.swift in Sources */,
+				C3B12294253D044A005FD154 /* ArtifactClocViewModel.swift in Sources */,
 				C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */,
 				C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */,
 				94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */,
@@ -1376,6 +1414,7 @@
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
 				94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */,
 				94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */,
+				C3B1228C253D03A0005FD154 /* ArtifactClocFeature.swift in Sources */,
 				C3CA2E2024BA9F480086B71D /* SettingsNotificationsFeature.swift in Sources */,
 				C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */,
 				94FE1F4A24FB18EA00AE4ED4 /* SelectRepositoryFeature.swift in Sources */,
@@ -1419,6 +1458,7 @@
 				94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */,
 				C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */,
 				94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */,
+				C3B1229A253D0479005FD154 /* ArtifactCloc.swift in Sources */,
 				94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */,
 				94E913AE24BB512B0056A150 /* BuildTaskViewModel.swift in Sources */,
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,
