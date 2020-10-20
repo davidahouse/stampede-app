@@ -10,258 +10,115 @@ import Foundation
 import Combine
 import HouseKit
 
-struct MonitorLiveViewModelQueue: Hashable {
-    let title: String
-    let gauge: QueueGaugeInfo
-    let history: [QueueGaugeInfo]
-}
-
-class MonitorLiveViewModel: BaseViewModel<[MonitorLiveViewModelQueue]> {
+class MonitorLiveViewModel: ObservableObject {
 
     // MARK: - Published properties
-//    @Published var queueGauges: [MonitorLiveViewModelQueue]
+    @Published var queueDepths: [Int] = []
+    @Published var gaugeInfo: QueueGaugeInfo
 
-//    private var workers: [WorkerStatus] = [] {
-//        didSet {
-//            self.recalculate()
-//        }
-//    }
-//
-//    private var queues: [QueueSummary] = [] {
-//        didSet {
-//            self.recalculate()
-//        }
-//    }
-//
-//    // MARK: - Properties
-//
-//    var workersPublisher: AnyPublisher<[WorkerStatus], StampedeError>? {
-//        didSet {
-//            // self.fetch()
-//        }
-//    }
-//
-//    var queuesPublisher: AnyPublisher<[QueueSummary], StampedeError>? {
-//        didSet {
-//            // self.fetch()
-//        }
-//    }
-//
-//    // MARK: - Initializer
-//    init(gauges: [MonitorLiveViewModelQueue]? = nil) {
-//        if let gauges = gauges {
-//            self.queueGauges = gauges
-//        } else {
-//            self.queueGauges = []
-//        }
-//    }
+    // MARK: - Initializer
+    init(activeWorkers: Int = 0, busyWorkers: Int = 0, queueDepths: [Int] = []) {
+        self.queueDepths = queueDepths
+        gaugeInfo = QueueGaugeInfo(title: "\(activeWorkers) Workers", idle: activeWorkers - busyWorkers, active: busyWorkers)
+    }
 
-//    func fetch() {
-//        self.workersPublisher?.sink(receiveCompletion: { result in
-//          if case let .failure(error) = result {
-//            print("Error receiving \(error)")
-//            DispatchQueue.main.async {
-//                self.workers = []
-//            }
-//          }
-//        }, receiveValue: { value in
-//            DispatchQueue.main.async {
-//                if value.count > 0 {
-//                    self.workers = value
-//                } else {
-//                    self.workers = []
-//                }
-//            }
-//        }).store(in: &self.disposables)
-//
-//        self.queuesPublisher?.sink(receiveCompletion: { result in
-//          if case let .failure(error) = result {
-//            print("Error receiving \(error)")
-//            DispatchQueue.main.async {
-//                self.queues = []
-//            }
-//          }
-//        }, receiveValue: { value in
-//            DispatchQueue.main.async {
-//                if value.count > 0 {
-//                    self.queues = value
-//                } else {
-//                    self.queues = []
-//                }
-//            }
-//        }).store(in: &self.disposables)
-//    }
+    // MARK: - Private properties
+    private var disposables = Set<AnyCancellable>()
 
-//    private func recalculate() {
-//        var updatedQueues: [MonitorLiveViewModelQueue] = []
-//
-//        for queue in queues {
-//            let activeCount = workers.filter({ $0.taskQueue == queue.queue && $0.status == "busy" }).count
-//            let inactiveCount = workers.filter({ $0.taskQueue == queue.queue && $0.status == "idle" }).count
-//            let info = QueueGaugeInfo(title: queue.queue, idle: inactiveCount, active: activeCount, queued: queue.stats.waiting)
-//            if info.idle > 0 || info.active > 0 || info.queued > 0 {
-//                if let existing = queueGauges.filter({ $0.title == queue.queue }).first {
-//                    var existingHistory = existing.history
-//                    existingHistory.append(info)
-//                    if existingHistory.count > 50 {
-//                        existingHistory.remove(at: 0)
-//                    }
-//                    updatedQueues.append(MonitorLiveViewModelQueue(title: queue.queue, gauge: info, history: existingHistory))
-//                } else {
-//                    updatedQueues.append(MonitorLiveViewModelQueue(title: queue.queue, gauge: info, history: [info]))
-//                }
-//            }
-//        }
-//
-//        queueGauges = updatedQueues
-//    }
+    private var workers: [WorkerStatus] = [] {
+        didSet {
+            self.recalculateWorkers()
+        }
+    }
+
+    private var queues: [QueueSummary] = [] {
+        didSet {
+            self.recalculateQueueDepth()
+        }
+    }
+
+    private var refreshTimer: Timer?
+
+    // MARK: - Properties
+
+    var workersPublisher: AnyPublisher<[WorkerStatus], ServiceError>?
+    var queuesPublisher: AnyPublisher<[QueueSummary], ServiceError>?
+
+    func startMonitoring() {
+        fetch()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { [weak self] _ in
+                         self?.fetch()
+                     })
+    }
+
+    func stopMonitoring() {
+        refreshTimer?.invalidate()
+    }
+
+    private func fetch() {
+        self.workersPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.workers = []
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                if value.count > 0 {
+                    self.workers = value
+                } else {
+                    self.workers = []
+                }
+            }
+        }).store(in: &self.disposables)
+
+        self.queuesPublisher?.sink(receiveCompletion: { result in
+          if case let .failure(error) = result {
+            print("Error receiving \(error)")
+            DispatchQueue.main.async {
+                self.queues = []
+            }
+          }
+        }, receiveValue: { value in
+            DispatchQueue.main.async {
+                if value.count > 0 {
+                    self.queues = value
+                } else {
+                    self.queues = []
+                }
+            }
+        }).store(in: &self.disposables)
+    }
+
+    private func recalculateQueueDepth() {
+
+        var queuedCount = 0
+        for queue in queues {
+            queuedCount += queue.stats.waiting
+        }
+        queueDepths.append(queuedCount)
+        if queueDepths.count > 50 {
+            queueDepths.remove(at: 0)
+        }
+    }
+
+    private func recalculateWorkers() {
+
+        var activeWorkers = 0
+        var busyWorkers = 0
+        for worker in workers {
+            activeWorkers += 1
+            if worker.status == "busy" {
+                busyWorkers += 1
+            }
+        }
+        self.gaugeInfo = QueueGaugeInfo(title: "\(activeWorkers) Workers", idle: activeWorkers - busyWorkers, active: busyWorkers)
+    }
 }
 
 #if DEBUG
 extension MonitorLiveViewModel {
-    static var idleQueue: QueueGaugeInfo = QueueGaugeInfo(title: "idleQueue", idle: 8, active: 0, queued: 0)
-    static var partialQueue: QueueGaugeInfo = QueueGaugeInfo(title: "partialQueue", idle: 4, active: 4, queued: 0)
-    static var fullQueue: QueueGaugeInfo = QueueGaugeInfo(title: "fullQueue", idle: 0, active: 8, queued: 0)
-    static var queuedQueue: QueueGaugeInfo = QueueGaugeInfo(title: "queuedQueue", idle: 0, active: 8, queued: 6)
-
-    static var idleHistory: [QueueGaugeInfo] = [
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue,
-        MonitorLiveViewModel.idleQueue
-    ]
-
-//    static var oneIdleQueue = MonitorLiveViewModel(gauges: [
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.idleQueue, history: MonitorLiveViewModel.idleHistory)
-//    ])
-//
-//    static var onePartialQueue = MonitorLiveViewModel(gauges: [
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.partialQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue
-//        ])
-//    ])
-//
-//    static var oneFullQueue = MonitorLiveViewModel(gauges: [
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.fullQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.fullQueue,
-//            MonitorLiveViewModel.fullQueue,
-//            MonitorLiveViewModel.fullQueue
-//        ])
-//    ])
-//
-//    static var oneQueuedQueue = MonitorLiveViewModel(gauges: [
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.queuedQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.queuedQueue,
-//            MonitorLiveViewModel.queuedQueue
-//        ])
-//    ])
-//
-//    static var twoQueues = MonitorLiveViewModel(gauges: [
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.queuedQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.queuedQueue,
-//            MonitorLiveViewModel.queuedQueue
-//        ]),
-//        MonitorLiveViewModelQueue(title: "otherQueue", gauge: MonitorLiveViewModel.fullQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.fullQueue,
-//            MonitorLiveViewModel.fullQueue,
-//            MonitorLiveViewModel.fullQueue
-//        ])
-//    ])
-//    
-//    static var allQueues = MonitorLiveViewModel(gauges: [
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.queuedQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.queuedQueue,
-//            MonitorLiveViewModel.queuedQueue
-//        ]),
-//        MonitorLiveViewModelQueue(title: "otherQueue", gauge: MonitorLiveViewModel.fullQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.fullQueue,
-//            MonitorLiveViewModel.fullQueue,
-//            MonitorLiveViewModel.fullQueue
-//        ]),
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.idleQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue
-//        ]),
-//        MonitorLiveViewModelQueue(title: "someQueue", gauge: MonitorLiveViewModel.partialQueue, history: [
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.idleQueue,
-//            MonitorLiveViewModel.partialQueue,
-//            MonitorLiveViewModel.partialQueue
-//        ])
-//    ])
+    static var someViewModel = MonitorLiveViewModel(activeWorkers: 12, busyWorkers: 4, queueDepths: [4, 4, 6, 7, 1, 2, 0, 0, 2, 4])
 }
 #endif
