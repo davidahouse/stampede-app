@@ -17,6 +17,16 @@ public struct BuildDetails: Codable, Equatable {
     public let status: String
     public let started_at: Date
     public let completed_at: Date?
+
+    public var duration: String {
+        if let completed = completed_at {
+            let interval = completed.timeIntervalSince(started_at)
+            return interval.duration()
+        } else {
+            let interval = Date().timeIntervalSince(started_at)
+            return interval.duration()
+        }
+    }
 }
 
 #if DEBUG
