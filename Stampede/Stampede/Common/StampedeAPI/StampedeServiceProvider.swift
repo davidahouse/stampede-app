@@ -33,6 +33,7 @@ public protocol StampedeServiceProvider {
     func fetchActiveTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>?
 
     // History
+    func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>?
     func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>?
     func fetchHistoryHourlySummaryPublisher() -> AnyPublisher<[HourlySummary], ServiceError>?
 

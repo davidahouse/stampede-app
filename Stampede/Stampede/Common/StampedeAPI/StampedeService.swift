@@ -82,6 +82,10 @@ public class StampedeService: ObservableObject {
         return provider.fetchActiveBuildsPublisher()
     }
 
+    public func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>? {
+        return provider.fetchHistoryBuildsPublisher()
+    }
+
     public func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
         return provider.fetchHistoryTasksPublisher()
     }

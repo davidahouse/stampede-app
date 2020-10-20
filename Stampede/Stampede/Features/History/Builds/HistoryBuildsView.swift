@@ -21,7 +21,7 @@ struct HistoryBuildsView: View {
         BaseView(viewModel: viewModel, content: { activeBuilds in
             List {
                 ForEach(activeBuilds, id: \.self) { item in
-                    BuildStatusCell(buildStatus: item)
+                    BuildDetailsCell(buildDetails: item)
                 }
             }
             .listStyle(DefaultListStyle())

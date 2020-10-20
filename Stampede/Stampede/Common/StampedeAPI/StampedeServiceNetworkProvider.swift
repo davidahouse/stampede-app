@@ -123,6 +123,13 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
         return request(url: StampedeAPIEndpoint.adminQueues.url(host: host))
     }
 
+    public func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>? {
+        guard let host = host else {
+            return AnyPublisher<[BuildDetails], ServiceError>(Future<[BuildDetails], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
+        }
+        return request(url: StampedeAPIEndpoint.historyBuilds.url(host: host))
+    }
+
     public func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
         guard let host = host else {
             return AnyPublisher<[TaskStatus], ServiceError>(Future<[TaskStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
