@@ -24,6 +24,7 @@ public enum StampedeAPIEndpoint {
     case monitorWorkerStatus
     case monitorQueues
     // History
+    case historyBuilds
     case historyTasks
     case historyHourlySummary
     // Admin
@@ -64,6 +65,8 @@ public enum StampedeAPIEndpoint {
             return URL(string: "\(host)/api/monitor/queueSummary")!
 
         // History
+        case .historyBuilds:
+            return URL(string: "\(host)/api/history/builds")!
         case .historyTasks:
             return URL(string: "\(host)/api/history/tasks")!
         case .historyHourlySummary:

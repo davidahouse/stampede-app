@@ -39,5 +39,6 @@ class HistoryBuildsFeature: BaseFeature {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        viewModel.publisher = dependencies.service.fetchHistoryBuildsPublisher()
     }
 }

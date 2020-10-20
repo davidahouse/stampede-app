@@ -30,6 +30,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var buildDetails = BuildStatus.buildCompletedHoursAgo
     var taskDetails = TaskDetails.someTaskDetails
     var artifactCloc = ArtifactCloc.someCloc
+    var historyBuilds = [BuildDetails.completedBuild]
 
     var fetchRepositoriesPublisherCalled = false
     var fetchActiveBuildsPublisherCalled = false
@@ -47,6 +48,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var fetchBuildDetailsPublisherCalled = false
     var fetchTaskDetailsPublisherCalled = false
     var fetchArtifactClocPublisherCalled = false
+    var fetchHistoryBuildsPublisherCalled = false
 
     var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
 
@@ -115,6 +117,11 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     func fetchActiveTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
         fetchActiveTasksPublisherCalled = true
         return fetchPublisher(activeTasks)
+    }
+
+    func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>? {
+        fetchHistoryBuildsPublisherCalled = true
+        return fetchPublisher(historyBuilds)
     }
 
     func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {

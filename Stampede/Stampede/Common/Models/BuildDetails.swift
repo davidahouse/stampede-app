@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct BuildDetails: Codable, Equatable {
+public struct BuildDetails: Codable, Equatable, Hashable {
     public let build_id: String
     public let owner: String
     public let repository: String
@@ -26,6 +26,13 @@ public struct BuildDetails: Codable, Equatable {
             let interval = Date().timeIntervalSince(started_at)
             return interval.duration()
         }
+    }
+
+    public var completedAgo: String {
+        guard let completed = completed_at else {
+            return "still running"
+        }
+        return completed.ago()
     }
 }
 

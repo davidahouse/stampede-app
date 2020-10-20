@@ -10,12 +10,12 @@ import Foundation
 import SwiftUI
 import HouseKit
 
-class HistoryBuildsViewModel: BaseViewModel<[BuildStatus]> { }
+class HistoryBuildsViewModel: BaseViewModel<[BuildDetails]> { }
 
 #if DEBUG
 extension HistoryBuildsViewModel {
     static let loading = HistoryBuildsViewModel(state: .loading)
     static let networkError = HistoryBuildsViewModel(state: .networkError(.network(description: "some error")))
-    static let someBuilds = HistoryBuildsViewModel(state: .results(BuildStatus.recentBuilds))
+    static let someBuilds = HistoryBuildsViewModel(state: .results([BuildDetails.completedBuild]))
 }
 #endif
