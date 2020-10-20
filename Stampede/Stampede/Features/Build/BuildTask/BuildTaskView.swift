@@ -90,10 +90,17 @@ struct BuildTaskSCMDetailsView: View {
     var body: some View {
         Section(header: Text("SCM Information")) {
             ForEach(scmDetails, id: \.self) { detail in
-                HStack {
-                    PrimaryLabel(detail.title)
-                    Spacer()
-                    ValueLabel(detail.value)
+                if detail.multilineValue {
+                    VStack(alignment: .leading) {
+                        PrimaryLabel(detail.title)
+                        ValueLabel(detail.displayValue)
+                    }
+                } else {
+                    HStack {
+                        PrimaryLabel(detail.title)
+                        Spacer()
+                        ValueLabel(detail.displayValue)
+                    }
                 }
             }
         }
