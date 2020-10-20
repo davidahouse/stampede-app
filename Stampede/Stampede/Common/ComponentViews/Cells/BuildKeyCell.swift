@@ -9,16 +9,24 @@
 import SwiftUI
 
 struct BuildKeyCell: View {
+    let repository: Repository
     let buildKey: BuildKey
 
+    @EnvironmentObject var router: Router
+
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                PrimaryLabel(buildKey.buildKey)
+        Button(action: {
+            router.route(to: .repositorySourceDetails(repository, buildKey: buildKey.buildKey))
+        }, label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    PrimaryLabel(buildKey.buildKey)
+                }
+                Spacer()
+                ValueLabel(buildKey.startedAgo)
+                Image(systemName: "chevron.right")
             }
-            Spacer()
-            ValueLabel(buildKey.startedAgo)
-        }
+        })
     }
 
 }
@@ -27,7 +35,8 @@ struct BuildKeyCell: View {
 struct BuildKeyCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            BuildKeyCell(buildKey: BuildKey.someBranchKeys[0])
+            BuildKeyCell(repository: Repository.someRepository,
+                         buildKey: BuildKey.someBranchKeys[0])
         }
     }
 }

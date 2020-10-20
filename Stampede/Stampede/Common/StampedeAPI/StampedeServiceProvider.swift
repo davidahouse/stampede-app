@@ -22,6 +22,7 @@ public protocol StampedeServiceProvider {
     func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>?
     func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>?
     func fetchTaskDetailsPublisher(taskID: String) -> AnyPublisher<TaskDetails, ServiceError>?
+    func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) -> AnyPublisher<[BuildDetails], ServiceError>?
 
     // Artifact
     func fetchArtifactClocPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactCloc, ServiceError>?

@@ -49,7 +49,7 @@ struct RepositoryView: View {
                 BaseSubView(state: viewModel.branchKeysState, content: { keys in
                     if keys.count > 0 {
                         ForEach(keys, id: \.self) { item in
-                            BuildKeyCell(buildKey: item)
+                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
                         }
                     } else {
                         Text("No branch builds found")
@@ -61,7 +61,7 @@ struct RepositoryView: View {
                 BaseSubView(state: viewModel.releaseKeysState, content: { keys in
                     if keys.count > 0 {
                         ForEach(keys, id: \.self) { item in
-                            BuildKeyCell(buildKey: item)
+                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
                         }
                     } else {
                         Text("No release builds found")
@@ -73,7 +73,7 @@ struct RepositoryView: View {
                 BaseSubView(state: viewModel.pullRequestKeysState, content: { keys in
                     if keys.count > 0 {
                         ForEach(keys, id: \.self) { item in
-                            BuildKeyCell(buildKey: item)
+                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
                         }
                     } else {
                         Text("No pull request builds found")

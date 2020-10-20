@@ -60,6 +60,13 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
         return request(url: StampedeAPIEndpoint.taskDetails(taskID).url(host: host))
     }
 
+    public func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) -> AnyPublisher<[BuildDetails], ServiceError>? {
+        guard let host = host else {
+            return AnyPublisher<[BuildDetails], ServiceError>(Future<[BuildDetails], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
+        }
+        return request(url: StampedeAPIEndpoint.repositorySourceBuilds(owner, repository, buildKey).url(host: host))
+    }
+
     public func fetchArtifactClocPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactCloc, ServiceError>? {
         guard let host = host else {
             return AnyPublisher<ArtifactCloc, ServiceError>(Future<ArtifactCloc, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
