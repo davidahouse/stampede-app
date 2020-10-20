@@ -11,6 +11,22 @@ import Foundation
 public struct TaskSCMDetails: Codable, Equatable, Hashable {
     let title: String
     let value: String
+
+    var multilineValue: Bool {
+        if title.contains("Commit") {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var displayValue: String {
+        if title.contains("SHA") {
+            return String(value.prefix(7))
+        } else {
+            return value
+        }
+    }
 }
 
 #if DEBUG
