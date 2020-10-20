@@ -36,27 +36,27 @@ struct BuildView: View {
                     HStack {
                         Text("Status")
                         Spacer()
-                        Text("completed")
+                        Text(buildStatus.buildDetails.status)
                     }
 
                     HStack {
                         Text("Started At")
                         Spacer()
-                        PrimaryLabel("\(buildStatus.buildDetails.started_at)")
+                        Text(buildStatus.buildDetails.started_at, style: .time)
                     }
 
                     if let completed_at = buildStatus.buildDetails.completed_at {
                         HStack {
                             Text("Completed At")
                             Spacer()
-                            PrimaryLabel("\(completed_at)")
+                            Text(completed_at, style: .time)
                         }
                     }
 
                     HStack {
                         Text("Duration")
                         Spacer()
-                        Text("12.3s")
+                        Text(buildStatus.buildDetails.duration)
                     }
                 }
 
