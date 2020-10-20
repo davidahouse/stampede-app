@@ -19,7 +19,7 @@ class MonitorLiveFeature: BaseFeature {
     
     // MARK: - Private Properties
     
-    private var viewModel = MonitorLiveViewModel(state: .loading)
+    private var viewModel = MonitorLiveViewModel()
 
     // MARK: - Overrides
     
@@ -39,6 +39,14 @@ class MonitorLiveFeature: BaseFeature {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
+        viewModel.workersPublisher = dependencies.service.fetchWorkerStatusPublisher()
+        viewModel.queuesPublisher = dependencies.service.fetchMonitorQueuesPublisher()
+        viewModel.startMonitoring()
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.stopMonitoring()
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 }

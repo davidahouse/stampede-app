@@ -12,33 +12,16 @@ struct MonitorLiveView: View {
 
     // MARK: - Environment
 
-    // MARK: - Observed Objects
-
     @EnvironmentObject var viewModel: MonitorLiveViewModel
-    
-    private var columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 300))
-    ]
 
     // MARK: - View
     var body: some View {
-        switch viewModel.state {
-        case .loading:
-            Text("Loading...")
-        case .networkError(let error):
-            NetworkErrorView(error: error)
-        case .results(let results):
-//            ScrollView {
-//                LazyVGrid(columns: columns) {
-//                    ForEach(viewModel.queueGauges, id: \.self) { gauge in
-//                        VStack {
-//                            QueueChartView(measurements: gauge.history).aspectRatio(contentMode: .fit)
-//                            PrimaryLabel(gauge.title)
-//                        }
-//                    }
-//                }
-//            }
-            Text("Results?")
+        VStack {
+            QueueGaugeView(info: viewModel.gaugeInfo)
+            Spacer()
+            QueueChartView(measurements: viewModel.queueDepths)
+            Text("Queue Depth")
+            Spacer()
         }
     }
 }
@@ -46,13 +29,8 @@ struct MonitorLiveView: View {
 #if DEBUG
 struct MonitorLiveView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-//            MonitorLiveView(viewModel: MonitorLiveViewModel.oneIdleQueue).previewDependencies()
-//            MonitorLiveView(viewModel: MonitorLiveViewModel.onePartialQueue).previewDependencies()
-//            MonitorLiveView(viewModel: MonitorLiveViewModel.oneFullQueue).previewDependencies()
-//            MonitorLiveView(viewModel: MonitorLiveViewModel.oneQueuedQueue).previewDependencies()
-//            MonitorLiveView(viewModel: MonitorLiveViewModel.twoQueues).previewDependencies()
-//            MonitorLiveView(viewModel: MonitorLiveViewModel.allQueues).previewDependencies()
+        Previewer {
+            MonitorLiveView().environmentObject(MonitorLiveViewModel.someViewModel)
         }
     }
 }

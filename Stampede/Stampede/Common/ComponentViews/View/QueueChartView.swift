@@ -10,23 +10,23 @@ import SwiftUI
 
 struct QueueChartView: View {
 
-    let measurements: [QueueGaugeInfo]
+    let measurements: [Int]
     let maxCount: Int
 
-    init(measurements: [QueueGaugeInfo]) {
+    init(measurements: [Int]) {
         self.measurements = measurements
-        maxCount = measurements.map { $0.active + $0.queued }.max() ?? 0
+        maxCount = measurements.max() ?? 0
     }
 
     var body: some View {
-        if maxCount > 0 {
+        if measurements.count > 0 {
             GeometryReader { reader in
                 HStack(alignment: .bottom, spacing: 2.0) {
-                    ForEach(0..<self.measurements.count) { i in
+                    ForEach(self.measurements, id: \.self) { i in
                         VStack(spacing: 0.0) {
                             Spacer()
                             Rectangle()
-                                .barHeight(reader.size.height, max: maxCount, info: self.measurements[i])
+                                .barHeight(reader.size.height, max: maxCount, measurement: i)
                         }
                     }
                 }
@@ -38,22 +38,16 @@ struct QueueChartView: View {
 }
 
 extension Rectangle {
-    func barHeight(_ height: CGFloat, max: Int, info: QueueGaugeInfo) -> some View {
-        guard max > 0, info.total > 0 else {
+    func barHeight(_ height: CGFloat, max: Int, measurement: Int) -> some View {
+        guard max > 0, measurement > 0 else {
             return self
                 .fill(Color.blue)
                 .frame(height: 1.0)
         }
 
-        if info.queued > 0 {
-            return self
-                .fill(Color.purple)
-                .frame(height: height * CGFloat(CGFloat(info.total) / CGFloat(max)))
-        } else {
-            return self
-                .fill(Color.green)
-                .frame(height: height * CGFloat(CGFloat(info.total) / CGFloat(max)))
-        }
+        return self
+            .fill(Color.purple)
+            .frame(height: height * CGFloat(CGFloat(measurement) / CGFloat(max)))
     }
 }
 
@@ -61,16 +55,9 @@ struct QueueChartView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             QueueChartView(measurements: [])
-            QueueChartView(measurements: [QueueGaugeInfo(title: "", idle: 0, active: 0, queued: 0)])
-            QueueChartView(measurements: [
-                QueueGaugeInfo(title: "", idle: 4, active: 0, queued: 0),
-                QueueGaugeInfo(title: "", idle: 3, active: 1, queued: 0),
-                QueueGaugeInfo(title: "", idle: 2, active: 2, queued: 0),
-                QueueGaugeInfo(title: "", idle: 0, active: 4, queued: 0),
-                QueueGaugeInfo(title: "", idle: 0, active: 4, queued: 4),
-                QueueGaugeInfo(title: "", idle: 0, active: 4, queued: 2),
-                QueueGaugeInfo(title: "", idle: 4, active: 0, queued: 0)
-            ])
+            QueueChartView(measurements: [0])
+            QueueChartView(measurements: [0, 0, 4, 1, 5, 6, 0, 0, 0, 2, 3])
+            QueueChartView(measurements: [4, 4, 5, 2, 7, 12, 3, 5, 6, 7, 8, 9])
         }
     }
 }
