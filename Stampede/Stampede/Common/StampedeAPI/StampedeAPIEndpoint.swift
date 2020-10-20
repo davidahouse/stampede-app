@@ -16,6 +16,8 @@ public enum StampedeAPIEndpoint {
     case buildKeys(String, String, String)
     case buildDetails(String)
     case taskDetails(String)
+    case repositorySourceBuilds(String, String, String)
+
     // Artifacts
     case artifactContents(String, String)
     // Monitor
@@ -48,6 +50,8 @@ public enum StampedeAPIEndpoint {
             return URL(string: "\(host)/api/repository/buildDetails?buildID=\(buildID)")!
         case let .taskDetails(taskID):
             return URL(string: "\(host)/api/repository/taskDetails?taskID=\(taskID)")!
+        case let .repositorySourceBuilds(owner, repository, buildKey):
+            return URL(string: "\(host)/api/repository/repositorySourceBuilds?owner=\(owner)&repository=\(repository)&build_key=\(buildKey)")!
 
         // Artifacts
         case .artifactContents(let taskID, let title):

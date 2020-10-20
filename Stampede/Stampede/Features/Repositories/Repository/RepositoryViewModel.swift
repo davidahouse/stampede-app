@@ -20,7 +20,7 @@ enum FetchState {
 class RepositoryViewModel: ObservableObject {
 
     // MARK: - Published properties
-
+    @Published public var repository: Repository
     @Published public var activeBuildsState: ViewModelState<[BuildStatus]> = .loading
     @Published public var repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading
 
@@ -64,7 +64,8 @@ class RepositoryViewModel: ObservableObject {
 
     // MARK: - Initializer
 
-    init(activeBuildsState: ViewModelState<[BuildStatus]> = .loading, repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading) {
+    init(repository: Repository, activeBuildsState: ViewModelState<[BuildStatus]> = .loading, repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading) {
+        self.repository = repository
         self.activeBuildsState = activeBuildsState
         self.repositoryBuildsState = repositoryBuildsState
     }
@@ -148,7 +149,8 @@ class RepositoryViewModel: ObservableObject {
 #if DEBUG
 
 extension RepositoryViewModel {
-    static var someViewModel = RepositoryViewModel(activeBuildsState: .results(BuildStatus.activeBuilds),
+    static var someViewModel = RepositoryViewModel(repository: Repository.someRepository,
+                                                   activeBuildsState: .results(BuildStatus.activeBuilds),
                                                    repositoryBuildsState: .results(RepositoryBuild.someBuilds))
 //    static var someViewModelOnlyBuilds = RepositoryViewModel(builds: RepositoryBuild.someBuilds)
 //    static var someViewModelOnlyRecents = RepositoryViewModel(recent: BuildStatus.recentBuilds)

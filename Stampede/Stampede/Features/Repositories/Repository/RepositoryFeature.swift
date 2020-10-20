@@ -24,12 +24,13 @@ class RepositoryFeature: BaseFeature {
 
     // MARK: Properties
 
-    private var viewModel = RepositoryViewModel()
+    private var viewModel: RepositoryViewModel!
 
     // MARK: - Initializer
     
     init(dependencies: Dependencies, repository: Repository) {
         self.repository = repository
+        viewModel = RepositoryViewModel(repository: repository)
         super.init(dependencies: dependencies)
     }
     
