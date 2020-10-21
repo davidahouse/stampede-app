@@ -37,7 +37,7 @@ struct RepositoryView: View {
                 BaseSubView(state: viewModel.repositoryBuildsState, content: { builds in
                     if builds.count > 0 {
                         ForEach(builds, id: \.self) { item in
-                            RepositoryBuildCell(repositoryBuild: item)
+                            RepositoryBuildCell(repository: viewModel.repository, repositoryBuild: item)
                         }
                     } else {
                         Text("No repository builds found")
