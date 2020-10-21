@@ -22,6 +22,7 @@ enum Route {
     case buildDetailsFromID(_ buildID: String)
     case taskDetails(_ taskID: String)
     case repositorySourceDetails(_ repository: Repository, buildKey: String)
+    case repositoryBuildDetails(_ repository: Repository, build: String)
 
     // Artifact
     case artifactCloc(taskID: String, title: String)
@@ -55,6 +56,8 @@ enum Route {
             return BuildTaskFeature.makeFeature(dependencies, taskID: taskID)
         case .repositorySourceDetails(let repository, let buildKey):
             return RepositorySourceDetailsFeature.makeFeature(dependencies, repository: repository, buildKey: buildKey)
+        case .repositoryBuildDetails(let repository, let build):
+            return RepositoryBuildDetailsFeature.makeFeature(dependencies, repository: repository, build: build)
 
         // Artifact
         case .artifactCloc(let taskID, let title):

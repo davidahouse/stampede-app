@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import HouseKit
+import Combine
 
 public struct BuildDetails: Codable, Equatable, Hashable {
     public let build_id: String
@@ -35,6 +37,8 @@ public struct BuildDetails: Codable, Equatable, Hashable {
         return completed.ago()
     }
 }
+
+typealias BuildDetailsResponsePublisher = AnyPublisher<[BuildDetails], ServiceError>
 
 #if DEBUG
 

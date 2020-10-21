@@ -9,17 +9,25 @@
 import SwiftUI
 
 struct RepositoryBuildCell: View {
-    
+
+    let repository: Repository
     let repositoryBuild: RepositoryBuild
-    
+
+    @EnvironmentObject var router: Router
+
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                PrimaryLabel(repositoryBuild.build)
+        Button(action: {
+            router.route(to: .repositoryBuildDetails(repository, build: repositoryBuild.build))
+        }, label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    PrimaryLabel(repositoryBuild.build)
+                }
+                Spacer()
+                ValueLabel(repositoryBuild.completedAgo)
+                Image(systemName: "chevron.right")
             }
-            Spacer()
-            ValueLabel(repositoryBuild.completedAgo)
-        }
+        })
     }
 }
 
@@ -27,7 +35,8 @@ struct RepositoryBuildCell: View {
 struct RepositoryBuildCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            RepositoryBuildCell(repositoryBuild: RepositoryBuild.someBuild)
+            RepositoryBuildCell(repository: Repository.someRepository,
+                                repositoryBuild: RepositoryBuild.someBuild)
         }
     }
 }
