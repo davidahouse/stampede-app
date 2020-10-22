@@ -1968,7 +1968,7 @@
 				C3349EA52350A90600273730 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C3349EDA2350A92C00273730 /* Build configuration list for PBXNativeTarget "Stampede" */ = {
 			isa = XCConfigurationList;
@@ -1977,7 +1977,7 @@
 				C3349EDC2350A92C00273730 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C3349EDD2350A92C00273730 /* Build configuration list for PBXNativeTarget "Stampede-Tests" */ = {
 			isa = XCConfigurationList;
@@ -1986,7 +1986,7 @@
 				C3349EDF2350A92C00273730 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C3349EE02350A92C00273730 /* Build configuration list for PBXNativeTarget "Stampede-UITests" */ = {
 			isa = XCConfigurationList;
@@ -1995,7 +1995,7 @@
 				C3349EE22350A92C00273730 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
