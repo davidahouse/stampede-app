@@ -21,8 +21,15 @@ class StampedeDefaults: ObservableObject {
     }
     private var hostSink: AnyCancellable?
 
+    var fixturePersona: String? {
+        didSet {
+            UserDefaults.standard.set(fixturePersona, forKey: "FixturePersona")
+        }
+    }
+
     init() {
         host = UserDefaults.standard.string(forKey: "StampedeServerURL")
+        fixturePersona = UserDefaults.standard.string(forKey: "FixturePersona")
     }
 }
 

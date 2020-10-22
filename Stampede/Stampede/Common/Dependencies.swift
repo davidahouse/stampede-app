@@ -17,7 +17,6 @@ class Dependencies {
     let service: StampedeService
     let theme: CurrentTheme
     let repositoryList: RepositoryList
-    let debugInfo = DebugInfo()
 
     init(serviceProvider: StampedeServiceProvider? = nil, repositoryList: RepositoryList = BaseRepositoryList()) {
         theme = CurrentTheme()
@@ -28,7 +27,11 @@ class Dependencies {
             #if DEBUG
             if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"] {
                 if stampedeServer == "fixtures" {
-                    service = StampedeService(host: stampedeServer, provider: StampedeServiceFixtureProvider())
+                    if let persona = ProcessInfo.processInfo.environment["Persona"] {
+                        service = StampedeService(host: stampedeServer, provider: StampedeServiceFixtureProvider(host: "fixtures", persona: StampedeServiceFixtureProvider.fromString(persona)))
+                    } else {
+                        service = StampedeService(host: stampedeServer, provider: StampedeServiceFixtureProvider(host: "fixtures"))
+                    }
                 } else {
                     service = StampedeService(host: stampedeServer, provider: StampedeServiceNetworkProvider(host: stampedeServer))
                 }
@@ -40,5 +43,13 @@ class Dependencies {
             #endif
         }
         defaults.hostSubject = service.hostPassthroughSubject
+    }
+
+    func selectNetworkProvider() {
+        service.provider = StampedeServiceNetworkProvider(host: defaults.host)
+    }
+
+    func selectFixturePersona(_ persona: String) {
+        service.provider = StampedeServiceFixtureProvider(host: "fixtures", persona: StampedeServiceFixtureProvider.fromString(persona))
     }
 }

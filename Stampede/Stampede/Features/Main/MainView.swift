@@ -49,6 +49,9 @@ struct MainView: View {
                 FeatureRouteCell(title: "Repositories", route: .settingsRepositories)
                 FeatureRouteCell(title: "Notifications", route: .settingsNotifications)
                 FeatureRouteCell(title: "Info", route: .settingsInfo)
+                #if DEBUG
+                FeatureRouteCell(title: "Developer", route: .settingsDeveloper)
+                #endif
             }
         }.listStyle(GroupedListStyle())
     }

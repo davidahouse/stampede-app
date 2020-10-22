@@ -13,7 +13,7 @@ import HouseKit
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 public class StampedeService: ObservableObject {
 
-    let provider: StampedeServiceProvider
+    var provider: StampedeServiceProvider
     public var hostPassthroughSubject: PassthroughSubject<String, Never> {
         return provider.hostPassthroughSubject
     }

@@ -42,6 +42,8 @@ enum Route {
     case settingsRepositories
     case settingsNotifications
     case settingsInfo
+    case settingsDeveloper
+    case settingsDeveloperPersona
     
     func featureController(_ dependencies: Dependencies) -> UIViewController {
         switch self {
@@ -88,6 +90,10 @@ enum Route {
             return SettingsNotificationsFeature.makeFeature(dependencies)
         case .settingsInfo:
             return SettingsInfoFeature.makeFeature(dependencies)
+        case .settingsDeveloper:
+            return SettingsDeveloperFeature.makeFeature(dependencies)
+        case .settingsDeveloperPersona:
+            return SettingsDeveloperPersonaFeature.makeFeature(dependencies)
         }
     }
     
