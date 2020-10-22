@@ -12,26 +12,8 @@ import Combine
 
 #if DEBUG
 class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
-    
-    var repositories = Repository.someRepositories
-    var repositoryActiveBuilds = BuildStatus.activeBuilds
-    var repositoryBuilds = RepositoryBuild.someBuilds
-    var activeBuilds = BuildStatus.activeBuilds
-    var queues = QueueSummary.someSummaries
-    var workerStatus = WorkerStatus.workerStatuses
-    var activeTasks = TaskStatus.activeTasks
-    var historyTasks = TaskStatus.recentTasks
-    var hourlySummary = HourlySummary.someSummaries
-    var tasks = Task.someTasks
-    var configDefaults = ConfigDefaults.someDefaults
-    var configOverrides = ConfigOverrides.someOverrides
-    var configQueues = Queue.someQueues
-    var buildKeys = BuildKey.someBranchKeys
-    var buildDetails = BuildStatus.buildCompletedHoursAgo
-    var taskDetails = TaskDetails.someTaskDetails
-    var artifactCloc = ArtifactCloc.someCloc
-    var historyBuilds = [BuildDetails.completedBuild]
-    var repositorySourceBuilds = [BuildDetails.completedBuild]
+
+    var persona: Persona!
 
     var fetchRepositoriesPublisherCalled = false
     var fetchActiveBuildsPublisherCalled = false
@@ -54,17 +36,12 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
 
     var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
 
-    private var host: String? {
-        didSet {
-            if let host = host, host.contains("error") {
-                self.error = .network(description: "some network error happened")
-            }
-        }
-    }
+    private var host: String?
     private var hostSink: AnyCancellable?
 
-    public init(host: String? = nil) {
+    public init(host: String? = nil, persona: Persona? = HappyPersona()) {
         self.host = host
+        self.persona = persona
         super.init()
         hostSink = hostPassthroughSubject.sink(receiveValue: { value in
            self.host = value
@@ -73,97 +50,172 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
 
     func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
         fetchRepositoriesPublisherCalled = true
-        return fetchPublisher(repositories)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.repositories)
     }
     
     func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
         fetchActiveBuildsPublisherCalled = true
-        return fetchPublisher(repositoryActiveBuilds)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.repositoryActiveBuilds)
     }
     
     func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {
         fetchRepositoryBuildsPublisherCalled = true
-        return fetchPublisher(repositoryBuilds)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.repositoryBuilds)
     }
     
     func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>? {
         fetchBuildDetailsPublisherCalled = true
-        return fetchPublisher(buildDetails)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.buildDetails)
     }
 
     func fetchTaskDetailsPublisher(taskID: String) -> AnyPublisher<TaskDetails, ServiceError>? {
         fetchTaskDetailsPublisherCalled = true
-        return fetchPublisher(taskDetails)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.taskDetails)
     }
 
     func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) -> AnyPublisher<[BuildDetails], ServiceError>? {
         fetchRepositorySourceBuildsPublisherCalled = true
-        return fetchPublisher(repositorySourceBuilds)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.repositorySourceBuilds)
     }
 
     func fetchArtifactClocPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactCloc, ServiceError>? {
         fetchArtifactClocPublisherCalled = true
-        return fetchPublisher(artifactCloc)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.artifactCloc)
     }
 
     func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>? {
         fetchActiveBuildsPublisherCalled = true
-        return fetchPublisher(activeBuilds)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.activeBuilds)
     }
     
     func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>? {
         fetchMonitorQueuesPublisherCalled = true
-        return fetchPublisher(queues)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.queues)
     }
     
     func fetchWorkerStatusPublisher() -> AnyPublisher<[WorkerStatus], ServiceError>? {
         fetchWorkerStatusPublisherCalled = true
-        return fetchPublisher(workerStatus)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.workerStatus)
     }
     
     func fetchActiveTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
         fetchActiveTasksPublisherCalled = true
-        return fetchPublisher(activeTasks)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.activeTasks)
     }
 
     func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>? {
         fetchHistoryBuildsPublisherCalled = true
-        return fetchPublisher(historyBuilds)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.historyBuilds)
     }
 
     func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
         fetchHistoryTasksPublisherCalled = true
-        return fetchPublisher(historyTasks)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.historyTasks)
     }
     
     func fetchHistoryHourlySummaryPublisher() -> AnyPublisher<[HourlySummary], ServiceError>? {
         fetchHistoryHourlySummaryPublisherCalled = true
-        return fetchPublisher(hourlySummary)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.hourlySummary)
     }
     
     func fetchAdminTasksPublisher() -> AnyPublisher<[Task], ServiceError>? {
         fetchAdminTasksPublisherCalled = true
-        return fetchPublisher(tasks)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.tasks)
     }
     
     func fetchAdminConfigDefaultsPublisher() -> AnyPublisher<ConfigDefaults, ServiceError>? {
         fetchAdminConfigDefaultsPublisherCalled = true
-        return fetchPublisher(configDefaults)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.configDefaults)
     }
     
     func fetchAdminConfigOverridesPublisher() -> AnyPublisher<ConfigOverrides, ServiceError>? {
         fetchAdminConfigOverridesPublisherCalled = true
-        return fetchPublisher(configOverrides)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.configOverrides)
     }
     
     func fetchAdminQueuesPublisher() -> AnyPublisher<[Queue], ServiceError>? {
         fetchAdminQueuesPublisherCalled = true
-        return fetchPublisher(configQueues)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.configQueues)
     }
 
     func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
         fetchBuildKeysPublisherCalled = true
-        return fetchPublisher(buildKeys)
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.buildKeys)
+    }
+}
+
+extension StampedeServiceFixtureProvider {
+
+    static func fromString(_ persona: String) -> Persona {
+        switch persona {
+        case "Happy":
+            return HappyPersona()
+        case "Error":
+            return ErrorPersona()
+        case "Loading":
+            return LoadingPersona()
+        case "ErrorBuildDetails":
+            return ErrorBuildDetailsPersona()
+        default:
+            return HappyPersona()
+        }
     }
 }
 #endif

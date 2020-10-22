@@ -14,51 +14,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var mainFeature: MainFeature?
 
-    static var didReceiveUserActivities = false
-    static var didReceiveURLContexts = false
-    static var didFailToHandleURLContexts = false
-    static var didReceiveBrowsingWebActivityType = false
-    static var didReceiveUnknownActivityType = false
-    static var deepLinkPath = ""
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         var initialFeature: Route?
         
         if let userActivity = connectionOptions.userActivities.first {
-            SceneDelegate.didReceiveUserActivities = true
-            
-            switch userActivity.activityType {
-            case NSUserActivityTypeBrowsingWeb:
-                SceneDelegate.didReceiveBrowsingWebActivityType = true
+
+            if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                 if let incomingURL = userActivity.webpageURL {
                     
                     if let route = Route.fromURL(incomingURL) {
                         initialFeature = route
                     }
-                    SceneDelegate.deepLinkPath = incomingURL.path
                 }
-            default:
-                SceneDelegate.didReceiveUnknownActivityType = true
             }
         }
-        
-//        if let userActivity = connectionOptions.userActivities.first,
-//               userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-//               let incomingURL = userActivity.webpageURL,
-//               let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true) {
-//
-//            // Handle this link!
-//
-//            // Check for specific URL components that you need.
-//           guard let path = components.path,
-//               let params = components.queryItems else {
-//               return
-//           }
-//           print("scene path = \(path)")
-//           print("scene params = \(params)")
-//            return
-//        }
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -94,29 +64,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      This method is called if the app is already running and we want to deep link into it.
      */
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        SceneDelegate.didReceiveURLContexts = true
         if let first = URLContexts.first, let route = Route.fromURL(first.url) {
             mainFeature?.push(route: route)
-        } else {
-            SceneDelegate.didFailToHandleURLContexts = true
         }
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         
-            switch userActivity.activityType {
-            case NSUserActivityTypeBrowsingWeb:
-                SceneDelegate.didReceiveBrowsingWebActivityType = true
-                if let incomingURL = userActivity.webpageURL {
-                    
-                    if let route = Route.fromURL(incomingURL) {
-                        mainFeature?.push(route: route)
-                    }
-                    SceneDelegate.deepLinkPath = incomingURL.path
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let incomingURL = userActivity.webpageURL {
+                if let route = Route.fromURL(incomingURL) {
+                    mainFeature?.push(route: route)
                 }
-            default:
-                SceneDelegate.didReceiveUnknownActivityType = true
             }
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
