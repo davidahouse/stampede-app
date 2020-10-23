@@ -51,6 +51,7 @@ struct RepositoryBuildDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
             RepositoryBuildDetailsView()
+                .environmentObject(RepositoryBuildDetailsViewModel.someViewModel)
         }
     }
 }

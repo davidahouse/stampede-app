@@ -36,3 +36,11 @@ struct MarkdownContentView: UIViewRepresentable {
             .replacingOccurrences(of: ":heavy_exclamation_mark:", with: "❗️")
     }
 }
+
+struct MarkdownContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Previewer {
+            MarkdownContentView(markdown: "## Title\n## Another Title\n")
+        }
+    }
+}

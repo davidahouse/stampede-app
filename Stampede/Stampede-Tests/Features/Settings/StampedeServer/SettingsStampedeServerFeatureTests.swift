@@ -10,4 +10,30 @@ import XCTest
 @testable import Stampede
 
 class SettingsStampedeServerFeatureTests: XCTestCase {
+
+    var feature: SettingsStampedeServerFeature!
+    var window: UIWindow!
+    var dependencies: Dependencies!
+    var fixtureProvider = StampedeServiceFixtureProvider()
+
+    override func setUp() {
+        super.setUp()
+        window = UIWindow()
+        dependencies = Dependencies(serviceProvider: fixtureProvider)
+        feature = SettingsStampedeServerFeature(dependencies: dependencies)
+    }
+
+    override func tearDown() {
+        window = nil
+        super.tearDown()
+    }
+
+    func testCanMakeBaseFeature() {
+        let baseFeature = SettingsStampedeServerFeature.makeFeature(dependencies)
+        XCTAssertNotNil(baseFeature.view)
+    }
+
+    func testFeatureCanCreateAChildViewController() {
+        capture(feature, title: "SettingsStampedeServerFeature")
+    }
 }

@@ -10,4 +10,30 @@ import XCTest
 @testable import Stampede
 
 class BuildFeatureTests: XCTestCase {
+
+    var feature: BuildFeature!
+    var window: UIWindow!
+    var dependencies: Dependencies!
+    var fixtureProvider = StampedeServiceFixtureProvider()
+
+    override func setUp() {
+        super.setUp()
+        window = UIWindow()
+        dependencies = Dependencies(serviceProvider: fixtureProvider)
+        feature = BuildFeature(dependencies: dependencies, buildStatus: BuildStatus.someRecentBuild)
+    }
+
+    override func tearDown() {
+        window = nil
+        super.tearDown()
+    }
+
+    func testCanMakeBaseFeature() {
+        let baseFeature = BuildFeature.makeFeature(dependencies, build: BuildStatus.someRecentBuild)
+        XCTAssertNotNil(baseFeature.view)
+    }
+
+    func testFeatureCanCreateAChildViewController() {
+        capture(feature, title: "BuildFeature")
+    }
 }

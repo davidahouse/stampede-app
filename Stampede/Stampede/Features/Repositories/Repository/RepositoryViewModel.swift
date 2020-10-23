@@ -152,7 +152,5 @@ extension RepositoryViewModel {
     static var someViewModel = RepositoryViewModel(repository: Repository.someRepository,
                                                    activeBuildsState: .results(BuildStatus.activeBuilds),
                                                    repositoryBuildsState: .results(RepositoryBuild.someBuilds))
-//    static var someViewModelOnlyBuilds = RepositoryViewModel(builds: RepositoryBuild.someBuilds)
-//    static var someViewModelOnlyRecents = RepositoryViewModel(recent: BuildStatus.recentBuilds)
 }
 #endif

@@ -1,17 +1,17 @@
 //
-//  HistoryBuildsFeatureTests.swift
+//  MonitorLiveFeatureTestts.swift
 //  Stampede-Tests
 //
-//  Created by David House on 9/20/20.
+//  Created by David House on 10/22/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
 
 import XCTest
 @testable import Stampede
 
-class HistoryBuildsFeatureTests: XCTestCase {
+class MonitorLiveFeatureTests: XCTestCase {
 
-    var feature: HistoryBuildsFeature!
+    var feature: MonitorLiveFeature!
     var window: UIWindow!
     var dependencies: Dependencies!
     var fixtureProvider = StampedeServiceFixtureProvider()
@@ -20,7 +20,7 @@ class HistoryBuildsFeatureTests: XCTestCase {
         super.setUp()
         window = UIWindow()
         dependencies = Dependencies(serviceProvider: fixtureProvider)
-        feature = HistoryBuildsFeature(dependencies: dependencies)
+        feature = MonitorLiveFeature(dependencies: dependencies)
     }
 
     override func tearDown() {
@@ -28,18 +28,19 @@ class HistoryBuildsFeatureTests: XCTestCase {
         super.tearDown()
     }
 
-    func testCanMakeBaseFeature() {
-        let baseFeature = HistoryBuildsFeature.makeFeature(dependencies)
+    func testCanMakeFeature() {
+        let baseFeature = MonitorLiveFeature.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 
     func testFeatureCanCreateAChildViewController() {
-        capture(feature, title: "HistoryBuildsFeature")
+        capture(feature, title: "MonitorLiveFeature")
     }
 
     func testWhenViewAppearsThenViewModelAssignedAPublisher() {
         loadView()
-        XCTAssertTrue(fixtureProvider.fetchHistoryBuildsPublisherCalled)
+        XCTAssertTrue(fixtureProvider.fetchWorkerStatusPublisherCalled)
+        XCTAssertTrue(fixtureProvider.fetchMonitorQueuesPublisherCalled)
     }
 
     private func loadView() {

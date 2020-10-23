@@ -27,7 +27,7 @@ class BaseFeature: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 
     lazy var childViewController: UIViewController = {

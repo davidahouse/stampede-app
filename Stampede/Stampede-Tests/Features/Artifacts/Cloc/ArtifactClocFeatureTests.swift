@@ -1,17 +1,17 @@
 //
-//  HistoryBuildsFeatureTests.swift
+//  ArtifactClocFeatureTests.swift
 //  Stampede-Tests
 //
-//  Created by David House on 9/20/20.
+//  Created by David House on 10/22/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
 
 import XCTest
 @testable import Stampede
 
-class HistoryBuildsFeatureTests: XCTestCase {
+class ArtifactClocFeatureTests: XCTestCase {
 
-    var feature: HistoryBuildsFeature!
+    var feature: ArtifactClocFeature!
     var window: UIWindow!
     var dependencies: Dependencies!
     var fixtureProvider = StampedeServiceFixtureProvider()
@@ -20,7 +20,7 @@ class HistoryBuildsFeatureTests: XCTestCase {
         super.setUp()
         window = UIWindow()
         dependencies = Dependencies(serviceProvider: fixtureProvider)
-        feature = HistoryBuildsFeature(dependencies: dependencies)
+        feature = ArtifactClocFeature(dependencies: dependencies, taskID: "someTask", title: "someTitle")
     }
 
     override func tearDown() {
@@ -29,17 +29,17 @@ class HistoryBuildsFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = HistoryBuildsFeature.makeFeature(dependencies)
+        let baseFeature = ArtifactClocFeature.makeFeature(dependencies, taskID: "someTask", title: "someTitle")
         XCTAssertNotNil(baseFeature.view)
     }
 
     func testFeatureCanCreateAChildViewController() {
-        capture(feature, title: "HistoryBuildsFeature")
+        capture(feature, title: "ArtifactClocFeature")
     }
 
     func testWhenViewAppearsThenViewModelAssignedAPublisher() {
         loadView()
-        XCTAssertTrue(fixtureProvider.fetchHistoryBuildsPublisherCalled)
+        XCTAssertTrue(fixtureProvider.fetchArtifactClocPublisherCalled)
     }
 
     private func loadView() {
