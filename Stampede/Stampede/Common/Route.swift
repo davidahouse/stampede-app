@@ -14,7 +14,7 @@ enum RouteMethod {
     case present
 }
 
-enum Route {
+enum Route: Equatable {
     
     // Repository and Builds
     case repositoryDetails(_ repository: Repository)

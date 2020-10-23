@@ -27,7 +27,7 @@ class MainFeatureTests: XCTestCase {
         window = nil
         super.tearDown()
     }
-    
+
     func testFeatureCanCreateAChildViewController() {
         capture(mainFeature, title: "MainFeature")
     }

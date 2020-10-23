@@ -1,8 +1,8 @@
 //
-//  StampedeServiceNetworkProviderTests.swift
+//  StampedeServiceFixtureProviderTests.swift
 //  Stampede-Tests
 //
-//  Created by David House on 9/20/20.
+//  Created by David House on 10/23/20.
 //  Copyright © 2020 David House. All rights reserved.
 //
 
@@ -11,9 +11,17 @@ import Combine
 import HouseKit
 @testable import Stampede
 
-class StampedeServiceNetworkProviderTests: XCTestCase {
+class StampedeServiceFixtureProviderTests: XCTestCase {
 
-    let providerNoHost = StampedeServiceNetworkProvider()
+    let providerNoHost = StampedeServiceFixtureProvider()
+    let provider = StampedeServiceFixtureProvider(host: "fixtures")
+
+    func testCanReturnAPersonaFromAString() {
+        let possiblePersonas = [ "Happy", "Error", "Loading", "ErrorBuildDetails", "Invalid" ]
+        for possible in possiblePersonas {
+            _ = StampedeServiceFixtureProvider.fromString(possible)
+        }
+    }
 
     func testThatNotProvidingHostReturnsAnErrorFromPublishers() {
         expectError(providerNoHost.fetchRepositoriesPublisher())
@@ -35,6 +43,28 @@ class StampedeServiceNetworkProviderTests: XCTestCase {
         expectError(providerNoHost.fetchAdminConfigOverridesPublisher())
         expectError(providerNoHost.fetchAdminQueuesPublisher())
         expectError(providerNoHost.fetchBuildKeysPublisher(owner: "someOwner", repository: "someRepo", source: "someSource"))
+    }
+
+    func testThatWithAHostItReturnsSuccessFromPublishers() {
+        expectSuccess(provider.fetchRepositoriesPublisher())
+        expectSuccess(provider.fetchRepositoryBuildsPublisher(owner: "someOwner", repository: "someRepo"))
+        expectSuccess(provider.fetchActiveBuildsPublisher())
+        expectSuccess(provider.fetchBuildDetailsPublisher(buildID: "someID"))
+        expectSuccess(provider.fetchTaskDetailsPublisher(taskID: "someID"))
+        expectSuccess(provider.fetchRepositorySourceDetails(owner: "someOwner", repository: "someRepo", buildKey: "someBuildKey"))
+        expectSuccess(provider.fetchArtifactClocPublisher(taskID: "someID", title: "someTitle"))
+        expectSuccess(provider.fetchActiveBuildsPublisher(owner: "someOwner", repository: "someRepo"))
+        expectSuccess(provider.fetchMonitorQueuesPublisher())
+        expectSuccess(provider.fetchWorkerStatusPublisher())
+        expectSuccess(provider.fetchActiveTasksPublisher())
+        expectSuccess(provider.fetchHistoryBuildsPublisher())
+        expectSuccess(provider.fetchHistoryTasksPublisher())
+        expectSuccess(provider.fetchHistoryHourlySummaryPublisher())
+        expectSuccess(provider.fetchAdminTasksPublisher())
+        expectSuccess(provider.fetchAdminConfigDefaultsPublisher())
+        expectSuccess(provider.fetchAdminConfigOverridesPublisher())
+        expectSuccess(provider.fetchAdminQueuesPublisher())
+        expectSuccess(provider.fetchBuildKeysPublisher(owner: "someOwner", repository: "someRepo", source: "someSource"))
     }
 
     private func expectError<T>(_ publisher: AnyPublisher<T, ServiceError>?) {
@@ -60,5 +90,4 @@ class StampedeServiceNetworkProviderTests: XCTestCase {
         })
         wait(for: [expectation], timeout: 10.0)
     }
-
 }

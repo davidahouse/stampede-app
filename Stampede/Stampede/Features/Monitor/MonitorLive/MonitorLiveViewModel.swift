@@ -82,11 +82,7 @@ class MonitorLiveViewModel: ObservableObject {
           }
         }, receiveValue: { value in
             DispatchQueue.main.async {
-                if value.count > 0 {
-                    self.queues = value
-                } else {
-                    self.queues = []
-                }
+                self.queues = value
             }
         }).store(in: &self.disposables)
     }

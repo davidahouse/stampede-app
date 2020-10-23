@@ -60,10 +60,16 @@ struct MainView: View {
 #if DEBUG
 
 struct MainView_Previews: PreviewProvider {
-    static var previews: some View {        
-        Previewer {
-            MainView()
-                .environmentObject(MainViewModel(state: .results(Repository.someRepositories)))
+    static var previews: some View {
+        Group {
+            Previewer {
+                MainView()
+                    .environmentObject(MainViewModel(state: .results(Repository.someRepositories)))
+            }
+            DevicePreviewer {
+                MainView()
+                    .environmentObject(MainViewModel(state: .results(Repository.someRepositories)))
+            }
         }
     }
 }

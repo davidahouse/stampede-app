@@ -34,7 +34,7 @@ struct SettingsDeveloperView: View {
 }
 
 #if DEBUG
-struct DeveloperView_Previews: PreviewProvider {
+struct SettingsDeveloperView_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
             SettingsDeveloperView().environmentObject(SettingsDeveloperViewModel())

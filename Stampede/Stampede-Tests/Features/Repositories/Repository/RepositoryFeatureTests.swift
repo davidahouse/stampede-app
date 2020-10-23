@@ -28,6 +28,11 @@ class RepositoryFeatureTests: XCTestCase {
         super.tearDown()
     }
 
+    func testCanMakeBaseFeature() {
+        let baseFeature = RepositoryFeature.makeFeature(dependencies, repository: Repository.someRepository)
+        XCTAssertNotNil(baseFeature.view)
+    }
+
     func testFeatureCanCreateAChildViewController() {
         capture(repositoryFeature, title: "RepositoryFeature")
     }
