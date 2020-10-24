@@ -35,10 +35,37 @@ struct ArtifactXcodebuildView: View {
                                 ValueLabel("\(xcodebuild.failedTests)")
                             }
                             HStack {
-                                PrimaryLabel("Code coverage")
+                                PrimaryLabel("Code coverage %")
                                 Spacer()
-                                ValueLabel("\((xcodebuild.codeCoverage.lineCoverage * 100.0), specifier: "%.2f") %")
+                                ValueLabel(String(format: "%.2f", xcodebuild.codeCoverage.lineCoverage * 100.0))
                             }
+                })
+
+                Section(header: Text("Test execution"), content: {
+                    ForEach(xcodebuild.details.classes, id: \.self) { testClass in
+                        ForEach(testClass.testCases, id: \.self) { testCase in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    PrimaryLabel(testClass.className)
+                                    SecondaryLabel(testCase.testName)
+                                }
+                                Spacer()
+                                ValueLabel(testCase.status)
+                            }
+                        }
+                    }
+                })
+
+                Section(header: Text("Code coverage"), content: {
+                    ForEach(xcodebuild.codeCoverage.targets, id: \.self) { target in
+                        ForEach(target.files, id: \.self) { file in
+                            HStack {
+                                PrimaryLabel(file.name)
+                                Spacer()
+                                ValueLabel(String(format: "%.2f", file.lineCoverage * 100.0))
+                            }
+                        }
+                    }
                 })
             }
         })

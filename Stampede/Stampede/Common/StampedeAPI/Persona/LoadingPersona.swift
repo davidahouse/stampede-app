@@ -78,6 +78,10 @@ class LoadingPersona: Persona {
         .loading
     }
 
+    var artifactXcodebuild: FixtureResponse<ArtifactXcodebuild> {
+        .loading
+    }
+
     var historyBuilds: FixtureResponse<[BuildDetails]> {
         .loading
     }

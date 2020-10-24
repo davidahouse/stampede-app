@@ -26,6 +26,7 @@ enum Route: Equatable {
 
     // Artifact
     case artifactCloc(taskID: String, title: String)
+    case artifactXcodebuild(taskID: String, title: String)
 
     // Monitor
     case monitorLive
@@ -64,6 +65,8 @@ enum Route: Equatable {
         // Artifact
         case .artifactCloc(let taskID, let title):
             return ArtifactClocFeature.makeFeature(dependencies, taskID: taskID, title: title)
+        case .artifactXcodebuild(let taskID, let title):
+            return ArtifactXcodebuildFeature.makeFeature(dependencies, taskID: taskID, title: title)
 
         // Monitor
         case .monitorLive:

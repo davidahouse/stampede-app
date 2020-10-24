@@ -25,7 +25,7 @@ class ArtifactXcodebuildFeature: BaseFeature {
 
     // MARK: Properties
 
-    private var viewModel = ArtifactClocViewModel()
+    private var viewModel = ArtifactXcodebuildViewModel()
 
     // MARK: - Initializer
 
@@ -58,6 +58,6 @@ class ArtifactXcodebuildFeature: BaseFeature {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-//        viewModel.publisher = dependencies.service.fetchArtifactClocPublisher(taskID: taskID, title: artifactTitle)
+        viewModel.publisher = dependencies.service.fetchArtifactXcodebuildPublisher(taskID: taskID, title: artifactTitle)
     }
 }

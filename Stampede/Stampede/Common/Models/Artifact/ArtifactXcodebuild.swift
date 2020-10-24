@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ArtifactXcodebuild: Codable, Equatable, Hashable {
+public struct ArtifactXcodebuild: Codable, Equatable, Hashable {
     let allTests: Int
     let coverage: Int
     let failedTests: Int
