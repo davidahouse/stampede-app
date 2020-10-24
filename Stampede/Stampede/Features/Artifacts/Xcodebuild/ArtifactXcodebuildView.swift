@@ -42,15 +42,12 @@ struct ArtifactXcodebuildView: View {
                 })
 
                 Section(header: Text("Test execution"), content: {
-                    ForEach(xcodebuild.details.classes, id: \.self) { testClass in
-                        ForEach(testClass.testCases, id: \.self) { testCase in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    PrimaryLabel(testClass.className)
-                                    SecondaryLabel(testCase.testName)
-                                }
-                                Spacer()
-                                ValueLabel(testCase.status)
+                    ForEach(viewModel.testResults, id: \.self) { result in
+                        HStack {
+                            result.icon.image().font(Font.system(size: 24, weight: .regular))
+                            VStack(alignment: .leading) {
+                                PrimaryLabel(result.className)
+                                SecondaryLabel(result.testName)
                             }
                         }
                     }
@@ -60,9 +57,14 @@ struct ArtifactXcodebuildView: View {
                     ForEach(xcodebuild.codeCoverage.targets, id: \.self) { target in
                         ForEach(target.files, id: \.self) { file in
                             HStack {
+                                if file.lineCoverage <= 0.50 {
+                                    CurrentTheme.Icons.failure.image().font(Font.system(size: 24, weight: .regular))
+                                } else if file.lineCoverage <= 0.80 {
+                                    CurrentTheme.Icons.warningStatus.image().font(Font.system(size: 24, weight: .regular))
+                                } else {
+                                    CurrentTheme.Icons.success.image().font(Font.system(size: 24, weight: .regular))
+                                }
                                 PrimaryLabel(file.name)
-                                Spacer()
-                                ValueLabel(String(format: "%.2f", file.lineCoverage * 100.0))
                             }
                         }
                     }
