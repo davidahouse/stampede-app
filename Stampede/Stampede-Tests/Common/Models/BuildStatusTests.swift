@@ -12,6 +12,7 @@ import XCTest
 class BuildStatusTests: XCTestCase {
     
     func testStatusIndicatorGeneratedCorrectly() {
+        XCTFail("testing!")
         XCTAssertEqual(BuildStatus.someActiveBuild.statusIndicator, .inProgress)
         XCTAssertEqual(BuildStatus.someRecentSuccessBuild.statusIndicator, .success)
         XCTAssertEqual(BuildStatus.someRecentFailedBuild.statusIndicator, .failure)

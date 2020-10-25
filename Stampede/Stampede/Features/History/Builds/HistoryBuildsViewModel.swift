@@ -10,10 +10,7 @@ import Foundation
 import SwiftUI
 import HouseKit
 
-class HistoryBuildsViewModel: BaseViewModel<[BuildDetails]> {
-
-    let X: XXZ
-}
+class HistoryBuildsViewModel: BaseViewModel<[BuildDetails]> { }
 
 #if DEBUG
 extension HistoryBuildsViewModel {
