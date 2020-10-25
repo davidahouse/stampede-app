@@ -16,7 +16,7 @@ struct BuildDetailsCell: View {
 
     var body: some View {
         Button(action: {
-            router.route(to: .buildDetailsFromID(buildDetails.build_id))
+            router.route(to: BuildRoute(build: nil, buildID: buildDetails.build_id))
         }, label: {
             HStack {
                 VStack(alignment: .leading) {

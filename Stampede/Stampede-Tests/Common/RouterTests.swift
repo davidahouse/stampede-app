@@ -45,26 +45,45 @@ class RouterTests: XCTestCase {
 
     func testCanRouteEvenIfDelegateNotSet() {
         let router = Router()
-        router.route(to: .historyTasks)
+        router.route(to: HistoryTasksRoute())
     }
 
     func testDelegateAskedIfShouldRoute() {
         let router = Router(delegate: routerSpy)
-        router.route(to: .historyBuilds)
+        router.route(to: HistoryBuildsRoute())
         XCTAssertTrue(routerSpy.routeMethodCalled)
     }
 
     func testDelegateCalledToPushARoute() {
         let router = Router(delegate: routerSpy)
         routerSpy.routeMethod = .push
-        router.route(to: .historyBuilds)
+        router.route(to: HistoryBuildsRoute())
         XCTAssertTrue(routerSpy.pushCalled)
     }
 
     func testDelegateCalledToPresentARoute() {
         let router = Router(delegate: routerSpy)
         routerSpy.routeMethod = .present
-        router.route(to: .historyBuilds)
+        router.route(to: HistoryBuildsRoute())
         XCTAssertTrue(routerSpy.presentCalled)
+    }
+
+    func testURLCanBeTurnedIntoRoute() {
+        let expecting: [String] = [
+            "http://localhost/repositories/buildDetails?buildID=123"
+        ]
+
+        for key in expecting {
+            XCTAssertNotNil(Router.fromURL(URL(string: key)!))
+        }
+
+        let expectingNil: [String] = [
+            "http://localhost/repositories/buildDetails",
+            "http://localhost/somePath"
+        ]
+
+        for key in expectingNil {
+            XCTAssertNil(Router.fromURL(URL(string: key)!))
+        }
     }
 }

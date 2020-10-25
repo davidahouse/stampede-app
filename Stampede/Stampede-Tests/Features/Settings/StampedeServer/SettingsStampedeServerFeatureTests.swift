@@ -29,7 +29,8 @@ class SettingsStampedeServerFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = SettingsStampedeServerFeature.makeFeature(dependencies)
+        let route = SettingsStampedeServerRoute()
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

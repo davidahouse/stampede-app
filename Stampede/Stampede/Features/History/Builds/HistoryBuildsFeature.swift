@@ -8,14 +8,15 @@
 import UIKit
 import SwiftUI
 
-class HistoryBuildsFeature: BaseFeature {
+struct HistoryBuildsRoute: Route {
     
-    // MARK: - Static methods
-    
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return HistoryBuildsFeature(dependencies: dependencies)
     }
+}
 
+class HistoryBuildsFeature: BaseFeature {
+        
     // MARK: - Private Properties
     
     private var viewModel = HistoryBuildsViewModel(state: .loading)

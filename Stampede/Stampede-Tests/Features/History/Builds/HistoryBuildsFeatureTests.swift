@@ -29,7 +29,8 @@ class HistoryBuildsFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = HistoryBuildsFeature.makeFeature(dependencies)
+        let route = HistoryBuildsRoute()
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

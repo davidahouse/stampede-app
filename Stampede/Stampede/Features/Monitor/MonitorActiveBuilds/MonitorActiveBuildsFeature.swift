@@ -8,13 +8,14 @@
 import UIKit
 import SwiftUI
 
-class MonitorActiveBuildsFeature: BaseFeature {
-
-    // MARK: - Static methods
+struct MonitorActiveBuildsRoute: Route {
     
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return MonitorActiveBuildsFeature(dependencies: dependencies)
     }
+}
+
+class MonitorActiveBuildsFeature: BaseFeature {
 
     // MARK: - Private Properties
     

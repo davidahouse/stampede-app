@@ -16,7 +16,7 @@ struct BuildStatusCell: View {
 
     var body: some View {
         Button(action: {
-            router.route(to: .buildDetails(buildStatus))
+            router.route(to: BuildRoute(build: buildStatus, buildID: nil))
         }, label: {
             HStack {
                 switch buildStatus.statusIndicator {

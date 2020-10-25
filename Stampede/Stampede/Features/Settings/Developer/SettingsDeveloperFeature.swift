@@ -9,13 +9,14 @@
 import Foundation
 import SwiftUI
 
-class SettingsDeveloperFeature: BaseFeature {
-
-    // MARK: - Static methods
-
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+struct SettingsDeveloperRoute: Route {
+    
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsDeveloperFeature(dependencies: dependencies)
     }
+}
+
+class SettingsDeveloperFeature: BaseFeature {
 
     // MARK: - Private Properties
 

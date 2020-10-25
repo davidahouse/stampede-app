@@ -57,12 +57,12 @@ extension BaseFeature: RouterDelegate {
     }
 
     func push(route: Route) {
-        let destination = route.featureController(dependencies)
+        let destination = route.makeFeature(dependencies)
         navigationController?.pushViewController(destination, animated: true)
     }
 
     func present(route: Route) {
-        let destination = route.featureController(dependencies)
+        let destination = route.makeFeature(dependencies)
         present(destination, animated: true, completion: {})
     }
 }

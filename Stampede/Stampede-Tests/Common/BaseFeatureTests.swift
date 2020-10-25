@@ -31,10 +31,10 @@ class BaseFeatureTests: XCTestCase {
     }
 
     func testByDefaultCanRouteToAnyRoute() {
-        XCTAssertTrue(feature.shouldRoute(to: .historyTasks))
+        XCTAssertTrue(feature.shouldRoute(to: HistoryTasksRoute()))
     }
 
     func testByDefaultRouteMethodIsPush() {
-        XCTAssertEqual(feature.routeMethod(for: .historyTasks), .push)
+        XCTAssertEqual(feature.routeMethod(for: HistoryTasksRoute()), .push)
     }
 }

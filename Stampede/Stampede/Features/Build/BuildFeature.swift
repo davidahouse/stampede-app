@@ -8,17 +8,21 @@
 
 import SwiftUI
 
-class BuildFeature: BaseFeature {
+struct BuildRoute: Route {
+    
+    let build: BuildStatus?
+    let buildID: String?
+    
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
+        if let build = build {
+            return BuildFeature(dependencies: dependencies, buildStatus: build)
+        } else {
+            return BuildFeature(dependencies: dependencies, buildID: buildID ?? "")
+        }
+    }
+}
 
-    // MARK: - Static methods
-    
-    static func makeFeature(_ dependencies: Dependencies, build: BuildStatus) -> BaseFeature {
-        return BuildFeature(dependencies: dependencies, buildStatus: build)
-    }
-    
-    static func makeFeature(_ dependencies: Dependencies, buildID: String) -> BaseFeature {
-        return BuildFeature(dependencies: dependencies, buildID: buildID)
-    }
+class BuildFeature: BaseFeature {
     
     // MARK: - Private Properties
     

@@ -29,7 +29,8 @@ class BuildTaskFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = BuildTaskFeature.makeFeature(dependencies, taskID: "someTask")
+        let route = BuildTaskRoute(taskID: "someTask")
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

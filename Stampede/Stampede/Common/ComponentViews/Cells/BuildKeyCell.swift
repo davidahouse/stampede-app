@@ -16,7 +16,7 @@ struct BuildKeyCell: View {
 
     var body: some View {
         Button(action: {
-            router.route(to: .repositorySourceDetails(repository, buildKey: buildKey.buildKey))
+            router.route(to: RepositorySourceDetailsRoute(repository: repository, buildKey: buildKey.buildKey))
         }, label: {
             HStack {
                 VStack(alignment: .leading) {

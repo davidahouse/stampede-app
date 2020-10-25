@@ -8,13 +8,14 @@
 import UIKit
 import SwiftUI
 
-class HistoryTasksFeature: BaseFeature {
+struct HistoryTasksRoute: Route {
     
-    // MARK: - Static methods
-    
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return HistoryTasksFeature(dependencies: dependencies)
     }
+}
+
+class HistoryTasksFeature: BaseFeature {
     
     // MARK: - Private Properties
     

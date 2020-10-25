@@ -8,13 +8,14 @@
 import UIKit
 import SwiftUI
 
-class SettingsInfoFeature: BaseFeature {
-
-    // MARK: - Static methods
+struct SettingsInfoRoute: Route {
     
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsInfoFeature(dependencies: dependencies)
     }
+}
+
+class SettingsInfoFeature: BaseFeature {
     
     // MARK: - Private Properties
     

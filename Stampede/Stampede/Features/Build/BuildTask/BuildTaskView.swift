@@ -128,7 +128,7 @@ struct BuildTaskArtifactsView: View {
             ForEach(artifacts, id: \.self) { artifact in
                 if artifact.type == "cloc" {
                     Button(action: {
-                        router.route(to: .artifactCloc(taskID: taskID, title: artifact.title))
+                        router.route(to: ArtifactClocRoute(taskID: taskID, title: artifact.title))
                     }, label: {
                         HStack {
                             PrimaryLabel(artifact.title)
@@ -139,7 +139,7 @@ struct BuildTaskArtifactsView: View {
                     })
                 } else if artifact.type == "xcodebuild" {
                     Button(action: {
-                        router.route(to: .artifactXcodebuild(taskID: taskID, title: artifact.title))
+                        router.route(to: ArtifactXcodebuildRoute(taskID: taskID, title: artifact.title))
                     }, label: {
                         HStack {
                             PrimaryLabel(artifact.title)

@@ -29,7 +29,8 @@ class MonitorQueuesFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = MonitorQueuesFeature.makeFeature(dependencies)
+        let route = MonitorQueuesRoute()
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

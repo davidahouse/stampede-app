@@ -9,6 +9,13 @@ import UIKit
 import SwiftUI
 import Combine
 
+struct MonitorActiveTasksRoute: Route {
+    
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
+        return MonitorActiveTasksFeature(dependencies: dependencies)
+    }
+}
+
 class MonitorActiveTasksFeature: BaseFeature {
 
     // MARK: - Static methods
