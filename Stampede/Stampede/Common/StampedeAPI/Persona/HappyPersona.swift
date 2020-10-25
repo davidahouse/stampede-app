@@ -79,6 +79,10 @@ class HappyPersona: Persona {
         .results(ArtifactCloc.someCloc)
     }
 
+    var artifactXcodebuild: FixtureResponse<ArtifactXcodebuild> {
+        .results(ArtifactXcodebuild.someXcodebuild)
+    }
+
     var historyBuilds: FixtureResponse<[BuildDetails]> {
         .results([BuildDetails.completedBuild])
     }

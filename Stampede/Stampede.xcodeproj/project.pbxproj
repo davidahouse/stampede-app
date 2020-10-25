@@ -49,6 +49,14 @@
 		94C0909225348923001E0B37 /* FavoriteRepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C0909125348923001E0B37 /* FavoriteRepositoryCell.swift */; };
 		94C090972534A774001E0B37 /* RepositoryListFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C090962534A774001E0B37 /* RepositoryListFixture.swift */; };
 		94D4FFE72517FA0D0011AAB7 /* BuildKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D4FFE62517FA0D0011AAB7 /* BuildKeyTests.swift */; };
+		94D8B4102544BAEA000FDBE8 /* ArtifactXcodebuildFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B40F2544BAEA000FDBE8 /* ArtifactXcodebuildFeature.swift */; };
+		94D8B4182544BB47000FDBE8 /* ArtifactXcodebuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B4172544BB47000FDBE8 /* ArtifactXcodebuildView.swift */; };
+		94D8B41D2544BB9E000FDBE8 /* ArtifactXcodebuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B41C2544BB9E000FDBE8 /* ArtifactXcodebuildViewModel.swift */; };
+		94D8B4232544BDE9000FDBE8 /* ArtifactXcodebuildViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B4222544BDE9000FDBE8 /* ArtifactXcodebuildViewTests.swift */; };
+		94D8B42B2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B42A2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift */; };
+		94D8B4302544C1DE000FDBE8 /* ArtifactXcodebuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B42F2544C1DE000FDBE8 /* ArtifactXcodebuild.swift */; };
+		94D8B4362544C48B000FDBE8 /* ArtifactXcodebuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B4352544C48B000FDBE8 /* ArtifactXcodebuildTests.swift */; };
+		94D8B43E2544C4C5000FDBE8 /* ArtifactXcodebuild.json in Resources */ = {isa = PBXBuildFile; fileRef = 94D8B43D2544C4C5000FDBE8 /* ArtifactXcodebuild.json */; };
 		94DB4DFF247C47B8001EF693 /* NetworkErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */; };
 		94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */; };
 		94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */; };
@@ -116,6 +124,10 @@
 		C3816C93248702BC00E6980B /* MonitorActiveTasksViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C8B248702BC00E6980B /* MonitorActiveTasksViewTests.swift */; };
 		C3850A25253739100057F500 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3850A24253739100057F500 /* BaseView.swift */; };
 		C3850A2A25373C620057F500 /* BaseSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3850A2925373C620057F500 /* BaseSubView.swift */; };
+		C38BDD7A2545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD792545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift */; };
+		C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */; };
+		C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */; };
+		C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */; };
 		C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */; };
 		C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */; };
 		C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */; };
@@ -288,6 +300,14 @@
 		94C0909125348923001E0B37 /* FavoriteRepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryCell.swift; sourceTree = "<group>"; };
 		94C090962534A774001E0B37 /* RepositoryListFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListFixture.swift; sourceTree = "<group>"; };
 		94D4FFE62517FA0D0011AAB7 /* BuildKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildKeyTests.swift; sourceTree = "<group>"; };
+		94D8B40F2544BAEA000FDBE8 /* ArtifactXcodebuildFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildFeature.swift; sourceTree = "<group>"; };
+		94D8B4172544BB47000FDBE8 /* ArtifactXcodebuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildView.swift; sourceTree = "<group>"; };
+		94D8B41C2544BB9E000FDBE8 /* ArtifactXcodebuildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildViewModel.swift; sourceTree = "<group>"; };
+		94D8B4222544BDE9000FDBE8 /* ArtifactXcodebuildViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildViewTests.swift; sourceTree = "<group>"; };
+		94D8B42A2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildFeatureTests.swift; sourceTree = "<group>"; };
+		94D8B42F2544C1DE000FDBE8 /* ArtifactXcodebuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuild.swift; sourceTree = "<group>"; };
+		94D8B4352544C48B000FDBE8 /* ArtifactXcodebuildTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildTests.swift; sourceTree = "<group>"; };
+		94D8B43D2544C4C5000FDBE8 /* ArtifactXcodebuild.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArtifactXcodebuild.json; sourceTree = "<group>"; };
 		94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorViewTests.swift; sourceTree = "<group>"; };
 		94DB4E02247C95AA001EF693 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueLabel.swift; sourceTree = "<group>"; };
@@ -359,6 +379,10 @@
 		C3816C8B248702BC00E6980B /* MonitorActiveTasksViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksViewTests.swift; sourceTree = "<group>"; };
 		C3850A24253739100057F500 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C3850A2925373C620057F500 /* BaseSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSubView.swift; sourceTree = "<group>"; };
+		C38BDD792545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildViewModelTests.swift; sourceTree = "<group>"; };
+		C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryCellTests.swift; sourceTree = "<group>"; };
+		C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRouteCellTests.swift; sourceTree = "<group>"; };
+		C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildDetailsCellTests.swift; sourceTree = "<group>"; };
 		C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerFeature.swift; sourceTree = "<group>"; };
 		C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerView.swift; sourceTree = "<group>"; };
 		C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerViewModel.swift; sourceTree = "<group>"; };
@@ -646,6 +670,7 @@
 		949CC968251783F900BEC54E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				94D8B4342544C47B000FDBE8 /* Artifact */,
 				949CC9692517840F00BEC54E /* RepositoryBuildTests.swift */,
 				949CC974251797A100BEC54E /* RepositoryTests.swift */,
 				949CC9792517982D00BEC54E /* TaskStatusTests.swift */,
@@ -694,6 +719,35 @@
 				944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */,
 			);
 			path = StampedeAPI;
+			sourceTree = "<group>";
+		};
+		94D8B40E2544BAD5000FDBE8 /* Xcodebuild */ = {
+			isa = PBXGroup;
+			children = (
+				94D8B40F2544BAEA000FDBE8 /* ArtifactXcodebuildFeature.swift */,
+				94D8B4172544BB47000FDBE8 /* ArtifactXcodebuildView.swift */,
+				94D8B41C2544BB9E000FDBE8 /* ArtifactXcodebuildViewModel.swift */,
+			);
+			path = Xcodebuild;
+			sourceTree = "<group>";
+		};
+		94D8B4212544BDCA000FDBE8 /* Xcodebuild */ = {
+			isa = PBXGroup;
+			children = (
+				94D8B4222544BDE9000FDBE8 /* ArtifactXcodebuildViewTests.swift */,
+				94D8B42A2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift */,
+				C38BDD792545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift */,
+			);
+			path = Xcodebuild;
+			sourceTree = "<group>";
+		};
+		94D8B4342544C47B000FDBE8 /* Artifact */ = {
+			isa = PBXGroup;
+			children = (
+				94D8B4352544C48B000FDBE8 /* ArtifactXcodebuildTests.swift */,
+				94D8B43D2544C4C5000FDBE8 /* ArtifactXcodebuild.json */,
+			);
+			path = Artifact;
 			sourceTree = "<group>";
 		};
 		94DB4DFD247C479C001EF693 /* View */ = {
@@ -1145,6 +1199,7 @@
 		C3B12289253D0382005FD154 /* Artifacts */ = {
 			isa = PBXGroup;
 			children = (
+				94D8B40E2544BAD5000FDBE8 /* Xcodebuild */,
 				C3B1228A253D038A005FD154 /* Cloc */,
 			);
 			path = Artifacts;
@@ -1164,6 +1219,7 @@
 			isa = PBXGroup;
 			children = (
 				C3B12299253D0479005FD154 /* ArtifactCloc.swift */,
+				94D8B42F2544C1DE000FDBE8 /* ArtifactXcodebuild.swift */,
 			);
 			path = Artifact;
 			sourceTree = "<group>";
@@ -1220,6 +1276,9 @@
 				C3DDDC3625180ABC005C8189 /* QueueSummaryCellTests.swift */,
 				C3DDDC3B25180AE2005C8189 /* RepositoryBuildCellTests.swift */,
 				C3DDDC4025180B10005C8189 /* BuildKeyCellTests.swift */,
+				C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */,
+				C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */,
+				C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1343,6 +1402,7 @@
 		C3DE1C4A2541C09D009FA36D /* Artifacts */ = {
 			isa = PBXGroup;
 			children = (
+				94D8B4212544BDCA000FDBE8 /* Xcodebuild */,
 				C3DE1C4B2541C0AD009FA36D /* Cloc */,
 			);
 			path = Artifacts;
@@ -1551,6 +1611,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D8B43E2544C4C5000FDBE8 /* ArtifactXcodebuild.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1651,10 +1712,12 @@
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
+				94D8B4102544BAEA000FDBE8 /* ArtifactXcodebuildFeature.swift in Sources */,
 				C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */,
 				C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */,
 				C39E59062540946D00217743 /* LoadingPersona.swift in Sources */,
 				C3CA2E1024BA9EC00086B71D /* HistoryBuildsViewModel.swift in Sources */,
+				94D8B4182544BB47000FDBE8 /* ArtifactXcodebuildView.swift in Sources */,
 				C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */,
 				94B571EB24BBBECD00CA13A4 /* HourlySummary.swift in Sources */,
 				C39E58FC254074E700217743 /* HappyPersona.swift in Sources */,
@@ -1679,6 +1742,7 @@
 				C3CA2E1524BA9EE30086B71D /* HistoryTasksView.swift in Sources */,
 				94C0909225348923001E0B37 /* FavoriteRepositoryCell.swift in Sources */,
 				C3816C7D248702AB00E6980B /* MonitorQueuesView.swift in Sources */,
+				94D8B4302544C1DE000FDBE8 /* ArtifactXcodebuild.swift in Sources */,
 				C39E58F72540738900217743 /* Persona.swift in Sources */,
 				C34755EC24FC85BD009B1FBF /* BuildStatusCell.swift in Sources */,
 				94FE1F4724FB081500AE4ED4 /* RepositoryList.swift in Sources */,
@@ -1704,6 +1768,7 @@
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,
 				94FE1F4C24FB18F700AE4ED4 /* SelectRepositoryView.swift in Sources */,
 				C3B12279253CD57B005FD154 /* MarkdownContentView.swift in Sources */,
+				94D8B41D2544BB9E000FDBE8 /* ArtifactXcodebuildViewModel.swift in Sources */,
 				C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */,
 				C3AD03A724885D2D00EB881F /* MonitorLiveView.swift in Sources */,
 				94E913AD24BB512B0056A150 /* BuildTaskView.swift in Sources */,
@@ -1727,6 +1792,8 @@
 				C3DE1C9825423933009FA36D /* ArtifactClocViewTests.swift in Sources */,
 				C3DDDC9425180FF4005C8189 /* SettingsRepositoriesFeatureTests.swift in Sources */,
 				C3DE1CC025431FA6009FA36D /* MonitorLiveViewModelTests.swift in Sources */,
+				C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */,
+				94D8B42B2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift in Sources */,
 				C3DDDC3225180A90005C8189 /* TaskStatusCellTests.swift in Sources */,
 				C3DE1C712541C9DA009FA36D /* SettingsDeveloperPersonaFeatureTests.swift in Sources */,
 				C3DDDC7725180F06005C8189 /* HistoryBuildsFeatureTests.swift in Sources */,
@@ -1755,6 +1822,8 @@
 				C3816C8E248702BC00E6980B /* MonitorActiveBuildsViewTests.swift in Sources */,
 				C3DDDC4C25180C1F005C8189 /* BuildViewTests.swift in Sources */,
 				C3816C90248702BC00E6980B /* MonitorQueuesViewTests.swift in Sources */,
+				C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */,
+				94D8B4362544C48B000FDBE8 /* ArtifactXcodebuildTests.swift in Sources */,
 				C3DDDC5425180C47005C8189 /* BuildFeatureTests.swift in Sources */,
 				C3DE1CAC25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift in Sources */,
 				C3DE1C8E2541D3C1009FA36D /* AppDelegateTests.swift in Sources */,
@@ -1783,11 +1852,13 @@
 				C3DDDC2D25180A62005C8189 /* BuildStatusCellTests.swift in Sources */,
 				C3DDDCBE2518110B005C8189 /* SettingsStampedeServerFeatureTests.swift in Sources */,
 				94DB4DFF247C47B8001EF693 /* NetworkErrorViewTests.swift in Sources */,
+				94D8B4232544BDE9000FDBE8 /* ArtifactXcodebuildViewTests.swift in Sources */,
 				C3520CA523CE92D5004C0674 /* MainViewTests.swift in Sources */,
 				C3816C91248702BC00E6980B /* MonitorQueuesFeatureTests.swift in Sources */,
 				C3DE1CCA2543365A009FA36D /* BaseFeatureTests.swift in Sources */,
 				C3DE1CBB254314E6009FA36D /* StampedeServiceFixtureProviderTests.swift in Sources */,
 				94D4FFE72517FA0D0011AAB7 /* BuildKeyTests.swift in Sources */,
+				C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */,
 				C3DDDC1A251809AC005C8189 /* QueueGaugeViewTests.swift in Sources */,
 				C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */,
 				941F25D823C2A71000EC3E36 /* ValueLabelTests.swift in Sources */,
@@ -1802,6 +1873,7 @@
 				C3DE1C842541D290009FA36D /* LoadingPersonaTests.swift in Sources */,
 				C3DDDC8625180F78005C8189 /* SettingsNotificationsFeatureTests.swift in Sources */,
 				941F25D423C2A6C500EC3E36 /* PrimaryLabelTests.swift in Sources */,
+				C38BDD7A2545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift in Sources */,
 				C3DDDC1025180863005C8189 /* WorkerStatusTests.swift in Sources */,
 				C3DE1CA725423B53009FA36D /* RepositorySourceDetailsViewTests.swift in Sources */,
 				941F25CB23C2A5FF00EC3E36 /* EmptyListTests.swift in Sources */,

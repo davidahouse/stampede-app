@@ -33,11 +33,6 @@ extension ArtifactCloc {
     }
 }
 
-//public struct ArtifactCloc: Codable, Equatable, Hashable {
-//    let languages: [String: LinesOfCode]
-//
-//}
-
 #if DEBUG
 extension ArtifactCloc {
     static let someCloc = ["someLang": LinesOfCode(code: 42, blank: 12, nFiles: 2, comment: 44)]

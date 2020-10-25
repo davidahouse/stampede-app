@@ -31,6 +31,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var fetchBuildDetailsPublisherCalled = false
     var fetchTaskDetailsPublisherCalled = false
     var fetchArtifactClocPublisherCalled = false
+    var fetchArtifactXcodebuildPublisherCalled = false
     var fetchHistoryBuildsPublisherCalled = false
     var fetchRepositorySourceBuildsPublisherCalled = false
 
@@ -102,6 +103,14 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
             return fetchPublisher(.error(.network(description: "some network error happened")))
         }
         return fetchPublisher(persona.artifactCloc)
+    }
+
+    func fetchArtifactXcodebuildPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactXcodebuild, ServiceError>? {
+        fetchArtifactXcodebuildPublisherCalled = true
+        guard let host = host, !host.contains("error") else {
+            return fetchPublisher(.error(.network(description: "some network error happened")))
+        }
+        return fetchPublisher(persona.artifactXcodebuild)
     }
 
     func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>? {

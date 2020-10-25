@@ -79,6 +79,10 @@ class ErrorPersona: Persona {
         .error(.network(description: "some network error happened"))
     }
 
+    var artifactXcodebuild: FixtureResponse<ArtifactXcodebuild> {
+        .error(.network(description: "some network error happened"))
+    }
+
     var historyBuilds: FixtureResponse<[BuildDetails]> {
         .error(.network(description: "some network error happened"))
     }

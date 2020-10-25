@@ -74,6 +74,13 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
         return request(url: StampedeAPIEndpoint.artifactContents(taskID, title).url(host: host))
     }
 
+    public func fetchArtifactXcodebuildPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactXcodebuild, ServiceError>? {
+        guard let host = host else {
+            return AnyPublisher<ArtifactXcodebuild, ServiceError>(Future<ArtifactXcodebuild, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
+        }
+        return request(url: StampedeAPIEndpoint.artifactContents(taskID, title).url(host: host))
+    }
+
     public func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>? {
         guard let host = host else {
             return AnyPublisher<[QueueSummary], ServiceError>(Future<[QueueSummary], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})

@@ -128,6 +128,17 @@ struct BuildTaskArtifactsView: View {
                             Image(systemName: "chevron.right")
                         }
                     })
+                } else if artifact.type == "xcodebuild" {
+                    Button(action: {
+                        router.route(to: .artifactXcodebuild(taskID: taskID, title: artifact.title))
+                    }, label: {
+                        HStack {
+                            PrimaryLabel(artifact.title)
+                            Spacer()
+                            ValueLabel(artifact.type)
+                            Image(systemName: "chevron.right")
+                        }
+                    })
                 } else {
                     HStack {
                         PrimaryLabel(artifact.title)
