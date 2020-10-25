@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Parma
 
 struct BuildTaskView: View {
 
@@ -22,15 +23,23 @@ struct BuildTaskView: View {
                     BuildTaskArtifactsView(taskID: taskDetails.task.task_id, artifacts: taskDetails.artifacts)
                 }
                 Section(header: Text("Summary")) {
-                    MarkdownContentView(markdown: taskDetails.summary)
+                    Parma(emojify(taskDetails.summary))
                 }
                 if taskDetails.text != "" {
                     Section(header: Text("Text")) {
-                        MarkdownContentView(markdown: taskDetails.text)
+                        Parma(emojify(taskDetails.text))
                     }
                 }
             }
         })
+    }
+
+    private func emojify(_ input: String) -> String {
+        return input
+            .replacingOccurrences(of: ":warning:", with: "⚠️")
+            .replacingOccurrences(of: ":white_check_mark:", with: "✅")
+            .replacingOccurrences(of: ":rotating_light:", with: "🚨")
+            .replacingOccurrences(of: ":heavy_exclamation_mark:", with: "❗️")
     }
 }
 
