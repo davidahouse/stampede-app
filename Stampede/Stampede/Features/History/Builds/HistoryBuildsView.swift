@@ -20,8 +20,12 @@ struct HistoryBuildsView: View {
     var body: some View {
         BaseView(viewModel: viewModel, content: { activeBuilds in
             List {
-                ForEach(activeBuilds, id: \.self) { item in
-                    BuildDetailsCell(buildDetails: item)
+                if activeBuilds.count > 0 {
+                    ForEach(activeBuilds, id: \.self) { item in
+                        BuildDetailsCell(buildDetails: item)
+                    }
+                } else {
+                    Text("No builds found")
                 }
             }
             .listStyle(DefaultListStyle())
@@ -36,6 +40,7 @@ struct HistoryBuildsView_Previews: PreviewProvider {
             HistoryBuildsView().environmentObject(HistoryBuildsViewModel.loading)
             HistoryBuildsView().environmentObject(HistoryBuildsViewModel.networkError)
             HistoryBuildsView().environmentObject(HistoryBuildsViewModel.someBuilds)
+            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.noBuilds)
         }
     }
 }
