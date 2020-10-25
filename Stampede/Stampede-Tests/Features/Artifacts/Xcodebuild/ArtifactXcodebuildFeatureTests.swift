@@ -39,8 +39,7 @@ class ArtifactXcodebuildFeatureTests: XCTestCase {
 
     func testWhenViewAppearsThenViewModelAssignedAPublisher() {
         loadView()
-        XCTFail("implement once we have the publisher")
-//        XCTAssertTrue(fixtureProvider.fetchArtifactXcodebuildPublisherCalled)
+        XCTAssertTrue(fixtureProvider.fetchArtifactXcodebuildPublisherCalled)
     }
 
     private func loadView() {

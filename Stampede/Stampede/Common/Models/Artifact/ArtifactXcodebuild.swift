@@ -58,11 +58,56 @@ struct ArtifactXcodebuildCodeCoverageFile: Codable, Equatable, Hashable {
 }
 
 #if DEBUG
-extension ArtifactXcodebuild {
-    static let someXcodebuild = ArtifactXcodebuild(allTests: 42, coverage: 12, failedTests: 4, successTests: 38, details: ArtifactXcodebuildDetails(classes: [ArtifactXcodebuildClass(id: "someClass", className: "someClass", testCases: [ArtifactXcodebuildTestCase(id: "someTest", status: "Success", testName: "someTest"), ArtifactXcodebuildTestCase(id: "someOtherTest", status: "Failure", testName: "someOtherTest")
-    ])]), codeCoverage: ArtifactXcodebuildCodeCoverage(coveredLines: 42, lineCoverage: 0.34, executableLines: 42, targets: [ArtifactXcodebuildCodeCoverageTarget(name: "someTarget", coveredLines: 42, lineCoverage: 0.34, executableLines: 42, buildProductPath: "somePath", files: [ArtifactXcodebuildCodeCoverageFile(name: "someFile", path: "somePath", coveredLines: 42, lineCoverage: 0.34, executableLines: 42),
-                                                                                                                                                                                                                                                                                      ArtifactXcodebuildCodeCoverageFile(name: "someOtherFile", path: "somePath", coveredLines: 42, lineCoverage: 0.99, executableLines: 42),
-                                                                                                                                                                                                                                                                                      ArtifactXcodebuildCodeCoverageFile(name: "someThirdFile", path: "somePath", coveredLines: 42, lineCoverage: 0.60, executableLines: 42)])]))
+
+extension ArtifactXcodebuildDetails {
+    static let someDetails = ArtifactXcodebuildDetails(classes: [
+        ArtifactXcodebuildClass.someClass,
+        ArtifactXcodebuildClass.someOtherClass
+    ])
 }
 
+extension ArtifactXcodebuildClass {
+    static let someClass = ArtifactXcodebuildClass(id: "someClass", className: "someClass", testCases: [
+        ArtifactXcodebuildTestCase.passingCase,
+        ArtifactXcodebuildTestCase.anotherPassingCase
+    ])
+    static let someOtherClass = ArtifactXcodebuildClass(id: "someOtherClass", className: "someOtherClass", testCases: [
+        ArtifactXcodebuildTestCase.failedCase
+    ])
+}
+
+extension ArtifactXcodebuildTestCase {
+    static let passingCase = ArtifactXcodebuildTestCase(id: "someTest", status: "Success", testName: "passingTest")
+    static let anotherPassingCase = ArtifactXcodebuildTestCase(id: "someSecondTest", status: "Success", testName: "secondPassingTest")
+    static let failedCase = ArtifactXcodebuildTestCase(id: "someOtherTest", status: "Failed", testName: "failedTest")
+}
+
+extension ArtifactXcodebuildCodeCoverage {
+    static let coverage = ArtifactXcodebuildCodeCoverage(coveredLines: 42, lineCoverage: 0.42, executableLines: 42, targets: [
+        ArtifactXcodebuildCodeCoverageTarget.target
+    ])
+}
+
+extension ArtifactXcodebuildCodeCoverageTarget {
+    static let target = ArtifactXcodebuildCodeCoverageTarget(name: "target", coveredLines: 42, lineCoverage: 0.42, executableLines: 42, buildProductPath: "somePath", files: [
+        ArtifactXcodebuildCodeCoverageFile.lowCoverage,
+        ArtifactXcodebuildCodeCoverageFile.medCoverage,
+        ArtifactXcodebuildCodeCoverageFile.highCoverage
+    ])
+}
+
+extension ArtifactXcodebuildCodeCoverageFile {
+    static let lowCoverage = ArtifactXcodebuildCodeCoverageFile(name: "someFile", path: "somePath", coveredLines: 42, lineCoverage: 0.30, executableLines: 42)
+    static let medCoverage = ArtifactXcodebuildCodeCoverageFile(name: "someOtherFile", path: "somePath", coveredLines: 42, lineCoverage: 0.70, executableLines: 42)
+    static let highCoverage = ArtifactXcodebuildCodeCoverageFile(name: "someThirdFile", path: "somePath", coveredLines: 42, lineCoverage: 0.90, executableLines: 42)
+}
+
+extension ArtifactXcodebuild {
+    static let someXcodebuild = ArtifactXcodebuild(allTests: 42,
+                                                   coverage: 12,
+                                                   failedTests: 4,
+                                                   successTests: 38,
+                                                   details: ArtifactXcodebuildDetails.someDetails,
+                                                   codeCoverage: ArtifactXcodebuildCodeCoverage.coverage)
+}
 #endif

@@ -124,6 +124,10 @@
 		C3816C93248702BC00E6980B /* MonitorActiveTasksViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C8B248702BC00E6980B /* MonitorActiveTasksViewTests.swift */; };
 		C3850A25253739100057F500 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3850A24253739100057F500 /* BaseView.swift */; };
 		C3850A2A25373C620057F500 /* BaseSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3850A2925373C620057F500 /* BaseSubView.swift */; };
+		C38BDD7A2545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD792545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift */; };
+		C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */; };
+		C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */; };
+		C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */; };
 		C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */; };
 		C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */; };
 		C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */; };
@@ -375,6 +379,10 @@
 		C3816C8B248702BC00E6980B /* MonitorActiveTasksViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksViewTests.swift; sourceTree = "<group>"; };
 		C3850A24253739100057F500 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C3850A2925373C620057F500 /* BaseSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSubView.swift; sourceTree = "<group>"; };
+		C38BDD792545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactXcodebuildViewModelTests.swift; sourceTree = "<group>"; };
+		C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryCellTests.swift; sourceTree = "<group>"; };
+		C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRouteCellTests.swift; sourceTree = "<group>"; };
+		C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildDetailsCellTests.swift; sourceTree = "<group>"; };
 		C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerFeature.swift; sourceTree = "<group>"; };
 		C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerView.swift; sourceTree = "<group>"; };
 		C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerViewModel.swift; sourceTree = "<group>"; };
@@ -728,6 +736,7 @@
 			children = (
 				94D8B4222544BDE9000FDBE8 /* ArtifactXcodebuildViewTests.swift */,
 				94D8B42A2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift */,
+				C38BDD792545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift */,
 			);
 			path = Xcodebuild;
 			sourceTree = "<group>";
@@ -1267,6 +1276,9 @@
 				C3DDDC3625180ABC005C8189 /* QueueSummaryCellTests.swift */,
 				C3DDDC3B25180AE2005C8189 /* RepositoryBuildCellTests.swift */,
 				C3DDDC4025180B10005C8189 /* BuildKeyCellTests.swift */,
+				C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */,
+				C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */,
+				C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1780,6 +1792,7 @@
 				C3DE1C9825423933009FA36D /* ArtifactClocViewTests.swift in Sources */,
 				C3DDDC9425180FF4005C8189 /* SettingsRepositoriesFeatureTests.swift in Sources */,
 				C3DE1CC025431FA6009FA36D /* MonitorLiveViewModelTests.swift in Sources */,
+				C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */,
 				94D8B42B2544BDF7000FDBE8 /* ArtifactXcodebuildFeatureTests.swift in Sources */,
 				C3DDDC3225180A90005C8189 /* TaskStatusCellTests.swift in Sources */,
 				C3DE1C712541C9DA009FA36D /* SettingsDeveloperPersonaFeatureTests.swift in Sources */,
@@ -1809,6 +1822,7 @@
 				C3816C8E248702BC00E6980B /* MonitorActiveBuildsViewTests.swift in Sources */,
 				C3DDDC4C25180C1F005C8189 /* BuildViewTests.swift in Sources */,
 				C3816C90248702BC00E6980B /* MonitorQueuesViewTests.swift in Sources */,
+				C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */,
 				94D8B4362544C48B000FDBE8 /* ArtifactXcodebuildTests.swift in Sources */,
 				C3DDDC5425180C47005C8189 /* BuildFeatureTests.swift in Sources */,
 				C3DE1CAC25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift in Sources */,
@@ -1844,6 +1858,7 @@
 				C3DE1CCA2543365A009FA36D /* BaseFeatureTests.swift in Sources */,
 				C3DE1CBB254314E6009FA36D /* StampedeServiceFixtureProviderTests.swift in Sources */,
 				94D4FFE72517FA0D0011AAB7 /* BuildKeyTests.swift in Sources */,
+				C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */,
 				C3DDDC1A251809AC005C8189 /* QueueGaugeViewTests.swift in Sources */,
 				C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */,
 				941F25D823C2A71000EC3E36 /* ValueLabelTests.swift in Sources */,
@@ -1858,6 +1873,7 @@
 				C3DE1C842541D290009FA36D /* LoadingPersonaTests.swift in Sources */,
 				C3DDDC8625180F78005C8189 /* SettingsNotificationsFeatureTests.swift in Sources */,
 				941F25D423C2A6C500EC3E36 /* PrimaryLabelTests.swift in Sources */,
+				C38BDD7A2545007800CA9A48 /* ArtifactXcodebuildViewModelTests.swift in Sources */,
 				C3DDDC1025180863005C8189 /* WorkerStatusTests.swift in Sources */,
 				C3DE1CA725423B53009FA36D /* RepositorySourceDetailsViewTests.swift in Sources */,
 				941F25CB23C2A5FF00EC3E36 /* EmptyListTests.swift in Sources */,

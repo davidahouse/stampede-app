@@ -54,18 +54,10 @@ struct ArtifactXcodebuildView: View {
                 })
 
                 Section(header: Text("Code coverage"), content: {
-                    ForEach(xcodebuild.codeCoverage.targets, id: \.self) { target in
-                        ForEach(target.files, id: \.self) { file in
-                            HStack {
-                                if file.lineCoverage <= 0.50 {
-                                    CurrentTheme.Icons.failure.image().font(Font.system(size: 24, weight: .regular))
-                                } else if file.lineCoverage <= 0.80 {
-                                    CurrentTheme.Icons.warningStatus.image().font(Font.system(size: 24, weight: .regular))
-                                } else {
-                                    CurrentTheme.Icons.success.image().font(Font.system(size: 24, weight: .regular))
-                                }
-                                PrimaryLabel(file.name)
-                            }
+                    ForEach(viewModel.coverages, id: \.self) { coverage in
+                        HStack {
+                            coverage.icon.image().font(Font.system(size: 24, weight: .regular))
+                            PrimaryLabel(coverage.fileName)
                         }
                     }
                 })
