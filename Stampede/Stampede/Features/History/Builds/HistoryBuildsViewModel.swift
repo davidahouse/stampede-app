@@ -12,7 +12,7 @@ import HouseKit
 
 class HistoryBuildsViewModel: BaseViewModel<[BuildDetails]> {
 
-    let X: XXX
+    let X: XXY
 }
 
 #if DEBUG
