@@ -11,13 +11,14 @@ import SwiftUI
 import Combine
 import HouseKit
 
-class SettingsRepositoriesFeature: BaseFeature {
-
-    // MARK: - Static methods
+struct SettingsRepositoriesRoute: Route {
     
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsRepositoriesFeature(dependencies: dependencies)
     }
+}
+
+class SettingsRepositoriesFeature: BaseFeature {
     
     // MARK: - Private properties
     

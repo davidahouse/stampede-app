@@ -8,14 +8,17 @@
 import UIKit
 import SwiftUI
 
-class RepositoryFeature: BaseFeature {
+struct RepositoryRoute: Route {
     
-    // MARK: - Static methods
+    let repository: Repository
     
-    static func makeFeature(_ dependencies: Dependencies, repository: Repository) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return RepositoryFeature(dependencies: dependencies, repository: repository)
     }
+}
 
+class RepositoryFeature: BaseFeature {
+    
     let repository: Repository
 
     // MARK: - Environment

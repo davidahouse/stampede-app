@@ -19,7 +19,7 @@ struct SettingsDeveloperView: View {
     var body: some View {
         List {
             Button(action: {
-                router.route(to: .settingsDeveloperPersona)
+                router.route(to: SettingsDeveloperPersonaRoute())
             }, label: {
                 HStack {
                     PrimaryLabel("Fixture Persona")

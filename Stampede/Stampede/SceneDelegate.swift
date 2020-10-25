@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                 if let incomingURL = userActivity.webpageURL {
                     
-                    if let route = Route.fromURL(incomingURL) {
+                    if let route = Router.fromURL(incomingURL) {
                         initialFeature = route
                     }
                 }
@@ -64,7 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      This method is called if the app is already running and we want to deep link into it.
      */
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let first = URLContexts.first, let route = Route.fromURL(first.url) {
+        if let first = URLContexts.first, let route = Router.fromURL(first.url) {
             mainFeature?.push(route: route)
         }
     }
@@ -73,7 +73,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let incomingURL = userActivity.webpageURL {
-                if let route = Route.fromURL(incomingURL) {
+                if let route = Router.fromURL(incomingURL) {
                     mainFeature?.push(route: route)
                 }
             }

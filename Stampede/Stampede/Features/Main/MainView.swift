@@ -27,7 +27,7 @@ struct MainView: View {
                 BaseView(viewModel: viewModel, content: { repositories in
                     ForEach(repositories, id: \.self) { item in
                         Button(action: {
-                            self.router.route(to: .repositoryDetails(item))
+                            self.router.route(to: RepositoryRoute(repository: item))
                         }, label: {
                             RepositoryCell(repository: item)
                         }).accessibilityIdentifier(item.id)
@@ -35,22 +35,22 @@ struct MainView: View {
                 })
             }
             Section(header: Text("Monitor")) {
-                FeatureRouteCell(title: "Live", route: .monitorLive)
-                FeatureRouteCell(title: "Active Builds", route: .monitorActiveBuilds)
-                FeatureRouteCell(title: "Active Tasks", route: .monitorActiveTasks)
-                FeatureRouteCell(title: "Queues", route: .monitorQueues)
+                FeatureRouteCell(title: "Live", route: MonitorLiveRoute())
+                FeatureRouteCell(title: "Active Builds", route: MonitorActiveBuildsRoute())
+                FeatureRouteCell(title: "Active Tasks", route: MonitorActiveTasksRoute())
+                FeatureRouteCell(title: "Queues", route: MonitorQueuesRoute())
             }
             Section(header: Text("History")) {
-                FeatureRouteCell(title: "Builds", route: .historyBuilds)
-                FeatureRouteCell(title: "Tasks", route: .historyTasks)
+                FeatureRouteCell(title: "Builds", route: HistoryBuildsRoute())
+                FeatureRouteCell(title: "Tasks", route: HistoryTasksRoute())
             }
             Section(header: Text("Settings")) {
-                FeatureRouteCell(title: "Stampede Server", route: .settingsStampedeServer)
-                FeatureRouteCell(title: "Repositories", route: .settingsRepositories)
-                FeatureRouteCell(title: "Notifications", route: .settingsNotifications)
-                FeatureRouteCell(title: "Info", route: .settingsInfo)
+                FeatureRouteCell(title: "Stampede Server", route: SettingsStampedeServerRoute())
+                FeatureRouteCell(title: "Repositories", route: SettingsRepositoriesRoute())
+                FeatureRouteCell(title: "Notifications", route: SettingsNotificationsRoute())
+                FeatureRouteCell(title: "Info", route: SettingsInfoRoute())
                 #if DEBUG
-                FeatureRouteCell(title: "Developer", route: .settingsDeveloper)
+                FeatureRouteCell(title: "Developer", route: SettingsDeveloperRoute())
                 #endif
             }
         }.listStyle(GroupedListStyle())

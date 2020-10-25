@@ -33,7 +33,7 @@ struct FeatureRouteCell: View {
 struct FeatureRouteCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
-            FeatureRouteCell(title: "Testing", route: .monitorActiveTasks)
+            FeatureRouteCell(title: "Testing", route: MonitorActiveTasksRoute())
         }
     }
 }

@@ -8,13 +8,14 @@
 import UIKit
 import SwiftUI
 
-class SettingsStampedeServerFeature: BaseFeature {
-
-    // MARK: - Static methods
+struct SettingsStampedeServerRoute: Route {
     
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsStampedeServerFeature(dependencies: dependencies)
     }
+}
+
+class SettingsStampedeServerFeature: BaseFeature {
     
     // MARK: - Private Properties
     

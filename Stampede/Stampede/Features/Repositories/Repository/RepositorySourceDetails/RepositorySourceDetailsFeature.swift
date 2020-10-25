@@ -9,13 +9,17 @@
 import Foundation
 import SwiftUI
 
-class RepositorySourceDetailsFeature: BaseFeature {
-
-    // MARK: - Static methods
-
-    static func makeFeature(_ dependencies: Dependencies, repository: Repository, buildKey: String) -> BaseFeature {
+struct RepositorySourceDetailsRoute: Route {
+    
+    let repository: Repository
+    let buildKey: String
+    
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return RepositorySourceDetailsFeature(dependencies: dependencies, repository: repository, buildKey: buildKey)
     }
+}
+
+class RepositorySourceDetailsFeature: BaseFeature {
 
     let repository: Repository
     let buildKey: String

@@ -63,7 +63,7 @@ struct BuildView: View {
                 Section(header: Text("Tasks")) {
                     ForEach(buildStatus.tasks) { task in
                         Button(action: {
-                            router.route(to: .taskDetails(task.task_id))
+                            router.route(to: BuildTaskRoute(taskID: task.task_id))
                         }, label: {
                             TaskStatusCell(taskStatus: task)
                         })

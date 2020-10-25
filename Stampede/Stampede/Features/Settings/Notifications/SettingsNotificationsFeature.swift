@@ -8,13 +8,14 @@
 import UIKit
 import SwiftUI
 
-class SettingsNotificationsFeature: BaseFeature {
+struct SettingsNotificationsRoute: Route {
     
-    // MARK: - Static methods
-    
-    static func makeFeature(_ dependencies: Dependencies) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsNotificationsFeature(dependencies: dependencies)
     }
+}
+
+class SettingsNotificationsFeature: BaseFeature {
     
     // MARK: - Private Properties
     

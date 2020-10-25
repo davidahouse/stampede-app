@@ -8,13 +8,17 @@
 import Foundation
 import SwiftUI
 
-class ArtifactXcodebuildFeature: BaseFeature {
-
-    // MARK: - Static methods
-
-    static func makeFeature(_ dependencies: Dependencies, taskID: String, title: String) -> BaseFeature {
+struct ArtifactXcodebuildRoute: Route {
+    
+    let taskID: String
+    let title: String
+    
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return ArtifactXcodebuildFeature(dependencies: dependencies, taskID: taskID, title: title)
     }
+}
+
+class ArtifactXcodebuildFeature: BaseFeature {
 
     let taskID: String
     let artifactTitle: String

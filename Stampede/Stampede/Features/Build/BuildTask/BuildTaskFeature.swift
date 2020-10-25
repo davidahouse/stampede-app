@@ -8,14 +8,17 @@
 import UIKit
 import SwiftUI
 
-class BuildTaskFeature: BaseFeature {
+struct BuildTaskRoute: Route {
     
-    // MARK: - Static methods
+    let taskID: String
     
-    static func makeFeature(_ dependencies: Dependencies, taskID: String) -> BaseFeature {
+    func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return BuildTaskFeature(dependencies: dependencies, taskID: taskID)
     }
-    
+}
+
+class BuildTaskFeature: BaseFeature {
+
     // MARK: - Private Properties
     
     private var viewModel: BuildTaskViewModel

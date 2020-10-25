@@ -16,7 +16,7 @@ struct TaskStatusCell: View {
 
     var body: some View {
         Button(action: {
-            router.route(to: .taskDetails(taskStatus.task_id))
+            router.route(to: BuildTaskRoute(taskID: taskStatus.task_id))
         }, label: {
             HStack {
                 switch taskStatus.status {
