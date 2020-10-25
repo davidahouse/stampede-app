@@ -29,7 +29,8 @@ class RepositoryBuildDetailsFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = RepositoryBuildDetailsFeature.makeFeature(dependencies, repository: Repository.someRepository, build: "someBuild")
+        let route = RepositoryBuildDetailsRoute(repository: Repository.someRepository, build: "someBuild")
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

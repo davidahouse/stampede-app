@@ -221,7 +221,6 @@
 		C3DE1C842541D290009FA36D /* LoadingPersonaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1C832541D290009FA36D /* LoadingPersonaTests.swift */; };
 		C3DE1C892541D2CE009FA36D /* ErrorBuildDetailsPersonaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1C882541D2CE009FA36D /* ErrorBuildDetailsPersonaTests.swift */; };
 		C3DE1C8E2541D3C1009FA36D /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1C8D2541D3C1009FA36D /* AppDelegateTests.swift */; };
-		C3DE1C932541D4D0009FA36D /* RouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1C922541D4D0009FA36D /* RouteTests.swift */; };
 		C3DE1C9825423933009FA36D /* ArtifactClocViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1C9725423933009FA36D /* ArtifactClocViewTests.swift */; };
 		C3DE1C9D25423A05009FA36D /* SettingsDeveloperPersonaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1C9C25423A05009FA36D /* SettingsDeveloperPersonaViewTests.swift */; };
 		C3DE1CA225423A2E009FA36D /* SettingsDeveloperViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CA125423A2E009FA36D /* SettingsDeveloperViewTests.swift */; };
@@ -473,7 +472,6 @@
 		C3DE1C832541D290009FA36D /* LoadingPersonaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPersonaTests.swift; sourceTree = "<group>"; };
 		C3DE1C882541D2CE009FA36D /* ErrorBuildDetailsPersonaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBuildDetailsPersonaTests.swift; sourceTree = "<group>"; };
 		C3DE1C8D2541D3C1009FA36D /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
-		C3DE1C922541D4D0009FA36D /* RouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTests.swift; sourceTree = "<group>"; };
 		C3DE1C9725423933009FA36D /* ArtifactClocViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocViewTests.swift; sourceTree = "<group>"; };
 		C3DE1C9C25423A05009FA36D /* SettingsDeveloperPersonaViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperPersonaViewTests.swift; sourceTree = "<group>"; };
 		C3DE1CA125423A2E009FA36D /* SettingsDeveloperViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperViewTests.swift; sourceTree = "<group>"; };
@@ -534,7 +532,6 @@
 				C3D350F523C2AFF100ADEDC9 /* Themes */,
 				941F25C623C2A39B00EC3E36 /* ComponentViews */,
 				C3DDDC142518092D005C8189 /* ConstantsTests.swift */,
-				C3DE1C922541D4D0009FA36D /* RouteTests.swift */,
 				C3DE1CB5254241D2009FA36D /* RouterTests.swift */,
 				C3DE1CC92543365A009FA36D /* BaseFeatureTests.swift */,
 			);
@@ -1820,7 +1817,6 @@
 				C3DDDC5425180C47005C8189 /* BuildFeatureTests.swift in Sources */,
 				C3DE1CAC25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift in Sources */,
 				C3DE1C8E2541D3C1009FA36D /* AppDelegateTests.swift in Sources */,
-				C3DE1C932541D4D0009FA36D /* RouteTests.swift in Sources */,
 				949CC97F2517F61200BEC54E /* BuildStatusTests.swift in Sources */,
 				C3DDDC4125180B10005C8189 /* BuildKeyCellTests.swift in Sources */,
 				C3DE1C5F2541C25C009FA36D /* RepositorySourceDetailsFeatureTests.swift in Sources */,

@@ -29,7 +29,8 @@ class SettingsNotificationsFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = SettingsNotificationsFeature.makeFeature(dependencies)
+        let route = SettingsNotificationsRoute()
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

@@ -29,7 +29,8 @@ class SettingsDeveloperFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = SettingsDeveloperFeature.makeFeature(dependencies)
+        let route = SettingsDeveloperRoute()
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

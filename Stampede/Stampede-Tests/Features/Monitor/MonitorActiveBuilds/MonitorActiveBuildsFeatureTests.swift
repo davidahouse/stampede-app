@@ -29,7 +29,8 @@ class MonitorActiveBuildsFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = MonitorActiveBuildsFeature.makeFeature(dependencies)
+        let route = MonitorActiveBuildsRoute()
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 

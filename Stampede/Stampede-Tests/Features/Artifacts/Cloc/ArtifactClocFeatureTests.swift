@@ -29,7 +29,8 @@ class ArtifactClocFeatureTests: XCTestCase {
     }
 
     func testCanMakeBaseFeature() {
-        let baseFeature = ArtifactClocFeature.makeFeature(dependencies, taskID: "someTask", title: "someTitle")
+        let route = ArtifactClocRoute(taskID: "someTaskID", title: "someTitle")
+        let baseFeature = route.makeFeature(dependencies)
         XCTAssertNotNil(baseFeature.view)
     }
 
