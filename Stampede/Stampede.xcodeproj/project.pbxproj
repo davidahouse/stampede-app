@@ -128,6 +128,7 @@
 		C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */; };
 		C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */; };
 		C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */; };
+		C38BDD9B2545F90600CA9A48 /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = C38BDD9A2545F90600CA9A48 /* Parma */; };
 		C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888124BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift */; };
 		C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */; };
 		C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */; };
@@ -158,8 +159,6 @@
 		C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1225D253B5E7C005FD154 /* TaskDetails.swift */; };
 		C3B12263253B5FD2005FD154 /* TaskSCMDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */; };
 		C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12267253B600E005FD154 /* TaskArtifact.swift */; };
-		C3B12279253CD57B005FD154 /* MarkdownContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12278253CD57B005FD154 /* MarkdownContentView.swift */; };
-		C3B1227F253CD897005FD154 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = C3B1227E253CD897005FD154 /* SwiftyMarkdown */; };
 		C3B1228C253D03A0005FD154 /* ArtifactClocFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1228B253D03A0005FD154 /* ArtifactClocFeature.swift */; };
 		C3B12294253D044A005FD154 /* ArtifactClocViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12293253D044A005FD154 /* ArtifactClocViewModel.swift */; };
 		C3B1229A253D0479005FD154 /* ArtifactCloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12299253D0479005FD154 /* ArtifactCloc.swift */; };
@@ -228,7 +227,6 @@
 		C3DE1CA225423A2E009FA36D /* SettingsDeveloperViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CA125423A2E009FA36D /* SettingsDeveloperViewTests.swift */; };
 		C3DE1CA725423B53009FA36D /* RepositorySourceDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CA625423B53009FA36D /* RepositorySourceDetailsViewTests.swift */; };
 		C3DE1CAC25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CAB25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift */; };
-		C3DE1CB125423FC3009FA36D /* MarkdownContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CB025423FC3009FA36D /* MarkdownContentViewTests.swift */; };
 		C3DE1CB6254241D2009FA36D /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CB5254241D2009FA36D /* RouterTests.swift */; };
 		C3DE1CBB254314E6009FA36D /* StampedeServiceFixtureProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CBA254314E6009FA36D /* StampedeServiceFixtureProviderTests.swift */; };
 		C3DE1CC025431FA6009FA36D /* MonitorLiveViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DE1CBF25431FA6009FA36D /* MonitorLiveViewModelTests.swift */; };
@@ -413,7 +411,6 @@
 		C3B1225D253B5E7C005FD154 /* TaskDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetails.swift; sourceTree = "<group>"; };
 		C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSCMDetails.swift; sourceTree = "<group>"; };
 		C3B12267253B600E005FD154 /* TaskArtifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskArtifact.swift; sourceTree = "<group>"; };
-		C3B12278253CD57B005FD154 /* MarkdownContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContentView.swift; sourceTree = "<group>"; };
 		C3B1228B253D03A0005FD154 /* ArtifactClocFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocFeature.swift; sourceTree = "<group>"; };
 		C3B12293253D044A005FD154 /* ArtifactClocViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocViewModel.swift; sourceTree = "<group>"; };
 		C3B12299253D0479005FD154 /* ArtifactCloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactCloc.swift; sourceTree = "<group>"; };
@@ -482,7 +479,6 @@
 		C3DE1CA125423A2E009FA36D /* SettingsDeveloperViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperViewTests.swift; sourceTree = "<group>"; };
 		C3DE1CA625423B53009FA36D /* RepositorySourceDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySourceDetailsViewTests.swift; sourceTree = "<group>"; };
 		C3DE1CAB25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBuildDetailsViewTests.swift; sourceTree = "<group>"; };
-		C3DE1CB025423FC3009FA36D /* MarkdownContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContentViewTests.swift; sourceTree = "<group>"; };
 		C3DE1CB5254241D2009FA36D /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		C3DE1CBA254314E6009FA36D /* StampedeServiceFixtureProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtureProviderTests.swift; sourceTree = "<group>"; };
 		C3DE1CBF25431FA6009FA36D /* MonitorLiveViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveViewModelTests.swift; sourceTree = "<group>"; };
@@ -498,8 +494,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C38BDD9B2545F90600CA9A48 /* Parma in Frameworks */,
 				94FE1F4124FACE7A00AE4ED4 /* HouseKit in Frameworks */,
-				C3B1227F253CD897005FD154 /* SwiftyMarkdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +752,6 @@
 				94DB4DFE247C47B8001EF693 /* NetworkErrorViewTests.swift */,
 				C3DDDC19251809AC005C8189 /* QueueGaugeViewTests.swift */,
 				C3DDDC1E251809E5005C8189 /* QueueChartViewTests.swift */,
-				C3DE1CB025423FC3009FA36D /* MarkdownContentViewTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1483,7 +1478,6 @@
 				C3F7668A245B704D0022E485 /* NetworkErrorView.swift */,
 				C3AD03AC24887C4200EB881F /* QueueGaugeView.swift */,
 				C3804FCF248EEB55008A302B /* QueueChartView.swift */,
-				C3B12278253CD57B005FD154 /* MarkdownContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1507,7 +1501,7 @@
 			name = Stampede;
 			packageProductDependencies = (
 				94FE1F4024FACE7A00AE4ED4 /* HouseKit */,
-				C3B1227E253CD897005FD154 /* SwiftyMarkdown */,
+				C38BDD9A2545F90600CA9A48 /* Parma */,
 			);
 			productName = "Stampede-Mobile";
 			productReference = C3349EB32350A92B00273730 /* Stampede.app */;
@@ -1583,7 +1577,7 @@
 			mainGroup = C3349E742350A90400273730;
 			packageReferences = (
 				94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */,
-				C3B1227D253CD897005FD154 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
+				C38BDD992545F90600CA9A48 /* XCRemoteSwiftPackageReference "Parma" */,
 			);
 			productRefGroup = C3349E7E2350A90400273730 /* Products */;
 			projectDirPath = "";
@@ -1767,7 +1761,6 @@
 				C347521024FAF819000F48B7 /* MonitorQueuesViewModel.swift in Sources */,
 				C3CA2E1724BA9EEE0086B71D /* HistoryTasksViewModel.swift in Sources */,
 				94FE1F4C24FB18F700AE4ED4 /* SelectRepositoryView.swift in Sources */,
-				C3B12279253CD57B005FD154 /* MarkdownContentView.swift in Sources */,
 				94D8B41D2544BB9E000FDBE8 /* ArtifactXcodebuildViewModel.swift in Sources */,
 				C3CA2E2824BA9F8C0086B71D /* SettingsRepositoriesView.swift in Sources */,
 				C3AD03A724885D2D00EB881F /* MonitorLiveView.swift in Sources */,
@@ -1837,7 +1830,6 @@
 				949CC975251797A100BEC54E /* RepositoryTests.swift in Sources */,
 				C3DDDCB0251810B7005C8189 /* SettingsInfoFeatureTests.swift in Sources */,
 				C3DE1C692541C991009FA36D /* SettingsDeveloperFeatureTests.swift in Sources */,
-				C3DE1CB125423FC3009FA36D /* MarkdownContentViewTests.swift in Sources */,
 				C3DDDC152518092D005C8189 /* ConstantsTests.swift in Sources */,
 				941F25D623C2A6EC00EC3E36 /* SecondaryLabelTests.swift in Sources */,
 				C3DDDC1F251809E5005C8189 /* QueueChartViewTests.swift in Sources */,
@@ -2228,12 +2220,12 @@
 				kind = branch;
 			};
 		};
-		C3B1227D253CD897005FD154 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */ = {
+		C38BDD992545F90600CA9A48 /* XCRemoteSwiftPackageReference "Parma" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimonFairbairn/SwiftyMarkdown";
+			repositoryURL = "https://github.com/dasautoooo/Parma";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.3;
+				minimumVersion = 0.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2244,10 +2236,10 @@
 			package = 94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */;
 			productName = HouseKit;
 		};
-		C3B1227E253CD897005FD154 /* SwiftyMarkdown */ = {
+		C38BDD9A2545F90600CA9A48 /* Parma */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C3B1227D253CD897005FD154 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
-			productName = SwiftyMarkdown;
+			package = C38BDD992545F90600CA9A48 /* XCRemoteSwiftPackageReference "Parma" */;
+			productName = Parma;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
