@@ -20,12 +20,16 @@ struct HistoryTasksView: View {
     var body: some View {
         BaseView(viewModel: viewModel, content: { tasks in
             List {
-                ForEach(tasks, id: \.self) { item in
-                    Button(action: {
-                        router.route(to: .taskDetails(item.task_id))
-                    }, label: {
-                        TaskStatusCell(taskStatus: item)
-                    })
+                if tasks.count > 0 {
+                    ForEach(tasks, id: \.self) { item in
+                        Button(action: {
+                            router.route(to: .taskDetails(item.task_id))
+                        }, label: {
+                            TaskStatusCell(taskStatus: item)
+                        })
+                    }
+                } else {
+                    Text("No tasks found")
                 }
             }
             .listStyle(DefaultListStyle())
