@@ -17,6 +17,9 @@ public struct TaskArtifact: Codable, Equatable, Hashable {
 #if DEBUG
 extension TaskArtifact {
     static let someArtifact = TaskArtifact(title: "some artifact", type: "aType", url: nil)
-    static let someArtifacts = [someArtifact]
+    static let clocArtifact = TaskArtifact(title: "cloc artifact", type: "cloc", url: nil)
+    static let xcodeBuildArtifact = TaskArtifact(title: "xcodebuild artifact", type: "xcodebuild", url: nil)
+    static let linkArtifact = TaskArtifact(title: "link artifact", type: "link", url: "https://www.apple.com")
+    static let someArtifacts = [someArtifact, clocArtifact, xcodeBuildArtifact, linkArtifact]
 }
 #endif
