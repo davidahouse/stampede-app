@@ -148,6 +148,17 @@ struct BuildTaskArtifactsView: View {
                             Image(systemName: "chevron.right")
                         }
                     })
+                } else if artifact.type == "link" {
+                    HStack {
+                        PrimaryLabel(artifact.title)
+                        Spacer()
+                        if let urlString = artifact.url, let url = URL(string: urlString) {
+                            Link("Open", destination: url)
+                            Image(systemName: "chevron.right")
+                        } else {
+                            ValueLabel(artifact.type)
+                        }
+                    }
                 } else {
                     HStack {
                         PrimaryLabel(artifact.title)
