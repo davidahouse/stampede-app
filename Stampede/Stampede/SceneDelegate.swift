@@ -44,14 +44,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     }
                 }()
 
-                mainFeature = MainFeature(dependencies: dependencies)
-                let rootNavVC = MainNavigationController(rootViewController: mainFeature!)
-                window.rootViewController = rootNavVC
-                if let initial = initialFeature {
-                    DispatchQueue.main.async {
-                        self.mainFeature?.push(route: initial)
-                    }
-                }
+                let rootVC = RootViewController(style: .doubleColumn, dependencies: dependencies)
+                rootVC.setupInitialFeatures(initialFeature)
+                window.rootViewController = rootVC
             } else {
                 window.rootViewController = UIViewController()
             }

@@ -152,6 +152,8 @@
 		C39E59172540BCB100217743 /* SettingsDeveloperFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E59162540BCB100217743 /* SettingsDeveloperFeature.swift */; };
 		C39E591F2540BCF400217743 /* SettingsDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E591E2540BCF400217743 /* SettingsDeveloperView.swift */; };
 		C39E59242540BD5B00217743 /* SettingsDeveloperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E59232540BD5B00217743 /* SettingsDeveloperViewModel.swift */; };
+		C3AB1CEA254B907800B1E9C0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1CE9254B907800B1E9C0 /* RootViewController.swift */; };
+		C3AB1CEF254C6EA900B1E9C0 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1CEE254C6EA900B1E9C0 /* RootViewControllerTests.swift */; };
 		C3AD03A724885D2D00EB881F /* MonitorLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03A624885D2D00EB881F /* MonitorLiveView.swift */; };
 		C3AD03A924885D4600EB881F /* MonitorLiveFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03A824885D4600EB881F /* MonitorLiveFeature.swift */; };
 		C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */; };
@@ -403,6 +405,8 @@
 		C39E59162540BCB100217743 /* SettingsDeveloperFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperFeature.swift; sourceTree = "<group>"; };
 		C39E591E2540BCF400217743 /* SettingsDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperView.swift; sourceTree = "<group>"; };
 		C39E59232540BD5B00217743 /* SettingsDeveloperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperViewModel.swift; sourceTree = "<group>"; };
+		C3AB1CE9254B907800B1E9C0 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		C3AB1CEE254C6EA900B1E9C0 /* RootViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerTests.swift; sourceTree = "<group>"; };
 		C3AD03A624885D2D00EB881F /* MonitorLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveView.swift; sourceTree = "<group>"; };
 		C3AD03A824885D4600EB881F /* MonitorLiveFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveFeature.swift; sourceTree = "<group>"; };
 		C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveViewModel.swift; sourceTree = "<group>"; };
@@ -888,6 +892,7 @@
 				C3349EC02350A92C00273730 /* LaunchScreen.storyboard */,
 				C3349EC32350A92C00273730 /* Info.plist */,
 				C3349EBD2350A92C00273730 /* Preview Content */,
+				C3AB1CE9254B907800B1E9C0 /* RootViewController.swift */,
 			);
 			path = Stampede;
 			sourceTree = "<group>";
@@ -908,6 +913,7 @@
 				944FD36623AE75A4001A9FF8 /* Features */,
 				C3349ECE2350A92C00273730 /* Info.plist */,
 				C3DE1C8D2541D3C1009FA36D /* AppDelegateTests.swift */,
+				C3AB1CEE254C6EA900B1E9C0 /* RootViewControllerTests.swift */,
 			);
 			path = "Stampede-Tests";
 			sourceTree = "<group>";
@@ -1671,6 +1677,7 @@
 				C30342A425410444006E1BF3 /* SettingsDeveloperPersonaFeature.swift in Sources */,
 				94B571F124BBBECD00CA13A4 /* RepositoryBuild.swift in Sources */,
 				C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */,
+				C3AB1CEA254B907800B1E9C0 /* RootViewController.swift in Sources */,
 				941F25C423C23B6400EC3E36 /* EmptyList.swift in Sources */,
 				C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */,
 				C39E591F2540BCF400217743 /* SettingsDeveloperView.swift in Sources */,
@@ -1790,6 +1797,7 @@
 				C3DDDC5A25180C85005C8189 /* BuildTaskViewTests.swift in Sources */,
 				C3DE1C4D2541C0F3009FA36D /* ArtifactClocFeatureTests.swift in Sources */,
 				C3DDDC4625180B60005C8189 /* HourlySummaryTests.swift in Sources */,
+				C3AB1CEF254C6EA900B1E9C0 /* RootViewControllerTests.swift in Sources */,
 				C30DBFA2252D306B00021863 /* TimeIntervalExtensionTests.swift in Sources */,
 				C3B1D62B23AE8598002CCE66 /* XCTestCase+Extension.swift in Sources */,
 				C3DDDC7125180ED8005C8189 /* HistoryTasksViewTests.swift in Sources */,

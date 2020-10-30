@@ -19,11 +19,15 @@ class BaseFeature: UIViewController {
     let dependencies: Dependencies
     let router: Router
 
-    init(dependencies: Dependencies) {
+    init(dependencies: Dependencies, routerDelegate: RouterDelegate? = nil) {
         self.dependencies = dependencies
         router = Router()
         super.init(nibName: nil, bundle: nil)
-        router.delegate = self
+        if let routerDelegate = routerDelegate {
+            router.delegate = routerDelegate
+        } else {
+            router.delegate = self
+        }
     }
 
     required init?(coder: NSCoder) {
