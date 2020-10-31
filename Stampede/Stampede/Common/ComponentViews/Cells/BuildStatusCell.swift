@@ -39,9 +39,13 @@ struct BuildStatusCell_Previews: PreviewProvider {
 }
 
 extension BuildStatusCell_Previews: Previewable {
-    static var previewViewModels: [PreviewData<BuildStatus>] {
-        return [
-            PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild),
+
+    static var defaultViewModel: PreviewData<BuildStatus> {
+        PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild)
+    }
+
+    static var alternateViewModels: [PreviewData<BuildStatus>] {
+        [
             PreviewData(id: "someRecentBuild", viewModel: BuildStatus.someRecentBuild)
         ]
     }

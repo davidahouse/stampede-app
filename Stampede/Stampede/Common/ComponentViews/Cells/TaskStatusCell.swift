@@ -50,11 +50,13 @@ struct TaskStatusCell_Previews: PreviewProvider {
 }
 
 extension TaskStatusCell_Previews: Previewable {
-    static var previewViewModels: [PreviewData<TaskStatus>] {
-        return [
-            PreviewData(id: "completedTask", viewModel: TaskStatus.completedTask),
-            PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask)
-        ]
+
+    static var defaultViewModel: PreviewData<TaskStatus> {
+        PreviewData(id: "completedTask", viewModel: TaskStatus.completedTask)
+    }
+
+    static var alternateViewModels: [PreviewData<TaskStatus>] {
+        [PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask)]
     }
     
     static func create(from viewModel: TaskStatus) -> some View {

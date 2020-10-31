@@ -33,7 +33,7 @@ struct RepositoryCell_Previews: PreviewProvider {
 
 extension RepositoryCell_Previews: Previewable {
     
-    static var defaultViewModel {
+    static var defaultViewModel: PreviewData<Repository> {
         return PreviewData(id: "someRepository", viewModel: Repository.someRepository)
     }
     

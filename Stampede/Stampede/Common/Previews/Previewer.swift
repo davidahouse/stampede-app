@@ -43,7 +43,6 @@ extension Previewable {
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
                 .previewDisplayName("\(defaultViewModel.id) Extra Large Text")
                 .previewLayout(.sizeThatFits)
-
             
             ForEach(alternateViewModels, id: \.id) { previewData in
                 AnyView(create(from: previewData.viewModel))
@@ -60,13 +59,13 @@ extension Previewable {
         
         let light = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
                 .environment(\.colorScheme, .light)
-                .previewDisplayName("\(previewData.id) Light")
+                .previewDisplayName("\(defaultViewModel.id) Light")
                 .previewLayout(.sizeThatFits).previewDependencies())
         captured.append((defaultViewModel.id + "-" + "Light", light.capture()))
 
         let dark = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
                 .environment(\.colorScheme, .dark)
-                .previewDisplayName("\(previewData.id) Dark")
+                .previewDisplayName("\(defaultViewModel.id) Dark")
                 .previewLayout(.sizeThatFits).previewDependencies())
         captured.append((defaultViewModel.id + "-" + "Dark", dark.capture()))
         
@@ -82,10 +81,9 @@ extension Previewable {
                 .previewLayout(.sizeThatFits).previewDependencies())
         captured.append((defaultViewModel.id + "-" + "ExtraLargeText", extraLargeText.capture()))
 
-        
         for previewData in alternateViewModels {
             let light = UIHostingController(rootView: AnyView(create(from: previewData.viewModel))
-                    .previewDisplayName("\(previewData.id) Light")
+                    .previewDisplayName(previewData.id)
                     .previewLayout(.sizeThatFits).previewDependencies())
             captured.append((previewData.id, light.capture()))
         }

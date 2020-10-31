@@ -47,10 +47,14 @@ struct QueueSummaryCell_Previews: PreviewProvider {
 }
 
 extension QueueSummaryCell_Previews: Previewable {
-    static var previewViewModels: [PreviewData<QueueSummary>] {
-        return [
+
+    static var defaultViewModel: PreviewData<QueueSummary> {
+        PreviewData(id: "oneWaiting", viewModel: QueueSummary.oneWaiting)
+    }
+
+    static var alternateViewModels: [PreviewData<QueueSummary>] {
+        [
             PreviewData(id: "noWaiting", viewModel: QueueSummary.noWaiting),
-            PreviewData(id: "oneWaiting", viewModel: QueueSummary.oneWaiting),
             PreviewData(id: "moreWaiting", viewModel: QueueSummary.moreWaiting),
             PreviewData(id: "alotWaiting", viewModel: QueueSummary.alotWaiting)
         ]
