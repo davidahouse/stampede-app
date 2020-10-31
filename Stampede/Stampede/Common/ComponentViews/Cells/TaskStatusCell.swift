@@ -45,9 +45,20 @@ struct TaskStatusCell: View {
 #if DEBUG
 struct TaskStatusCell_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            TaskStatusCell(taskStatus: TaskStatus.completedTask)
-        }
+        TaskStatusCell_Previews.debugPreviews
+    }
+}
+
+extension TaskStatusCell_Previews: Previewable {
+    static var previewViewModels: [PreviewData<TaskStatus>] {
+        return [
+            PreviewData(id: "completedTask", viewModel: TaskStatus.completedTask),
+            PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask)
+        ]
+    }
+    
+    static func create(from viewModel: TaskStatus) -> some View {
+        return TaskStatusCell(taskStatus: viewModel)
     }
 }
 #endif

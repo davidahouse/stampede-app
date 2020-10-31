@@ -12,7 +12,6 @@ import XCTest
 class TaskStatusCellTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(TaskStatusCell_Previews.previews,
-                   title: "TaskStatusCell_Previews")
+        capturedPreviews(TaskStatusCell_Previews.capturedPreviews)
     }
 }

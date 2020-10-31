@@ -34,10 +34,21 @@ struct BuildStatusCell: View {
 #if DEBUG
 struct BuildStatusCell_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            BuildStatusCell(buildStatus: BuildStatus.someActiveBuild)
-            BuildStatusCell(buildStatus: BuildStatus.someRecentBuild)
-        }
+        BuildStatusCell_Previews.debugPreviews
     }
 }
+
+extension BuildStatusCell_Previews: Previewable {
+    static var previewViewModels: [PreviewData<BuildStatus>] {
+        return [
+            PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild),
+            PreviewData(id: "someRecentBuild", viewModel: BuildStatus.someRecentBuild)
+        ]
+    }
+    
+    static func create(from viewModel: BuildStatus) -> some View {
+        return BuildStatusCell(buildStatus: viewModel)
+    }
+}
+
 #endif

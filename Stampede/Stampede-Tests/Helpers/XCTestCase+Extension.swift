@@ -30,6 +30,28 @@ extension XCTestCase {
             add(attachment)
         }
     }
+    
+    func captureCropped<T: View>(_ view: T, title: String) {
+        let host = UIHostingController(rootView: view)
+        let size = host.sizeThatFits(in: UIScreen.main.bounds.size)
+        host.view.bounds.size = size
+        host.view.sizeToFit()
+            UIGraphicsBeginImageContextWithOptions(host.view.bounds.size, host.view.isOpaque, 0)
+            host.view.drawHierarchy(in: host.view.bounds, afterScreenUpdates: true)
+            let snapshotImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            host.dismiss(animated: false)
+
+//            let cropRect = CGRect(x: (host.view.bounds.size.width / 2) - (size.width / 2), y: (host.view.bounds.size.height / 2), width: size.width, height: size.height)
+//            if let cgImage = snapshotImage.cgImage?.cropping(to: cropRect) {
+            //let croppedImage = UIImage(cgImage: cgImage)
+                let attachment = XCTAttachment(image: snapshotImage)
+                attachment.name = title
+                attachment.lifetime = .keepAlways
+                add(attachment)
+            //}
+        //}
+    }
 
     func capture(_ feature: UIViewController, title: String) {
         let window = UIWindow()
@@ -54,5 +76,14 @@ extension XCTestCase {
         attachment.name = title
         attachment.lifetime = .keepAlways
         add(attachment)
+    }
+    
+    func capturedPreviews(_ previews: [(String, UIImage)]) {
+        for preview in previews {
+            let attachment = XCTAttachment(image: preview.1)
+            attachment.name = preview.0
+            attachment.lifetime = .keepAlways
+            add(attachment)
+        }
     }
 }

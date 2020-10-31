@@ -12,7 +12,6 @@ import XCTest
 class RepositoryCellTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(RepositoryCell_Previews.previews,
-                   title: "RepositoryCell_Previews")
+        capturedPreviews(RepositoryCell_Previews.capturedPreviews)
     }
 }
