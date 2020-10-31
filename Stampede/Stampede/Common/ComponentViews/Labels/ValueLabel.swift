@@ -32,4 +32,18 @@ struct ValueLabel_Previews: PreviewProvider {
     }
 }
 
+extension ValueLabel_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "someTitle", viewModel: "123")
+    }
+
+    static var alternateViewModels: [PreviewData<String>] {
+        []
+    }
+
+    static func create(from viewModel: String) -> some View {
+        return ValueLabel(viewModel)
+    }
+}
 #endif

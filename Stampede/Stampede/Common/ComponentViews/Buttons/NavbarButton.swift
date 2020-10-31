@@ -34,9 +34,22 @@ struct NavbarButton: View {
 #if DEBUG
 struct NavbarButton_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            NavbarButton("NavButton", action: {})
-        }
+        NavbarButton_Previews.debugPreviews
+    }
+}
+
+extension NavbarButton_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "someTitle", viewModel: "NavButton Title")
+    }
+
+    static var alternateViewModels: [PreviewData<String>] {
+        []
+    }
+
+    static func create(from viewModel: String) -> some View {
+        return NavbarButton(viewModel, action: {})
     }
 }
 #endif

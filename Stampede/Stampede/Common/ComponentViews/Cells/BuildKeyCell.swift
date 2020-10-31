@@ -34,10 +34,22 @@ struct BuildKeyCell: View {
 #if DEBUG
 struct BuildKeyCell_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            BuildKeyCell(repository: Repository.someRepository,
-                         buildKey: BuildKey.someBranchKeys[0])
-        }
+        BuildKeyCell_Previews.debugPreviews
+    }
+}
+
+extension BuildKeyCell_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<(Repository, BuildKey)> {
+        PreviewData(id: "someRepository", viewModel: (Repository.someRepository, BuildKey.someBranchKeys[0]))
+    }
+
+    static var alternateViewModels: [PreviewData<(Repository, BuildKey)>] {
+        []
+    }
+
+    static func create(from viewModel: (Repository, BuildKey)) -> some View {
+        return BuildKeyCell(repository: viewModel.0, buildKey: viewModel.1)
     }
 }
 #endif

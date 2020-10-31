@@ -32,7 +32,7 @@ extension Previewable {
                 .previewDisplayName("\(defaultViewModel.id) Light")
                 .previewLayout(.sizeThatFits)
             AnyView(create(from: defaultViewModel.viewModel))
-                .environment(\.colorScheme, .dark)
+                .preferredColorScheme(.dark)
                 .previewDisplayName("\(defaultViewModel.id) Dark")
                 .previewLayout(.sizeThatFits)
             AnyView(create(from: defaultViewModel.viewModel))

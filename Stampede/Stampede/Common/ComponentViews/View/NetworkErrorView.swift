@@ -24,9 +24,22 @@ struct NetworkErrorView: View {
 #if DEBUG
 struct NetworkErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            NetworkErrorView(error: .network(description: "error description here"))
-        }
+        NetworkErrorView_Previews.debugPreviews
+    }
+}
+
+extension NetworkErrorView_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "errorView", viewModel: "Network error description")
+    }
+
+    static var alternateViewModels: [PreviewData<String>] {
+        []
+    }
+
+    static func create(from viewModel: String) -> some View {
+        return NetworkErrorView(error: .network(description: viewModel))
     }
 }
 #endif

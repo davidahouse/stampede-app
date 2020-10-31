@@ -33,10 +33,22 @@ struct EmptyList: View {
 
 struct EmptyList_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            EmptyList("Empty list message goes here...")
-        }
+        EmptyList_Previews.debugPreviews
     }
 }
 
+extension EmptyList_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "emptyList", viewModel: "Empty list message goes here...")
+    }
+
+    static var alternateViewModels: [PreviewData<String>] {
+        []
+    }
+
+    static func create(from viewModel: String) -> some View {
+        return EmptyList(viewModel)
+    }
+}
 #endif

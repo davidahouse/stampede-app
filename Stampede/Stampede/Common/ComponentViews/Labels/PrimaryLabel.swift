@@ -26,9 +26,22 @@ struct PrimaryLabel: View {
 #if DEBUG
 struct PrimaryLabel_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            PrimaryLabel("Primary Title")
-        }
+        PrimaryLabel_Previews.debugPreviews
+    }
+}
+
+extension PrimaryLabel_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "someTitle", viewModel: "Primary Title")
+    }
+
+    static var alternateViewModels: [PreviewData<String>] {
+        []
+    }
+
+    static func create(from viewModel: String) -> some View {
+        return PrimaryLabel(viewModel)
     }
 }
 #endif
