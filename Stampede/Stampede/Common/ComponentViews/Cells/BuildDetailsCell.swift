@@ -20,7 +20,8 @@ struct BuildDetailsCell: View {
         }, label: {
             HStack {
                 VStack(alignment: .leading) {
-                    PrimaryLabel("\(buildDetails.build)")
+                    PrimaryLabel(buildDetails.repository)
+                    SecondaryLabel("\(buildDetails.build_key)-\(buildDetails.build)")
                 }
                 Spacer()
                 ValueLabel(buildDetails.completedAgo)
