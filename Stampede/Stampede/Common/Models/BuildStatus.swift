@@ -83,7 +83,7 @@ extension BuildStatus {
     public static let someRecentSuccessBuild = BuildStatus(buildID: "123467", buildDetails: BuildDetails.completedBuild, tasks: [TaskStatus.completedTask])
     public static let someRecentFailedBuild = BuildStatus(buildID: "123467", buildDetails: BuildDetails.completedBuild, tasks: [TaskStatus.failedTask])
 
-    public static let activeBuilds = [BuildStatus.someActiveBuild, BuildStatus.someActiveSuccessBuild, BuildStatus.someActiveFailedBuild]
+    public static let activeBuilds = [BuildStatus.someActiveBuild]
     public static let recentBuilds = [BuildStatus.someRecentBuild, BuildStatus.someRecentSuccessBuild, BuildStatus.someRecentFailedBuild]
     
     public static let buildStartedSecondsAgo = BuildStatus(buildID: "12345", buildDetails: BuildDetails.buildStartedSecondsAgo, tasks: [TaskStatus.inProgressTask, TaskStatus.queuedTask])

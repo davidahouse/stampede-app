@@ -44,7 +44,7 @@ typealias BuildDetailsResponsePublisher = AnyPublisher<[BuildDetails], ServiceEr
 
 extension BuildDetails {
     public static let activeBuild = BuildDetails(build_id: "12345", owner: "davidahouse", repository: "some-repository", build_key: "pullrequest-42", build: 12, status: "in_progress", started_at: Date().addingTimeInterval(-60*5), completed_at: nil)
-    public static let completedBuild = BuildDetails(build_id: "12345", owner: "davidahouse", repository: "some-repository", build_key: "pullrequest-42", build: 12, status: "success", started_at: Date().addingTimeInterval(-60*5), completed_at: Date())
+    public static let completedBuild = BuildDetails(build_id: "12345", owner: "davidahouse", repository: "some-repository", build_key: "pullrequest-42", build: 13, status: "success", started_at: Date().addingTimeInterval(-60*5), completed_at: Date())
     
     public static let buildStartedSecondsAgo = BuildDetails(build_id: "12345", owner: "davidahouse", repository: "some-repository", build_key: "pullrequest-42", build: 12, status: "in_progress", started_at: Date().addingTimeInterval(-12), completed_at: nil)
     public static let buildStartedMinutesAgo = BuildDetails(build_id: "12345", owner: "davidahouse", repository: "some-repository", build_key: "pullrequest-42", build: 12, status: "in_progress", started_at: Date().addingTimeInterval(-12*60), completed_at: nil)

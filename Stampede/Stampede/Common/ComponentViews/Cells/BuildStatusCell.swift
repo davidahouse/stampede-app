@@ -19,16 +19,9 @@ struct BuildStatusCell: View {
             router.route(to: BuildRoute(build: buildStatus, buildID: nil))
         }, label: {
             HStack {
-                switch buildStatus.statusIndicator {
-                case .inProgress:
-                    CurrentTheme.Icons.inProgress.image().font(Font.system(size: 32, weight: .regular))
-                case .failure:
-                    CurrentTheme.Icons.failure.image().font(Font.system(size: 32, weight: .regular))
-                case .success:
-                    CurrentTheme.Icons.success.image().font(Font.system(size: 32, weight: .regular))
-                }
                 VStack(alignment: .leading) {
-                    PrimaryLabel(buildStatus.buildIdentifier)
+                    PrimaryLabel(buildStatus.buildDetails.repository)
+                    SecondaryLabel(buildStatus.buildIdentifier)
                 }
                 Spacer()
                 ValueLabel(buildStatus.startedAgo)
@@ -42,6 +35,7 @@ struct BuildStatusCell: View {
 struct BuildStatusCell_Previews: PreviewProvider {
     static var previews: some View {
         Previewer {
+            BuildStatusCell(buildStatus: BuildStatus.someActiveBuild)
             BuildStatusCell(buildStatus: BuildStatus.someRecentBuild)
         }
     }
