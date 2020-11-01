@@ -75,12 +75,25 @@ struct BuildView: View {
 }
 
 #if DEBUG
-struct BuildView_Previews: PreviewProvider {
+struct BuildView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            BuildView().environmentObject(BuildViewModel(state: .results(BuildStatus.someActiveBuild)))
-            BuildView().environmentObject(BuildViewModel(state: .results(BuildStatus.someRecentSuccessBuild)))
-        }
+        BuildView_Previews.devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<BuildViewModel> {
+        PreviewData(id: "someResults", viewModel: BuildViewModel(state: .results(BuildStatus.someActiveBuild)))
+    }
+
+    static var alternateViewModels: [PreviewData<BuildViewModel>] {
+        [
+            PreviewData(id: "successBuild", viewModel: BuildViewModel(state: .results(BuildStatus.someRecentSuccessBuild))),
+            PreviewData(id: "loading", viewModel: BuildViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: BuildViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: BuildViewModel) -> some View {
+        return BuildView().environmentObject(viewModel)
     }
 }
 #endif

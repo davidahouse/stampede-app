@@ -12,7 +12,6 @@ import XCTest
 class QueueSummaryCellTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(QueueSummaryCell_Previews.previews,
-                   title: "QueueSummaryCell_Previews")
+        capturedPreviews(QueueSummaryCell_Previews.capturedPreviews(title: "QueueSummaryCell"))
     }
 }

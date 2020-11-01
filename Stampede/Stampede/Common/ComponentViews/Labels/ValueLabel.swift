@@ -24,11 +24,21 @@ struct ValueLabel: View {
 
 #if DEBUG
 
-struct ValueLabel_Previews: PreviewProvider {
+struct ValueLabel_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            ValueLabel("123")
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "someTitle", viewModel: "123")
+    }
+
+    static var alternateViewModels: [PreviewData<String>] {
+        []
+    }
+
+    static func create(from viewModel: String) -> some View {
+        return ValueLabel(viewModel)
     }
 }
 

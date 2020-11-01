@@ -30,12 +30,24 @@ struct RepositorySourceDetailsView: View {
 }
 
 #if DEBUG
-struct RepositorySourceDetailsView_Previews: PreviewProvider {
+struct RepositorySourceDetailsView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            RepositorySourceDetailsView()
-                .environmentObject(RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild])))
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<RepositorySourceDetailsViewModel> {
+        PreviewData(id: "someResults", viewModel: RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild])))
+    }
+
+    static var alternateViewModels: [PreviewData<RepositorySourceDetailsViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: RepositorySourceDetailsViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: RepositorySourceDetailsViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: RepositorySourceDetailsViewModel) -> some View {
+        return RepositorySourceDetailsView().environmentObject(viewModel)
     }
 }
 #endif

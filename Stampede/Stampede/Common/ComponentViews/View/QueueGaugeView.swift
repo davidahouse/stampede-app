@@ -86,15 +86,26 @@ struct QueueGaugePiece: Shape {
 }
 
 #if DEBUG
-struct QueueGaugeView_Previews: PreviewProvider {
+struct QueueGaugeView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Group {
-            QueueGaugeView(info: QueueGaugeInfo(title: "empty", idle: 0, active: 0)).previewDependencies()
-            QueueGaugeView(info: QueueGaugeInfo(title: "some", idle: 2, active: 0)).previewDependencies()
-            QueueGaugeView(info: QueueGaugeInfo(title: "first", idle: 4, active: 0)).previewDependencies()
-            QueueGaugeView(info: QueueGaugeInfo(title: "second", idle: 2, active: 8)).previewDependencies()
-            QueueGaugeView(info: QueueGaugeInfo(title: "third", idle: 0, active: 8)).previewDependencies()
-        }
+        QueueGaugeView_Previews.debugPreviews
+    }
+
+    static var defaultViewModel: PreviewData<QueueGaugeInfo> {
+        PreviewData(id: "emptyGauge", viewModel: QueueGaugeInfo(title: "empty", idle: 0, active: 0))
+    }
+
+    static var alternateViewModels: [PreviewData<QueueGaugeInfo>] {
+        [
+            PreviewData(id: "some", viewModel: QueueGaugeInfo(title: "some", idle: 2, active: 0)),
+            PreviewData(id: "first", viewModel: QueueGaugeInfo(title: "first", idle: 4, active: 0)),
+            PreviewData(id: "second", viewModel: QueueGaugeInfo(title: "second", idle: 2, active: 8)),
+            PreviewData(id: "third", viewModel: QueueGaugeInfo(title: "third", idle: 0, active: 8))
+        ]
+    }
+
+    static func create(from viewModel: QueueGaugeInfo) -> some View {
+        return QueueGaugeView(info: viewModel)
     }
 }
 #endif

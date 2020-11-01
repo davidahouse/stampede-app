@@ -12,7 +12,6 @@ import XCTest
 class SecondaryLabelTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(SecondaryLabel_Previews.previews,
-                   title: "SecondaryLabel_Previews")
+        capturedPreviews(SecondaryLabel_Previews.capturedPreviews(title: "SecondaryLabel"))
     }
 }

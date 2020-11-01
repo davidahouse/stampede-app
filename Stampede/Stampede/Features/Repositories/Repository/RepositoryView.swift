@@ -86,11 +86,22 @@ struct RepositoryView: View {
 }
 
 #if DEBUG
-struct RepositoryView_Previews: PreviewProvider {
+struct RepositoryView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            RepositoryView().environmentObject(RepositoryViewModel.someViewModel)
-        }
+        RepositoryView_Previews.devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<RepositoryViewModel> {
+        PreviewData(id: "someResults", viewModel: RepositoryViewModel.someViewModel)
+    }
+
+    static var alternateViewModels: [PreviewData<RepositoryViewModel>] {
+        [
+        ]
+    }
+
+    static func create(from viewModel: RepositoryViewModel) -> some View {
+        return RepositoryView().environmentObject(viewModel)
     }
 }
 #endif

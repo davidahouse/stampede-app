@@ -12,7 +12,6 @@ import XCTest
 class FeatureRouteCellTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(FeatureRouteCell_Previews.previews,
-                   title: "FeatureRouteCell_Previews")
+        capturedPreviews(FeatureRouteCell_Previews.capturedPreviews(title: "FeatureRouteCell"))
     }
 }

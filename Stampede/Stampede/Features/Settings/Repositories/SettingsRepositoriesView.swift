@@ -51,14 +51,24 @@ struct SettingsRepositoriesView: View {
 }
 
 #if DEBUG
-struct SettingsRepositoriesView_Previews: PreviewProvider {
+struct SettingsRepositoriesView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .loading))
-            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .networkError(.network(description: "some error"))))
-            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
-            SettingsRepositoriesView().environmentObject(SettingsRepositoriesViewModel(state: .results([])))
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<SettingsRepositoriesViewModel> {
+        PreviewData(id: "someRepositories", viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+    }
+
+    static var alternateViewModels: [PreviewData<SettingsRepositoriesViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: SettingsRepositoriesViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: SettingsRepositoriesViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: SettingsRepositoriesViewModel) -> some View {
+        return SettingsRepositoriesView().environmentObject(viewModel)
     }
 }
 #endif

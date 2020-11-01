@@ -12,7 +12,6 @@ import XCTest
 class MonitorActiveTasksViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(MonitorActiveTasksView_Previews.previews,
-                   title: "MonitorActiveTasksView_Previews")
+        capturedPreviews(MonitorActiveTasksView_Previews.capturedPreviews(title: "MonitorActiveTasksView_Previews"))
     }
 }

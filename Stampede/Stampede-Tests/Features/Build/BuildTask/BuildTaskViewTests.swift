@@ -12,7 +12,6 @@ import XCTest
 class BuildTaskViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(BuildTaskView_Previews.previews,
-                   title: "BuildTaskView_Previews")
+        capturedPreviews(BuildTaskView_Previews.capturedPreviews(title: "BuildTaskView_Previews"))
     }
 }

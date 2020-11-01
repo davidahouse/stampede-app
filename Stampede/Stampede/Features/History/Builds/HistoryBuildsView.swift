@@ -34,14 +34,25 @@ struct HistoryBuildsView: View {
 }
 
 #if DEBUG
-struct HistoryBuildsView_Previews: PreviewProvider {
+struct HistoryBuildsView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.loading)
-            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.networkError)
-            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.someBuilds)
-            HistoryBuildsView().environmentObject(HistoryBuildsViewModel.noBuilds)
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<HistoryBuildsViewModel> {
+        PreviewData(id: "someBuilds", viewModel: HistoryBuildsViewModel.someBuilds)
+    }
+
+    static var alternateViewModels: [PreviewData<HistoryBuildsViewModel>] {
+        [
+            PreviewData(id: "noBuilds", viewModel: HistoryBuildsViewModel.noBuilds),
+            PreviewData(id: "loading", viewModel: HistoryBuildsViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: HistoryBuildsViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: HistoryBuildsViewModel) -> some View {
+        return HistoryBuildsView().environmentObject(viewModel)
     }
 }
 #endif

@@ -32,12 +32,23 @@ struct BuildStatusCell: View {
 }
 
 #if DEBUG
-struct BuildStatusCell_Previews: PreviewProvider {
+struct BuildStatusCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            BuildStatusCell(buildStatus: BuildStatus.someActiveBuild)
-            BuildStatusCell(buildStatus: BuildStatus.someRecentBuild)
-        }
+        BuildStatusCell_Previews.debugPreviews
+    }
+
+    static var defaultViewModel: PreviewData<BuildStatus> {
+        PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild)
+    }
+
+    static var alternateViewModels: [PreviewData<BuildStatus>] {
+        [
+            PreviewData(id: "someRecentBuild", viewModel: BuildStatus.someRecentBuild)
+        ]
+    }
+
+    static func create(from viewModel: BuildStatus) -> some View {
+        return BuildStatusCell(buildStatus: viewModel)
     }
 }
 #endif

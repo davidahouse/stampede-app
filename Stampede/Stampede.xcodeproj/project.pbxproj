@@ -15,7 +15,6 @@
 		941F25D823C2A71000EC3E36 /* ValueLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F25D723C2A71000EC3E36 /* ValueLabelTests.swift */; };
 		9421332E24C33F820043FBD2 /* BuildKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421332D24C33F820043FBD2 /* BuildKey.swift */; };
 		9438376C2468515E00A90FF4 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376B2468515E00A90FF4 /* Previewer.swift */; };
-		9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376D246859E400A90FF4 /* DevicePreviewer.swift */; };
 		943837702468713E00A90FF4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438376F2468713E00A90FF4 /* View+Extension.swift */; };
 		943C3DB42524A90F00C35FB6 /* RepositoryListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */; };
 		944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */; };
@@ -91,6 +90,7 @@
 		C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA123BED33400AC542F /* SecondaryLabel.swift */; };
 		C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA423BED39C00AC542F /* CurrentTheme.swift */; };
 		C3126DAA23BED8EF00AC542F /* NavbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA923BED8EF00AC542F /* NavbarButton.swift */; };
+		C31341BF254E47540037D0D3 /* PreviewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31341BE254E47540037D0D3 /* PreviewerTests.swift */; };
 		C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349EB52350A92B00273730 /* AppDelegate.swift */; };
 		C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349EB72350A92B00273730 /* SceneDelegate.swift */; };
 		C3349EBC2350A92C00273730 /* AssetsMobile.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3349EBB2350A92C00273730 /* AssetsMobile.xcassets */; };
@@ -265,7 +265,6 @@
 		9421332D24C33F820043FBD2 /* BuildKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildKey.swift; sourceTree = "<group>"; };
 		9427F918235BB7360058F7E8 /* Stampede.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stampede.entitlements; sourceTree = "<group>"; };
 		9438376B2468515E00A90FF4 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
-		9438376D246859E400A90FF4 /* DevicePreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePreviewer.swift; sourceTree = "<group>"; };
 		9438376F2468713E00A90FF4 /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListTests.swift; sourceTree = "<group>"; };
 		944EF65624FD1A8300357E9E /* StampedeServiceFixtureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeServiceFixtureProvider.swift; sourceTree = "<group>"; };
@@ -335,6 +334,7 @@
 		C3126DA123BED33400AC542F /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA423BED39C00AC542F /* CurrentTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTheme.swift; sourceTree = "<group>"; };
 		C3126DA923BED8EF00AC542F /* NavbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarButton.swift; sourceTree = "<group>"; };
+		C31341BE254E47540037D0D3 /* PreviewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewerTests.swift; sourceTree = "<group>"; };
 		C31B21C42395B7270060A6DD /* RepositoryFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFeature.swift; sourceTree = "<group>"; };
 		C31B21CD2395C8600060A6DD /* BuildFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildFeature.swift; sourceTree = "<group>"; };
 		C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildViewModel.swift; sourceTree = "<group>"; };
@@ -529,6 +529,7 @@
 		941F25C523C2A39200EC3E36 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C31341BD254E47370037D0D3 /* Previews */,
 				C30DBF93252D296100021863 /* Extensions */,
 				943C3DB22524A8F800C35FB6 /* LocalStorage */,
 				C3DDDCCF251821B4005C8189 /* StampedeAPI */,
@@ -584,7 +585,6 @@
 			isa = PBXGroup;
 			children = (
 				9438376B2468515E00A90FF4 /* Previewer.swift */,
-				9438376D246859E400A90FF4 /* DevicePreviewer.swift */,
 			);
 			path = Previews;
 			sourceTree = "<group>";
@@ -857,6 +857,14 @@
 				C3126DA923BED8EF00AC542F /* NavbarButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C31341BD254E47370037D0D3 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				C31341BE254E47540037D0D3 /* PreviewerTests.swift */,
+			);
+			path = Previews;
 			sourceTree = "<group>";
 		};
 		C3349E742350A90400273730 = {
@@ -1691,7 +1699,6 @@
 				C39E58EE253F821900217743 /* RepositoryBuildDetailsViewModel.swift in Sources */,
 				C38C889024BA222500F6E6C9 /* SettingsInfoFeature.swift in Sources */,
 				C30DBFF32532308900021863 /* Dependencies.swift in Sources */,
-				9438376E246859E400A90FF4 /* DevicePreviewer.swift in Sources */,
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
 				94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */,
 				94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */,
@@ -1803,6 +1810,7 @@
 				C3DDDC7125180ED8005C8189 /* HistoryTasksViewTests.swift in Sources */,
 				C3DE1C7F2541D221009FA36D /* ErrorPersonaTests.swift in Sources */,
 				C3DE1C772541D0D0009FA36D /* HappyPersonaTests.swift in Sources */,
+				C31341BF254E47540037D0D3 /* PreviewerTests.swift in Sources */,
 				C3DE1C892541D2CE009FA36D /* ErrorBuildDetailsPersonaTests.swift in Sources */,
 				C3DE1C9D25423A05009FA36D /* SettingsDeveloperPersonaViewTests.swift in Sources */,
 				C3DE1CA225423A2E009FA36D /* SettingsDeveloperViewTests.swift in Sources */,

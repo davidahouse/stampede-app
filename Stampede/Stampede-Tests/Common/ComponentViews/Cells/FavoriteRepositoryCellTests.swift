@@ -12,7 +12,6 @@ import XCTest
 class FavoriteRepositoryCellTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(FavoriteRepositoryCell_Previews.previews,
-                   title: "FavoriteRepositoryCell_Previews")
+        capturedPreviews(FavoriteRepositoryCell_Previews.capturedPreviews(title: "FavoriteRepositoryCell"))
     }
 }

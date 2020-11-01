@@ -34,11 +34,22 @@ struct SettingsDeveloperView: View {
 }
 
 #if DEBUG
-struct SettingsDeveloperView_Previews: PreviewProvider {
+struct SettingsDeveloperView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            SettingsDeveloperView().environmentObject(SettingsDeveloperViewModel())
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<SettingsDeveloperViewModel> {
+        PreviewData(id: "developer", viewModel: SettingsDeveloperViewModel())
+    }
+
+    static var alternateViewModels: [PreviewData<SettingsDeveloperViewModel>] {
+        [
+        ]
+    }
+
+    static func create(from viewModel: SettingsDeveloperViewModel) -> some View {
+        return SettingsDeveloperView().environmentObject(viewModel)
     }
 }
 #endif

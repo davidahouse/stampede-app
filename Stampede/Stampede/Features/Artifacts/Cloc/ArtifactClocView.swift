@@ -52,12 +52,24 @@ struct ArtifactClocView: View {
 }
 
 #if DEBUG
-struct ArtifactClocView_Previews: PreviewProvider {
+struct ArtifactClocView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            ArtifactClocView()
-                .environmentObject(ArtifactClocViewModel.someCloc)
-        }
+        ArtifactClocView_Previews.devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<ArtifactClocViewModel> {
+        PreviewData(id: "someResults", viewModel: ArtifactClocViewModel(state: .results(ArtifactCloc.someCloc)))
+    }
+
+    static var alternateViewModels: [PreviewData<ArtifactClocViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: ArtifactClocViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: ArtifactClocViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: ArtifactClocViewModel) -> some View {
+        return ArtifactClocView().environmentObject(viewModel)
     }
 }
 #endif

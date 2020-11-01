@@ -49,11 +49,22 @@ struct SettingsDeveloperPersonaView: View {
 }
 
 #if DEBUG
-struct SettingsDeveloperPersonaView_Previews: PreviewProvider {
+struct SettingsDeveloperPersonaView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            SettingsDeveloperPersonaView().environmentObject(SettingsDeveloperPersonaViewModel())
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<SettingsDeveloperPersonaViewModel> {
+        PreviewData(id: "persona", viewModel: SettingsDeveloperPersonaViewModel())
+    }
+
+    static var alternateViewModels: [PreviewData<SettingsDeveloperPersonaViewModel>] {
+        [
+        ]
+    }
+
+    static func create(from viewModel: SettingsDeveloperPersonaViewModel) -> some View {
+        return SettingsDeveloperPersonaView().environmentObject(viewModel)
     }
 }
 #endif

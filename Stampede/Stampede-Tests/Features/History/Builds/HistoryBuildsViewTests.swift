@@ -12,7 +12,6 @@ import XCTest
 class HistoryBuildsViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(HistoryBuildsView_Previews.previews,
-                   title: "HistoryBuildsView_Previews")
+        capturedPreviews(HistoryBuildsView_Previews.capturedPreviews(title: "HistoryBuildsView_Previews"))
     }
 }

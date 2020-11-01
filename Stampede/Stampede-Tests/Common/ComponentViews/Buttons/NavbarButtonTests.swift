@@ -12,7 +12,6 @@ import XCTest
 class NavbarButtonTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(NavbarButton_Previews.previews,
-                   title: "NavbarButton_Previews")
+        capturedPreviews(NavbarButton_Previews.capturedPreviews(title: "NavbarButton"))
     }
 }

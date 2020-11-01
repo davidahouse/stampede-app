@@ -12,7 +12,6 @@ import XCTest
 class MonitorLiveViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(MonitorLiveView_Previews.previews,
-                   title: "MonitorLiveView_Previews")
+        capturedPreviews(MonitorLiveView_Previews.capturedPreviews(title: "MonitorLiveView_Previews"))
     }
 }

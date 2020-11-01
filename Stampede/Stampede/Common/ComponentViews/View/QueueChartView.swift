@@ -51,13 +51,26 @@ extension Rectangle {
     }
 }
 
-struct QueueChartView_Previews: PreviewProvider {
+#if DEBUG
+struct QueueChartView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Group {
-            QueueChartView(measurements: [])
-            QueueChartView(measurements: [0])
-            QueueChartView(measurements: [0, 0, 4, 1, 5, 6, 0, 0, 0, 2, 3])
-            QueueChartView(measurements: [4, 4, 5, 2, 7, 12, 3, 5, 6, 7, 8, 9])
-        }
+        QueueChartView_Previews.debugPreviews
+    }
+
+    static var defaultViewModel: PreviewData<[Int]> {
+        PreviewData(id: "basicChart", viewModel: [0, 0, 4, 1, 5, 6, 0, 0, 0, 2, 3])
+    }
+
+    static var alternateViewModels: [PreviewData<[Int]>] {
+        [
+            PreviewData(id: "empty", viewModel: []),
+            PreviewData(id: "singleZero", viewModel: [0]),
+            PreviewData(id: "singleNonZero", viewModel: [42])
+        ]
+    }
+
+    static func create(from viewModel: [Int]) -> some View {
+        return QueueChartView(measurements: viewModel)
     }
 }
+#endif

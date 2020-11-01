@@ -12,7 +12,6 @@ import XCTest
 class ValueLabelTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(ValueLabel_Previews.previews,
-                   title: "ValueLabel_Previews")
+        capturedPreviews(ValueLabel_Previews.capturedPreviews(title: "ValueLabel"))
     }
 }

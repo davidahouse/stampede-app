@@ -40,11 +40,25 @@ struct QueueSummaryCell: View {
 }
 
 #if DEBUG
-struct QueueSummaryCell_Previews: PreviewProvider {
+struct QueueSummaryCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            QueueSummaryCell(queueSummary: QueueSummary.someSummary)
-        }
+        QueueSummaryCell_Previews.debugPreviews
+    }
+
+    static var defaultViewModel: PreviewData<QueueSummary> {
+        PreviewData(id: "oneWaiting", viewModel: QueueSummary.oneWaiting)
+    }
+
+    static var alternateViewModels: [PreviewData<QueueSummary>] {
+        [
+            PreviewData(id: "noWaiting", viewModel: QueueSummary.noWaiting),
+            PreviewData(id: "moreWaiting", viewModel: QueueSummary.moreWaiting),
+            PreviewData(id: "alotWaiting", viewModel: QueueSummary.alotWaiting)
+        ]
+    }
+
+    static func create(from viewModel: QueueSummary) -> some View {
+        return QueueSummaryCell(queueSummary: viewModel)
     }
 }
 #endif

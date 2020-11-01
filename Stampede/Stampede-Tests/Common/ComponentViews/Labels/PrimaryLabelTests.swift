@@ -12,7 +12,6 @@ import XCTest
 class PrimaryLabelTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(PrimaryLabel_Previews.previews,
-                   title: "PrimaryLabel_Previews")
+        capturedPreviews(PrimaryLabel_Previews.capturedPreviews(title: "PrimaryLabel"))
     }
 }

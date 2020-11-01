@@ -31,13 +31,23 @@ struct SettingsStampedeServerView: View {
 }
 
 #if DEBUG
-struct SettingsStampedeServerView_Previews: PreviewProvider {
+struct SettingsStampedeServerView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            SettingsStampedeServerView().environmentObject(SettingsStampedeServerViewModel.someViewModel)
-            SettingsStampedeServerView().environmentObject(SettingsStampedeServerViewModel.someViewModelWithNoHost).environmentObject(StampedeDefaults.defaultsWithNoHost)
-        }
+        devicePreviews
+    }
 
+    static var defaultViewModel: PreviewData<SettingsStampedeServerViewModel> {
+        PreviewData(id: "withHost", viewModel: SettingsStampedeServerViewModel.someViewModel)
+    }
+
+    static var alternateViewModels: [PreviewData<SettingsStampedeServerViewModel>] {
+        [
+            PreviewData(id: "noHost", viewModel: SettingsStampedeServerViewModel.someViewModelWithNoHost)
+        ]
+    }
+
+    static func create(from viewModel: SettingsStampedeServerViewModel) -> some View {
+        return SettingsStampedeServerView().environmentObject(viewModel)
     }
 }
 #endif

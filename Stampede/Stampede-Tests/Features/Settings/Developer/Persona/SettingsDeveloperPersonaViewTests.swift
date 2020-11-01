@@ -11,7 +11,6 @@ import XCTest
 
 class SettingsDeveloperPersonaViewTests: XCTestCase {
     func testCapturePreviews() {
-        capture(SettingsDeveloperPersonaView_Previews.previews,
-                   title: "SettingsDeveloperPersonaView_Previews")
+        capturedPreviews(SettingsDeveloperPersonaView_Previews.capturedPreviews(title: "SettingsDeveloperPersonaView_Previews"))
     }
 }

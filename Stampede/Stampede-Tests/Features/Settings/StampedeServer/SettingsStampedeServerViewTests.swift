@@ -12,7 +12,6 @@ import XCTest
 class SettingsStampedeServerViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(SettingsStampedeServerView_Previews.previews,
-                   title: "SettingsStampedeServerView_Previews")
+        capturedPreviews(SettingsStampedeServerView_Previews.capturedPreviews(title: "SettingsStampedeServerView_Previews"))
     }
 }

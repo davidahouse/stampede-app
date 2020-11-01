@@ -59,18 +59,25 @@ struct MainView: View {
 
 #if DEBUG
 
-struct MainView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Group {
-            Previewer {
-                MainView()
-                    .environmentObject(MainViewModel(state: .results(Repository.someRepositories)))
-            }
-            DevicePreviewer {
-                MainView()
-                    .environmentObject(MainViewModel(state: .results(Repository.someRepositories)))
-            }
-        }
+        MainView_Previews.devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<MainViewModel> {
+        PreviewData(id: "someResults", viewModel: MainViewModel(state: .results(Repository.someRepositories)))
+    }
+
+    static var alternateViewModels: [PreviewData<MainViewModel>] {
+        [
+            PreviewData(id: "empty", viewModel: MainViewModel(state: .results([]))),
+            PreviewData(id: "loading", viewModel: MainViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: MainViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: MainViewModel) -> some View {
+        return MainView().environmentObject(viewModel)
     }
 }
 #endif

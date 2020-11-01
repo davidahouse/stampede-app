@@ -11,7 +11,6 @@ import XCTest
 
 class ArtifactXcodebuildViewTests: XCTestCase {
     func testCapturePreviews() {
-        capture(ArtifactXcodebuildView_Previews.previews,
-                   title: "ArtifactXcodebuildView_Previews")
+        capturedPreviews(ArtifactXcodebuildView_Previews.capturedPreviews(title: "ArtifactXcodebuildView"))
     }
 }

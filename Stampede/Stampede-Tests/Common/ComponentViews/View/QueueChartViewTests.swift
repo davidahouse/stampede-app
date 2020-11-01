@@ -12,7 +12,6 @@ import XCTest
 class QueueChartViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(QueueChartView_Previews.previews,
-                   title: "QueueChartView_Previews")
+        capturedPreviews(QueueChartView_Previews.capturedPreviews(title: "QueueChartView"))
     }
 }

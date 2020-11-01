@@ -37,12 +37,15 @@ typealias QueueSummaryResponsePublisher = AnyPublisher<[QueueSummary], ServiceEr
 #if DEBUG
 
 extension QueueSummary {
-    public static let someSummary = QueueSummary(queue: "some queue", stats: QueueSummaryStats(waiting: 10, active: 1, completed: 0, failed: 0, delayed: 0, paused: 0))
-    public static let someOtherSummary = QueueSummary(queue: "some other queue", stats: QueueSummaryStats(waiting: 5, active: 1, completed: 0, failed: 0, delayed: 0, paused: 0))
-    public static let someThirdSummary = QueueSummary(queue: "some third queue", stats: QueueSummaryStats(waiting: 0, active: 1, completed: 0, failed: 0, delayed: 0, paused: 0))
-    public static let someSummaries = [QueueSummary.someSummary,
-                                QueueSummary.someOtherSummary,
-                                QueueSummary.someThirdSummary]
+    public static let noWaiting = QueueSummary(queue: "some queue", stats: QueueSummaryStats(waiting: 0, active: 0, completed: 0, failed: 0, delayed: 0, paused: 0))
+    public static let oneWaiting = QueueSummary(queue: "some other queue", stats: QueueSummaryStats(waiting: 1, active: 0, completed: 0, failed: 0, delayed: 0, paused: 0))
+    public static let moreWaiting = QueueSummary(queue: "some third queue", stats: QueueSummaryStats(waiting: 5, active: 0, completed: 0, failed: 0, delayed: 0, paused: 0))
+    public static let alotWaiting = QueueSummary(queue: "some fourth queue", stats: QueueSummaryStats(waiting: 15, active: 0, completed: 0, failed: 0, delayed: 0, paused: 0))
+    
+    public static let someSummaries = [QueueSummary.noWaiting,
+                                QueueSummary.oneWaiting,
+                                QueueSummary.moreWaiting,
+                                QueueSummary.alotWaiting]
 }
 
 #endif

@@ -38,13 +38,24 @@ struct MonitorActiveTasksView: View {
 }
 
 #if DEBUG
-struct MonitorActiveTasksView_Previews: PreviewProvider {
+struct MonitorActiveTasksView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.loading)
-            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.networkError)
-            MonitorActiveTasksView().environmentObject(MonitorActiveTasksViewModel.someTasks)
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<MonitorActiveTasksViewModel> {
+        PreviewData(id: "someBuilds", viewModel: MonitorActiveTasksViewModel.someTasks)
+    }
+
+    static var alternateViewModels: [PreviewData<MonitorActiveTasksViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: MonitorActiveTasksViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: MonitorActiveTasksViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: MonitorActiveTasksViewModel) -> some View {
+        return MonitorActiveTasksView().environmentObject(viewModel)
     }
 }
 #endif

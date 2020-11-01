@@ -12,7 +12,6 @@ import XCTest
 class MonitorQueuesViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(MonitorQueuesView_Previews.previews,
-                   title: "MonitorQueuesView_Previews")
+        capturedPreviews(MonitorQueuesView_Previews.capturedPreviews(title: "MonitorQueuesView_Previews"))
     }
 }
