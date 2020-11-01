@@ -22,13 +22,10 @@ struct NetworkErrorView: View {
 }
 
 #if DEBUG
-struct NetworkErrorView_Previews: PreviewProvider {
+struct NetworkErrorView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         NetworkErrorView_Previews.debugPreviews
     }
-}
-
-extension NetworkErrorView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<String> {
         PreviewData(id: "errorView", viewModel: "Network error description")

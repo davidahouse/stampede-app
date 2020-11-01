@@ -30,13 +30,10 @@ struct FeatureRouteCell: View {
 }
 
 #if DEBUG
-struct FeatureRouteCell_Previews: PreviewProvider {
+struct FeatureRouteCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         FeatureRouteCell_Previews.debugPreviews
     }
-}
-
-extension FeatureRouteCell_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<String> {
         PreviewData(id: "routeCell", viewModel: "Testing")

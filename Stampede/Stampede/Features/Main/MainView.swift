@@ -59,13 +59,10 @@ struct MainView: View {
 
 #if DEBUG
 
-struct MainView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         MainView_Previews.devicePreviews
     }
-}
-
-extension MainView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<MainViewModel> {
         PreviewData(id: "someResults", viewModel: MainViewModel(state: .results(Repository.someRepositories)))

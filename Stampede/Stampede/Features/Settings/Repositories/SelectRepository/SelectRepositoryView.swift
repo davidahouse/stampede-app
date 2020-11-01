@@ -53,13 +53,24 @@ struct SelectRepositoryView: View {
 }
 
 #if DEBUG
-struct SelectRepositoryView_Previews: PreviewProvider {
+struct SelectRepositoryView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.loading)
-            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.networkError)
-            SelectRepositoryView().environmentObject(SelectRepositoryViewModel.someRepositories)
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<SelectRepositoryViewModel> {
+        PreviewData(id: "someRepositories", viewModel: SelectRepositoryViewModel.someRepositories)
+    }
+
+    static var alternateViewModels: [PreviewData<SelectRepositoryViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: SelectRepositoryViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: SelectRepositoryViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: SelectRepositoryViewModel) -> some View {
+        return SelectRepositoryView().environmentObject(viewModel)
     }
 }
 #endif

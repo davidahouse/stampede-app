@@ -31,13 +31,10 @@ struct EmptyList: View {
 
 #if DEBUG
 
-struct EmptyList_Previews: PreviewProvider {
+struct EmptyList_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         EmptyList_Previews.debugPreviews
     }
-}
-
-extension EmptyList_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<String> {
         PreviewData(id: "emptyList", viewModel: "Empty list message goes here...")

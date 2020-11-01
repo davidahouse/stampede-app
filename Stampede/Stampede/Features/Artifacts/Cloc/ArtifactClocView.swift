@@ -52,13 +52,10 @@ struct ArtifactClocView: View {
 }
 
 #if DEBUG
-struct ArtifactClocView_Previews: PreviewProvider {
+struct ArtifactClocView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         ArtifactClocView_Previews.devicePreviews
     }
-}
-
-extension ArtifactClocView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<ArtifactClocViewModel> {
         PreviewData(id: "someResults", viewModel: ArtifactClocViewModel(state: .results(ArtifactCloc.someCloc)))

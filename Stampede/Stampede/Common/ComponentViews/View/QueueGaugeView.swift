@@ -86,13 +86,10 @@ struct QueueGaugePiece: Shape {
 }
 
 #if DEBUG
-struct QueueGaugeView_Previews: PreviewProvider {
+struct QueueGaugeView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         QueueGaugeView_Previews.debugPreviews
     }
-}
-
-extension QueueGaugeView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<QueueGaugeInfo> {
         PreviewData(id: "emptyGauge", viewModel: QueueGaugeInfo(title: "empty", idle: 0, active: 0))

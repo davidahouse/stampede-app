@@ -32,13 +32,10 @@ struct BuildStatusCell: View {
 }
 
 #if DEBUG
-struct BuildStatusCell_Previews: PreviewProvider {
+struct BuildStatusCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         BuildStatusCell_Previews.debugPreviews
     }
-}
-
-extension BuildStatusCell_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<BuildStatus> {
         PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild)
@@ -49,10 +46,9 @@ extension BuildStatusCell_Previews: Previewable {
             PreviewData(id: "someRecentBuild", viewModel: BuildStatus.someRecentBuild)
         ]
     }
-    
+
     static func create(from viewModel: BuildStatus) -> some View {
         return BuildStatusCell(buildStatus: viewModel)
     }
 }
-
 #endif

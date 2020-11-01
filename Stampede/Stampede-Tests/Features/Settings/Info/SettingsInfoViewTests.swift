@@ -12,7 +12,6 @@ import XCTest
 class SettingsInfoViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(SettingsInfoView_Previews.previews,
-                   title: "SettingsInfoView_Previews")
+        capturedPreviews(SettingsInfoView_Previews.capturedPreviews(title: "SettingsInfoView_Previews"))
     }
 }

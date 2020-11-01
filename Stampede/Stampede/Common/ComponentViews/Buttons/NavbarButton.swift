@@ -32,13 +32,10 @@ struct NavbarButton: View {
 }
 
 #if DEBUG
-struct NavbarButton_Previews: PreviewProvider {
+struct NavbarButton_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         NavbarButton_Previews.debugPreviews
     }
-}
-
-extension NavbarButton_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<String> {
         PreviewData(id: "someTitle", viewModel: "NavButton Title")

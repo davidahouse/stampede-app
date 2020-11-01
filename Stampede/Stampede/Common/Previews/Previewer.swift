@@ -124,34 +124,34 @@ extension UIHostingController {
     }
 }
 
-struct Previewer<Content: View>: View {
-    
-    let content: () -> Content
-    
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-    }
-    
-    var body: some View {
-        Group {
-            content()
-                .environment(\.colorScheme, .light)
-                .previewDisplayName("Light")
-                .previewLayout(.sizeThatFits)
-            content()
-                .environment(\.colorScheme, .dark)
-                .previewDisplayName("Dark")
-                .previewLayout(.sizeThatFits)
-            content()
-                .environment(\.sizeCategory, .extraSmall)
-                .previewDisplayName("Extra Small Text")
-                .previewLayout(.sizeThatFits)
-            content()
-                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-                .previewDisplayName("Extra Large Text")
-                .previewLayout(.sizeThatFits)
-        }
-        .previewDependencies()
-    }
-}
+//struct Previewer<Content: View>: View {
+//    
+//    let content: () -> Content
+//    
+//    init(@ViewBuilder content: @escaping () -> Content) {
+//        self.content = content
+//    }
+//    
+//    var body: some View {
+//        Group {
+//            content()
+//                .environment(\.colorScheme, .light)
+//                .previewDisplayName("Light")
+//                .previewLayout(.sizeThatFits)
+//            content()
+//                .environment(\.colorScheme, .dark)
+//                .previewDisplayName("Dark")
+//                .previewLayout(.sizeThatFits)
+//            content()
+//                .environment(\.sizeCategory, .extraSmall)
+//                .previewDisplayName("Extra Small Text")
+//                .previewLayout(.sizeThatFits)
+//            content()
+//                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+//                .previewDisplayName("Extra Large Text")
+//                .previewLayout(.sizeThatFits)
+//        }
+//        .previewDependencies()
+//    }
+//}
 #endif

@@ -82,7 +82,7 @@ struct CurrentTheme_Previews: PreviewProvider {
     static let theme = CurrentTheme()
 
     static var previews: some View {
-        Previewer {
+        Group {
             List {
                 Text("Primary Text Color").foregroundColor(theme.primaryTextColor)
                 Text("Secondary Text Color").foregroundColor(theme.secondaryTextColor)
@@ -90,7 +90,7 @@ struct CurrentTheme_Previews: PreviewProvider {
                 Rectangle().fill(theme.primaryBackground)
                 CurrentThemeIconList()
             }
-        }
+        }.previewDependencies()
     }
 }
 #endif

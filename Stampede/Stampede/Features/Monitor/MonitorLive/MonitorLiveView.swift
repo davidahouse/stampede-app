@@ -27,11 +27,22 @@ struct MonitorLiveView: View {
 }
 
 #if DEBUG
-struct MonitorLiveView_Previews: PreviewProvider {
+struct MonitorLiveView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            MonitorLiveView().environmentObject(MonitorLiveViewModel.someViewModel)
-        }
+        MonitorLiveView_Previews.devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<MonitorLiveViewModel> {
+        PreviewData(id: "someResults", viewModel: MonitorLiveViewModel.someViewModel)
+    }
+
+    static var alternateViewModels: [PreviewData<MonitorLiveViewModel>] {
+        [
+        ]
+    }
+
+    static func create(from viewModel: MonitorLiveViewModel) -> some View {
+        return MonitorLiveView().environmentObject(viewModel)
     }
 }
 #endif

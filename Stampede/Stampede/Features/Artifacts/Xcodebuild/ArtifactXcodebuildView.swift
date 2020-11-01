@@ -68,13 +68,10 @@ struct ArtifactXcodebuildView: View {
 
 #if DEBUG
 
-struct ArtifactXcodebuildView_Previews: PreviewProvider {
+struct ArtifactXcodebuildView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         ArtifactXcodebuildView_Previews.devicePreviews
     }
-}
-
-extension ArtifactXcodebuildView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<ArtifactXcodebuildViewModel> {
         PreviewData(id: "someResults", viewModel: ArtifactXcodebuildViewModel(state: .results(ArtifactXcodebuild.someXcodebuild)))

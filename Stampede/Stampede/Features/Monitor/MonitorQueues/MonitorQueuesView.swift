@@ -33,13 +33,24 @@ struct MonitorQueuesView: View {
 }
 
 #if DEBUG
-struct MonitorQueuesView_Previews: PreviewProvider {
+struct MonitorQueuesView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.loading)
-            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.networkError)
-            MonitorQueuesView().environmentObject(MonitorQueuesViewModel.someQueues)
-        }
+        devicePreviews
+    }
+
+    static var defaultViewModel: PreviewData<MonitorQueuesViewModel> {
+        PreviewData(id: "someQueues", viewModel: MonitorQueuesViewModel.someQueues)
+    }
+
+    static var alternateViewModels: [PreviewData<MonitorQueuesViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: MonitorQueuesViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: MonitorQueuesViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: MonitorQueuesViewModel) -> some View {
+        return MonitorQueuesView().environmentObject(viewModel)
     }
 }
 #endif

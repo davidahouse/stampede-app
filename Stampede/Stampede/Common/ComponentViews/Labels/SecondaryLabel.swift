@@ -24,13 +24,10 @@ struct SecondaryLabel: View {
 }
 
 #if DEBUG
-struct SecondaryLabel_Previews: PreviewProvider {
+struct SecondaryLabel_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         SecondaryLabel_Previews.debugPreviews
     }
-}
-
-extension SecondaryLabel_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<String> {
         PreviewData(id: "someTitle", viewModel: "Secondary Title")

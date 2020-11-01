@@ -12,7 +12,6 @@ import XCTest
 class ArtifactClocViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(ArtifactClocView_Previews.previews,
-                   title: "ArtifactClocView_Previews")
+        capturedPreviews(ArtifactClocView_Previews.capturedPreviews(title: "ArtifactClocView_Previews"))
     }
 }

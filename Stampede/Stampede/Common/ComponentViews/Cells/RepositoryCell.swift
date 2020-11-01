@@ -25,25 +25,21 @@ struct RepositoryCell: View {
 }
 
 #if DEBUG
-struct RepositoryCell_Previews: PreviewProvider {
+struct RepositoryCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         RepositoryCell_Previews.debugPreviews
     }
-}
 
-extension RepositoryCell_Previews: Previewable {
-    
     static var defaultViewModel: PreviewData<Repository> {
         return PreviewData(id: "someRepository", viewModel: Repository.someRepository)
     }
-    
+
     static var alternateViewModels: [PreviewData<Repository>] {
         return []
     }
-    
+
     static func create(from viewModel: Repository) -> some View {
         return RepositoryCell(repository: viewModel)
     }
 }
-
 #endif

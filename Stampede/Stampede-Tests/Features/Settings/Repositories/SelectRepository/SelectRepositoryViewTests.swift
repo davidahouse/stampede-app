@@ -12,7 +12,6 @@ import XCTest
 class SelectRepositoryViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(SelectRepositoryView_Previews.previews,
-                   title: "SelectRepositoryView_Previews")
+        capturedPreviews(SelectRepositoryView_Previews.capturedPreviews(title: "SelectRepositoryView_Previews"))
     }
 }

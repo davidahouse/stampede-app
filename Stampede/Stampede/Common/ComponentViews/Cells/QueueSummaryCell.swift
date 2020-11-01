@@ -40,13 +40,10 @@ struct QueueSummaryCell: View {
 }
 
 #if DEBUG
-struct QueueSummaryCell_Previews: PreviewProvider {
+struct QueueSummaryCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         QueueSummaryCell_Previews.debugPreviews
     }
-}
-
-extension QueueSummaryCell_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<QueueSummary> {
         PreviewData(id: "oneWaiting", viewModel: QueueSummary.oneWaiting)
@@ -59,7 +56,7 @@ extension QueueSummaryCell_Previews: Previewable {
             PreviewData(id: "alotWaiting", viewModel: QueueSummary.alotWaiting)
         ]
     }
-    
+
     static func create(from viewModel: QueueSummary) -> some View {
         return QueueSummaryCell(queueSummary: viewModel)
     }

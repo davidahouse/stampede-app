@@ -52,13 +52,10 @@ extension Rectangle {
 }
 
 #if DEBUG
-struct QueueChartView_Previews: PreviewProvider {
+struct QueueChartView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         QueueChartView_Previews.debugPreviews
     }
-}
-
-extension QueueChartView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<[Int]> {
         PreviewData(id: "basicChart", viewModel: [0, 0, 4, 1, 5, 6, 0, 0, 0, 2, 3])
@@ -76,5 +73,4 @@ extension QueueChartView_Previews: Previewable {
         return QueueChartView(measurements: viewModel)
     }
 }
-
 #endif

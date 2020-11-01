@@ -32,13 +32,10 @@ struct BuildDetailsCell: View {
 }
 
 #if DEBUG
-struct BuildDetailsCell_Previews: PreviewProvider {
+struct BuildDetailsCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         BuildDetailsCell_Previews.debugPreviews
     }
-}
-
-extension BuildDetailsCell_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<BuildDetails> {
         PreviewData(id: "completedBuild", viewModel: BuildDetails.completedBuild)

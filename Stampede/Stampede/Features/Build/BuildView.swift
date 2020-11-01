@@ -75,13 +75,10 @@ struct BuildView: View {
 }
 
 #if DEBUG
-struct BuildView_Previews: PreviewProvider {
+struct BuildView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         BuildView_Previews.devicePreviews
     }
-}
-
-extension BuildView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<BuildViewModel> {
         PreviewData(id: "someResults", viewModel: BuildViewModel(state: .results(BuildStatus.someActiveBuild)))

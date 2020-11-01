@@ -24,15 +24,10 @@ struct ValueLabel: View {
 
 #if DEBUG
 
-struct ValueLabel_Previews: PreviewProvider {
+struct ValueLabel_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            ValueLabel("123")
-        }
+        devicePreviews
     }
-}
-
-extension ValueLabel_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<String> {
         PreviewData(id: "someTitle", viewModel: "123")
@@ -46,4 +41,5 @@ extension ValueLabel_Previews: Previewable {
         return ValueLabel(viewModel)
     }
 }
+
 #endif

@@ -24,13 +24,10 @@ struct FavoriteRepositoryCell: View {
 }
 
 #if DEBUG
-struct FavoriteRepositoryCell_Previews: PreviewProvider {
+struct FavoriteRepositoryCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         FavoriteRepositoryCell_Previews.debugPreviews
     }
-}
-
-extension FavoriteRepositoryCell_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<Repository> {
         PreviewData(id: "someRepository", viewModel: Repository.someRepository)

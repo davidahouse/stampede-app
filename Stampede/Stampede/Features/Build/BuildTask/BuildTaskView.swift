@@ -172,13 +172,10 @@ struct BuildTaskArtifactsView: View {
 }
 
 #if DEBUG
-struct BuildTaskView_Previews: PreviewProvider {
+struct BuildTaskView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         BuildTaskView_Previews.devicePreviews
     }
-}
-
-extension BuildTaskView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<BuildTaskViewModel> {
         PreviewData(id: "someResults", viewModel: BuildTaskViewModel(state: .results(TaskDetails.someTaskDetails)))

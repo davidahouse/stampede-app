@@ -32,13 +32,10 @@ struct BuildKeyCell: View {
 }
 
 #if DEBUG
-struct BuildKeyCell_Previews: PreviewProvider {
+struct BuildKeyCell_Previews: PreviewProvider, Previewable {
     static var previews: some View {
         BuildKeyCell_Previews.debugPreviews
     }
-}
-
-extension BuildKeyCell_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<(Repository, BuildKey)> {
         PreviewData(id: "someRepository", viewModel: (Repository.someRepository, BuildKey.someBranchKeys[0]))

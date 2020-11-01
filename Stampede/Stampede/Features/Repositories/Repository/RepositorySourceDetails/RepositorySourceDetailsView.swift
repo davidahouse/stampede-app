@@ -30,16 +30,10 @@ struct RepositorySourceDetailsView: View {
 }
 
 #if DEBUG
-struct RepositorySourceDetailsView_Previews: PreviewProvider {
+struct RepositorySourceDetailsView_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        Previewer {
-            RepositorySourceDetailsView()
-                .environmentObject(RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild])))
-        }
+        devicePreviews
     }
-}
-
-extension RepositorySourceDetailsView_Previews: Previewable {
 
     static var defaultViewModel: PreviewData<RepositorySourceDetailsViewModel> {
         PreviewData(id: "someResults", viewModel: RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild])))
