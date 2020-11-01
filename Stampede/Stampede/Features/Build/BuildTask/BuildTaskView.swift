@@ -174,9 +174,25 @@ struct BuildTaskArtifactsView: View {
 #if DEBUG
 struct BuildTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            BuildTaskView().environmentObject(BuildTaskViewModel(state: .results(TaskDetails.someTaskDetails)))
-        }
+        BuildTaskView_Previews.devicePreviews
+    }
+}
+
+extension BuildTaskView_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<BuildTaskViewModel> {
+        PreviewData(id: "someResults", viewModel: BuildTaskViewModel(state: .results(TaskDetails.someTaskDetails)))
+    }
+
+    static var alternateViewModels: [PreviewData<BuildTaskViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: BuildTaskViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: BuildTaskViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: BuildTaskViewModel) -> some View {
+        return BuildTaskView().environmentObject(viewModel)
     }
 }
 #endif

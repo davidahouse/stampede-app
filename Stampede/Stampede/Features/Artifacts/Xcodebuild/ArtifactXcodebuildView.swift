@@ -66,10 +66,30 @@ struct ArtifactXcodebuildView: View {
     }
 }
 
+#if DEBUG
+
 struct ArtifactXcodebuildView_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer {
-            ArtifactXcodebuildView().environmentObject(ArtifactXcodebuildViewModel(state: .results(ArtifactXcodebuild.someXcodebuild)))
-        }
+        ArtifactXcodebuildView_Previews.devicePreviews
     }
 }
+
+extension ArtifactXcodebuildView_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<ArtifactXcodebuildViewModel> {
+        PreviewData(id: "someResults", viewModel: ArtifactXcodebuildViewModel(state: .results(ArtifactXcodebuild.someXcodebuild)))
+    }
+
+    static var alternateViewModels: [PreviewData<ArtifactXcodebuildViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: ArtifactXcodebuildViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: ArtifactXcodebuildViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: ArtifactXcodebuildViewModel) -> some View {
+        return ArtifactXcodebuildView().environmentObject(viewModel)
+    }
+}
+
+#endif

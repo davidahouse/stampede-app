@@ -38,4 +38,22 @@ struct RepositorySourceDetailsView_Previews: PreviewProvider {
         }
     }
 }
+
+extension RepositorySourceDetailsView_Previews: Previewable {
+
+    static var defaultViewModel: PreviewData<RepositorySourceDetailsViewModel> {
+        PreviewData(id: "someResults", viewModel: RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild])))
+    }
+
+    static var alternateViewModels: [PreviewData<RepositorySourceDetailsViewModel>] {
+        [
+            PreviewData(id: "loading", viewModel: RepositorySourceDetailsViewModel(state: .loading)),
+            PreviewData(id: "networkError", viewModel: RepositorySourceDetailsViewModel(state: .networkError(.network(description: "Some network error"))))
+        ]
+    }
+
+    static func create(from viewModel: RepositorySourceDetailsViewModel) -> some View {
+        return RepositorySourceDetailsView().environmentObject(viewModel)
+    }
+}
 #endif

@@ -52,40 +52,58 @@ extension Previewable {
         }
         .previewDependencies()
     }
-    
-    static var capturedPreviews: [(String, UIImage)] {
+
+    static var devicePreviews: some View {
+        Group {
+            AnyView(create(from: defaultViewModel.viewModel))
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("\(defaultViewModel.id) Light")
+            AnyView(create(from: defaultViewModel.viewModel))
+                .preferredColorScheme(.dark)
+                .previewDisplayName("\(defaultViewModel.id) Dark")
+            AnyView(create(from: defaultViewModel.viewModel))
+                .environment(\.sizeCategory, .extraSmall)
+                .previewDisplayName("\(defaultViewModel.id) Extra Small Text")
+            AnyView(create(from: defaultViewModel.viewModel))
+                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+                .previewDisplayName("\(defaultViewModel.id) Extra Large Text")
+            
+            ForEach(alternateViewModels, id: \.id) { previewData in
+                AnyView(create(from: previewData.viewModel))
+                    .previewDisplayName("\(previewData.id) Light")
+            }
+        }
+        .previewDependencies()
+    }
+
+    static func capturedPreviews(title: String) -> [(String, UIImage)] {
         
         var captured: [(String, UIImage)] = []
         
         let light = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
                 .environment(\.colorScheme, .light)
-                .previewDisplayName("\(defaultViewModel.id) Light")
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((defaultViewModel.id + "-" + "Light", light.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "Light", light.capture()))
 
         let dark = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
                 .environment(\.colorScheme, .dark)
-                .previewDisplayName("\(defaultViewModel.id) Dark")
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((defaultViewModel.id + "-" + "Dark", dark.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "Dark", dark.capture()))
         
         let extraSmallText = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
                                                     .environment(\.sizeCategory, .extraSmall)
-                .previewDisplayName("\(defaultViewModel.id) Extra Small Text")
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((defaultViewModel.id + "-" + "ExtraSmallText", extraSmallText.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "ExtraSmallText", extraSmallText.capture()))
         
         let extraLargeText = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
                                                     .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-                .previewDisplayName("\(defaultViewModel.id) Extra Large Text")
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((defaultViewModel.id + "-" + "ExtraLargeText", extraLargeText.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "ExtraLargeText", extraLargeText.capture()))
 
         for previewData in alternateViewModels {
             let light = UIHostingController(rootView: AnyView(create(from: previewData.viewModel))
-                    .previewDisplayName(previewData.id)
                     .previewLayout(.sizeThatFits).previewDependencies())
-            captured.append((previewData.id, light.capture()))
+            captured.append((title + "-" + previewData.id, light.capture()))
         }
                 
         return captured
