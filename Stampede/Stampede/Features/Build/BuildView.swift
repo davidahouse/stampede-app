@@ -34,6 +34,18 @@ struct BuildView: View {
                     }
 
                     HStack {
+                        Text("Build Key")
+                        Spacer()
+                        Text(buildStatus.buildDetails.build_key)
+                    }
+
+                    HStack {
+                        Text("Build #")
+                        Spacer()
+                        Text("\(buildStatus.buildDetails.build)")
+                    }
+
+                    HStack {
                         Text("Status")
                         Spacer()
                         Text(buildStatus.buildDetails.status)
