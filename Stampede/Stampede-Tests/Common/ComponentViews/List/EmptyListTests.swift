@@ -12,7 +12,6 @@ import XCTest
 class EmptyListTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(EmptyList_Previews.previews,
-                   title: "EmptyList_Previews")
+        capturedPreviews(EmptyList_Previews.capturedPreviews(title: "EmptyList"))
     }
 }

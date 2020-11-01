@@ -12,7 +12,6 @@ import XCTest
 class QueueGaugeViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(QueueGaugeView_Previews.previews,
-                   title: "QueueGaugeView_Previews")
+        capturedPreviews(QueueGaugeView_Previews.capturedPreviews(title: "QueueGaugeView"))
     }
 }

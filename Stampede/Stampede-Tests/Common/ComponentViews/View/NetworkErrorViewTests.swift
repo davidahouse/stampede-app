@@ -12,7 +12,6 @@ import XCTest
 class NetworkErrorViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(NetworkErrorView_Previews.previews,
-                   title: "NetworkErrorView_Previews")
+        capturedPreviews(NetworkErrorView_Previews.capturedPreviews(title: "NetworkErrorView"))
     }
 }
