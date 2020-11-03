@@ -158,6 +158,7 @@
 		C3AD03A924885D4600EB881F /* MonitorLiveFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03A824885D4600EB881F /* MonitorLiveFeature.swift */; };
 		C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */; };
 		C3AD03AD24887C4200EB881F /* QueueGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD03AC24887C4200EB881F /* QueueGaugeView.swift */; };
+		C3B035262550D1F10098CDB2 /* Fixtures+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B035252550D1F10098CDB2 /* Fixtures+Date.swift */; };
 		C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1225D253B5E7C005FD154 /* TaskDetails.swift */; };
 		C3B12263253B5FD2005FD154 /* TaskSCMDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */; };
 		C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12267253B600E005FD154 /* TaskArtifact.swift */; };
@@ -411,6 +412,7 @@
 		C3AD03A824885D4600EB881F /* MonitorLiveFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveFeature.swift; sourceTree = "<group>"; };
 		C3AD03AA24885E4300EB881F /* MonitorLiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorLiveViewModel.swift; sourceTree = "<group>"; };
 		C3AD03AC24887C4200EB881F /* QueueGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueGaugeView.swift; sourceTree = "<group>"; };
+		C3B035252550D1F10098CDB2 /* Fixtures+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fixtures+Date.swift"; sourceTree = "<group>"; };
 		C3B1225D253B5E7C005FD154 /* TaskDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetails.swift; sourceTree = "<group>"; };
 		C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSCMDetails.swift; sourceTree = "<group>"; };
 		C3B12267253B600E005FD154 /* TaskArtifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskArtifact.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				C3B1225D253B5E7C005FD154 /* TaskDetails.swift */,
 				C3B12262253B5FD2005FD154 /* TaskSCMDetails.swift */,
 				C3B12267253B600E005FD154 /* TaskArtifact.swift */,
+				C3B035252550D1F10098CDB2 /* Fixtures+Date.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1728,6 +1731,7 @@
 				C39E58FC254074E700217743 /* HappyPersona.swift in Sources */,
 				C30DBF8F252D28A200021863 /* Date+Extension.swift in Sources */,
 				C3AD03AB24885E4300EB881F /* MonitorLiveViewModel.swift in Sources */,
+				C3B035262550D1F10098CDB2 /* Fixtures+Date.swift in Sources */,
 				94E913AF24BB512B0056A150 /* BuildTaskFeature.swift in Sources */,
 				C30DBFEE25322D9500021863 /* MainNavigationController.swift in Sources */,
 				C34755EA24FC8446009B1FBF /* RepositoryCell.swift in Sources */,

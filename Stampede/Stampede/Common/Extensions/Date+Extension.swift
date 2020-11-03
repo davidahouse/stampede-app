@@ -10,8 +10,8 @@ import Foundation
 
 extension Date {
 
-    func ago() -> String {
-        let interval = Date().timeIntervalSince(self)
+    func ago(_ referenceDate: Date = Date()) -> String {
+        let interval = referenceDate.timeIntervalSince(self)
         if interval < 60 {
             return "\(Int(round(interval))) sec(s) ago"
         } else if interval < 3600 {
