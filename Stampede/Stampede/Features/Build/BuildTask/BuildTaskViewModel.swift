@@ -8,5 +8,24 @@
 
 import Foundation
 import HouseKit
+import Combine
 
-class BuildTaskViewModel: BaseViewModel<TaskDetails> { }
+class BuildTaskViewModel: BaseViewModel<TaskDetails> {
+
+    enum ArtifactCategory {
+        case hasRoute
+        case openURL
+        case none
+    }
+
+    func categoryForArtifact(_ artifact: TaskArtifact) -> ArtifactCategory {
+        switch artifact.type {
+        case "cloc", "xcodebuild":
+            return .hasRoute
+        case "link":
+            return .openURL
+        default:
+            return .none
+        }
+    }
+}

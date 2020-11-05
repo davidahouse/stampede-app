@@ -109,6 +109,7 @@
 		C3520CAF23CEA321004C0674 /* RepositoryFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CAE23CEA321004C0674 /* RepositoryFeatureTests.swift */; };
 		C3520CB123CEA33C004C0674 /* RepositoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CB023CEA33C004C0674 /* RepositoryViewTests.swift */; };
 		C35D51B02353C5DF00FDA4A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D51AF2353C5DF00FDA4A8 /* MainView.swift */; };
+		C3669350255441E60008C1EC /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366934F255441E60008C1EC /* Routes.swift */; };
 		C3804FD0248EEB55008A302B /* QueueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3804FCF248EEB55008A302B /* QueueChartView.swift */; };
 		C3816C79248702AB00E6980B /* MonitorActiveBuildsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C6F248702AB00E6980B /* MonitorActiveBuildsFeature.swift */; };
 		C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C70248702AB00E6980B /* MonitorActiveBuildsView.swift */; };
@@ -364,6 +365,7 @@
 		C3520CB023CEA33C004C0674 /* RepositoryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewTests.swift; sourceTree = "<group>"; };
 		C35D51AC2353A40200FDA4A8 /* RepositoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryView.swift; sourceTree = "<group>"; };
 		C35D51AF2353C5DF00FDA4A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C366934F255441E60008C1EC /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		C3804FCF248EEB55008A302B /* QueueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueChartView.swift; sourceTree = "<group>"; };
 		C3816C6F248702AB00E6980B /* MonitorActiveBuildsFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsFeature.swift; sourceTree = "<group>"; };
 		C3816C70248702AB00E6980B /* MonitorActiveBuildsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsView.swift; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				C30DBFDD2532236C00021863 /* BaseFeature.swift */,
 				C30DBFF22532308900021863 /* Dependencies.swift */,
 				9455103E253383A7007A1299 /* Route.swift */,
+				C366934F255441E60008C1EC /* Routes.swift */,
 				C30DC0062533B4F900021863 /* Router.swift */,
 				C3850A24253739100057F500 /* BaseView.swift */,
 				C3850A2925373C620057F500 /* BaseSubView.swift */,
@@ -1761,6 +1764,7 @@
 				C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */,
 				94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */,
 				C3B1229A253D0479005FD154 /* ArtifactCloc.swift in Sources */,
+				C3669350255441E60008C1EC /* Routes.swift in Sources */,
 				94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */,
 				94E913AE24BB512B0056A150 /* BuildTaskViewModel.swift in Sources */,
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,

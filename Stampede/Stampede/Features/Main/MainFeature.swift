@@ -23,6 +23,7 @@ class MainFeature: BaseFeature {
                                     MainView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
 

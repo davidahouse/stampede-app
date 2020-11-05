@@ -14,6 +14,7 @@ struct BuildView: View {
 
     @EnvironmentObject var viewModel: BuildViewModel
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
 
     // MARK: - View
 
@@ -75,7 +76,7 @@ struct BuildView: View {
                 Section(header: Text("Tasks")) {
                     ForEach(buildStatus.tasks) { task in
                         Button(action: {
-                            router.route(to: BuildTaskRoute(taskID: task.task_id))
+                            router.route(to: routes.routeForTask(task.task_id))
                         }, label: {
                             TaskStatusCell(taskStatus: task)
                         })
