@@ -16,8 +16,7 @@ struct MainView: View {
     @EnvironmentObject var theme: CurrentTheme
     @EnvironmentObject var viewModel: MainViewModel
     @EnvironmentObject var router: Router
-
-    // MARK: - Private properties
+    @EnvironmentObject var routes: Routes
 
     // MARK: - View
 
@@ -27,7 +26,7 @@ struct MainView: View {
                 BaseView(viewModel: viewModel, content: { repositories in
                     ForEach(repositories, id: \.self) { item in
                         Button(action: {
-                            self.router.route(to: RepositoryRoute(repository: item))
+                            self.router.route(to: routes.route(for: item))
                         }, label: {
                             RepositoryCell(repository: item)
                         }).accessibilityIdentifier(item.id)
@@ -35,23 +34,19 @@ struct MainView: View {
                 })
             }
             Section(header: Text("Monitor")) {
-                FeatureRouteCell(title: "Live", route: MonitorLiveRoute())
-                FeatureRouteCell(title: "Active Builds", route: MonitorActiveBuildsRoute())
-                FeatureRouteCell(title: "Active Tasks", route: MonitorActiveTasksRoute())
-                FeatureRouteCell(title: "Queues", route: MonitorQueuesRoute())
+                ForEach(MainMenuItem.monitorItems, id: \.self) { item in
+                    FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                }
             }
             Section(header: Text("History")) {
-                FeatureRouteCell(title: "Builds", route: HistoryBuildsRoute())
-                FeatureRouteCell(title: "Tasks", route: HistoryTasksRoute())
+                ForEach(MainMenuItem.historyItems, id: \.self) { item in
+                    FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                }
             }
             Section(header: Text("Settings")) {
-                FeatureRouteCell(title: "Stampede Server", route: SettingsStampedeServerRoute())
-                FeatureRouteCell(title: "Repositories", route: SettingsRepositoriesRoute())
-                FeatureRouteCell(title: "Notifications", route: SettingsNotificationsRoute())
-                FeatureRouteCell(title: "Info", route: SettingsInfoRoute())
-                #if DEBUG
-                FeatureRouteCell(title: "Developer", route: SettingsDeveloperRoute())
-                #endif
+                ForEach(MainMenuItem.settingsItems, id: \.self) { item in
+                    FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                }
             }
         }.listStyle(GroupedListStyle())
     }
@@ -65,14 +60,14 @@ struct MainView_Previews: PreviewProvider, Previewable {
     }
 
     static var defaultViewModel: PreviewData<MainViewModel> {
-        PreviewData(id: "someResults", viewModel: MainViewModel(state: .results(Repository.someRepositories)))
+        PreviewData(id: "someResults", viewModel: MainViewModel.defaultViewModel)
     }
 
     static var alternateViewModels: [PreviewData<MainViewModel>] {
         [
-            PreviewData(id: "empty", viewModel: MainViewModel(state: .results([]))),
-            PreviewData(id: "loading", viewModel: MainViewModel(state: .loading)),
-            PreviewData(id: "networkError", viewModel: MainViewModel(state: .networkError(.network(description: "Some network error"))))
+            PreviewData(id: "empty", viewModel: MainViewModel.empty),
+            PreviewData(id: "loading", viewModel: MainViewModel.loading),
+            PreviewData(id: "networkError", viewModel: MainViewModel.networkError)
         ]
     }
 

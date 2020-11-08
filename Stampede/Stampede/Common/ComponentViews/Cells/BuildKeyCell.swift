@@ -13,10 +13,11 @@ struct BuildKeyCell: View {
     let buildKey: BuildKey
 
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
 
     var body: some View {
         Button(action: {
-            router.route(to: RepositorySourceDetailsRoute(repository: repository, buildKey: buildKey.buildKey))
+            router.route(to: routes.routeForRepositorySourceDetails(repository, buildKey: buildKey.buildKey))
         }, label: {
             HStack {
                 VStack(alignment: .leading) {

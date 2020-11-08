@@ -25,7 +25,8 @@ class Router: ObservableObject {
     }
 
     func route(to route: Route) {
-        guard let delegate = delegate, delegate.shouldRoute(to: route) else {
+        guard let delegate = delegate,
+              delegate.shouldRoute(to: route) else {
             return
         }
 

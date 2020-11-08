@@ -9,11 +9,10 @@
 import Foundation
 import SwiftUI
 import HouseKit
+import Combine
 
 class BuildViewModel: BaseViewModel<BuildStatus> {
 
-    // MARK: - Published
-    
     var statusImage: some View {
         switch state {
         case .results(let buildStatus):

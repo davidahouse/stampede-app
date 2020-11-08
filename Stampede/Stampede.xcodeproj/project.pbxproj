@@ -109,6 +109,7 @@
 		C3520CAF23CEA321004C0674 /* RepositoryFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CAE23CEA321004C0674 /* RepositoryFeatureTests.swift */; };
 		C3520CB123CEA33C004C0674 /* RepositoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3520CB023CEA33C004C0674 /* RepositoryViewTests.swift */; };
 		C35D51B02353C5DF00FDA4A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D51AF2353C5DF00FDA4A8 /* MainView.swift */; };
+		C3669350255441E60008C1EC /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366934F255441E60008C1EC /* Routes.swift */; };
 		C3804FD0248EEB55008A302B /* QueueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3804FCF248EEB55008A302B /* QueueChartView.swift */; };
 		C3816C79248702AB00E6980B /* MonitorActiveBuildsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C6F248702AB00E6980B /* MonitorActiveBuildsFeature.swift */; };
 		C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C70248702AB00E6980B /* MonitorActiveBuildsView.swift */; };
@@ -167,6 +168,7 @@
 		C3B1229A253D0479005FD154 /* ArtifactCloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B12299253D0479005FD154 /* ArtifactCloc.swift */; };
 		C3B1229F253D05F2005FD154 /* ArtifactClocView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1229E253D05F2005FD154 /* ArtifactClocView.swift */; };
 		C3B1D62B23AE8598002CCE66 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */; };
+		C3B74F8C25576507004C5AF8 /* RoutesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B74F8B25576507004C5AF8 /* RoutesTests.swift */; };
 		C3CA2E0C24BA9EA10086B71D /* HistoryBuildsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */; };
 		C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */; };
 		C3CA2E1024BA9EC00086B71D /* HistoryBuildsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA2E0F24BA9EC00086B71D /* HistoryBuildsViewModel.swift */; };
@@ -364,6 +366,7 @@
 		C3520CB023CEA33C004C0674 /* RepositoryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewTests.swift; sourceTree = "<group>"; };
 		C35D51AC2353A40200FDA4A8 /* RepositoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryView.swift; sourceTree = "<group>"; };
 		C35D51AF2353C5DF00FDA4A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C366934F255441E60008C1EC /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		C3804FCF248EEB55008A302B /* QueueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueChartView.swift; sourceTree = "<group>"; };
 		C3816C6F248702AB00E6980B /* MonitorActiveBuildsFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsFeature.swift; sourceTree = "<group>"; };
 		C3816C70248702AB00E6980B /* MonitorActiveBuildsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsView.swift; sourceTree = "<group>"; };
@@ -421,6 +424,7 @@
 		C3B12299253D0479005FD154 /* ArtifactCloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactCloc.swift; sourceTree = "<group>"; };
 		C3B1229E253D05F2005FD154 /* ArtifactClocView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactClocView.swift; sourceTree = "<group>"; };
 		C3B1D62A23AE8598002CCE66 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
+		C3B74F8B25576507004C5AF8 /* RoutesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTests.swift; sourceTree = "<group>"; };
 		C3CA2E0B24BA9EA10086B71D /* HistoryBuildsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsFeature.swift; sourceTree = "<group>"; };
 		C3CA2E0D24BA9EB50086B71D /* HistoryBuildsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsView.swift; sourceTree = "<group>"; };
 		C3CA2E0F24BA9EC00086B71D /* HistoryBuildsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsViewModel.swift; sourceTree = "<group>"; };
@@ -541,6 +545,7 @@
 				C3DDDC142518092D005C8189 /* ConstantsTests.swift */,
 				C3DE1CB5254241D2009FA36D /* RouterTests.swift */,
 				C3DE1CC92543365A009FA36D /* BaseFeatureTests.swift */,
+				C3B74F8B25576507004C5AF8 /* RoutesTests.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				C30DBFDD2532236C00021863 /* BaseFeature.swift */,
 				C30DBFF22532308900021863 /* Dependencies.swift */,
 				9455103E253383A7007A1299 /* Route.swift */,
+				C366934F255441E60008C1EC /* Routes.swift */,
 				C30DC0062533B4F900021863 /* Router.swift */,
 				C3850A24253739100057F500 /* BaseView.swift */,
 				C3850A2925373C620057F500 /* BaseSubView.swift */,
@@ -1761,6 +1767,7 @@
 				C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */,
 				94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */,
 				C3B1229A253D0479005FD154 /* ArtifactCloc.swift in Sources */,
+				C3669350255441E60008C1EC /* Routes.swift in Sources */,
 				94B571FE24BBBECD00CA13A4 /* StampedeService.swift in Sources */,
 				94E913AE24BB512B0056A150 /* BuildTaskViewModel.swift in Sources */,
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,
@@ -1869,6 +1876,7 @@
 				C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */,
 				C3DDDC1A251809AC005C8189 /* QueueGaugeViewTests.swift in Sources */,
 				C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */,
+				C3B74F8C25576507004C5AF8 /* RoutesTests.swift in Sources */,
 				941F25D823C2A71000EC3E36 /* ValueLabelTests.swift in Sources */,
 				C3816C8D248702BC00E6980B /* MonitorActiveBuildsFeatureTests.swift in Sources */,
 				C3DE1C462541BF93009FA36D /* MonitorLiveFeatureTestts.swift in Sources */,

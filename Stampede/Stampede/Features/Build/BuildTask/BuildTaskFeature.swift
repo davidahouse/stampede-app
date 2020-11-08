@@ -31,6 +31,7 @@ class BuildTaskFeature: BaseFeature {
                                     BuildTaskView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
 

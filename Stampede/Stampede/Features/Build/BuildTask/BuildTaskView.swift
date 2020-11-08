@@ -121,14 +121,17 @@ struct BuildTaskArtifactsView: View {
     let taskID: String
     let artifacts: [TaskArtifact]
 
+    @EnvironmentObject var viewModel: BuildTaskViewModel
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
 
     var body: some View {
         Section(header: Text("Artifacts")) {
             ForEach(artifacts, id: \.self) { artifact in
-                if artifact.type == "cloc" {
+                switch viewModel.categoryForArtifact(artifact) {
+                case .hasRoute:
                     Button(action: {
-                        router.route(to: ArtifactClocRoute(taskID: taskID, title: artifact.title))
+                        router.route(to: routes.routeForArtifact(taskID, artifact: artifact))
                     }, label: {
                         HStack {
                             PrimaryLabel(artifact.title)
@@ -137,18 +140,7 @@ struct BuildTaskArtifactsView: View {
                             Image(systemName: "chevron.right")
                         }
                     })
-                } else if artifact.type == "xcodebuild" {
-                    Button(action: {
-                        router.route(to: ArtifactXcodebuildRoute(taskID: taskID, title: artifact.title))
-                    }, label: {
-                        HStack {
-                            PrimaryLabel(artifact.title)
-                            Spacer()
-                            ValueLabel(artifact.type)
-                            Image(systemName: "chevron.right")
-                        }
-                    })
-                } else if artifact.type == "link" {
+                case .openURL:
                     HStack {
                         PrimaryLabel(artifact.title)
                         Spacer()
@@ -159,7 +151,7 @@ struct BuildTaskArtifactsView: View {
                             ValueLabel(artifact.type)
                         }
                     }
-                } else {
+                case .none:
                     HStack {
                         PrimaryLabel(artifact.title)
                         Spacer()

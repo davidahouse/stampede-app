@@ -28,6 +28,7 @@ class MonitorActiveBuildsFeature: BaseFeature {
                                     MonitorActiveBuildsView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
     

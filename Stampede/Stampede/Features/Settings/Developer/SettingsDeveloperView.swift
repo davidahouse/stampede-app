@@ -14,12 +14,13 @@ struct SettingsDeveloperView: View {
 
     @EnvironmentObject var theme: CurrentTheme
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
     @EnvironmentObject var viewModel: SettingsDeveloperViewModel
 
     var body: some View {
         List {
             Button(action: {
-                router.route(to: SettingsDeveloperPersonaRoute())
+                router.route(to: routes.routeSettingsDeveloperPersonaRoute())
             }, label: {
                 HStack {
                     PrimaryLabel("Fixture Persona")

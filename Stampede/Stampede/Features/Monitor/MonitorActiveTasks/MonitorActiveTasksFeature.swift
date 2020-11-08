@@ -35,6 +35,7 @@ class MonitorActiveTasksFeature: BaseFeature {
                                     MonitorActiveTasksView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
     

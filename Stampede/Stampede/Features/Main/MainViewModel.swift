@@ -11,4 +11,37 @@ import SwiftUI
 import Combine
 import HouseKit
 
+enum MainMenuItem: String, CaseIterable {
+    case live = "Live"
+    case activeBuilds = "Active Builds"
+    case activeTasks = "Active Tasks"
+    case queues = "Queues"
+    case historyBuilds = "Builds"
+    case historyTasks = "Tasks"
+    case settingsStampedeServer = "Stampede Server"
+    case settingsRepositories = "Repositories"
+    case settingsNotifications = "Notifications"
+    case settingsInfo = "Info"
+    case settingsDeveloper = "Developer"
+
+    static let monitorItems: [MainMenuItem] = [.live, .activeBuilds, .activeTasks, .queues]
+    static let historyItems: [MainMenuItem] = [.historyBuilds, .historyTasks]
+    static let settingsItems: [MainMenuItem] = {
+        #if DEBUG
+            return [MainMenuItem.settingsStampedeServer, MainMenuItem.settingsRepositories, MainMenuItem.settingsNotifications, MainMenuItem.settingsInfo, MainMenuItem.settingsDeveloper]
+        #else
+            return [MainMenuItem.settingsStampedeServer, MainMenuItem.settingsRepositories, MainMenuItem.settingsNotifications, MainMenuItem.settingsInfo]
+        #endif
+    }()
+}
+
 class MainViewModel: BaseViewModel<[Repository]> { }
+
+#if DEBUG
+extension MainViewModel {
+    static let defaultViewModel = MainViewModel(state: .results(Repository.someRepositories))
+    static let loading = MainViewModel(state: .loading)
+    static let networkError = MainViewModel(state: .networkError(.network(description: "Some service error")))
+    static let empty = MainViewModel(state: .results([]))
+}
+#endif

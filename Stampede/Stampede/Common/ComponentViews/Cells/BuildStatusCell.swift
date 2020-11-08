@@ -11,12 +11,13 @@ import SwiftUI
 struct BuildStatusCell: View {
 
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
     
     let buildStatus: BuildStatus
 
     var body: some View {
         Button(action: {
-            router.route(to: BuildRoute(build: buildStatus, buildID: nil))
+            router.route(to: routes.route(for: buildStatus))
         }, label: {
             HStack {
                 VStack(alignment: .leading) {

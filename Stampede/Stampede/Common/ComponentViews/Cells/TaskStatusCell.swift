@@ -11,12 +11,13 @@ import SwiftUI
 struct TaskStatusCell: View {
 
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
     
     let taskStatus: TaskStatus
 
     var body: some View {
         Button(action: {
-            router.route(to: BuildTaskRoute(taskID: taskStatus.task_id))
+            router.route(to: routes.routeForTask(taskStatus.task_id))
         }, label: {
             HStack {
                 switch taskStatus.status {

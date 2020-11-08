@@ -29,6 +29,7 @@ class SettingsDeveloperFeature: BaseFeature {
                                     SettingsDeveloperView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
 
