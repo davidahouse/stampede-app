@@ -28,6 +28,7 @@ class HistoryTasksFeature: BaseFeature {
                                     HistoryTasksView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
     

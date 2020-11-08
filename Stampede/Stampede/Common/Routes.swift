@@ -52,6 +52,26 @@ class Routes: ObservableObject {
         return BuildTaskRoute(taskID: taskID)
     }
 
+    func route(for buildStatus: BuildStatus) -> Route {
+        return BuildRoute(build: buildStatus, buildID: nil)
+    }
+
+    func routeForBuildID(_ buildID: String) -> Route {
+        return BuildRoute(build: nil, buildID: buildID)
+    }
+
+    func routeForRepositoryBuild(_ repository: Repository, build: String) -> Route {
+        return RepositoryBuildDetailsRoute(repository: repository, build: build)
+    }
+
+    func routeForRepositorySourceDetails(_ repository: Repository, buildKey: String) -> Route {
+        return RepositorySourceDetailsRoute(repository: repository, buildKey: buildKey)
+    }
+
+    func routeSettingsDeveloperPersonaRoute() -> Route {
+        return SettingsDeveloperPersonaRoute()
+    }
+
     func routeForArtifact(_ taskID: String, artifact: TaskArtifact) -> Route {
         switch artifact.type {
         case "cloc":

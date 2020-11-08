@@ -11,7 +11,7 @@ import SwiftUI
 import Combine
 import HouseKit
 
-enum MainMenuItem: String {
+enum MainMenuItem: String, CaseIterable {
     case live = "Live"
     case activeBuilds = "Active Builds"
     case activeTasks = "Active Tasks"

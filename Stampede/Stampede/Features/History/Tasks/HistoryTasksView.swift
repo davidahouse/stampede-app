@@ -14,6 +14,7 @@ struct HistoryTasksView: View {
     
     @EnvironmentObject var viewModel: HistoryTasksViewModel
     @EnvironmentObject var router: Router
+    @EnvironmentObject var routes: Routes
 
     // MARK: - Body
     
@@ -23,7 +24,7 @@ struct HistoryTasksView: View {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
                         Button(action: {
-                            router.route(to: BuildTaskRoute(taskID: item.task_id))
+                            router.route(to: routes.routeForTask(item.task_id))
                         }, label: {
                             TaskStatusCell(taskStatus: item)
                         })

@@ -11,6 +11,7 @@ import Foundation
 public enum StampedeError: Error {
   case parsing(description: String)
   case network(description: String)
+  case unknown
 }
 
 extension StampedeError: LocalizedError {
@@ -21,6 +22,8 @@ extension StampedeError: LocalizedError {
             return "Parsing error: \(description)"
         case .network(let description):
             return "Network error: \(description)"
+        case .unknown:
+            return nil
         }
     }
 }

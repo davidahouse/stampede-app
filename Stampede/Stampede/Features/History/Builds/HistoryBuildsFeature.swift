@@ -28,6 +28,7 @@ class HistoryBuildsFeature: BaseFeature {
                                     HistoryBuildsView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
     
