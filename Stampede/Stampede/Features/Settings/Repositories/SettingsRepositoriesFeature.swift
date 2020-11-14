@@ -53,7 +53,8 @@ class SettingsRepositoriesFeature: BaseFeature {
     @objc
     private func didSelectAdd(sender: Any) {
         let selectRepository = SelectRepositoryFeature(dependencies: dependencies, delegate: self)
-        present(selectRepository, animated: true) { }
+        let selectRepositoryNav = UINavigationController(rootViewController: selectRepository)
+        present(selectRepositoryNav, animated: true) { }
     }
 
     private func reloadList() {
