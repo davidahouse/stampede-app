@@ -43,11 +43,21 @@ class SelectRepositoryFeature: BaseFeature {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add Favorite"
+        title = "Select Favorite"
+        modalPresentationStyle = .fullScreen
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(SelectRepositoryFeature.didSelectCancel(sender:)))
+        navigationItem.leftBarButtonItem = cancelButton
         navigationItem.largeTitleDisplayMode = .automatic
     }
     
     override func viewDidAppear(_ animated: Bool) {
         viewModel.publisher = dependencies.service.fetchRepositoriesPublisher()
+    }
+    
+    // MARK: - Private Methods
+    
+    @objc
+    private func didSelectCancel(sender: Any) {
+        dismiss(animated: true, completion: {})
     }
 }

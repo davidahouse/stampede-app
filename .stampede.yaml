@@ -12,14 +12,14 @@ pullrequests:
         projectFolder: Stampede
         scheme: Stampede
         project: Stampede
-        xcodeVersion: Xcode-beta.app
+        xcodeVersion: Xcode.app
         simulator: iPhone 11
     - id: ui-tests-xcode
       config:
         projectFolder: Stampede
         scheme: StampedeUITests
         project: Stampede
-        xcodeVersion: Xcode-beta.app
+        xcodeVersion: Xcode.app
         simulator: iPhone 11
     - id: lines-of-code
       config:
@@ -40,7 +40,7 @@ branches:
           projectFolder: Stampede
           scheme: Stampede
           project: Stampede
-          xcodeVersion: Xcode-beta.app
+          xcodeVersion: Xcode.app
           productName: Stampede
           infoPlist: Stampede/Info.plist
       - id: lines-of-code
@@ -54,14 +54,14 @@ branches:
           projectFolder: Stampede
           scheme: Stampede
           project: Stampede
-          xcodeVersion: Xcode-beta.app
+          xcodeVersion: Xcode.app
           simulator: iPhone 11
       - id: ui-tests-xcode
         config:
           projectFolder: Stampede
           scheme: StampedeUITests
           project: Stampede
-          xcodeVersion: Xcode-beta.app
+          xcodeVersion: Xcode.app
           simulator: iPhone 11
     notifications:
       all:

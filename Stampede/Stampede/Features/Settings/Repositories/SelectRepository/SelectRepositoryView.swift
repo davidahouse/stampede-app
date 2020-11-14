@@ -37,7 +37,7 @@ struct SelectRepositoryView: View {
             List {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
-                        RepositoryCell(repository: item)
+                        FavoriteRepositoryCell(repository: item)
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
                                 delegate?.didSelectRepository(item)
