@@ -74,7 +74,7 @@ public class StampedeService: ObservableObject {
         return provider.fetchAdminQueuesPublisher()
     }
 
-    public func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>? {
+    public func fetchMonitorQueuesPublisher() -> AnyPublisher<QueueSummaries, ServiceError>? {
         return provider.fetchMonitorQueuesPublisher()
     }
 

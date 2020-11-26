@@ -32,7 +32,12 @@ public struct QueueSummary: Codable, Equatable, Identifiable, Hashable {
     }
 }
 
-typealias QueueSummaryResponsePublisher = AnyPublisher<[QueueSummary], ServiceError>
+public struct QueueSummaries: Codable, Equatable {
+    public let taskQueues: [QueueSummary]
+    public let systemQueues: [QueueSummary]
+}
+
+typealias QueueSummaryResponsePublisher = AnyPublisher<[QueueSummaries], ServiceError>
 
 #if DEBUG
 
@@ -46,6 +51,10 @@ extension QueueSummary {
                                 QueueSummary.oneWaiting,
                                 QueueSummary.moreWaiting,
                                 QueueSummary.alotWaiting]
+}
+
+extension QueueSummaries {
+    public static let someSummaries = QueueSummaries(taskQueues: QueueSummary.someSummaries, systemQueues: QueueSummary.someSummaries)
 }
 
 #endif

@@ -121,7 +121,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
         return fetchPublisher(persona.activeBuilds)
     }
     
-    func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>? {
+    func fetchMonitorQueuesPublisher() -> AnyPublisher<QueueSummaries, ServiceError>? {
         fetchMonitorQueuesPublisherCalled = true
         guard let host = host, !host.contains("error") else {
             return fetchPublisher(.error(.network(description: "some network error happened")))

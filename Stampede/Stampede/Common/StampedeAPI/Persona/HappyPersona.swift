@@ -27,8 +27,8 @@ class HappyPersona: Persona {
         .results(BuildStatus.activeBuilds)
     }
 
-    var queues: FixtureResponse<[QueueSummary]> {
-        .results(QueueSummary.someSummaries)
+    var queues: FixtureResponse<QueueSummaries> {
+        .results(QueueSummaries.someSummaries)
     }
 
     var workerStatus: FixtureResponse<[WorkerStatus]> {

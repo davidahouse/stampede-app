@@ -117,12 +117,12 @@ class MonitorLiveViewModelTests: XCTestCase {
     }
 
     func testThatReceivingQueuesUpdatesTheQueueDepths() {
-        let result: [QueueSummary] = [
+        let result: QueueSummaries = QueueSummaries(taskQueues: [
             QueueSummary(queue: "someQueue", stats: QueueSummaryStats(waiting: 12, active: 0, completed: 0, failed: 0, delayed: 0, paused: 0))
-        ]
+        ], systemQueues: [])
         let expectation = XCTestExpectation(description: "waiting on publisher")
         viewModel.queuesPublisher =
-            AnyPublisher<[QueueSummary], ServiceError>(Future<[QueueSummary], ServiceError> { promise in promise(.success(result))})
+            AnyPublisher<QueueSummaries, ServiceError>(Future<QueueSummaries, ServiceError> { promise in promise(.success(result))})
         viewModel.startMonitoring()
         let cancellable = viewModel.$queueDepths.sink(receiveCompletion: { _ in
             print("received completion")
@@ -140,12 +140,12 @@ class MonitorLiveViewModelTests: XCTestCase {
     }
 
     func testThatReceivingAnErrorDoesNotModifyTheDepthList() {
-        let result: [QueueSummary] = [
+        let result: QueueSummaries = QueueSummaries(taskQueues: [
             QueueSummary(queue: "someQueue", stats: QueueSummaryStats(waiting: 12, active: 0, completed: 0, failed: 0, delayed: 0, paused: 0))
-        ]
+        ], systemQueues: [])
         let expectation = XCTestExpectation(description: "waiting on publisher")
         viewModel.queuesPublisher =
-            AnyPublisher<[QueueSummary], ServiceError>(Future<[QueueSummary], ServiceError> { promise in promise(.success(result))})
+            AnyPublisher<QueueSummaries, ServiceError>(Future<QueueSummaries, ServiceError> { promise in promise(.success(result))})
         viewModel.startMonitoring()
         let cancellable = viewModel.$queueDepths.sink(receiveCompletion: { _ in
             print("received completion")
@@ -163,7 +163,7 @@ class MonitorLiveViewModelTests: XCTestCase {
 
         let nextExpectation = XCTestExpectation(description: "waiting on publisher")
         viewModel.queuesPublisher =
-            AnyPublisher<[QueueSummary], ServiceError>(Future<[QueueSummary], ServiceError> { promise in promise(.failure(.network(description: "some network error")))})
+            AnyPublisher<QueueSummaries, ServiceError>(Future<QueueSummaries, ServiceError> { promise in promise(.failure(.network(description: "some network error")))})
         viewModel.startMonitoring()
         let nextCancellable = viewModel.$queueDepths.sink(receiveCompletion: { _ in
             print("received completion")

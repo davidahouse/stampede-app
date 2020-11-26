@@ -9,12 +9,12 @@
 import Foundation
 import HouseKit
 
-class MonitorQueuesViewModel: BaseViewModel<[QueueSummary]> { }
+class MonitorQueuesViewModel: BaseViewModel<QueueSummaries> { }
 
 #if DEBUG
 extension MonitorQueuesViewModel {
     static let loading = MonitorQueuesViewModel(state: .loading)
     static let networkError = MonitorQueuesViewModel(state: .networkError(.network(description: "some error")))
-    static let someQueues = MonitorQueuesViewModel(state: .results(QueueSummary.someSummaries))
+    static let someQueues = MonitorQueuesViewModel(state: .results(QueueSummaries.someSummaries))
 }
 #endif

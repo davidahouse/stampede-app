@@ -14,7 +14,7 @@ protocol Persona {
     var repositoryActiveBuilds: FixtureResponse<[BuildStatus]> { get }
     var repositoryBuilds: FixtureResponse<[RepositoryBuild]> { get }
     var activeBuilds: FixtureResponse<[BuildStatus]> { get }
-    var queues: FixtureResponse<[QueueSummary]> { get }
+    var queues: FixtureResponse<QueueSummaries> { get }
     var workerStatus: FixtureResponse<[WorkerStatus]> { get }
     var activeTasks: FixtureResponse<[TaskStatus]> { get }
     var historyTasks: FixtureResponse<[TaskStatus]> { get }
