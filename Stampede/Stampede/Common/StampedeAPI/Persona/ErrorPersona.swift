@@ -27,7 +27,7 @@ class ErrorPersona: Persona {
         .error(.network(description: "some network error happened"))
     }
 
-    var queues: FixtureResponse<[QueueSummary]> {
+    var queues: FixtureResponse<QueueSummaries> {
         .error(.network(description: "some network error happened"))
     }
 

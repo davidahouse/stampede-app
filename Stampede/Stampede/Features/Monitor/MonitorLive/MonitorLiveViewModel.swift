@@ -31,7 +31,7 @@ class MonitorLiveViewModel: ObservableObject {
         }
     }
 
-    private var queues: [QueueSummary] = [] {
+    private var queues: QueueSummaries = QueueSummaries(taskQueues: [], systemQueues: []) {
         didSet {
             self.recalculateQueueDepth()
         }
@@ -42,7 +42,7 @@ class MonitorLiveViewModel: ObservableObject {
     // MARK: - Properties
 
     var workersPublisher: AnyPublisher<[WorkerStatus], ServiceError>?
-    var queuesPublisher: AnyPublisher<[QueueSummary], ServiceError>?
+    var queuesPublisher: AnyPublisher<QueueSummaries, ServiceError>?
 
     func startMonitoring() {
         fetch()
@@ -77,7 +77,7 @@ class MonitorLiveViewModel: ObservableObject {
           if case let .failure(error) = result {
             print("Error receiving \(error)")
             DispatchQueue.main.async {
-                self.queues = []
+                self.queues = QueueSummaries(taskQueues: [], systemQueues: [])
             }
           }
         }, receiveValue: { value in
@@ -90,7 +90,10 @@ class MonitorLiveViewModel: ObservableObject {
     private func recalculateQueueDepth() {
 
         var queuedCount = 0
-        for queue in queues {
+        for queue in queues.taskQueues {
+            queuedCount += queue.stats.waiting
+        }
+        for queue in queues.systemQueues {
             queuedCount += queue.stats.waiting
         }
         queueDepths.append(queuedCount)

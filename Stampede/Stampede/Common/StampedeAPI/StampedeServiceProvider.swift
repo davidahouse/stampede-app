@@ -30,7 +30,7 @@ public protocol StampedeServiceProvider {
 
     // Monitor
     func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>?
-    func fetchMonitorQueuesPublisher() -> AnyPublisher<[QueueSummary], ServiceError>?
+    func fetchMonitorQueuesPublisher() -> AnyPublisher<QueueSummaries, ServiceError>?
     func fetchWorkerStatusPublisher() -> AnyPublisher<[WorkerStatus], ServiceError>?
     func fetchActiveTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>?
 

@@ -19,15 +19,25 @@ struct MonitorQueuesView: View {
     var body: some View {
         BaseView(viewModel: viewModel, content: { queues in
             List {
-                if queues.count > 0 {
-                    ForEach(queues, id: \.self) { item in
-                        QueueSummaryCell(queueSummary: item)
+                Section(header: Text("Task Queues")) {
+                    if queues.taskQueues.count > 0 {
+                        ForEach(queues.taskQueues, id: \.self) { item in
+                            QueueSummaryCell(queueSummary: item)
+                        }
+                    } else {
+                        Text("No queues found")
                     }
-                } else {
-                    Text("No queues found")
+                }
+                Section(header: Text("System Queues")) {
+                        if queues.systemQueues.count > 0 {
+                            ForEach(queues.systemQueues, id: \.self) { item in
+                                QueueSummaryCell(queueSummary: item)
+                            }
+                        } else {
+                            Text("No queues found")
+                        }
                 }
             }
-            .listStyle(DefaultListStyle())
         })
     }
 }

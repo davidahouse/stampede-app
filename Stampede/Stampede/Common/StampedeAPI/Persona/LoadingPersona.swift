@@ -26,7 +26,7 @@ class LoadingPersona: Persona {
         .loading
     }
 
-    var queues: FixtureResponse<[QueueSummary]> {
+    var queues: FixtureResponse<QueueSummaries> {
         .loading
     }
 
