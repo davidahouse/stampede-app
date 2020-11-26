@@ -48,6 +48,7 @@ class RepositoryFeature: BaseFeature {
                                     RepositoryView()
                                     .environmentObject(viewModel)
                                     .environmentObject(router)
+                                    .environmentObject(routes)
                                     .dependenciesToEnvironment(dependencies))
     }
     
