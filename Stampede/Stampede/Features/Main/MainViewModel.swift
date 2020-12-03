@@ -12,7 +12,6 @@ import Combine
 import HouseKit
 
 enum MainMenuItem: String, CaseIterable {
-    case live = "Live"
     case activeBuilds = "Active Builds"
     case activeTasks = "Active Tasks"
     case queues = "Queues"
@@ -24,7 +23,7 @@ enum MainMenuItem: String, CaseIterable {
     case settingsInfo = "Info"
     case settingsDeveloper = "Developer"
 
-    static let monitorItems: [MainMenuItem] = [.live, .activeBuilds, .activeTasks, .queues]
+    static let monitorItems: [MainMenuItem] = [.activeBuilds, .activeTasks, .queues]
     static let historyItems: [MainMenuItem] = [.historyBuilds, .historyTasks]
     static let settingsItems: [MainMenuItem] = {
         #if DEBUG
