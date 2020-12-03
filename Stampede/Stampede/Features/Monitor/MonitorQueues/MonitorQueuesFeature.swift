@@ -42,5 +42,10 @@ class MonitorQueuesFeature: BaseFeature {
 
     override func viewDidAppear(_ animated: Bool) {
         viewModel.publisher = dependencies.service.fetchMonitorQueuesPublisher()
+        viewModel.startRefreshing()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.stopRefreshing()
     }
 }

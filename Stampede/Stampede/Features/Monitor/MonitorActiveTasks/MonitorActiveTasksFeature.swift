@@ -49,5 +49,10 @@ class MonitorActiveTasksFeature: BaseFeature {
 
     override func viewDidAppear(_ animated: Bool) {
         viewModel.publisher = dependencies.service.fetchActiveTasksPublisher()
+        viewModel.startRefreshing()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.stopRefreshing()
     }
 }
