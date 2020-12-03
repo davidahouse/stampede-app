@@ -38,10 +38,6 @@ extension ScenarioMainScreen {
         waitForButton("davidahouse-some-repository")
     }
 
-    func thenTheMonitorLiveButtonIsDisplayed() {
-        waitForButton("Live")
-    }
-
     func thenTheMonitorActiveBuildsButtonIsDisplayed() {
         waitForButton("Active Builds")
     }

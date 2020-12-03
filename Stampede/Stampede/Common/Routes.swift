@@ -23,8 +23,6 @@ class Routes: ObservableObject {
 
     func route(for menuItem: MainMenuItem) -> Route {
         switch menuItem {
-        case .live:
-            return MonitorLiveRoute()
         case .activeBuilds:
             return MonitorActiveBuildsRoute()
         case .activeTasks:

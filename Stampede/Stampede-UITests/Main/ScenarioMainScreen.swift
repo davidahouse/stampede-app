@@ -17,12 +17,6 @@ class ScenarioMainScreen: BDDTestCase {
         captureScreen(title: "Main Screen")
     }
 
-    func testMainScreenContainsRouteToMonitorLiveScreen() throws {
-        givenTheMainScreenIsDisplayed()
-        andTheMonitorSectionIsVisible()
-        thenTheMonitorLiveButtonIsDisplayed()
-    }
-
     func testMainScreenContainsRouteToMonitorActiveBuildsScreen() throws {
         givenTheMainScreenIsDisplayed()
         andTheMonitorSectionIsVisible()
