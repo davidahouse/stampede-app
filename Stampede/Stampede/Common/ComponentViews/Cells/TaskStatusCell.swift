@@ -21,7 +21,7 @@ struct TaskStatusCell: View {
         }, label: {
             HStack {
                 switch taskStatus.status {
-                case "inProgress":
+                case "in_progress":
                     CurrentTheme.Icons.inProgress.image().font(Font.system(size: 32, weight: .regular))
                 default:
                     switch taskStatus.conclusion {
@@ -54,7 +54,9 @@ struct TaskStatusCell_Previews: PreviewProvider, Previewable {
     }
 
     static var alternateViewModels: [PreviewData<TaskStatus>] {
-        [PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask)]
+        [PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask),
+         PreviewData(id: "inProgressTask", viewModel: TaskStatus.inProgressTask)
+        ]
     }
 
     static func create(from viewModel: TaskStatus) -> some View {
