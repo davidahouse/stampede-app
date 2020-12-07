@@ -151,6 +151,17 @@ struct BuildTaskArtifactsView: View {
                             ValueLabel(artifact.type)
                         }
                     }
+                case .installplist:
+                    HStack {
+                        PrimaryLabel(artifact.title)
+                        Spacer()
+                        if let url = viewModel.appInstallURL(artifact) {
+                            Link("Install", destination: url)
+                            Image(systemName: "chevron.right")
+                        } else {
+                            ValueLabel(artifact.type)
+                        }
+                    }
                 case .none:
                     HStack {
                         PrimaryLabel(artifact.title)
