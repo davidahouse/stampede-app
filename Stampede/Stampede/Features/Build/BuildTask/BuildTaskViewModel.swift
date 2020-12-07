@@ -16,6 +16,7 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
         case hasRoute
         case openURL
         case none
+        case installplist
     }
 
     func categoryForArtifact(_ artifact: TaskArtifact) -> ArtifactCategory {
@@ -24,8 +25,25 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
             return .hasRoute
         case "link":
             return .openURL
+        case "installplist":
+            return .installplist
         default:
             return .none
+        }
+    }
+
+    func appInstallURL(_ artifact: TaskArtifact) -> URL? {
+        switch artifact.type {
+        case "installplist":
+            if let urlString = artifact.url,
+               let encodedUrl = urlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+               let installUrl = URL(string: "itms-services://?action=download-manifest&url=" + encodedUrl) {
+                return installUrl
+            } else {
+                return nil
+            }
+        default:
+            return nil
         }
     }
 }
