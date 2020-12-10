@@ -36,7 +36,7 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
         switch artifact.type {
         case "installplist":
             if let urlString = artifact.url,
-               let encodedUrl = urlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+               let encodedUrl = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
                let installUrl = URL(string: "itms-services://?action=download-manifest&url=" + encodedUrl) {
                 return installUrl
             } else {
