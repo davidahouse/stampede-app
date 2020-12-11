@@ -10,8 +10,18 @@ import Foundation
 
 extension Date {
 
-    func ago(_ referenceDate: Date = Date()) -> String {
-        let interval = referenceDate.timeIntervalSince(self)
+    static var useFixtureNow: Bool = false
+
+    static func safeNow() -> Date {
+        if Date.useFixtureNow {
+            return Date.fixtureDate
+        } else {
+            return Date()
+        }
+    }
+
+    func ago() -> String {
+        let interval = Date.safeNow().timeIntervalSince(self)
         if interval < 60 {
             return "\(Int(round(interval))) sec(s) ago"
         } else if interval < 3600 {

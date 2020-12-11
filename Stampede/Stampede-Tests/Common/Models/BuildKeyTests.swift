@@ -11,6 +11,10 @@ import XCTest
 
 class BuildKeyTests: XCTestCase {
 
+    override class func setUp() {
+        Date.useFixtureNow = true
+    }
+
     func testIDMatchesBuildKey() {
         XCTAssertEqual(BuildKey.someBuildKey.id, BuildKey.someBuildKey.buildKey)
     }

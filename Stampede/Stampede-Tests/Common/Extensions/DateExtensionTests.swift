@@ -11,23 +11,27 @@ import XCTest
 
 class DateExtensionTests: XCTestCase {
 
+    override class func setUp() {
+        Date.useFixtureNow = true
+    }
+
     func testAgoReturnsSecsAgo() {
-        let secsAgo = Date().addingTimeInterval(-12)
+        let secsAgo = Date.safeNow().addingTimeInterval(-12)
         XCTAssertTrue(secsAgo.ago().contains("sec"))
     }
 
     func testAgoReturnsMinsAgo() {
-        let minsAgo = Date().addingTimeInterval(-12*60)
+        let minsAgo = Date.safeNow().addingTimeInterval(-12*60)
         XCTAssertTrue(minsAgo.ago().contains("min"))
     }
 
     func testAgoReturnsHoursAgo() {
-        let hoursAgo = Date().addingTimeInterval(-12*60*60)
+        let hoursAgo = Date.safeNow().addingTimeInterval(-12*60*60)
         XCTAssertTrue(hoursAgo.ago().contains("hour"))
     }
 
     func testAgoReturnsDaysAgo() {
-        let daysAgo = Date().addingTimeInterval(-12*60*60*60)
+        let daysAgo = Date.safeNow().addingTimeInterval(-12*60*60*60)
         XCTAssertTrue(daysAgo.ago().contains("day"))
     }
 }

@@ -11,6 +11,10 @@ import XCTest
 
 class RepositoryBuildTests: XCTestCase {
 
+    override class func setUp() {
+        Date.useFixtureNow = true
+    }
+    
     func testIDReturnsTheBuild() {
         let build = RepositoryBuild.someBuild
         XCTAssertEqual(build.id, build.build)
