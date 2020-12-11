@@ -42,7 +42,7 @@ struct SettingsRepositoriesView: View {
                         self.delegate?.didDeleteRepositories(indexSet)
                     })
                 } else {
-                    Text("No repositories selected")
+                    PrimaryLabel("No repositories selected")
                 }
             }
             .listStyle(DefaultListStyle())

@@ -26,7 +26,7 @@ struct RepositoryBuildDetailsView: View {
                             BuildStatusCell(buildStatus: item)
                         }
                     } else {
-                        Text("No active builds found")
+                        PrimaryLabel("No active builds found")
                     }
                 })
             }
@@ -38,7 +38,7 @@ struct RepositoryBuildDetailsView: View {
                             BuildDetailsCell(buildDetails: item)
                         }
                     } else {
-                        Text("No recent builds found")
+                        PrimaryLabel("No recent builds found")
                     }
                 })
             }

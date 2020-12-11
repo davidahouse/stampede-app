@@ -25,7 +25,7 @@ struct MonitorQueuesView: View {
                             QueueSummaryCell(queueSummary: item)
                         }
                     } else {
-                        Text("No queues found")
+                        PrimaryLabel("No queues found")
                     }
                 }
                 Section(header: Text("System Queues")) {
@@ -34,7 +34,7 @@ struct MonitorQueuesView: View {
                                 QueueSummaryCell(queueSummary: item)
                             }
                         } else {
-                            Text("No queues found")
+                            PrimaryLabel("No queues found")
                         }
                 }
             }
