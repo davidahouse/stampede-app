@@ -9,22 +9,29 @@
 import Foundation
 
 #if DEBUG
+extension Calendar {
+
+    static var fixtureCalendar: Calendar {
+        return Calendar.current
+    }
+}
+
 extension Date {
 
     static var fixtureDate: Date {
-        Date(timeIntervalSinceReferenceDate: 0)
+        Calendar.fixtureCalendar.startOfDay(for: Date()).addingTimeInterval(60*60)
     }
 
     static var twelveSecondsAgo: Date {
-        Date(timeIntervalSinceReferenceDate: -12)
+        Date.fixtureDate.addingTimeInterval(-12)
     }
 
     static var aMinuteAgo: Date {
-        Date(timeIntervalSinceReferenceDate: -12*60)
+        Date.fixtureDate.addingTimeInterval(-12*60)
     }
 
     static var anHourAgo: Date {
-        Date(timeIntervalSinceReferenceDate: -12*60*60)
+        Date.fixtureDate.addingTimeInterval(-12*60*60)
     }
 }
 #endif
