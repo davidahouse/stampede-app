@@ -19,7 +19,7 @@ struct PrimaryLabel: View {
     }
 
     var body: some View {
-        Text(title).font(.headline).foregroundColor(theme.primaryTextColor)
+        Text(title).font(.headline).foregroundColor(Color("primaryTextColor"))
     }
 }
 

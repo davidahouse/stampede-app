@@ -19,7 +19,7 @@ extension Calendar {
 extension Date {
 
     static var fixtureDate: Date {
-        Calendar.fixtureCalendar.startOfDay(for: Date()).addingTimeInterval(60*60)
+        Calendar.fixtureCalendar.startOfDay(for: Date()).addingTimeInterval(5*60*60)
     }
 
     static var twelveSecondsAgo: Date {

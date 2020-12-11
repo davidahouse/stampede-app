@@ -24,9 +24,9 @@ public struct WorkerStatus: Codable, Identifiable, Equatable {
 #if DEBUG
 
 extension WorkerStatus {
-    public static let someWorker = WorkerStatus(timestamp: Date(), node: "some node", version: "1.1.0", workerName: "some worker", status: "idle", taskQueue: "someQueue")
-    public static let someOtherWorker = WorkerStatus(timestamp: Date(), node: "some node", version: "1.1.0", workerName: "some other worker", status: "idle", taskQueue: "someQueue")
-    public static let someThirdWorker = WorkerStatus(timestamp: Date(), node: "some node", version: "1.1.0", workerName: "some third worker", status: "idle", taskQueue: "someQueue")
+    public static let someWorker = WorkerStatus(timestamp: Date.fixtureDate, node: "some node", version: "1.1.0", workerName: "some worker", status: "idle", taskQueue: "someQueue")
+    public static let someOtherWorker = WorkerStatus(timestamp: Date.fixtureDate, node: "some node", version: "1.1.0", workerName: "some other worker", status: "idle", taskQueue: "someQueue")
+    public static let someThirdWorker = WorkerStatus(timestamp: Date.fixtureDate, node: "some node", version: "1.1.0", workerName: "some third worker", status: "idle", taskQueue: "someQueue")
     public static let workerStatuses = [someWorker, someOtherWorker, someThirdWorker]
 }
 

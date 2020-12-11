@@ -11,11 +11,6 @@ import SwiftUI
 
 class CurrentTheme: ObservableObject {
 
-    // Colors
-    let primaryTextColor = Color.black
-    let secondaryTextColor = Color.gray
-    let valueTextColor = Color.black
-    
     let primaryBackground = Color(red: 44/255, green: 82/255, blue: 130/255)
     
     // Icons
@@ -84,9 +79,9 @@ struct CurrentTheme_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             List {
-                Text("Primary Text Color").foregroundColor(theme.primaryTextColor)
-                Text("Secondary Text Color").foregroundColor(theme.secondaryTextColor)
-                Text("Value Text Color").foregroundColor(theme.valueTextColor)
+                Text("Primary Text Color").foregroundColor(Color("primaryTextColor"))
+                Text("Secondary Text Color").foregroundColor(Color("secondaryTextColor"))
+                Text("Value Text Color").foregroundColor(Color("valueTextColor"))
                 Rectangle().fill(theme.primaryBackground)
                 CurrentThemeIconList()
             }

@@ -10,6 +10,10 @@ import XCTest
 @testable import Stampede
 
 class BuildStatusTests: XCTestCase {
+
+    override class func setUp() {
+        Date.useFixtureNow = true
+    }
     
     func testStatusIndicatorGeneratedCorrectly() {
         XCTAssertEqual(BuildStatus.someActiveBuild.statusIndicator, .inProgress)

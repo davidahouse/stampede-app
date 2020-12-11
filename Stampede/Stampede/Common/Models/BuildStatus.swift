@@ -46,7 +46,7 @@ public struct BuildStatus: Codable, Identifiable, Equatable, Hashable {
             let interval = completed.timeIntervalSince(buildDetails.started_at)
             return interval.duration()
         } else {
-            let interval = Date().timeIntervalSince(buildDetails.started_at)
+            let interval = Date.safeNow().timeIntervalSince(buildDetails.started_at)
             return interval.duration()
         }
     }

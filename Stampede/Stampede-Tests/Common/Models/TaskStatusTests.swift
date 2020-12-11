@@ -11,6 +11,10 @@ import XCTest
 
 class TaskStatusTests: XCTestCase {
 
+    override class func setUp() {
+        Date.useFixtureNow = true
+    }
+    
     func testThatIDMatchesTaskID() {
         XCTAssertEqual(TaskStatus.queuedTask.id, TaskStatus.queuedTask.task_id)
     }

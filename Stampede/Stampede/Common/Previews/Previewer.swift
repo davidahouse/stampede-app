@@ -81,29 +81,32 @@ extension Previewable {
         var captured: [(String, UIImage)] = []
         
         let light = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
-                .environment(\.colorScheme, .light)
+                .colorScheme(.light)
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((title + "-" + defaultViewModel.id + "-" + "Light", light.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "Light", light.capture(.light)))
 
         let dark = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
-                .environment(\.colorScheme, .dark)
+                .colorScheme(.dark)
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((title + "-" + defaultViewModel.id + "-" + "Dark", dark.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "Dark", dark.capture(.dark)))
         
         let extraSmallText = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
+                                                    .colorScheme(.light)
                                                     .environment(\.sizeCategory, .extraSmall)
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((title + "-" + defaultViewModel.id + "-" + "ExtraSmallText", extraSmallText.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "ExtraSmallText", extraSmallText.capture(.light)))
         
         let extraLargeText = UIHostingController(rootView: AnyView(create(from: defaultViewModel.viewModel))
+                                                    .colorScheme(.light)
                                                     .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
                 .previewLayout(.sizeThatFits).previewDependencies())
-        captured.append((title + "-" + defaultViewModel.id + "-" + "ExtraLargeText", extraLargeText.capture()))
+        captured.append((title + "-" + defaultViewModel.id + "-" + "ExtraLargeText", extraLargeText.capture(.light)))
 
         for previewData in alternateViewModels {
             let light = UIHostingController(rootView: AnyView(create(from: previewData.viewModel))
+                    .colorScheme(.light)
                     .previewLayout(.sizeThatFits).previewDependencies())
-            captured.append((title + "-" + previewData.id, light.capture()))
+            captured.append((title + "-" + previewData.id, light.capture(.light)))
         }
                 
         return captured
@@ -112,7 +115,8 @@ extension Previewable {
 
 extension UIHostingController {
     
-    func capture() -> UIImage {
+    func capture(_ style: UIUserInterfaceStyle) -> UIImage {
+        self.overrideUserInterfaceStyle = style
         let size = sizeThatFits(in: UIScreen.main.bounds.size)
         view.bounds.size = size
         view.sizeToFit()

@@ -19,7 +19,7 @@ struct ValueLabel: View {
     }
 
     var body: some View {
-        Text(value).font(.body).foregroundColor(theme.valueTextColor)
+        Text(value).font(.body).foregroundColor(Color("valueTextColor"))
     }}
 
 #if DEBUG
