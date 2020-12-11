@@ -19,7 +19,7 @@ struct SecondaryLabel: View {
     }
 
     var body: some View {
-        Text(title).font(.subheadline).foregroundColor(theme.secondaryTextColor)
+        Text(title).font(.subheadline).foregroundColor(Color("secondaryTextColor"))
     }
 }
 
