@@ -30,7 +30,7 @@ struct MonitorActiveTasksView: View {
                         })
                     }
                 } else {
-                    Text("No active tasks found")
+                    PrimaryLabel("No active tasks found")
                 }
             }
             .listStyle(DefaultListStyle())

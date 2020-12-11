@@ -20,8 +20,8 @@ struct SettingsInfoView: View {
 
     var body: some View {
         List {
-            Text("Version: \(viewModel.appVersion)")
-            Text("Build: \(viewModel.appBuildNumber)")
+            PrimaryLabel("Version: \(viewModel.appVersion)")
+            PrimaryLabel("Build: \(viewModel.appBuildNumber)")
             Button("https://stampedeci.com", action: {
                 UIApplication.shared.open(URL(string: "https://stampedeci.com")!, options: [:]) { _ in
 

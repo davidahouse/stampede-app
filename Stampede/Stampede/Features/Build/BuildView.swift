@@ -23,53 +23,53 @@ struct BuildView: View {
             List {
                 Section(header: Text("Build Details")) {
                     HStack {
-                        Text("Owner")
+                        PrimaryLabel("Owner")
                         Spacer()
-                        Text(buildStatus.buildDetails.owner)
+                        ValueLabel(buildStatus.buildDetails.owner)
                     }
 
                     HStack {
-                        Text("Repository")
+                        PrimaryLabel("Repository")
                         Spacer()
-                        Text(buildStatus.buildDetails.repository)
+                        ValueLabel(buildStatus.buildDetails.repository)
                     }
 
                     HStack {
-                        Text("Build Key")
+                        PrimaryLabel("Build Key")
                         Spacer()
-                        Text(buildStatus.buildDetails.build_key)
+                        ValueLabel(buildStatus.buildDetails.build_key)
                     }
 
                     HStack {
-                        Text("Build #")
+                        PrimaryLabel("Build #")
                         Spacer()
-                        Text("\(buildStatus.buildDetails.build)")
+                        ValueLabel("\(buildStatus.buildDetails.build)")
                     }
 
                     HStack {
-                        Text("Status")
+                        PrimaryLabel("Status")
                         Spacer()
-                        Text(buildStatus.buildDetails.status)
+                        ValueLabel(buildStatus.buildDetails.status)
                     }
 
                     HStack {
-                        Text("Started At")
+                        PrimaryLabel("Started At")
                         Spacer()
                         Text(buildStatus.buildDetails.started_at, style: .time)
                     }
 
                     if let completed_at = buildStatus.buildDetails.completed_at {
                         HStack {
-                            Text("Completed At")
+                            PrimaryLabel("Completed At")
                             Spacer()
                             Text(completed_at, style: .time)
                         }
                     }
 
                     HStack {
-                        Text("Duration")
+                        PrimaryLabel("Duration")
                         Spacer()
-                        Text(buildStatus.buildDetails.duration)
+                        ValueLabel(buildStatus.buildDetails.duration)
                     }
                 }
 

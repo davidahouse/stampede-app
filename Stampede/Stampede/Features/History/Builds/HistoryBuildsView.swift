@@ -25,7 +25,7 @@ struct HistoryBuildsView: View {
                         BuildDetailsCell(buildDetails: item)
                     }
                 } else {
-                    Text("No builds found")
+                    PrimaryLabel("No builds found")
                 }
             }
             .listStyle(DefaultListStyle())

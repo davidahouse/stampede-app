@@ -28,7 +28,7 @@ struct RepositoryView: View {
                             BuildStatusCell(buildStatus: item)
                         }
                     } else {
-                        Text("No active builds found")
+                        PrimaryLabel("No active builds found")
                     }
                 })
             }
@@ -40,7 +40,7 @@ struct RepositoryView: View {
                             RepositoryBuildCell(repository: viewModel.repository, repositoryBuild: item)
                         }
                     } else {
-                        Text("No repository builds found")
+                        PrimaryLabel("No repository builds found")
                     }
                 })
             }
@@ -52,7 +52,7 @@ struct RepositoryView: View {
                             BuildKeyCell(repository: viewModel.repository, buildKey: item)
                         }
                     } else {
-                        Text("No branch builds found")
+                        PrimaryLabel("No branch builds found")
                     }
                 })
             }
@@ -64,7 +64,7 @@ struct RepositoryView: View {
                             BuildKeyCell(repository: viewModel.repository, buildKey: item)
                         }
                     } else {
-                        Text("No release builds found")
+                        PrimaryLabel("No release builds found")
                     }
                 })
             }
@@ -76,7 +76,7 @@ struct RepositoryView: View {
                             BuildKeyCell(repository: viewModel.repository, buildKey: item)
                         }
                     } else {
-                        Text("No pull request builds found")
+                        PrimaryLabel("No pull request builds found")
                     }
                 })
             }

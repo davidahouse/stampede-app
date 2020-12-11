@@ -30,7 +30,7 @@ struct HistoryTasksView: View {
                         })
                     }
                 } else {
-                    Text("No tasks found")
+                    PrimaryLabel("No tasks found")
                 }
             }
             .listStyle(DefaultListStyle())

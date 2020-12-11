@@ -44,7 +44,7 @@ struct SelectRepositoryView: View {
                             })
                     }
                 } else {
-                    Text("No repositories selected")
+                    PrimaryLabel("No repositories selected")
                 }
             }
             .listStyle(DefaultListStyle())
