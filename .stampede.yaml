@@ -43,6 +43,13 @@ branches:
           xcodeVersion: Xcode.app
           productName: Stampede
           infoPlist: Stampede/Info.plist
+      - id: catalyst-build-xcode
+        config:
+          projectFolder: Stampede
+          scheme: Stampede
+          project: Stampede
+          infoPlist: Stampede/Info.plist
+          xcodeVersion: Xcode.app
       - id: lines-of-code
         config:
           excludeFolders: HouseKit
