@@ -1,3 +1,11 @@
+config:
+  productName: Stampede
+  projectFolder: Stampede
+  xcodeVersion: Xcode.app
+  simulator: iPhone 11
+  project: Stampede
+  scheme: Stampede
+  infoPlist: Stampede/Info.plist
 pullrequests:
   tasks:
     - id: pr-standards
@@ -5,22 +13,10 @@ pullrequests:
         prMilestoneCheck: true
         prIssueCheck: true
     - id: swiftlint
-      config:
-        projectFolder: Stampede
     - id: unit-tests-xcode
-      config:
-        projectFolder: Stampede
-        scheme: Stampede
-        project: Stampede
-        xcodeVersion: Xcode.app
-        simulator: iPhone 11
     - id: ui-tests-xcode
       config:
-        projectFolder: Stampede
         scheme: StampedeUITests
-        project: Stampede
-        xcodeVersion: Xcode.app
-        simulator: iPhone 11
     - id: lines-of-code
       config:
         excludeFolders: HouseKit
@@ -37,39 +33,15 @@ branches:
     tasks:
       - id: app-build-xcode
         config:
-          projectFolder: Stampede
-          scheme: Stampede
-          project: Stampede
-          xcodeVersion: Xcode.app
-          productName: Stampede
-          infoPlist: Stampede/Info.plist
       - id: catalyst-build-xcode
-        config:
-          projectFolder: Stampede
-          scheme: Stampede
-          project: Stampede
-          infoPlist: Stampede/Info.plist
-          xcodeVersion: Xcode.app
       - id: lines-of-code
         config:
           excludeFolders: HouseKit
       - id: swiftlint
-        config:
-          projectFolder: Stampede
       - id: unit-tests-xcode
-        config:
-          projectFolder: Stampede
-          scheme: Stampede
-          project: Stampede
-          xcodeVersion: Xcode.app
-          simulator: iPhone 11
       - id: ui-tests-xcode
         config:
-          projectFolder: Stampede
           scheme: StampedeUITests
-          project: Stampede
-          xcodeVersion: Xcode.app
-          simulator: iPhone 11
     notifications:
       all:
         - id: slack-stampede-dev
@@ -78,20 +50,7 @@ releases:
     tasks:
       - id: release-notes
       - id: app-build-xcode
-        config:
-          projectFolder: Stampede
-          scheme: Stampede
-          project: Stampede
-          xcodeVersion: Xcode.app
-          productName: Stampede
-          infoPlist: Stampede/Info.plist
       - id: catalyst-build-xcode
-        config:
-          projectFolder: Stampede
-          scheme: Stampede
-          project: Stampede
-          infoPlist: Stampede/Info.plist
-          xcodeVersion: Xcode.app
     notifications:
       all:
         - id: slack-stampede-dev
