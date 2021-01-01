@@ -77,3 +77,21 @@ releases:
   published:
     tasks:
       - id: release-notes
+      - id: app-build-xcode
+        config:
+          projectFolder: Stampede
+          scheme: Stampede
+          project: Stampede
+          xcodeVersion: Xcode.app
+          productName: Stampede
+          infoPlist: Stampede/Info.plist
+      - id: catalyst-build-xcode
+        config:
+          projectFolder: Stampede
+          scheme: Stampede
+          project: Stampede
+          infoPlist: Stampede/Info.plist
+          xcodeVersion: Xcode.app
+    notifications:
+      all:
+        - id: slack-stampede-dev
