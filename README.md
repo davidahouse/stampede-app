@@ -1,6 +1,6 @@
 ## stampede-app
 
-A iOS client for the Stampede Continous Automation system.
+A iOS client for the Stampede Continuous Automation system.
 
 Built with SwiftUI
 
