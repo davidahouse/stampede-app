@@ -21,7 +21,7 @@ struct BuildView: View {
     var body: some View {
         BaseView(viewModel: viewModel, content: { buildStatus in
             List {
-                Section(header: Text("Build Details")) {
+                Section(header: SectionHeaderLabel("Build Details")) {
                     HStack {
                         PrimaryLabel("Owner")
                         Spacer()
@@ -73,7 +73,7 @@ struct BuildView: View {
                     }
                 }
 
-                Section(header: Text("Tasks")) {
+                Section(header: SectionHeaderLabel("Tasks")) {
                     ForEach(buildStatus.tasks) { task in
                         Button(action: {
                             router.route(to: routes.routeForTask(task.task_id))

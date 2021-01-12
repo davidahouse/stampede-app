@@ -19,7 +19,7 @@ struct MonitorQueuesView: View {
     var body: some View {
         BaseView(viewModel: viewModel, content: { queues in
             List {
-                Section(header: Text("Task Queues")) {
+                Section(header: SectionHeaderLabel("Task Queues")) {
                     if queues.taskQueues.count > 0 {
                         ForEach(queues.taskQueues, id: \.self) { item in
                             QueueSummaryCell(queueSummary: item)
@@ -28,7 +28,7 @@ struct MonitorQueuesView: View {
                         PrimaryLabel("No queues found")
                     }
                 }
-                Section(header: Text("System Queues")) {
+                Section(header: SectionHeaderLabel("System Queues")) {
                         if queues.systemQueues.count > 0 {
                             ForEach(queues.systemQueues, id: \.self) { item in
                                 QueueSummaryCell(queueSummary: item)

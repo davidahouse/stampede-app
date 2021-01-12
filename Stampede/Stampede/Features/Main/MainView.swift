@@ -22,7 +22,7 @@ struct MainView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Repositories")) {
+            Section(header: SectionHeaderLabel("Repositories")) {
                 BaseView(viewModel: viewModel, content: { repositories in
                     ForEach(repositories, id: \.self) { item in
                         Button(action: {
@@ -33,17 +33,17 @@ struct MainView: View {
                     }
                 })
             }
-            Section(header: Text("Monitor")) {
+            Section(header: SectionHeaderLabel("Monitor")) {
                 ForEach(MainMenuItem.monitorItems, id: \.self) { item in
                     FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
                 }
             }
-            Section(header: Text("History")) {
+            Section(header: SectionHeaderLabel("History")) {
                 ForEach(MainMenuItem.historyItems, id: \.self) { item in
                     FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
                 }
             }
-            Section(header: Text("Settings")) {
+            Section(header: SectionHeaderLabel("Settings")) {
                 ForEach(MainMenuItem.settingsItems, id: \.self) { item in
                     FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
                 }

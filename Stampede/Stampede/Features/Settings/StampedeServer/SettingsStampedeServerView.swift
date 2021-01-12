@@ -20,7 +20,7 @@ struct SettingsStampedeServerView: View {
 
     var body: some View {
         Form {
-            Section(header: Text("Stampede Server URL")) {
+            Section(header: SectionHeaderLabel("Stampede Server URL")) {
                 TextField("Stampede Server URL", text: $viewModel.stampedeServerURL)
                     .keyboardType(.URL)
                     .autocapitalization(.none)
