@@ -22,11 +22,11 @@ struct BuildTaskView: View {
                 if taskDetails.artifacts.count > 0 {
                     BuildTaskArtifactsView(taskID: taskDetails.task.task_id, artifacts: taskDetails.artifacts)
                 }
-                Section(header: Text("Summary")) {
+                Section(header: SectionHeaderLabel("Summary")) {
                     Parma(emojify(taskDetails.summary))
                 }
                 if taskDetails.text != "" {
-                    Section(header: Text("Text")) {
+                    Section(header: SectionHeaderLabel("Text")) {
                         Parma(emojify(taskDetails.text))
                     }
                 }
@@ -48,7 +48,7 @@ struct BuildTaskInformationView: View {
     let taskStatus: TaskStatus
 
     var body: some View {
-        Section(header: Text("Task Information")) {
+        Section(header: SectionHeaderLabel("Task Information")) {
             HStack {
                 PrimaryLabel("Task")
                 Spacer()
@@ -97,7 +97,7 @@ struct BuildTaskSCMDetailsView: View {
     let scmDetails: [TaskSCMDetails]
 
     var body: some View {
-        Section(header: Text("SCM Information")) {
+        Section(header: SectionHeaderLabel("SCM Information")) {
             ForEach(scmDetails, id: \.self) { detail in
                 if detail.multilineValue {
                     VStack(alignment: .leading) {
@@ -126,7 +126,7 @@ struct BuildTaskArtifactsView: View {
     @EnvironmentObject var routes: Routes
 
     var body: some View {
-        Section(header: Text("Artifacts")) {
+        Section(header: SectionHeaderLabel("Artifacts")) {
             ForEach(artifacts, id: \.self) { artifact in
                 switch viewModel.categoryForArtifact(artifact) {
                 case .hasRoute:

@@ -18,7 +18,7 @@ struct ArtifactXcodebuildView: View {
     var body: some View {
         BaseView(viewModel: viewModel, content: { xcodebuild in
             List {
-                Section(header: Text("Xcode build results"), content: {
+                Section(header: SectionHeaderLabel("Xcode build results"), content: {
                             HStack {
                                 PrimaryLabel("Total # of tests")
                                 Spacer()
@@ -41,7 +41,7 @@ struct ArtifactXcodebuildView: View {
                             }
                 })
 
-                Section(header: Text("Test execution"), content: {
+                Section(header: SectionHeaderLabel("Test execution"), content: {
                     ForEach(viewModel.testResults, id: \.self) { result in
                         HStack {
                             result.icon.image().font(Font.system(size: 24, weight: .regular))
@@ -53,7 +53,7 @@ struct ArtifactXcodebuildView: View {
                     }
                 })
 
-                Section(header: Text("Code coverage"), content: {
+                Section(header: SectionHeaderLabel("Code coverage"), content: {
                     ForEach(viewModel.coverages, id: \.self) { coverage in
                         HStack {
                             coverage.icon.image().font(Font.system(size: 24, weight: .regular))

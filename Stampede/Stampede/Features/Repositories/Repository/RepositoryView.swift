@@ -21,7 +21,7 @@ struct RepositoryView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Active Builds")) {
+            Section(header: SectionHeaderLabel("Active Builds")) {
                 BaseSubView(state: viewModel.activeBuildsState, content: { activeBuilds in
                     if activeBuilds.count > 0 {
                         ForEach(activeBuilds, id: \.self) { item in
@@ -33,7 +33,7 @@ struct RepositoryView: View {
                 })
             }
 
-            Section(header: Text("Repository Builds")) {
+            Section(header: SectionHeaderLabel("Repository Builds")) {
                 BaseSubView(state: viewModel.repositoryBuildsState, content: { builds in
                     if builds.count > 0 {
                         ForEach(builds, id: \.self) { item in
@@ -45,7 +45,7 @@ struct RepositoryView: View {
                 })
             }
 
-            Section(header: Text("Branches")) {
+            Section(header: SectionHeaderLabel("Branches")) {
                 BaseSubView(state: viewModel.branchKeysState, content: { keys in
                     if keys.count > 0 {
                         ForEach(keys, id: \.self) { item in
@@ -57,7 +57,7 @@ struct RepositoryView: View {
                 })
             }
 
-            Section(header: Text("Releases")) {
+            Section(header: SectionHeaderLabel("Releases")) {
                 BaseSubView(state: viewModel.releaseKeysState, content: { keys in
                     if keys.count > 0 {
                         ForEach(keys, id: \.self) { item in
@@ -69,7 +69,7 @@ struct RepositoryView: View {
                 })
             }
 
-            Section(header: Text("Pull Requests")) {
+            Section(header: SectionHeaderLabel("Pull Requests")) {
                 BaseSubView(state: viewModel.pullRequestKeysState, content: { keys in
                     if keys.count > 0 {
                         ForEach(keys, id: \.self) { item in

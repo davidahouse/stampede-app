@@ -20,7 +20,7 @@ struct ArtifactClocView: View {
         BaseView(viewModel: viewModel, content: { cloc in
             List {
                 ForEach(cloc.sortedLanguages(), id: \.self) { lang in
-                    Section(header: Text(lang.language), content: {
+                    Section(header: SectionHeaderLabel(lang.language), content: {
                         HStack {
                             PrimaryLabel("Code lines")
                             Spacer()

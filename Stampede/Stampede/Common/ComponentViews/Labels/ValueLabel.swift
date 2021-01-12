@@ -26,7 +26,7 @@ struct ValueLabel: View {
 
 struct ValueLabel_Previews: PreviewProvider, Previewable {
     static var previews: some View {
-        devicePreviews
+        debugPreviews
     }
 
     static var defaultViewModel: PreviewData<String> {

@@ -19,7 +19,7 @@ struct RepositoryBuildDetailsView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Active Builds")) {
+            Section(header: SectionHeaderLabel("Active Builds")) {
                 BaseSubView(state: viewModel.activeBuildsState, content: { activeBuilds in
                     if activeBuilds.count > 0 {
                         ForEach(activeBuilds, id: \.self) { item in
@@ -31,7 +31,7 @@ struct RepositoryBuildDetailsView: View {
                 })
             }
 
-            Section(header: Text("Recent Builds")) {
+            Section(header: SectionHeaderLabel("Recent Builds")) {
                 BaseSubView(state: viewModel.recentBuildsState, content: { recentBuilds in
                     if recentBuilds.count > 0 {
                         ForEach(recentBuilds, id: \.self) { item in

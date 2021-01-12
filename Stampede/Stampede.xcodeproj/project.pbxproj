@@ -229,6 +229,8 @@
 		C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76680245B0F300022E485 /* StampedeDefaults.swift */; };
 		C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7668A245B704D0022E485 /* NetworkErrorView.swift */; };
 		C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F83EC5239407290057A0FB /* MainFeature.swift */; };
+		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
+		DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -475,6 +477,8 @@
 		C3F76680245B0F300022E485 /* StampedeDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeDefaults.swift; sourceTree = "<group>"; };
 		C3F7668A245B704D0022E485 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		C3F83EC5239407290057A0FB /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
+		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
+		DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +568,7 @@
 				941F25D323C2A6C500EC3E36 /* PrimaryLabelTests.swift */,
 				941F25D523C2A6EC00EC3E36 /* SecondaryLabelTests.swift */,
 				941F25D723C2A71000EC3E36 /* ValueLabelTests.swift */,
+				DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -810,6 +815,7 @@
 				C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */,
 				C3126DA123BED33400AC542F /* SecondaryLabel.swift */,
 				94E37CFF23BFDFB5000CB1AD /* ValueLabel.swift */,
+				DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -1698,6 +1704,7 @@
 				C3126DAA23BED8EF00AC542F /* NavbarButton.swift in Sources */,
 				9438376C2468515E00A90FF4 /* Previewer.swift in Sources */,
 				943837702468713E00A90FF4 /* View+Extension.swift in Sources */,
+				DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */,
 				C3CA2E2424BA9F6A0086B71D /* SettingsNotificationsViewModel.swift in Sources */,
 				944EF65924FD200C00357E9E /* RepositoryBuildCell.swift in Sources */,
 				C39E58CB253F3FE000217743 /* RepositorySourceDetailsFeature.swift in Sources */,
@@ -1790,6 +1797,7 @@
 				94D8B4362544C48B000FDBE8 /* ArtifactXcodebuildTests.swift in Sources */,
 				C3DDDC5425180C47005C8189 /* BuildFeatureTests.swift in Sources */,
 				C3DE1CAC25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift in Sources */,
+				DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */,
 				C3DE1C8E2541D3C1009FA36D /* AppDelegateTests.swift in Sources */,
 				949CC97F2517F61200BEC54E /* BuildStatusTests.swift in Sources */,
 				C3DDDC4125180B10005C8189 /* BuildKeyCellTests.swift in Sources */,
