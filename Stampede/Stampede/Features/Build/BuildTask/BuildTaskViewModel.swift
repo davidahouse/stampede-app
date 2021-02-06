@@ -21,8 +21,6 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
 
     func categoryForArtifact(_ artifact: TaskArtifact) -> ArtifactCategory {
         switch artifact.type {
-        case "cloc", "xcodebuild":
-            return .hasRoute
         case "link":
             return .openURL
         case "installplist":

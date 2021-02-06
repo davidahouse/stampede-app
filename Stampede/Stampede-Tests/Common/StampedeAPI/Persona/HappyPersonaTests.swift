@@ -31,7 +31,6 @@ class HappyPersonaTests: XCTestCase {
         XCTAssertTrue(isResults(persona.buildKeys))
         XCTAssertTrue(isResults(persona.buildDetails))
         XCTAssertTrue(isResults(persona.taskDetails))
-        XCTAssertTrue(isResults(persona.artifactCloc))
         XCTAssertTrue(isResults(persona.historyBuilds))
         XCTAssertTrue(isResults(persona.repositorySourceBuilds))
     }

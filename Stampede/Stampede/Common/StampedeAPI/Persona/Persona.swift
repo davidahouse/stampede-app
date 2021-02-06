@@ -26,8 +26,6 @@ protocol Persona {
     var buildKeys: FixtureResponse<[BuildKey]> { get }
     var buildDetails: FixtureResponse<BuildStatus> { get }
     var taskDetails: FixtureResponse<TaskDetails> { get }
-    var artifactCloc: FixtureResponse<ArtifactCloc> { get }
-    var artifactXcodebuild: FixtureResponse<ArtifactXcodebuild> { get }
     var historyBuilds: FixtureResponse<[BuildDetails]> { get }
     var repositorySourceBuilds: FixtureResponse<[BuildDetails]> { get }
 }

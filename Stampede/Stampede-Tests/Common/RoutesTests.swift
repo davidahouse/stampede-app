@@ -63,9 +63,7 @@ class RoutesTests: XCTestCase {
     }
 
     func testCanRouteToArtifactTypes() {
-        let types: [TaskArtifact] = [TaskArtifact.clocArtifact,
-                                   TaskArtifact.xcodeBuildArtifact,
-                                   TaskArtifact.linkArtifact,
+        let types: [TaskArtifact] = [TaskArtifact.linkArtifact,
                                    TaskArtifact.someArtifact]
         for type in types {
             let route = routes.routeForArtifact("some-task", artifact: type)

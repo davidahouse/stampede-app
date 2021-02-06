@@ -31,7 +31,6 @@ class ErrorPersonaTests: XCTestCase {
         XCTAssertTrue(isError(persona.buildKeys))
         XCTAssertTrue(isError(persona.buildDetails))
         XCTAssertTrue(isError(persona.taskDetails))
-        XCTAssertTrue(isError(persona.artifactCloc))
         XCTAssertTrue(isError(persona.historyBuilds))
         XCTAssertTrue(isError(persona.repositorySourceBuilds))
     }

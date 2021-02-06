@@ -72,10 +72,6 @@ class Routes: ObservableObject {
 
     func routeForArtifact(_ taskID: String, artifact: TaskArtifact) -> Route {
         switch artifact.type {
-        case "cloc":
-            return ArtifactClocRoute(taskID: taskID, title: artifact.title)
-        case "xcodebuild":
-            return ArtifactXcodebuildRoute(taskID: taskID, title: artifact.title)
         default:
             return EmptyRoute()
         }

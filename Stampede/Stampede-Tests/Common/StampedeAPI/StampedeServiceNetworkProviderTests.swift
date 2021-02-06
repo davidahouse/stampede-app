@@ -22,7 +22,6 @@ class StampedeServiceNetworkProviderTests: XCTestCase {
         expectError(providerNoHost.fetchBuildDetailsPublisher(buildID: "someID"))
         expectError(providerNoHost.fetchTaskDetailsPublisher(taskID: "someID"))
         expectError(providerNoHost.fetchRepositorySourceDetails(owner: "someOwner", repository: "someRepo", buildKey: "someBuildKey"))
-        expectError(providerNoHost.fetchArtifactClocPublisher(taskID: "someID", title: "someTitle"))
         expectError(providerNoHost.fetchActiveBuildsPublisher(owner: "someOwner", repository: "someRepo"))
         expectError(providerNoHost.fetchMonitorQueuesPublisher())
         expectError(providerNoHost.fetchWorkerStatusPublisher())
