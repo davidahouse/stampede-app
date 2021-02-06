@@ -31,7 +31,6 @@ class LoadingPersonaTests: XCTestCase {
         XCTAssertTrue(isLoading(persona.buildKeys))
         XCTAssertTrue(isLoading(persona.buildDetails))
         XCTAssertTrue(isLoading(persona.taskDetails))
-        XCTAssertTrue(isLoading(persona.artifactCloc))
         XCTAssertTrue(isLoading(persona.historyBuilds))
         XCTAssertTrue(isLoading(persona.repositorySourceBuilds))
     }

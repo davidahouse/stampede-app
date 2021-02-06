@@ -50,14 +50,6 @@ public class StampedeService: ObservableObject {
         return provider.fetchRepositorySourceDetails(owner: owner, repository: repository, buildKey: buildKey)
     }
 
-    func fetchArtifactClocPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactCloc, ServiceError>? {
-        return provider.fetchArtifactClocPublisher(taskID: taskID, title: title)
-    }
-
-    func fetchArtifactXcodebuildPublisher(taskID: String, title: String) -> AnyPublisher<ArtifactXcodebuild, ServiceError>? {
-        return provider.fetchArtifactXcodebuildPublisher(taskID: taskID, title: title)
-    }
-
     public func fetchAdminTasksPublisher() -> AnyPublisher<[Task], ServiceError>? {
         return provider.fetchAdminTasksPublisher()
     }

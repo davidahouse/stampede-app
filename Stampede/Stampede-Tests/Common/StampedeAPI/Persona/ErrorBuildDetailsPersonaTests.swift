@@ -30,7 +30,6 @@ class ErrorBuildDetailsPersonaTests: XCTestCase {
         XCTAssertTrue(isResults(persona.configQueues))
         XCTAssertTrue(isResults(persona.buildKeys))
         XCTAssertTrue(isResults(persona.taskDetails))
-        XCTAssertTrue(isResults(persona.artifactCloc))
         XCTAssertTrue(isResults(persona.historyBuilds))
         XCTAssertTrue(isResults(persona.repositorySourceBuilds))
 

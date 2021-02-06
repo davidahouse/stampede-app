@@ -74,14 +74,6 @@ class LoadingPersona: Persona {
         .loading
     }
 
-    var artifactCloc: FixtureResponse<ArtifactCloc> {
-        .loading
-    }
-
-    var artifactXcodebuild: FixtureResponse<ArtifactXcodebuild> {
-        .loading
-    }
-
     var historyBuilds: FixtureResponse<[BuildDetails]> {
         .loading
     }
