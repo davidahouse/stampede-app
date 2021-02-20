@@ -215,6 +215,7 @@
 		C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7668A245B704D0022E485 /* NetworkErrorView.swift */; };
 		C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F83EC5239407290057A0FB /* MainFeature.swift */; };
 		DC0D04DD25E1816A00418EBA /* TaskStatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */; };
+		DC0D04E325E19F1A00418EBA /* TaskStatusIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
 		DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */; };
 /* End PBXBuildFile section */
@@ -449,6 +450,7 @@
 		C3F7668A245B704D0022E485 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		C3F83EC5239407290057A0FB /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
 		DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIcon.swift; sourceTree = "<group>"; };
+		DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIconTests.swift; sourceTree = "<group>"; };
 		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
 		DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -509,6 +511,7 @@
 		941F25C623C2A39B00EC3E36 /* ComponentViews */ = {
 			isa = PBXGroup;
 			children = (
+				DC0D04E125E19E7D00418EBA /* Images */,
 				C3DDDC2325180A21005C8189 /* Cells */,
 				94DB4DFD247C479C001EF693 /* View */,
 				941F25D223C2A6B700EC3E36 /* Labels */,
@@ -1364,6 +1367,14 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		DC0D04E125E19E7D00418EBA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1657,6 +1668,7 @@
 				C3DDDC9425180FF4005C8189 /* SettingsRepositoriesFeatureTests.swift in Sources */,
 				C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */,
 				C3DDDC3225180A90005C8189 /* TaskStatusCellTests.swift in Sources */,
+				DC0D04E325E19F1A00418EBA /* TaskStatusIconTests.swift in Sources */,
 				C3DE1C712541C9DA009FA36D /* SettingsDeveloperPersonaFeatureTests.swift in Sources */,
 				C3DDDC7725180F06005C8189 /* HistoryBuildsFeatureTests.swift in Sources */,
 				C3DDDC5A25180C85005C8189 /* BuildTaskViewTests.swift in Sources */,
