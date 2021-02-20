@@ -20,17 +20,7 @@ struct TaskStatusCell: View {
             router.route(to: routes.routeForTask(taskStatus.task_id))
         }, label: {
             HStack {
-                switch taskStatus.status {
-                case "in_progress":
-                    CurrentTheme.Icons.inProgress.image().font(Font.system(size: 32, weight: .regular))
-                default:
-                    switch taskStatus.conclusion {
-                    case "success":
-                        CurrentTheme.Icons.success.image().font(Font.system(size: 32, weight: .regular))
-                    default:
-                        CurrentTheme.Icons.failure.image().font(Font.system(size: 32, weight: .regular))
-                    }
-                }
+                TaskStatusIcon(status: taskStatus.status, conclusion: taskStatus.conclusion)
                 VStack(alignment: .leading) {
                     PrimaryLabel(taskStatus.task)
                     SecondaryLabel(taskStatus.buildTitle ?? "")

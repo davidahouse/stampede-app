@@ -214,6 +214,7 @@
 		C3F76681245B0F300022E485 /* StampedeDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F76680245B0F300022E485 /* StampedeDefaults.swift */; };
 		C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7668A245B704D0022E485 /* NetworkErrorView.swift */; };
 		C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F83EC5239407290057A0FB /* MainFeature.swift */; };
+		DC0D04DD25E1816A00418EBA /* TaskStatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
 		DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */; };
 /* End PBXBuildFile section */
@@ -447,6 +448,7 @@
 		C3F76680245B0F300022E485 /* StampedeDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeDefaults.swift; sourceTree = "<group>"; };
 		C3F7668A245B704D0022E485 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		C3F83EC5239407290057A0FB /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
+		DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIcon.swift; sourceTree = "<group>"; };
 		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
 		DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -605,6 +607,7 @@
 		946DAD2A23BEC7C200053335 /* ComponentViews */ = {
 			isa = PBXGroup;
 			children = (
+				DC0D04DB25E1815400418EBA /* Images */,
 				C3F76689245B70380022E485 /* View */,
 				941F25BF23C23B2500EC3E36 /* List */,
 				C3126DA823BED8D700AC542F /* Buttons */,
@@ -1353,6 +1356,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DC0D04DB25E1815400418EBA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1601,6 +1612,7 @@
 				C3816C7D248702AB00E6980B /* MonitorQueuesView.swift in Sources */,
 				C39E58F72540738900217743 /* Persona.swift in Sources */,
 				C34755EC24FC85BD009B1FBF /* BuildStatusCell.swift in Sources */,
+				DC0D04DD25E1816A00418EBA /* TaskStatusIcon.swift in Sources */,
 				94FE1F4724FB081500AE4ED4 /* RepositoryList.swift in Sources */,
 				94B571F024BBBECD00CA13A4 /* BuildDetails.swift in Sources */,
 				C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */,
