@@ -71,7 +71,7 @@ struct BuildTaskInformationView: View {
                 HStack {
                     PrimaryLabel("Start Time")
                     Spacer()
-                    Text(startedAt, style: .time)
+                    TimeLabel(time: startedAt)
                 }
             }
 
@@ -79,7 +79,7 @@ struct BuildTaskInformationView: View {
                 HStack {
                     PrimaryLabel("Finish Time")
                     Spacer()
-                    Text(finishedAt, style: .time)
+                    TimeLabel(time: finishedAt)
                 }
             }
 
