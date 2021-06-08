@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import Parma
+//import Parma
 
 struct BuildTaskView: View {
 
@@ -23,11 +23,13 @@ struct BuildTaskView: View {
                     BuildTaskArtifactsView(taskID: taskDetails.task.task_id, artifacts: taskDetails.artifacts)
                 }
                 Section(header: SectionHeaderLabel("Summary")) {
-                    Parma(emojify(taskDetails.summary))
+                    //Parma(emojify(taskDetails.summary))
+                    Text("summary can go here")
                 }
                 if taskDetails.text != "" {
                     Section(header: SectionHeaderLabel("Text")) {
-                        Parma(emojify(taskDetails.text))
+                        Text("Details here")
+//                        Parma(emojify(taskDetails.text))
                     }
                 }
             }

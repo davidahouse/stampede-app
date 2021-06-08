@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "9D49EBCE-2C43-4D4A-AE4D-6E82720D48A2",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Stampede.xcodeproj",
+        "identifier" : "C3349EC72350A92C00273730",
+        "name" : "Stampede-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
