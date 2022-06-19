@@ -190,6 +190,11 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
         }
         return fetchPublisher(persona.buildKeys)
     }
+
+    public func fetchRepositories() async -> Result<[Repository], ServiceError> {
+        // TODO: fix me
+        return .failure(.network(description: "some error"))
+    }
 }
 
 extension StampedeServiceFixtureProvider {

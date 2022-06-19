@@ -11,7 +11,7 @@ import Combine
 import HouseKit
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
-public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServiceProvider {
+public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServiceProvider {
 
     public let hostPassthroughSubject = PassthroughSubject<String, Never>()
     private var host: String?
@@ -29,14 +29,16 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
         guard let host = host else {
             return AnyPublisher<[Repository], ServiceError>(Future<[Repository], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
         }
-        return request(url: StampedeAPIEndpoint.repositories.url(host: host))
+        return fetchPublisher(.loading)
+//        return request(url: StampedeAPIEndpoint.repositories.url(host: host))
     }
 
     public func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
         guard let host = host else {
             return AnyPublisher<[BuildStatus], ServiceError>(Future<[BuildStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
         }
-        return request(url: StampedeAPIEndpoint.activeBuilds(owner, repository).url(host: host))
+        return fetchPublisher(.loading)
+        // return request(url: StampedeAPIEndpoint.activeBuilds(owner, repository).url(host: host))
     }
 
     public func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {
@@ -149,5 +151,26 @@ public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServicePro
             return AnyPublisher<[BuildKey], ServiceError>(Future<[BuildKey], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
         }
         return request(url: StampedeAPIEndpoint.buildKeys(owner, repository, source).url(host: host))
+    }
+
+    public func fetchRepositories() async -> Result<[Repository], ServiceError> {
+        // TODO: fix me
+        return .failure(.network(description: "some error"))
+    }
+
+    public func fetchPublisher<T>(_ value: FixtureResponse<T>?) -> AnyPublisher<T, ServiceError> {
+
+        guard let value = value else {
+            return AnyPublisher<T, ServiceError>(Future<T, ServiceError> { promise in promise(.failure(.network(description: "No fixture found")))})
+        }
+
+        switch value {
+        case .loading:
+            return AnyPublisher<T, ServiceError>(Future<T, ServiceError> { _ in })
+        case .error(let error):
+            return AnyPublisher<T, ServiceError>(Future<T, ServiceError> { promise in promise(.failure(error))})
+        case .results(let result):
+            return AnyPublisher<T, ServiceError>(Future<T, ServiceError> { promise in promise(.success(result))})
+        }
     }
 }

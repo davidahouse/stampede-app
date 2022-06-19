@@ -36,6 +36,6 @@ class MainFeature: BaseFeature {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
+//        viewModel.publisher = dependencies.repositoryList.fetchRepositoriesPublisher()
     }
 }

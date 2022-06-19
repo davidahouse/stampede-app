@@ -34,7 +34,15 @@ enum MainMenuItem: String, CaseIterable {
     }()
 }
 
-class MainViewModel: BaseViewModel<[Repository]> { }
+@MainActor
+class MainViewModel: ObservableObject {
+
+    @Published var state: ViewModelState<[Repository]> = .loading
+
+    public init(state: ViewModelState<[Repository]> = .loading) {
+        self.state = state
+    }
+}
 
 #if DEBUG
 extension MainViewModel {

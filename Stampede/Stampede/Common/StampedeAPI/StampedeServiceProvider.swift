@@ -40,4 +40,7 @@ public protocol StampedeServiceProvider {
     func fetchAdminConfigDefaultsPublisher() -> AnyPublisher<ConfigDefaults, ServiceError>?
     func fetchAdminConfigOverridesPublisher() -> AnyPublisher<ConfigOverrides, ServiceError>?
     func fetchAdminQueuesPublisher() -> AnyPublisher<[Queue], ServiceError>?
+
+    // Async methods
+    func fetchRepositories() async -> Result<[Repository], ServiceError>
 }

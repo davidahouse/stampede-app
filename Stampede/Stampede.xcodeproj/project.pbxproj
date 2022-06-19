@@ -213,7 +213,7 @@
 		DC0D04DD25E1816A00418EBA /* TaskStatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */; };
 		DC0D04E325E19F1A00418EBA /* TaskStatusIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */; };
 		DC1E3A13285D3E7800AE872B /* StampedeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E3A12285D3E7800AE872B /* StampedeApp.swift */; };
-		DC1E3A15285E86AF00AE872B /* XBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E3A14285E86AF00AE872B /* XBaseViewModel.swift */; };
+		DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */; };
 		DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A125EABE4300A0311A /* TimeLabel.swift */; };
 		DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A625EABED400A0311A /* TimeLabelTests.swift */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
@@ -452,7 +452,7 @@
 		DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIcon.swift; sourceTree = "<group>"; };
 		DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIconTests.swift; sourceTree = "<group>"; };
 		DC1E3A12285D3E7800AE872B /* StampedeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeApp.swift; sourceTree = "<group>"; };
-		DC1E3A14285E86AF00AE872B /* XBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBaseViewModel.swift; sourceTree = "<group>"; };
+		DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkProvider.swift; sourceTree = "<group>"; };
 		DC4729A125EABE4300A0311A /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
 		DC4729A625EABED400A0311A /* TimeLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelTests.swift; sourceTree = "<group>"; };
 		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
@@ -745,7 +745,7 @@
 				C30DC0062533B4F900021863 /* Router.swift */,
 				C3850A24253739100057F500 /* BaseView.swift */,
 				C3850A2925373C620057F500 /* BaseSubView.swift */,
-				DC1E3A14285E86AF00AE872B /* XBaseViewModel.swift */,
+				DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1557,7 +1557,6 @@
 				DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */,
 				94C0908D253485E8001E0B37 /* FeatureRouteCell.swift in Sources */,
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
-				DC1E3A15285E86AF00AE872B /* XBaseViewModel.swift in Sources */,
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
 				94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */,
 				DC1E3A13285D3E7800AE872B /* StampedeApp.swift in Sources */,
@@ -1600,6 +1599,7 @@
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
+				DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */,
 				C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */,
 				C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */,
 				C39E59062540946D00217743 /* LoadingPersona.swift in Sources */,
