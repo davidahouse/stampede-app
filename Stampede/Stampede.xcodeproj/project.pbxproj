@@ -83,11 +83,8 @@
 		C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA423BED39C00AC542F /* CurrentTheme.swift */; };
 		C3126DAA23BED8EF00AC542F /* NavbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA923BED8EF00AC542F /* NavbarButton.swift */; };
 		C31341BF254E47540037D0D3 /* PreviewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31341BE254E47540037D0D3 /* PreviewerTests.swift */; };
-		C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349EB52350A92B00273730 /* AppDelegate.swift */; };
-		C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3349EB72350A92B00273730 /* SceneDelegate.swift */; };
 		C3349EBC2350A92C00273730 /* AssetsMobile.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3349EBB2350A92C00273730 /* AssetsMobile.xcassets */; };
 		C3349EBF2350A92C00273730 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3349EBE2350A92C00273730 /* Preview Assets.xcassets */; };
-		C3349EC22350A92C00273730 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3349EC02350A92C00273730 /* LaunchScreen.storyboard */; };
 		C33C012E25198ECD00F7AC62 /* BDDTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C012D25198ECD00F7AC62 /* BDDTestCase.swift */; };
 		C33C013725198FB100F7AC62 /* ScenarioMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C013625198FB100F7AC62 /* ScenarioMainScreen.swift */; };
 		C33C0142251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C0141251A26A000F7AC62 /* ScenarioMainScreen+Extension.swift */; };
@@ -142,7 +139,6 @@
 		C39E59172540BCB100217743 /* SettingsDeveloperFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E59162540BCB100217743 /* SettingsDeveloperFeature.swift */; };
 		C39E591F2540BCF400217743 /* SettingsDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E591E2540BCF400217743 /* SettingsDeveloperView.swift */; };
 		C39E59242540BD5B00217743 /* SettingsDeveloperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E59232540BD5B00217743 /* SettingsDeveloperViewModel.swift */; };
-		C3AB1CEA254B907800B1E9C0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1CE9254B907800B1E9C0 /* RootViewController.swift */; };
 		C3AB1CEF254C6EA900B1E9C0 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1CEE254C6EA900B1E9C0 /* RootViewControllerTests.swift */; };
 		C3B035262550D1F10098CDB2 /* Fixtures+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B035252550D1F10098CDB2 /* Fixtures+Date.swift */; };
 		C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1225D253B5E7C005FD154 /* TaskDetails.swift */; };
@@ -216,6 +212,8 @@
 		C3F83EC6239407290057A0FB /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F83EC5239407290057A0FB /* MainFeature.swift */; };
 		DC0D04DD25E1816A00418EBA /* TaskStatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */; };
 		DC0D04E325E19F1A00418EBA /* TaskStatusIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */; };
+		DC1E3A13285D3E7800AE872B /* StampedeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E3A12285D3E7800AE872B /* StampedeApp.swift */; };
+		DC1E3A15285E86AF00AE872B /* XBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E3A14285E86AF00AE872B /* XBaseViewModel.swift */; };
 		DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A125EABE4300A0311A /* TimeLabel.swift */; };
 		DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A625EABED400A0311A /* TimeLabelTests.swift */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
@@ -453,6 +451,8 @@
 		C3F83EC5239407290057A0FB /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
 		DC0D04DC25E1816A00418EBA /* TaskStatusIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIcon.swift; sourceTree = "<group>"; };
 		DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIconTests.swift; sourceTree = "<group>"; };
+		DC1E3A12285D3E7800AE872B /* StampedeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeApp.swift; sourceTree = "<group>"; };
+		DC1E3A14285E86AF00AE872B /* XBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBaseViewModel.swift; sourceTree = "<group>"; };
 		DC4729A125EABE4300A0311A /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
 		DC4729A625EABED400A0311A /* TimeLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelTests.swift; sourceTree = "<group>"; };
 		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
@@ -745,6 +745,7 @@
 				C30DC0062533B4F900021863 /* Router.swift */,
 				C3850A24253739100057F500 /* BaseView.swift */,
 				C3850A2925373C620057F500 /* BaseSubView.swift */,
+				DC1E3A14285E86AF00AE872B /* XBaseViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -844,6 +845,7 @@
 				C3349EC32350A92C00273730 /* Info.plist */,
 				C3349EBD2350A92C00273730 /* Preview Content */,
 				C3AB1CE9254B907800B1E9C0 /* RootViewController.swift */,
+				DC1E3A12285D3E7800AE872B /* StampedeApp.swift */,
 			);
 			path = Stampede;
 			sourceTree = "<group>";
@@ -1494,7 +1496,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3349EC22350A92C00273730 /* LaunchScreen.storyboard in Resources */,
 				C3349EBF2350A92C00273730 /* Preview Assets.xcassets in Resources */,
 				C3349EBC2350A92C00273730 /* AssetsMobile.xcassets in Resources */,
 			);
@@ -1556,8 +1557,10 @@
 				DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */,
 				94C0908D253485E8001E0B37 /* FeatureRouteCell.swift in Sources */,
 				C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */,
+				DC1E3A15285E86AF00AE872B /* XBaseViewModel.swift in Sources */,
 				94B571F424BBBECD00CA13A4 /* Queue.swift in Sources */,
 				94B571EF24BBBECD00CA13A4 /* WorkerStatus.swift in Sources */,
+				DC1E3A13285D3E7800AE872B /* StampedeApp.swift in Sources */,
 				94FE1F4324FAF42B00AE4ED4 /* MonitorActiveBuildsViewModel.swift in Sources */,
 				C39E58E9253F81DA00217743 /* RepositoryBuildDetailsView.swift in Sources */,
 				C34755F024FC88E2009B1FBF /* QueueSummaryCell.swift in Sources */,
@@ -1569,14 +1572,12 @@
 				C30342A425410444006E1BF3 /* SettingsDeveloperPersonaFeature.swift in Sources */,
 				94B571F124BBBECD00CA13A4 /* RepositoryBuild.swift in Sources */,
 				C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */,
-				C3AB1CEA254B907800B1E9C0 /* RootViewController.swift in Sources */,
 				941F25C423C23B6400EC3E36 /* EmptyList.swift in Sources */,
 				C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */,
 				C39E591F2540BCF400217743 /* SettingsDeveloperView.swift in Sources */,
 				C3CA2E2A24BA9F970086B71D /* SettingsRepositoriesViewModel.swift in Sources */,
 				C3CA2E2624BA9F7B0086B71D /* SettingsRepositoriesFeature.swift in Sources */,
 				C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */,
-				C3349EB62350A92B00273730 /* AppDelegate.swift in Sources */,
 				94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */,
 				C39E58E1253F80AE00217743 /* RepositoryBuildDetailsFeature.swift in Sources */,
 				C39E58EE253F821900217743 /* RepositoryBuildDetailsViewModel.swift in Sources */,
@@ -1611,7 +1612,6 @@
 				94E913AF24BB512B0056A150 /* BuildTaskFeature.swift in Sources */,
 				C30DBFEE25322D9500021863 /* MainNavigationController.swift in Sources */,
 				C34755EA24FC8446009B1FBF /* RepositoryCell.swift in Sources */,
-				C3349EB82350A92B00273730 /* SceneDelegate.swift in Sources */,
 				94B571EC24BBBECD00CA13A4 /* ConfigDefaults.swift in Sources */,
 				94B571F524BBBECD00CA13A4 /* TaskStatus.swift in Sources */,
 				C38C888E24BA1B8F00F6E6C9 /* MainViewModel.swift in Sources */,
@@ -1919,7 +1919,7 @@
 				DEVELOPMENT_TEAM = 75VB98RCZH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stampede/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1946,7 +1946,7 @@
 				DEVELOPMENT_TEAM = 75VB98RCZH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stampede/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

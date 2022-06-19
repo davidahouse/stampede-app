@@ -15,40 +15,45 @@ struct MainView: View {
 
     @EnvironmentObject var theme: CurrentTheme
     @EnvironmentObject var viewModel: MainViewModel
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
+//    @EnvironmentObject var router: Router
+//    @EnvironmentObject var routes: Routes
 
     // MARK: - View
 
     var body: some View {
-        List {
-            Section(header: SectionHeaderLabel("Repositories")) {
-                BaseView(viewModel: viewModel, content: { repositories in
-                    ForEach(repositories, id: \.self) { item in
-                        Button(action: {
-                            self.router.route(to: routes.route(for: item))
-                        }, label: {
-                            RepositoryCell(repository: item)
-                        }).accessibilityIdentifier(item.id)
+//        NavigationStack {
+            List {
+                Section(header: SectionHeaderLabel("Repositories")) {
+//                    BaseView(viewModel: viewModel, content: { repositories in
+//                        ForEach(repositories, id: \.self) { item in
+//                            Button(action: {
+//                                //                            self.router.route(to: routes.route(for: item))
+//                            }, label: {
+//                                RepositoryCell(repository: item)
+//                            }).accessibilityIdentifier(item.id)
+//                        }
+//                    })
+                }
+                Section(header: SectionHeaderLabel("Monitor")) {
+                    ForEach(MainMenuItem.monitorItems, id: \.self) { item in
+                        //                  FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                        Text("\(item.rawValue)")
                     }
-                })
-            }
-            Section(header: SectionHeaderLabel("Monitor")) {
-                ForEach(MainMenuItem.monitorItems, id: \.self) { item in
-                    FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
                 }
-            }
-            Section(header: SectionHeaderLabel("History")) {
-                ForEach(MainMenuItem.historyItems, id: \.self) { item in
-                    FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                Section(header: SectionHeaderLabel("History")) {
+                    ForEach(MainMenuItem.historyItems, id: \.self) { item in
+                        //                  FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                        Text("\(item.rawValue)")
+                    }
                 }
-            }
-            Section(header: SectionHeaderLabel("Settings")) {
-                ForEach(MainMenuItem.settingsItems, id: \.self) { item in
-                    FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                Section(header: SectionHeaderLabel("Settings")) {
+                    ForEach(MainMenuItem.settingsItems, id: \.self) { item in
+                        //                 FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
+                        Text("\(item.rawValue)")
+                    }
                 }
-            }
-        }.listStyle(GroupedListStyle())
+            }.listStyle(GroupedListStyle())
+//        }
     }
 }
 
