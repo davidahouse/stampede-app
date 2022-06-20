@@ -67,7 +67,6 @@
 		C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DCFD4239006B00078B23F /* BuildView.swift */; };
 		C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CD2395C8600060A6DD /* BuildFeature.swift */; };
 		C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */; };
-		C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21C42395B7270060A6DD /* RepositoryFeature.swift */; };
 		C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D51AC2353A40200FDA4A8 /* RepositoryView.swift */; };
 		C30DBF8F252D28A200021863 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBF8E252D28A200021863 /* Date+Extension.swift */; };
 		C30DBF95252D297700021863 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBF94252D297700021863 /* DateExtensionTests.swift */; };
@@ -1570,7 +1569,6 @@
 				C38C888224BA152D00F6E6C9 /* SettingsStampedeServerFeature.swift in Sources */,
 				C30342A425410444006E1BF3 /* SettingsDeveloperPersonaFeature.swift in Sources */,
 				94B571F124BBBECD00CA13A4 /* RepositoryBuild.swift in Sources */,
-				C3081AC824563CBE000C20F1 /* RepositoryFeature.swift in Sources */,
 				941F25C423C23B6400EC3E36 /* EmptyList.swift in Sources */,
 				C3816C7A248702AB00E6980B /* MonitorActiveBuildsView.swift in Sources */,
 				C39E591F2540BCF400217743 /* SettingsDeveloperView.swift in Sources */,

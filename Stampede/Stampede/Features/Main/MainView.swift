@@ -15,24 +15,29 @@ struct MainView: View {
 
     @EnvironmentObject var theme: CurrentTheme
     @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var service: StampedeService
+    
 //    @EnvironmentObject var router: Router
 //    @EnvironmentObject var routes: Routes
 
     // MARK: - View
 
     var body: some View {
-//        NavigationStack {
+        NavigationStack {
             List {
                 Section(header: SectionHeaderLabel("Repositories")) {
-//                    BaseView(viewModel: viewModel, content: { repositories in
-//                        ForEach(repositories, id: \.self) { item in
-//                            Button(action: {
-//                                //                            self.router.route(to: routes.route(for: item))
-//                            }, label: {
-//                                RepositoryCell(repository: item)
-//                            }).accessibilityIdentifier(item.id)
-//                        }
-//                    })
+                    switch viewModel.state {
+                    case .loading:
+                        PrimaryLabel("Loading...")
+                    case .networkError(let error):
+                        NetworkErrorView(error: error)
+                    case .results(let repositories):
+                        ForEach(repositories, id: \.self) { item in
+                            NavigationLink(value: item, label: {
+                                RepositoryCell(repository: item)
+                            }).accessibilityIdentifier(item.id)
+                        }
+                    }
                 }
                 Section(header: SectionHeaderLabel("Monitor")) {
                     ForEach(MainMenuItem.monitorItems, id: \.self) { item in
@@ -52,8 +57,16 @@ struct MainView: View {
                         Text("\(item.rawValue)")
                     }
                 }
-            }.listStyle(GroupedListStyle())
-//        }
+            }
+            .listStyle(GroupedListStyle())
+            .navigationTitle("Stampede")
+            .navigationDestination(for: Repository.self, destination: { repository in
+                RepositoryView(viewModel: viewModel.viewModelFor(repository: repository))
+            })
+        }
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 

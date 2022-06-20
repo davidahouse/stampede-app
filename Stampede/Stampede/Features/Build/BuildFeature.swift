@@ -20,6 +20,10 @@ struct BuildRoute: Route {
             return BuildFeature(dependencies: dependencies, buildID: buildID ?? "")
         }
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
 }
 
 class BuildFeature: BaseFeature {

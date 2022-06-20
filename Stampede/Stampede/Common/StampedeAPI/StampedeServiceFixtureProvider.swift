@@ -192,8 +192,47 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     }
 
     public func fetchRepositories() async -> Result<[Repository], ServiceError> {
-        // TODO: fix me
-        return .failure(.network(description: "some error"))
+        switch persona.repositories {
+        case .loading:
+            return .success([])
+        case .results(let data):
+            return .success(data)
+        case .error(let error):
+            return .failure(.network(description: "Error: \(error)"))
+        }
+    }
+    
+    func fetchActiveBuilds(owner: String, repository: String) async -> Result<[BuildStatus], ServiceError> {
+        switch persona.repositoryActiveBuilds {
+        case .loading:
+            return .success([])
+        case .error(let error):
+            return .failure(.network(description: "Error: \(error)"))
+        case .results(let data):
+            return .success(data)
+        }
+    }
+    
+    func fetchRepositoryBuilds(owner: String, repository: String) async -> Result<[RepositoryBuild], ServiceError> {
+        switch persona.repositoryBuilds {
+        case .loading:
+            return .success([])
+        case .error(let error):
+            return .failure(.network(description: "Error: \(error)"))
+        case .results(let data):
+            return .success(data)
+        }
+    }
+
+    func fetchBuildKeys(owner: String, repository: String, source: String) async -> Result<[BuildKey], ServiceError> {
+        switch persona.buildKeys {
+        case .loading:
+            return .success([])
+        case .error(let error):
+            return .failure(.network(description: "Error: \(error)"))
+        case .results(let data):
+            return .success(data)
+        }
     }
 }
 

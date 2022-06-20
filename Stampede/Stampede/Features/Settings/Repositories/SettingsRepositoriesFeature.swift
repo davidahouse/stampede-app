@@ -16,6 +16,11 @@ struct SettingsRepositoriesRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsRepositoriesFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class SettingsRepositoriesFeature: BaseFeature {

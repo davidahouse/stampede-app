@@ -94,4 +94,19 @@ public class StampedeService: ObservableObject {
         return provider.fetchHistoryHourlySummaryPublisher()
     }
 
+    public func fetchRepositories() async -> Result<[Repository], ServiceError> {
+        return await provider.fetchRepositories()
+    }
+    
+    public func fetchActiveBuilds(owner: String, repository: String) async -> Result<[BuildStatus], ServiceError> {
+        return await provider.fetchActiveBuilds(owner: owner, repository: repository)
+    }
+    
+    public func fetchRepositoryBuilds(owner: String, repository: String) async -> Result<[RepositoryBuild], ServiceError> {
+        return await provider.fetchRepositoryBuilds(owner: owner, repository: repository)
+    }
+    
+    public func fetchBuildKeys(owner: String, repository: String, source: String) async -> Result<[BuildKey], ServiceError> {
+        return await provider.fetchBuildKeys(owner: owner, repository: repository, source: source)
+    }
 }

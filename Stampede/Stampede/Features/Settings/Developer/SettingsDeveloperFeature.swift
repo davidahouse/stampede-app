@@ -14,6 +14,11 @@ struct SettingsDeveloperRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsDeveloperFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class SettingsDeveloperFeature: BaseFeature {

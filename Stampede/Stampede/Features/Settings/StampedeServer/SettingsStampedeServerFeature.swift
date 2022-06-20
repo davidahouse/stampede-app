@@ -13,6 +13,11 @@ struct SettingsStampedeServerRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsStampedeServerFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class SettingsStampedeServerFeature: BaseFeature {

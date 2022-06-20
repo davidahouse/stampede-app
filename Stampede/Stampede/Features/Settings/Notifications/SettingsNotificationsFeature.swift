@@ -13,6 +13,11 @@ struct SettingsNotificationsRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsNotificationsFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class SettingsNotificationsFeature: BaseFeature {

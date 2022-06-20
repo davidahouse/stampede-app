@@ -14,6 +14,11 @@ struct MonitorActiveTasksRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return MonitorActiveTasksFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class MonitorActiveTasksFeature: BaseFeature {

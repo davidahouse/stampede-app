@@ -14,6 +14,11 @@ struct SettingsDeveloperPersonaRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return SettingsDeveloperPersonaFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class SettingsDeveloperPersonaFeature: BaseFeature {

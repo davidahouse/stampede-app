@@ -13,13 +13,17 @@ struct EmptyRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return UIViewController()
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
 }
 
 class Routes: ObservableObject {
 
-    func route(for repository: Repository) -> Route {
-        return RepositoryRoute(repository: repository)
-    }
+//    func route(for repository: Repository) -> Route {
+//        return RepositoryRoute(repository: repository)
+//    }
 
     func route(for menuItem: MainMenuItem) -> Route {
         switch menuItem {

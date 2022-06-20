@@ -13,6 +13,11 @@ struct HistoryTasksRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return HistoryTasksFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class HistoryTasksFeature: BaseFeature {

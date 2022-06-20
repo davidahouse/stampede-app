@@ -15,6 +15,11 @@ struct RepositoryRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return RepositoryFeature(dependencies: dependencies, repository: repository)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class RepositoryFeature: BaseFeature {
@@ -61,10 +66,10 @@ class RepositoryFeature: BaseFeature {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.activeBuildsPublisher = dependencies.service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository)
-        viewModel.repositoryBuildsPublisher = dependencies.service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository)
-        viewModel.branchKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push")
-        viewModel.releaseKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release")
-        viewModel.pullRequestKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
+//        viewModel.activeBuildsPublisher = dependencies.service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository)
+//        viewModel.repositoryBuildsPublisher = dependencies.service.fetchRepositoryBuildsPublisher(owner: repository.owner, repository: repository.repository)
+//        viewModel.branchKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "branch-push")
+//        viewModel.releaseKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "release")
+//        viewModel.pullRequestKeysPublisher = dependencies.service.fetchBuildKeysPublisher(owner: repository.owner, repository: repository.repository, source: "pull-request")
     }    
 }

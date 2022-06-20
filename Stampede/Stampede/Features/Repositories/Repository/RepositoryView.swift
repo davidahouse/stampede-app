@@ -14,74 +14,102 @@ struct RepositoryView: View {
     
     // MARK: - Observed objects
 
-    @EnvironmentObject var viewModel: RepositoryViewModel
-    @EnvironmentObject var router: Router
+    @ObservedObject var viewModel: RepositoryViewModel
+    @EnvironmentObject var service: StampedeService
+    //@EnvironmentObject var router: Router
 
     // MARK: - View
 
+    init(viewModel: RepositoryViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         List {
-            Section(header: SectionHeaderLabel("Active Builds")) {
-                BaseSubView(state: viewModel.activeBuildsState, content: { activeBuilds in
-                    if activeBuilds.count > 0 {
-                        ForEach(activeBuilds, id: \.self) { item in
-                            BuildStatusCell(buildStatus: item)
-                        }
-                    } else {
-                        PrimaryLabel("No active builds found")
-                    }
-                })
+            Text(viewModel.repository.repository)
+            switch viewModel.activeBuildsState {
+            case .loading:
+                Text("active builds loading")
+            case .results:
+                Text("Active builds has results")
+            case .networkError:
+                Text("Active builds has network error")
             }
-
-            Section(header: SectionHeaderLabel("Repository Builds")) {
-                BaseSubView(state: viewModel.repositoryBuildsState, content: { builds in
-                    if builds.count > 0 {
-                        ForEach(builds, id: \.self) { item in
-                            RepositoryBuildCell(repository: viewModel.repository, repositoryBuild: item)
-                        }
-                    } else {
-                        PrimaryLabel("No repository builds found")
-                    }
-                })
-            }
-
-            Section(header: SectionHeaderLabel("Branches")) {
-                BaseSubView(state: viewModel.branchKeysState, content: { keys in
-                    if keys.count > 0 {
-                        ForEach(keys, id: \.self) { item in
-                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
-                        }
-                    } else {
-                        PrimaryLabel("No branch builds found")
-                    }
-                })
-            }
-
-            Section(header: SectionHeaderLabel("Releases")) {
-                BaseSubView(state: viewModel.releaseKeysState, content: { keys in
-                    if keys.count > 0 {
-                        ForEach(keys, id: \.self) { item in
-                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
-                        }
-                    } else {
-                        PrimaryLabel("No release builds found")
-                    }
-                })
-            }
-
-            Section(header: SectionHeaderLabel("Pull Requests")) {
-                BaseSubView(state: viewModel.pullRequestKeysState, content: { keys in
-                    if keys.count > 0 {
-                        ForEach(keys, id: \.self) { item in
-                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
-                        }
-                    } else {
-                        PrimaryLabel("No pull request builds found")
-                    }
-                })
-            }
+//            Section(header: SectionHeaderLabel("Active Builds")) {
+//                BaseSubView(state: viewModel.activeBuildsState, content: { activeBuilds in
+//                    if activeBuilds.count > 0 {
+//                        ForEach(activeBuilds, id: \.self) { item in
+//                            BuildStatusCell(buildStatus: item)
+//                        }
+//                    } else {
+//                        PrimaryLabel("No active builds found")
+//                    }
+//                })
+//            }
+//
+//            Section(header: SectionHeaderLabel("Repository Builds")) {
+//                BaseSubView(state: viewModel.repositoryBuildsState, content: { builds in
+//                    if builds.count > 0 {
+//                        ForEach(builds, id: \.self) { item in
+//                            RepositoryBuildCell(repository: viewModel.repository, repositoryBuild: item)
+//                        }
+//                    } else {
+//                        PrimaryLabel("No repository builds found")
+//                    }
+//                })
+//            }
+//
+//            Section(header: SectionHeaderLabel("Branches")) {
+//                BaseSubView(state: viewModel.branchKeysState, content: { keys in
+//                    if keys.count > 0 {
+//                        ForEach(keys, id: \.self) { item in
+//                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
+//                        }
+//                    } else {
+//                        PrimaryLabel("No branch builds found")
+//                    }
+//                })
+//            }
+//
+//            Section(header: SectionHeaderLabel("Releases")) {
+//                BaseSubView(state: viewModel.releaseKeysState, content: { keys in
+//                    if keys.count > 0 {
+//                        ForEach(keys, id: \.self) { item in
+//                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
+//                        }
+//                    } else {
+//                        PrimaryLabel("No release builds found")
+//                    }
+//                })
+//            }
+//
+//            Section(header: SectionHeaderLabel("Pull Requests")) {
+//                BaseSubView(state: viewModel.pullRequestKeysState, content: { keys in
+//                    if keys.count > 0 {
+//                        ForEach(keys, id: \.self) { item in
+//                            BuildKeyCell(repository: viewModel.repository, buildKey: item)
+//                        }
+//                    } else {
+//                        PrimaryLabel("No pull request builds found")
+//                    }
+//                })
+//            }
         }
         .listStyle(DefaultListStyle())
+        .navigationTitle(viewModel.repository.repository)
+        .task {
+            print("starting task for RepositoryView")
+            await viewModel.fetch(service: service)
+            print("finished task for RepositoryView")
+            switch viewModel.activeBuildsState {
+            case .loading:
+                print("view model active builds still loading")
+            case .results:
+                print("view model active builds has results")
+            case .networkError:
+                print("view model active builds has network error")
+            }
+        }
     }
 }
 
@@ -101,7 +129,7 @@ struct RepositoryView_Previews: PreviewProvider, Previewable {
     }
 
     static func create(from viewModel: RepositoryViewModel) -> some View {
-        return RepositoryView().environmentObject(viewModel)
+        return RepositoryView(viewModel: RepositoryViewModel(repository: Repository.someRepository)).environmentObject(viewModel)
     }
 }
 #endif

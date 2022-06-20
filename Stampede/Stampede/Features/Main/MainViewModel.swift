@@ -42,6 +42,20 @@ class MainViewModel: ObservableObject {
     public init(state: ViewModelState<[Repository]> = .loading) {
         self.state = state
     }
+    
+    public func viewModelFor(repository: Repository) -> RepositoryViewModel {
+        RepositoryViewModel(repository: repository)
+    }
+    
+    public func fetch(service: StampedeService) async {
+        let results = await service.fetchRepositories()
+        switch results {
+        case .failure(let error):
+            state = .networkError(error)
+        case .success(let repositories):
+            state = .results(repositories)
+        }
+    }
 }
 
 #if DEBUG

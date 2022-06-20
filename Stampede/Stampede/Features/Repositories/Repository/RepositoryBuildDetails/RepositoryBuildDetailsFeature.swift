@@ -17,6 +17,11 @@ struct RepositoryBuildDetailsRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return RepositoryBuildDetailsFeature(dependencies: dependencies, repository: repository, build: build)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class RepositoryBuildDetailsFeature: BaseFeature {

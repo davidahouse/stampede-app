@@ -14,6 +14,11 @@ struct MonitorQueuesRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return MonitorQueuesFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class MonitorQueuesFeature: BaseFeature {

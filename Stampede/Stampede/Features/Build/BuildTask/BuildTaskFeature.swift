@@ -15,6 +15,11 @@ struct BuildTaskRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return BuildTaskFeature(dependencies: dependencies, taskID: taskID)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class BuildTaskFeature: BaseFeature {

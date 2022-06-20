@@ -13,6 +13,11 @@ struct MonitorActiveBuildsRoute: Route {
     func makeFeature(_ dependencies: Dependencies) -> UIViewController {
         return MonitorActiveBuildsFeature(dependencies: dependencies)
     }
+    
+    func makeView() -> any View {
+        EmptyView()
+    }
+
 }
 
 class MonitorActiveBuildsFeature: BaseFeature {
