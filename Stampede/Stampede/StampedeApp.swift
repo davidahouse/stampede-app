@@ -22,7 +22,6 @@ struct StampedeApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(MainViewModel(state: .loading))
                 .dependenciesToEnvironment(dependencies)
         }
     }

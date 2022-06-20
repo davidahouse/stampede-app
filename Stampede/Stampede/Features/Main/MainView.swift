@@ -14,7 +14,7 @@ struct MainView: View {
     // MARK: - Environment
 
     @EnvironmentObject var theme: CurrentTheme
-    @EnvironmentObject var viewModel: MainViewModel
+    @StateObject var viewModel = MainViewModel()
     @EnvironmentObject var service: StampedeService
     
 //    @EnvironmentObject var router: Router
@@ -61,7 +61,7 @@ struct MainView: View {
             .listStyle(GroupedListStyle())
             .navigationTitle("Stampede")
             .navigationDestination(for: Repository.self, destination: { repository in
-                RepositoryView(viewModel: viewModel.viewModelFor(repository: repository))
+                RepositoryView(repository: repository)
             })
         }
         .task {
