@@ -10,21 +10,12 @@ import SwiftUI
 
 struct FeatureRouteCell: View {
     
-    @EnvironmentObject var router: Router
-    
     let title: String
-    let route: Route
-    
+
     var body: some View {
-        Button(action: {
-            self.router.route(to: route)
-        }, label: {
-            HStack {
-                PrimaryLabel(title)
-                Spacer()
-                Image(systemName: "chevron.right")
-            }
-        })
+        HStack {
+            PrimaryLabel(title)
+        }
         .accessibility(identifier: title)
     }
 }
@@ -44,7 +35,7 @@ struct FeatureRouteCell_Previews: PreviewProvider, Previewable {
     }
 
     static func create(from viewModel: String) -> some View {
-        return FeatureRouteCell(title: viewModel, route: MonitorActiveBuildsRoute())
+        return FeatureRouteCell(title: viewModel)
     }
 }
 #endif

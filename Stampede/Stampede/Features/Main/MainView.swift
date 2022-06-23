@@ -41,8 +41,9 @@ struct MainView: View {
                 }
                 Section(header: SectionHeaderLabel("Monitor")) {
                     ForEach(MainMenuItem.monitorItems, id: \.self) { item in
-                        //                  FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
-                        Text("\(item.rawValue)")
+                        NavigationLink(value: item, label: {
+                            FeatureRouteCell(title: item.rawValue)
+                        })
                     }
                 }
                 Section(header: SectionHeaderLabel("History")) {
@@ -62,6 +63,14 @@ struct MainView: View {
             .navigationTitle("Stampede")
             .navigationDestination(for: Repository.self, destination: { repository in
                 RepositoryView(repository: repository)
+            })
+            .navigationDestination(for: MainMenuItem.self, destination: { menuItem in
+                switch menuItem {
+                case .activeBuilds:
+                    MonitorActiveBuildsView()
+                default:
+                    EmptyView()
+                }
             })
         }
         .task {

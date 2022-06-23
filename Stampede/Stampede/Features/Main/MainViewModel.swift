@@ -48,13 +48,7 @@ class MainViewModel: ObservableObject {
     }
     
     public func fetch(service: StampedeService) async {
-        let results = await service.fetchRepositories()
-        switch results {
-        case .failure(let error):
-            state = .networkError(error)
-        case .success(let repositories):
-            state = .results(repositories)
-        }
+        state = await service.fetchRepositories()
     }
 }
 

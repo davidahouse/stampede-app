@@ -169,32 +169,32 @@ public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServi
 //      return request(url: StampedeAPIEndpoint.buildKeys(owner, repository, source).url(host: host))
     }
 
-    public func fetchRepositories() async -> Result<[Repository], ServiceError> {
+    public func fetchRepositories() async throws -> [Repository] {
         guard let host = host else {
-            return .failure(.network(description: "No host provided"))
+            throw ServiceError.network(description: "No host provided")
         }
-        return await request(url: StampedeAPIEndpoint.repositories.url(host: host))
+        return try await requestThrowing(url: StampedeAPIEndpoint.repositories.url(host: host))
     }
     
-    public func fetchActiveBuilds(owner: String, repository: String) async -> Result<[BuildStatus], ServiceError> {
+    public func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
         guard let host = host else {
-            return .failure(.network(description: "No host provided"))
+            throw ServiceError.network(description: "No host provided")
         }
-        return await request(url: StampedeAPIEndpoint.activeBuilds(owner, repository).url(host: host))
+        return try await requestThrowing(url: StampedeAPIEndpoint.activeBuilds(owner, repository).url(host: host))
     }
     
-    public func fetchRepositoryBuilds(owner: String, repository: String) async -> Result<[RepositoryBuild], ServiceError> {
+    public func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild] {
         guard let host = host else {
-            return .failure(.network(description: "No host provided"))
+            throw ServiceError.network(description: "No host provided")
         }
-        return await request(url: StampedeAPIEndpoint.repositoryBuilds(owner, repository).url(host: host))
+        return try await requestThrowing(url: StampedeAPIEndpoint.repositoryBuilds(owner, repository).url(host: host))
     }
     
-    public func fetchBuildKeys(owner: String, repository: String, source: String) async -> Result<[BuildKey], ServiceError> {
+    public func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey] {
         guard let host = host else {
-            return .failure(.network(description: "No host provided"))
+            throw ServiceError.network(description: "No host provided")
         }
-        return await request(url: StampedeAPIEndpoint.buildKeys(owner, repository, source).url(host: host))
+        return try await requestThrowing(url: StampedeAPIEndpoint.buildKeys(owner, repository, source).url(host: host))
     }
     
     public func fetchPublisher<T>(_ value: FixtureResponse<T>?) -> AnyPublisher<T, ServiceError> {

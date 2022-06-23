@@ -57,6 +57,45 @@ open class AsyncNetworkProvider {
             return .failure(.network(description: "Error: \(error.localizedDescription)"))
         }
     }
+
+    public func requestThrowing<T: Decodable>(url: URL) async throws -> T {
+        debugPrint(">>> \(url)")
+        do {
+            let (data, response) = try await session.data(for: URLRequest(url: url))
+            guard let response = response as? HTTPURLResponse else {
+                throw ServiceError.network(description: "No response")
+            }
+
+            switch response.statusCode {
+            case 200...299:
+                do {
+                    let decodedResponse = try JSONDecoder.dateParsingDecoder.decode(T.self, from: data)
+                    return decodedResponse
+                } catch {
+                    if let decodingError = error as? DecodingError {
+                        switch decodingError {
+                        case .dataCorrupted(let context):
+                            throw ServiceError.parsing(description: "Data corrupted error \(context.debugDescription)")
+                        case .typeMismatch(let typeMismatch, let context):
+                            throw ServiceError.parsing(description: "Type \(typeMismatch) mismatch: \(context.debugDescription) in path: \(context.codingPath)")
+                        default:
+                            throw ServiceError.parsing(description: "\(decodingError)")
+                        }
+                    } else {
+                        throw ServiceError.parsing(description: error.localizedDescription)
+                    }
+                }
+            case 401:
+                throw ServiceError.network(description: "Unauthorizied")
+            default:
+                throw ServiceError.network(description: "Error: \(response.statusCode)")
+            }
+        } catch {
+            throw error
+//            return .failure(.network(description: "Error: \(error.localizedDescription)"))
+        }
+    }
+
 }
 
 extension JSONDecoder {

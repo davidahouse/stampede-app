@@ -14,9 +14,8 @@ struct RepositoryView: View {
     
     // MARK: - Observed objects
 
-    @StateObject var viewModel:  RepositoryViewModel
+    @StateObject var viewModel: RepositoryViewModel
     @EnvironmentObject var service: StampedeService
-    //@EnvironmentObject var router: Router
 
     // MARK: - View
 

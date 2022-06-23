@@ -191,47 +191,47 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
         return fetchPublisher(persona.buildKeys)
     }
 
-    public func fetchRepositories() async -> Result<[Repository], ServiceError> {
+    func fetchRepositories() async throws -> [Repository] {
         switch persona.repositories {
         case .loading:
-            return .success([])
+            return []
         case .results(let data):
-            return .success(data)
+            return data
         case .error(let error):
-            return .failure(.network(description: "Error: \(error)"))
+            throw error
         }
     }
     
-    func fetchActiveBuilds(owner: String, repository: String) async -> Result<[BuildStatus], ServiceError> {
+    func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
         switch persona.repositoryActiveBuilds {
         case .loading:
-            return .success([])
+            return []
         case .error(let error):
-            return .failure(.network(description: "Error: \(error)"))
+            throw error
         case .results(let data):
-            return .success(data)
+            return data
         }
     }
     
-    func fetchRepositoryBuilds(owner: String, repository: String) async -> Result<[RepositoryBuild], ServiceError> {
+    func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild] {
         switch persona.repositoryBuilds {
         case .loading:
-            return .success([])
+            return []
         case .error(let error):
-            return .failure(.network(description: "Error: \(error)"))
+            throw error
         case .results(let data):
-            return .success(data)
+            return data
         }
     }
 
-    func fetchBuildKeys(owner: String, repository: String, source: String) async -> Result<[BuildKey], ServiceError> {
+    func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey] {
         switch persona.buildKeys {
         case .loading:
-            return .success([])
+            return []
         case .error(let error):
-            return .failure(.network(description: "Error: \(error)"))
+            throw error
         case .results(let data):
-            return .success(data)
+            return data
         }
     }
 }

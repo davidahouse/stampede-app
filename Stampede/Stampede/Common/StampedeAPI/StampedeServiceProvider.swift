@@ -42,8 +42,8 @@ public protocol StampedeServiceProvider {
     func fetchAdminQueuesPublisher() -> AnyPublisher<[Queue], ServiceError>?
 
     // Async methods
-    func fetchRepositories() async -> Result<[Repository], ServiceError>
-    func fetchActiveBuilds(owner: String, repository: String) async -> Result<[BuildStatus], ServiceError>
-    func fetchRepositoryBuilds(owner: String, repository: String) async -> Result<[RepositoryBuild], ServiceError>
-    func fetchBuildKeys(owner: String, repository: String, source: String) async -> Result<[BuildKey], ServiceError>
+    func fetchRepositories() async throws -> [Repository]
+    func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus]
+    func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild]
+    func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey]
 }

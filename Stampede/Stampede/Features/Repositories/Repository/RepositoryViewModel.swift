@@ -40,47 +40,11 @@ class RepositoryViewModel: ObservableObject {
     }
     
     public func fetch(service: StampedeService) async {
-        
-        let activeBuilds = await service.fetchActiveBuilds(owner: repository.owner, repository: repository.repository)
-        switch activeBuilds {
-        case .failure(let error):
-            activeBuildsState = .networkError(error)
-        case .success(let builds):
-            activeBuildsState = .results(builds)
-            print("there were \(builds.count) builds")
-        }
-
-        let repositoryBuilds = await service.fetchRepositoryBuilds(owner: repository.owner, repository: repository.repository)
-        switch repositoryBuilds {
-        case .failure(let error):
-            repositoryBuildsState = .networkError(error)
-        case .success(let builds):
-            repositoryBuildsState = .results(builds)
-        }
-        
-        let branchKeys = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "branch-push")
-        switch branchKeys {
-        case .failure(let error):
-            branchKeysState = .networkError(error)
-        case .success(let keys):
-            branchKeysState = .results(keys)
-        }
-
-        let releases = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "release")
-        switch releases {
-        case .failure(let error):
-            releaseKeysState = .networkError(error)
-        case .success(let keys):
-            releaseKeysState = .results(keys)
-        }
-
-        let pullRequests = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "pull-request")
-        switch pullRequests {
-        case .failure(let error):
-            pullRequestKeysState = .networkError(error)
-        case .success(let keys):
-            pullRequestKeysState = .results(keys)
-        }
+        activeBuildsState = await service.fetchActiveBuilds(owner: repository.owner, repository: repository.repository)
+        repositoryBuildsState = await service.fetchRepositoryBuilds(owner: repository.owner, repository: repository.repository)
+        branchKeysState = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "branch-push")
+        releaseKeysState = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "release")
+        pullRequestKeysState = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "pull-request")
     }
 }
 

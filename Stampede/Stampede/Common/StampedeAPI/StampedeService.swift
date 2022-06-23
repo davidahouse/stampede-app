@@ -94,19 +94,39 @@ public class StampedeService: ObservableObject {
         return provider.fetchHistoryHourlySummaryPublisher()
     }
 
-    public func fetchRepositories() async -> Result<[Repository], ServiceError> {
-        return await provider.fetchRepositories()
+    func fetchRepositories() async -> ViewModelState<[Repository]> {
+        do {
+            let results = try await provider.fetchRepositories()
+            return .results(results)
+        } catch {
+            return .networkError(.network(description: error.localizedDescription))
+        }
     }
     
-    public func fetchActiveBuilds(owner: String, repository: String) async -> Result<[BuildStatus], ServiceError> {
-        return await provider.fetchActiveBuilds(owner: owner, repository: repository)
+    public func fetchActiveBuilds(owner: String, repository: String) async -> ViewModelState<[BuildStatus]> {
+        do {
+            let results = try await provider.fetchActiveBuilds(owner: owner, repository: repository)
+            return .results(results)
+        } catch {
+            return .networkError(.network(description: error.localizedDescription))
+        }
     }
     
-    public func fetchRepositoryBuilds(owner: String, repository: String) async -> Result<[RepositoryBuild], ServiceError> {
-        return await provider.fetchRepositoryBuilds(owner: owner, repository: repository)
+    public func fetchRepositoryBuilds(owner: String, repository: String) async -> ViewModelState<[RepositoryBuild]> {
+        do {
+            let results = try await provider.fetchRepositoryBuilds(owner: owner, repository: repository)
+            return .results(results)
+        } catch {
+            return .networkError(.network(description: error.localizedDescription))
+        }
     }
     
-    public func fetchBuildKeys(owner: String, repository: String, source: String) async -> Result<[BuildKey], ServiceError> {
-        return await provider.fetchBuildKeys(owner: owner, repository: repository, source: source)
+    public func fetchBuildKeys(owner: String, repository: String, source: String) async -> ViewModelState<[BuildKey]> {
+        do {
+            let results = try await provider.fetchBuildKeys(owner: owner, repository: repository, source: source)
+            return .results(results)
+        } catch {
+            return .networkError(.network(description: error.localizedDescription))
+        }
     }
 }
