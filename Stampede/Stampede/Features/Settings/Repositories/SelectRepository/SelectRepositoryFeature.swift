@@ -51,7 +51,7 @@ class SelectRepositoryFeature: BaseFeature {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.publisher = dependencies.service.fetchRepositoriesPublisher()
+//        viewModel.publisher = dependencies.service.fetchRepositoriesPublisher()
     }
     
     // MARK: - Private Methods

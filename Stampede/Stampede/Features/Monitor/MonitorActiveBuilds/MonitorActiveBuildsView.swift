@@ -12,8 +12,8 @@ struct MonitorActiveBuildsView: View {
 
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: MonitorActiveBuildsViewModel
-    @EnvironmentObject var router: Router
+    @StateObject var viewModel = MonitorActiveBuildsViewModel()
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Body
     
@@ -22,14 +22,22 @@ struct MonitorActiveBuildsView: View {
             List {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
-                        BuildStatusCell(buildStatus: item)
+                        NavigationLink(value: item) {
+                            BuildStatusCell(buildStatus: item)
+                        }
                     }
                 } else {
                     PrimaryLabel("No active builds found")
                 }
             }
             .listStyle(DefaultListStyle())
+            .navigationDestination(for: BuildStatus.self, destination: { item in
+                // return BuildFeature(dependencies: dependencies, buildStatus: build)
+            })
         })
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }}
 
 #if DEBUG

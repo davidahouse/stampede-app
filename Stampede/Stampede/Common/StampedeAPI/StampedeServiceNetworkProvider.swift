@@ -175,7 +175,15 @@ public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServi
         }
         return try await requestThrowing(url: StampedeAPIEndpoint.repositories.url(host: host))
     }
-    
+
+    public func fetchActiveBuilds() async throws -> [BuildStatus] {
+        guard let host = host else {
+            throw ServiceError.network(description: "No host provided")
+        }
+        return try await requestThrowing(url: StampedeAPIEndpoint.monitorActiveBuilds.url(host: host))
+    }
+
+
     public func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
         guard let host = host else {
             throw ServiceError.network(description: "No host provided")

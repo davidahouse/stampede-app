@@ -70,7 +70,7 @@ class RepositoryBuildDetailsFeature: BaseFeature {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.activeBuildsPublisher = dependencies.service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository)
-        viewModel.recentBuildsPublisher = dependencies.service.fetchRepositorySourceDetails(owner: repository.owner, repository: repository.repository, buildKey: build)
+//        viewModel.activeBuildsPublisher = dependencies.service.fetchActiveBuildsPublisher(owner: repository.owner, repository: repository.repository)
+//        viewModel.recentBuildsPublisher = dependencies.service.fetchRepositorySourceDetails(owner: repository.owner, repository: repository.repository, buildKey: build)
     }
 }

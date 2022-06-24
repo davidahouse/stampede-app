@@ -22,21 +22,21 @@ public class StampedeService: ObservableObject {
         self.provider = provider
     }
 
-    public func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
-        return provider.fetchRepositoriesPublisher()
-    }
-
-    public func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
-        return provider.fetchActiveBuildsPublisher(owner: owner, repository: repository)
-    }
-
-    public func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {
-        return provider.fetchRepositoryBuildsPublisher(owner: owner, repository: repository)
-    }
-
-    public func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
-        return provider.fetchBuildKeysPublisher(owner: owner, repository: repository, source: source)
-    }
+//    public func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
+//        return provider.fetchRepositoriesPublisher()
+//    }
+//
+//    public func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
+//        return provider.fetchActiveBuildsPublisher(owner: owner, repository: repository)
+//    }
+//
+//    public func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {
+//        return provider.fetchRepositoryBuildsPublisher(owner: owner, repository: repository)
+//    }
+//
+//    public func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
+//        return provider.fetchBuildKeysPublisher(owner: owner, repository: repository, source: source)
+//    }
     
     public func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>? {
         return provider.fetchBuildDetailsPublisher(buildID: buildID)
@@ -102,7 +102,16 @@ public class StampedeService: ObservableObject {
             return .networkError(.network(description: error.localizedDescription))
         }
     }
-    
+
+    public func fetchActiveBuilds() async -> ViewModelState<[BuildStatus]> {
+        do {
+            let results = try await provider.fetchActiveBuilds()
+            return .results(results)
+        } catch {
+            return .networkError(.network(description: error.localizedDescription))
+        }
+    }
+
     public func fetchActiveBuilds(owner: String, repository: String) async -> ViewModelState<[BuildStatus]> {
         do {
             let results = try await provider.fetchActiveBuilds(owner: owner, repository: repository)

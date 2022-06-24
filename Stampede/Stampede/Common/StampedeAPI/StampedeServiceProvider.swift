@@ -43,6 +43,7 @@ public protocol StampedeServiceProvider {
 
     // Async methods
     func fetchRepositories() async throws -> [Repository]
+    func fetchActiveBuilds() async throws -> [BuildStatus]
     func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus]
     func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild]
     func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey]

@@ -201,7 +201,18 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
             throw error
         }
     }
-    
+
+    func fetchActiveBuilds() async throws -> [BuildStatus] {
+        switch persona.activeBuilds {
+        case .loading:
+            return []
+        case .error(let error):
+            throw error
+        case .results(let data):
+            return data
+        }
+    }
+
     func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
         switch persona.repositoryActiveBuilds {
         case .loading:

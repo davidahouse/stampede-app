@@ -16,9 +16,6 @@ struct MainView: View {
     @EnvironmentObject var theme: CurrentTheme
     @StateObject var viewModel = MainViewModel()
     @EnvironmentObject var service: StampedeService
-    
-//    @EnvironmentObject var router: Router
-//    @EnvironmentObject var routes: Routes
 
     // MARK: - View
 

@@ -13,8 +13,6 @@ struct BuildView: View {
     // MARK: - Observed Objects
 
     @EnvironmentObject var viewModel: BuildViewModel
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
 
     // MARK: - View
 
@@ -73,15 +71,15 @@ struct BuildView: View {
                     }
                 }
 
-                Section(header: SectionHeaderLabel("Tasks")) {
-                    ForEach(buildStatus.tasks) { task in
-                        Button(action: {
-                            router.route(to: routes.routeForTask(task.task_id))
-                        }, label: {
-                            TaskStatusCell(taskStatus: task)
-                        })
-                    }
-                }
+//                Section(header: SectionHeaderLabel("Tasks")) {
+//                    ForEach(buildStatus.tasks) { task in
+//                        Button(action: {
+//                            router.route(to: routes.routeForTask(task.task_id))
+//                        }, label: {
+//                            TaskStatusCell(taskStatus: task)
+//                        })
+//                    }
+//                }
             }
         })
     }
