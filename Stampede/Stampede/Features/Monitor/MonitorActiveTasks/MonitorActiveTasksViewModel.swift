@@ -9,7 +9,12 @@
 import Foundation
 import HouseKit
 
-class MonitorActiveTasksViewModel: BaseViewModel<[TaskStatus]> { }
+class MonitorActiveTasksViewModel: BaseViewModel<[TaskStatus]> {
+
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchActiveTasks()
+    }
+}
 
 #if DEBUG
 extension MonitorActiveTasksViewModel {

@@ -100,7 +100,6 @@
 		C3816C7D248702AB00E6980B /* MonitorQueuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C74248702AB00E6980B /* MonitorQueuesView.swift */; };
 		C3816C7E248702AB00E6980B /* MonitorQueuesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C75248702AB00E6980B /* MonitorQueuesFeature.swift */; };
 		C3816C7F248702AB00E6980B /* MonitorActiveTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C77248702AB00E6980B /* MonitorActiveTasksView.swift */; };
-		C3816C80248702AB00E6980B /* MonitorActiveTasksFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C78248702AB00E6980B /* MonitorActiveTasksFeature.swift */; };
 		C3816C8D248702BC00E6980B /* MonitorActiveBuildsFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C83248702BC00E6980B /* MonitorActiveBuildsFeatureTests.swift */; };
 		C3816C8E248702BC00E6980B /* MonitorActiveBuildsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C84248702BC00E6980B /* MonitorActiveBuildsViewTests.swift */; };
 		C3816C90248702BC00E6980B /* MonitorQueuesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3816C87248702BC00E6980B /* MonitorQueuesViewTests.swift */; };
@@ -335,7 +334,6 @@
 		C3816C74248702AB00E6980B /* MonitorQueuesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorQueuesView.swift; sourceTree = "<group>"; };
 		C3816C75248702AB00E6980B /* MonitorQueuesFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorQueuesFeature.swift; sourceTree = "<group>"; };
 		C3816C77248702AB00E6980B /* MonitorActiveTasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksView.swift; sourceTree = "<group>"; };
-		C3816C78248702AB00E6980B /* MonitorActiveTasksFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveTasksFeature.swift; sourceTree = "<group>"; };
 		C3816C83248702BC00E6980B /* MonitorActiveBuildsFeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsFeatureTests.swift; sourceTree = "<group>"; };
 		C3816C84248702BC00E6980B /* MonitorActiveBuildsViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorActiveBuildsViewTests.swift; sourceTree = "<group>"; };
 		C3816C87248702BC00E6980B /* MonitorQueuesViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorQueuesViewTests.swift; sourceTree = "<group>"; };
@@ -974,7 +972,6 @@
 		C3816C76248702AB00E6980B /* MonitorActiveTasks */ = {
 			isa = PBXGroup;
 			children = (
-				C3816C78248702AB00E6980B /* MonitorActiveTasksFeature.swift */,
 				C3816C77248702AB00E6980B /* MonitorActiveTasksView.swift */,
 				94FE1F4424FAF52400AE4ED4 /* MonitorActiveTasksViewModel.swift */,
 			);
@@ -1626,7 +1623,6 @@
 				C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */,
 				C3B12263253B5FD2005FD154 /* TaskSCMDetails.swift in Sources */,
 				C3CA2E2224BA9F600086B71D /* SettingsNotificationsView.swift in Sources */,
-				C3816C80248702AB00E6980B /* MonitorActiveTasksFeature.swift in Sources */,
 				C30DBF9D252D2B4500021863 /* TimeInterval+Extension.swift in Sources */,
 				94C090972534A774001E0B37 /* RepositoryListFixture.swift in Sources */,
 				94FE1F4E24FB190200AE4ED4 /* SelectRepositoryViewModel.swift in Sources */,

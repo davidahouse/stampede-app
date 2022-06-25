@@ -15,23 +15,23 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
 
     var persona: Persona!
 
-    var fetchRepositoriesPublisherCalled = false
-    var fetchActiveBuildsPublisherCalled = false
-    var fetchRepositoryBuildsPublisherCalled = false
-    var fetchMonitorQueuesPublisherCalled = false
-    var fetchWorkerStatusPublisherCalled = false
-    var fetchActiveTasksPublisherCalled = false
-    var fetchHistoryTasksPublisherCalled = false
-    var fetchHistoryHourlySummaryPublisherCalled = false
-    var fetchAdminTasksPublisherCalled = false
-    var fetchAdminConfigDefaultsPublisherCalled = false
-    var fetchAdminConfigOverridesPublisherCalled = false
-    var fetchAdminQueuesPublisherCalled = false
-    var fetchBuildKeysPublisherCalled = false
-    var fetchBuildDetailsPublisherCalled = false
-    var fetchTaskDetailsPublisherCalled = false
-    var fetchHistoryBuildsPublisherCalled = false
-    var fetchRepositorySourceBuildsPublisherCalled = false
+    var fetchRepositoriesCalled = false
+    var fetchActiveBuildsCalled = false
+    var fetchRepositoryBuildsCalled = false
+    var fetchMonitorQueuesCalled = false
+    var fetchWorkerStatusCalled = false
+    var fetchActiveTasksCalled = false
+    var fetchHistoryTasksCalled = false
+    var fetchHistoryHourlySummaryCalled = false
+    var fetchAdminTasksCalled = false
+    var fetchAdminConfigDefaultsCalled = false
+    var fetchAdminConfigOverridesCalled = false
+    var fetchAdminQueuesCalled = false
+    var fetchBuildKeysCalled = false
+    var fetchBuildDetailsCalled = false
+    var fetchTaskDetailsCalled = false
+    var fetchHistoryBuildsCalled = false
+    var fetchRepositorySourceBuildsCalled = false
 
     var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
 
@@ -46,6 +46,67 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
            self.host = value
         })
     }
+
+    // Repository
+    func fetchRepositories() async throws -> [Repository] {
+        return try await fetch(persona.repositories)
+    }
+
+    func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
+        return try await fetch(persona.repositoryActiveBuilds)
+    }
+
+    func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild] {
+        return try await fetch(persona.repositoryBuilds)
+    }
+
+    func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey] {
+        return try await fetch(persona.buildKeys)
+    }
+
+    func fetchBuildDetails(buildID: String) async throws -> [BuildStatus] {
+        return try await fetch(persona.buildDetails)
+    }
+
+    func fetchTaskDetails(taskID: String) async throws -> [TaskDetails] {
+        return try await fetch(persona.taskDetails)
+    }
+
+    func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) async throws -> [BuildDetails] {
+        return try await fetch(persona.repositorySourceBuilds)
+    }
+
+    // Monitor
+    func fetchActiveBuilds() async throws -> [BuildStatus] {
+        return try await fetch(persona.activeBuilds)
+    }
+
+    func fetchMonitorQueues() async throws -> [QueueSummaries] {
+        return try await fetch(persona.queues)
+    }
+
+    func fetchWorkerStatus() async throws -> [WorkerStatus] {
+        return try await fetch(persona.workerStatus)
+    }
+
+    func fetchActiveTasks() async throws -> [TaskStatus]
+
+    // History
+    func fetchHistoryBuilds() async throws -> [BuildDetails]
+    func fetchHistoryTasks() async throws -> [TaskStatus]
+    func fetchHistoryHourlySummary() async throws -> [HourlySummary]
+
+    // Admin
+    func fetchAdminTasks() async throws -> [Task]
+    func fetchAdminConfigDefaults() async throws -> ConfigDefaults
+    func fetchAdminConfigOverrides() async throws -> ConfigOverrides
+    func fetchAdminQueues() async throws -> [Queue]
+
+
+
+
+
+
 
     func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
         fetchRepositoriesPublisherCalled = true
@@ -239,6 +300,17 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
         switch persona.buildKeys {
         case .loading:
             return []
+        case .error(let error):
+            throw error
+        case .results(let data):
+            return data
+        }
+    }
+
+    private func fetch<T>(result: FixtureResponse<T>) async throws -> T {
+        switch result {
+        case .loading:
+            throw ServiceError.network(description: "Fixture state was loading")
         case .error(let error):
             throw error
         case .results(let data):
