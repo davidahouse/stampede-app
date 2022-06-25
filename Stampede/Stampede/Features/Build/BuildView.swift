@@ -7,12 +7,19 @@
 //
 
 import SwiftUI
+import HouseKit
 
 struct BuildView: View {
 
     // MARK: - Observed Objects
 
-    @EnvironmentObject var viewModel: BuildViewModel
+    @StateObject var viewModel: BuildViewModel
+
+    // MARK: - Initializer
+
+    init(state: ViewModelState<BuildStatus>) {
+        _viewModel = StateObject(wrappedValue: BuildViewModel(state: state))
+    }
 
     // MARK: - View
 
@@ -71,6 +78,7 @@ struct BuildView: View {
                     }
                 }
 
+                // TODO:
 //                Section(header: SectionHeaderLabel("Tasks")) {
 //                    ForEach(buildStatus.tasks) { task in
 //                        Button(action: {
@@ -104,7 +112,7 @@ struct BuildView_Previews: PreviewProvider, Previewable {
     }
 
     static func create(from viewModel: BuildViewModel) -> some View {
-        return BuildView().environmentObject(viewModel)
+        return BuildView(state: viewModel.state)
     }
 }
 #endif

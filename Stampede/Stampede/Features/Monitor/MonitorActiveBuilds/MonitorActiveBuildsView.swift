@@ -32,7 +32,7 @@ struct MonitorActiveBuildsView: View {
             }
             .listStyle(DefaultListStyle())
             .navigationDestination(for: BuildStatus.self, destination: { item in
-                // return BuildFeature(dependencies: dependencies, buildStatus: build)
+                BuildView(state: .results(item))
             })
         })
         .task {

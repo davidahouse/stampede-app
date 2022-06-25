@@ -17,11 +17,13 @@ struct RepositoryView: View {
     @StateObject var viewModel: RepositoryViewModel
     @EnvironmentObject var service: StampedeService
 
-    // MARK: - View
+    // MARK: - Initializer
 
     init(repository: Repository) {
         _viewModel = StateObject(wrappedValue: RepositoryViewModel(repository: repository))
     }
+
+    // MARK: - View
 
     var body: some View {
         List {

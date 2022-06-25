@@ -65,7 +65,6 @@
 		C30342AC254104C5006E1BF3 /* SettingsDeveloperPersonaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30342AB254104C5006E1BF3 /* SettingsDeveloperPersonaView.swift */; };
 		C30342B12541052F006E1BF3 /* SettingsDeveloperPersonaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30342B02541052F006E1BF3 /* SettingsDeveloperPersonaViewModel.swift */; };
 		C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DCFD4239006B00078B23F /* BuildView.swift */; };
-		C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CD2395C8600060A6DD /* BuildFeature.swift */; };
 		C3081AC724563CBE000C20F1 /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */; };
 		C3081ACA24563CBE000C20F1 /* RepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D51AC2353A40200FDA4A8 /* RepositoryView.swift */; };
 		C30DBF8F252D28A200021863 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBF8E252D28A200021863 /* Date+Extension.swift */; };
@@ -309,7 +308,6 @@
 		C3126DA923BED8EF00AC542F /* NavbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarButton.swift; sourceTree = "<group>"; };
 		C31341BE254E47540037D0D3 /* PreviewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewerTests.swift; sourceTree = "<group>"; };
 		C31B21C42395B7270060A6DD /* RepositoryFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFeature.swift; sourceTree = "<group>"; };
-		C31B21CD2395C8600060A6DD /* BuildFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildFeature.swift; sourceTree = "<group>"; };
 		C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildViewModel.swift; sourceTree = "<group>"; };
 		C3349EB32350A92B00273730 /* Stampede.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stampede.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3349EB52350A92B00273730 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -629,7 +627,6 @@
 			children = (
 				94E913A924BB512B0056A150 /* BuildTask */,
 				948DCFD4239006B00078B23F /* BuildView.swift */,
-				C31B21CD2395C8600060A6DD /* BuildFeature.swift */,
 				C31B21CF2395CA5E0060A6DD /* BuildViewModel.swift */,
 			);
 			path = Build;
@@ -1631,7 +1628,6 @@
 				DC0D04DD25E1816A00418EBA /* TaskStatusIcon.swift in Sources */,
 				94FE1F4724FB081500AE4ED4 /* RepositoryList.swift in Sources */,
 				94B571F024BBBECD00CA13A4 /* BuildDetails.swift in Sources */,
-				C3081AC624563CBE000C20F1 /* BuildFeature.swift in Sources */,
 				94E37D0023BFDFB5000CB1AD /* ValueLabel.swift in Sources */,
 				C3081AC524563CBE000C20F1 /* BuildView.swift in Sources */,
 				94B571F624BBBECD00CA13A4 /* BuildStatus.swift in Sources */,

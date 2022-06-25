@@ -45,11 +45,12 @@ extension Router {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         switch url.path {
         case "/repositories/buildDetails":
-            if let buildIDQueryItem = components?.queryItems?.filter({ $0.name == "buildID" }).first, let buildID = buildIDQueryItem.value {
-                return BuildRoute(build: nil, buildID: buildID)
-            } else {
+            // TODO: How do we link to the build?
+//            if let buildIDQueryItem = components?.queryItems?.filter({ $0.name == "buildID" }).first, let buildID = buildIDQueryItem.value {
+//                return BuildRoute(build: nil, buildID: buildID)
+//            } else {
                 return nil
-            }
+//            }
         default:
             return nil
         }
