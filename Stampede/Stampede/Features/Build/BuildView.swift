@@ -87,9 +87,6 @@ struct BuildView: View {
                 }
             }
         })
-        .navigationDestination(for: TaskDetails.self, destination: { task in
-            BuildTaskView(taskID: task.task.id, state: .results(task))
-        })
     }
 }
 

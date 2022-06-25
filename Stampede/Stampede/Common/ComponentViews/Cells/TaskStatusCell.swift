@@ -21,7 +21,6 @@ struct TaskStatusCell: View {
             }
             Spacer()
             ValueLabel(taskStatus.duration)
-            Image(systemName: "chevron.right")
         }
     }
 }

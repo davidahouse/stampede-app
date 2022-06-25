@@ -31,7 +31,9 @@ struct RepositoryView: View {
                 BaseSubView(state: viewModel.activeBuildsState, content: { activeBuilds in
                     if activeBuilds.count > 0 {
                         ForEach(activeBuilds, id: \.self) { item in
-                            BuildStatusCell(buildStatus: item)
+                            NavigationLink(value: item) {
+                                BuildStatusCell(buildStatus: item)
+                            }
                         }
                     } else {
                         PrimaryLabel("No active builds found")

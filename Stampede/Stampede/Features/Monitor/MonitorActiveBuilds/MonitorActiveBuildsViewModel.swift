@@ -9,6 +9,7 @@
 import Foundation
 import HouseKit
 
+@MainActor
 class MonitorActiveBuildsViewModel: BaseViewModel<[BuildStatus]> {
 
     public func fetch(service: StampedeService) async {

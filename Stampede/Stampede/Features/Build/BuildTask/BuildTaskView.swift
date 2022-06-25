@@ -13,6 +13,7 @@ import HouseKit
 struct BuildTaskView: View {
 
     @StateObject var viewModel: BuildTaskViewModel
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Initializer
 
@@ -31,6 +32,7 @@ struct BuildTaskView: View {
                 BuildTaskSCMDetailsView(scmDetails: taskDetails.scmDetails)
                 if taskDetails.artifacts.count > 0 {
                     BuildTaskArtifactsView(taskID: taskDetails.task.task_id, artifacts: taskDetails.artifacts)
+                        .environmentObject(viewModel)
                 }
                 Section(header: SectionHeaderLabel("Summary")) {
                     Parma(emojify(taskDetails.summary))
@@ -42,6 +44,9 @@ struct BuildTaskView: View {
                 }
             }
         })
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 
     private func emojify(_ input: String) -> String {

@@ -45,8 +45,9 @@ struct MainView: View {
                 }
                 Section(header: SectionHeaderLabel("History")) {
                     ForEach(MainMenuItem.historyItems, id: \.self) { item in
-                        //                  FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
-                        Text("\(item.rawValue)")
+                        NavigationLink(value: item, label: {
+                            FeatureRouteCell(title: item.rawValue)
+                        })
                     }
                 }
                 Section(header: SectionHeaderLabel("Settings")) {
@@ -58,18 +59,7 @@ struct MainView: View {
             }
             .listStyle(GroupedListStyle())
             .navigationTitle("Stampede")
-            .navigationDestination(for: Repository.self, destination: { repository in
-                RepositoryView(repository: repository)
-            })
-            .navigationDestination(for: MainMenuItem.self, destination: { menuItem in
-                // TODO: Finish all the menu items once those views are updated
-                switch menuItem {
-                case .activeBuilds:
-                    MonitorActiveBuildsView()
-                default:
-                    EmptyView()
-                }
-            })
+            .withNavigationDestinations()
         }
         .task {
             await viewModel.fetch(service: service)

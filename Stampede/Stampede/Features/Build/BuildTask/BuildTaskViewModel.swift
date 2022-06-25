@@ -51,4 +51,8 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
             return nil
         }
     }
+    
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchTaskDetails(taskID: taskID)
+    }
 }

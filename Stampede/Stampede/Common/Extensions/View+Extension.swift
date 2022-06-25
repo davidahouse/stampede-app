@@ -26,4 +26,41 @@ extension View {
             .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
     #endif
+    
+    func withNavigationDestinations() -> some View {
+        self
+            .navigationDestination(for: Repository.self, destination: { repository in
+                RepositoryView(repository: repository)
+            })
+            .navigationDestination(for: BuildStatus.self, destination: { buildStatus in
+                BuildView(state: .results(buildStatus))
+            })
+            .navigationDestination(for: TaskStatus.self, destination: { task in
+                BuildTaskView(taskID: task.id)
+            })
+            .navigationDestination(for: MainMenuItem.self, destination: { menuItem in
+                switch menuItem {
+                case .activeBuilds:
+                    MonitorActiveBuildsView()
+                case .activeTasks:
+                    MonitorActiveTasksView()
+                case .queues:
+                    MonitorQueuesView()
+                case .historyBuilds:
+                    HistoryBuildsView()
+                case .historyTasks:
+                    HistoryTasksView()
+                case .settingsStampedeServer:
+                    SettingsStampedeServerView()
+                case .settingsRepositories:
+                    SettingsRepositoriesView()
+                case .settingsNotifications:
+                    SettingsNotificationsView()
+                case .settingsInfo:
+                    SettingsInfoView()
+                case .settingsDeveloper:
+                    SettingsDeveloperView()
+                }
+            })
+    }
 }

@@ -32,9 +32,13 @@ struct MonitorActiveTasksView: View {
             }
             .listStyle(DefaultListStyle())
         })
-        .navigationDestination(for: TaskStatus.self, destination: { task in
-            BuildTaskView(taskID: task.id)
-        })
+        .navigationTitle("Active Tasks")
+        .task {
+            await viewModel.fetch(service: service)
+        }
+        .refreshable {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 

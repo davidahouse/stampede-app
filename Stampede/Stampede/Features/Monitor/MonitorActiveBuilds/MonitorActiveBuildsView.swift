@@ -31,11 +31,12 @@ struct MonitorActiveBuildsView: View {
                 }
             }
             .listStyle(DefaultListStyle())
-            .navigationDestination(for: BuildStatus.self, destination: { item in
-                BuildView(state: .results(item))
-            })
         })
+        .navigationTitle("Active Builds")
         .task {
+            await viewModel.fetch(service: service)
+        }
+        .refreshable {
             await viewModel.fetch(service: service)
         }
     }}

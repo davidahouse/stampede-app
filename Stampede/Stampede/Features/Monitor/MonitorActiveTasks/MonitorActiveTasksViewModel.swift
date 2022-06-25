@@ -9,6 +9,7 @@
 import Foundation
 import HouseKit
 
+@MainActor
 class MonitorActiveTasksViewModel: BaseViewModel<[TaskStatus]> {
 
     public func fetch(service: StampedeService) async {
