@@ -14,7 +14,6 @@ extension View {
     func dependenciesToEnvironment(_ dependencies: Dependencies) -> some View {
         return self
             .environmentObject(dependencies.theme)
-            .environmentObject(dependencies.routes)
             .environmentObject(dependencies.service)
     }
 
@@ -24,8 +23,6 @@ extension View {
             .environmentObject(StampedeDefaults.someDefaults)
             .environmentObject(CurrentTheme())
             .environmentObject(RepositoryListFixture())
-            .environmentObject(Router())
-            .environmentObject(Routes())
             .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
     #endif

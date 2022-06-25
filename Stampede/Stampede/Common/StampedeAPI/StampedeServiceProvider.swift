@@ -20,13 +20,13 @@ public protocol StampedeServiceProvider {
     func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus]
     func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild]
     func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey]
-    func fetchBuildDetails(buildID: String) async throws -> [BuildStatus]
-    func fetchTaskDetails(taskID: String) async throws -> [TaskDetails]
+    func fetchBuildDetails(buildID: String) async throws -> BuildStatus
+    func fetchTaskDetails(taskID: String) async throws -> TaskDetails
     func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) async throws -> [BuildDetails]
 
     // Monitor
     func fetchActiveBuilds() async throws -> [BuildStatus]
-    func fetchMonitorQueues() async throws -> [QueueSummaries]
+    func fetchMonitorQueues() async throws -> QueueSummaries
     func fetchWorkerStatus() async throws -> [WorkerStatus]
     func fetchActiveTasks() async throws -> [TaskStatus]
 

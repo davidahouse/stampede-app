@@ -13,7 +13,6 @@ struct HistoryBuildsView: View {
     // MARK: - View Model
     
     @EnvironmentObject var viewModel: HistoryBuildsViewModel
-    @EnvironmentObject var router: Router
 
     // MARK: - Body
     

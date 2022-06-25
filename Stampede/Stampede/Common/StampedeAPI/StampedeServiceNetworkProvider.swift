@@ -42,11 +42,11 @@ public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServi
         return try await fetch(.buildKeys(owner, repository, source))
     }
 
-    public func fetchBuildDetails(buildID: String) async throws -> [BuildStatus] {
+    public func fetchBuildDetails(buildID: String) async throws -> BuildStatus {
         return try await fetch(.buildDetails(buildID))
     }
 
-    public func fetchTaskDetails(taskID: String) async throws -> [TaskDetails] {
+    public func fetchTaskDetails(taskID: String) async throws -> TaskDetails {
         return try await fetch(.taskDetails(taskID))
     }
 
@@ -60,7 +60,7 @@ public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServi
         return try await fetch(.monitorActiveBuilds)
     }
 
-    public func fetchMonitorQueues() async throws -> [QueueSummaries] {
+    public func fetchMonitorQueues() async throws -> QueueSummaries {
         return try await fetch(.monitorQueues)
     }
 

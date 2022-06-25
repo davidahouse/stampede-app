@@ -132,8 +132,6 @@ struct BuildTaskArtifactsView: View {
     let artifacts: [TaskArtifact]
 
     @EnvironmentObject var viewModel: BuildTaskViewModel
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
 
     var body: some View {
         Section(header: SectionHeaderLabel("Artifacts")) {
@@ -141,7 +139,7 @@ struct BuildTaskArtifactsView: View {
                 switch viewModel.categoryForArtifact(artifact) {
                 case .hasRoute:
                     Button(action: {
-                        router.route(to: routes.routeForArtifact(taskID, artifact: artifact))
+//                        router.route(to: routes.routeForArtifact(taskID, artifact: artifact))
                     }, label: {
                         HStack {
                             PrimaryLabel(artifact.title)

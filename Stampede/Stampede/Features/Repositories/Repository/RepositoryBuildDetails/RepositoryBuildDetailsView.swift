@@ -15,7 +15,6 @@ struct RepositoryBuildDetailsView: View {
     // MARK: - Observed objects
 
     @EnvironmentObject var viewModel: RepositoryBuildDetailsViewModel
-    @EnvironmentObject var router: Router
 
     var body: some View {
         List {
