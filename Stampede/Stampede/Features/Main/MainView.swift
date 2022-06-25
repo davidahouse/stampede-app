@@ -62,6 +62,7 @@ struct MainView: View {
                 RepositoryView(repository: repository)
             })
             .navigationDestination(for: MainMenuItem.self, destination: { menuItem in
+                // TODO: Finish all the menu items once those views are updated
                 switch menuItem {
                 case .activeBuilds:
                     MonitorActiveBuildsView()

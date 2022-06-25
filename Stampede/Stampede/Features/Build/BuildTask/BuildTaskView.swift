@@ -8,12 +8,22 @@
 
 import SwiftUI
 import Parma
+import HouseKit
 
 struct BuildTaskView: View {
 
-    @EnvironmentObject var viewModel: BuildTaskViewModel
-    @EnvironmentObject var router: Router
+    @StateObject var viewModel: BuildTaskViewModel
 
+    // MARK: - Initializer
+
+    init(taskID: String, state: ViewModelState<TaskDetails>? = nil) {
+        if let state {
+            _viewModel = StateObject(wrappedValue: BuildTaskViewModel(taskID: taskID, state: state))
+        } else {
+            _viewModel = StateObject(wrappedValue: BuildTaskViewModel(taskID: taskID))
+        }
+    }
+    
     var body: some View {
         BaseView(viewModel: viewModel, content: { taskDetails in
             List {
@@ -181,18 +191,18 @@ struct BuildTaskView_Previews: PreviewProvider, Previewable {
     }
 
     static var defaultViewModel: PreviewData<BuildTaskViewModel> {
-        PreviewData(id: "someResults", viewModel: BuildTaskViewModel(state: .results(TaskDetails.someTaskDetails)))
+        PreviewData(id: "someResults", viewModel: BuildTaskViewModel(taskID: TaskDetails.someTaskDetails.task.id, state: .results(TaskDetails.someTaskDetails)))
     }
 
     static var alternateViewModels: [PreviewData<BuildTaskViewModel>] {
         [
-            PreviewData(id: "loading", viewModel: BuildTaskViewModel(state: .loading)),
-            PreviewData(id: "networkError", viewModel: BuildTaskViewModel(state: .networkError(.network(description: "Some network error"))))
+            PreviewData(id: "loading", viewModel: BuildTaskViewModel(taskID: "", state: .loading)),
+            PreviewData(id: "networkError", viewModel: BuildTaskViewModel(taskID: "", state: .networkError(.network(description: "Some network error"))))
         ]
     }
 
     static func create(from viewModel: BuildTaskViewModel) -> some View {
-        return BuildTaskView().environmentObject(viewModel)
+        return BuildTaskView(taskID: viewModel.taskID)
     }
 }
 #endif

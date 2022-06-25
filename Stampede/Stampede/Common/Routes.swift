@@ -50,10 +50,6 @@ class Routes: ObservableObject {
         }
     }
 
-    func routeForTask(_ taskID: String) -> Route {
-        return BuildTaskRoute(taskID: taskID)
-    }
-
     func routeForRepositoryBuild(_ repository: Repository, build: String) -> Route {
         return RepositoryBuildDetailsRoute(repository: repository, build: build)
     }

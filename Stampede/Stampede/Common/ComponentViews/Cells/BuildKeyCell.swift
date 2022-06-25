@@ -12,22 +12,15 @@ struct BuildKeyCell: View {
     let repository: Repository
     let buildKey: BuildKey
 
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
-
     var body: some View {
-        Button(action: {
-            router.route(to: routes.routeForRepositorySourceDetails(repository, buildKey: buildKey.buildKey))
-        }, label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    PrimaryLabel(buildKey.buildKey)
-                }
-                Spacer()
-                ValueLabel(buildKey.startedAgo)
-                Image(systemName: "chevron.right")
+        HStack {
+            VStack(alignment: .leading) {
+                PrimaryLabel(buildKey.buildKey)
             }
-        })
+            Spacer()
+            ValueLabel(buildKey.startedAgo)
+            Image(systemName: "chevron.right")
+        }
     }
 
 }

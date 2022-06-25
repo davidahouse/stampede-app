@@ -23,11 +23,9 @@ struct HistoryTasksView: View {
             List {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
-                        Button(action: {
-                            router.route(to: routes.routeForTask(item.task_id))
-                        }, label: {
+                        NavigationLink(value: item) {
                             TaskStatusCell(taskStatus: item)
-                        })
+                        }
                     }
                 } else {
                     PrimaryLabel("No tasks found")
@@ -35,6 +33,9 @@ struct HistoryTasksView: View {
             }
             .listStyle(DefaultListStyle())
         })
+        .navigationDestination(for: TaskStatus.self) { task in
+            BuildTaskView(taskID: task.id)
+        }
     }
 }
 
