@@ -78,17 +78,17 @@ struct BuildView: View {
                     }
                 }
 
-                // TODO:
-//                Section(header: SectionHeaderLabel("Tasks")) {
-//                    ForEach(buildStatus.tasks) { task in
-//                        Button(action: {
-//                            router.route(to: routes.routeForTask(task.task_id))
-//                        }, label: {
-//                            TaskStatusCell(taskStatus: task)
-//                        })
-//                    }
-//                }
+                Section(header: SectionHeaderLabel("Tasks")) {
+                    ForEach(buildStatus.tasks) { task in
+                        NavigationLink(value: task) {
+                            TaskStatusCell(taskStatus: task)
+                        }
+                    }
+                }
             }
+        })
+        .navigationDestination(for: TaskDetails.self, destination: { task in
+            BuildTaskView(taskID: task.task.id, state: .results(task))
         })
     }
 }
