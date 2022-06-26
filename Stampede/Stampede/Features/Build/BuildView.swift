@@ -14,11 +14,12 @@ struct BuildView: View {
     // MARK: - Observed Objects
 
     @StateObject var viewModel: BuildViewModel
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Initializer
 
-    init(state: ViewModelState<BuildStatus>) {
-        _viewModel = StateObject(wrappedValue: BuildViewModel(state: state))
+    init(buildID: String, state: ViewModelState<BuildStatus>? = nil) {
+        _viewModel = StateObject(wrappedValue: BuildViewModel(buildID: buildID, initialState: state))
     }
 
     // MARK: - View
@@ -87,6 +88,9 @@ struct BuildView: View {
                 }
             }
         })
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 
@@ -97,19 +101,19 @@ struct BuildView_Previews: PreviewProvider, Previewable {
     }
 
     static var defaultViewModel: PreviewData<BuildViewModel> {
-        PreviewData(id: "someResults", viewModel: BuildViewModel(state: .results(BuildStatus.someActiveBuild)))
+        PreviewData(id: "someResults", viewModel: BuildViewModel(buildID: BuildStatus.someActiveBuild.id, initialState: .results(BuildStatus.someActiveBuild)))
     }
 
     static var alternateViewModels: [PreviewData<BuildViewModel>] {
         [
-            PreviewData(id: "successBuild", viewModel: BuildViewModel(state: .results(BuildStatus.someRecentSuccessBuild))),
-            PreviewData(id: "loading", viewModel: BuildViewModel(state: .loading)),
-            PreviewData(id: "networkError", viewModel: BuildViewModel(state: .networkError(.network(description: "Some network error"))))
+            PreviewData(id: "successBuild", viewModel: BuildViewModel(buildID: BuildStatus.someRecentSuccessBuild.buildID, initialState: .results(BuildStatus.someRecentSuccessBuild))),
+            PreviewData(id: "loading", viewModel: BuildViewModel(buildID: "123", initialState: .loading)),
+            PreviewData(id: "networkError", viewModel: BuildViewModel(buildID: "123", initialState: .networkError(.network(description: "Some network error"))))
         ]
     }
 
     static func create(from viewModel: BuildViewModel) -> some View {
-        return BuildView(state: viewModel.state)
+        return BuildView(buildID: viewModel.buildID, state: viewModel.state)
     }
 }
 #endif

@@ -10,7 +10,7 @@ import SwiftUI
 import HouseKit
 import Combine
 
-protocol SettingsRepositoriesViewDelegate: class {
+protocol SettingsRepositoriesViewDelegate: AnyObject {
     func didDeleteRepositories(_ indexSet: IndexSet)
 }
 

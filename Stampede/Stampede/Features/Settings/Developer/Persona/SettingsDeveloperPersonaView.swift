@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-protocol SettingsDeveloperPersonaDelegate: class {
+protocol SettingsDeveloperPersonaDelegate: AnyObject {
     func didSelectPersona(_ persona: String)
 }
 

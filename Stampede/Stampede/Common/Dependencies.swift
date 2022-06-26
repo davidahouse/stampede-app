@@ -17,11 +17,9 @@ class Dependencies {
     let service: StampedeService
     let theme: CurrentTheme
     let repositoryList: RepositoryList
-//    let routes: Routes
 
     init(serviceProvider: StampedeServiceProvider? = nil, repositoryList: RepositoryList = BaseRepositoryList()) {
         theme = CurrentTheme()
-        //routes = Routes()
         self.repositoryList = repositoryList
         if let serviceProvider = serviceProvider {
             service = StampedeService(provider: serviceProvider)

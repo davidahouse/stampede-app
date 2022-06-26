@@ -10,7 +10,7 @@ import SwiftUI
 import HouseKit
 import Combine
 
-protocol SelectRepositoryDelegate: class {
+protocol SelectRepositoryDelegate: AnyObject {
     func didSelectRepository(_ repository: Repository)
 }
 

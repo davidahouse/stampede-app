@@ -12,7 +12,8 @@ struct HistoryTasksView: View {
 
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: HistoryTasksViewModel
+    @StateObject var viewModel = HistoryTasksViewModel()
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Body
     
@@ -31,8 +32,9 @@ struct HistoryTasksView: View {
             }
             .listStyle(DefaultListStyle())
         })
-        .navigationDestination(for: TaskStatus.self) { task in
-            BuildTaskView(taskID: task.id)
+        .navigationTitle("Task History")
+        .task {
+            await viewModel.fetch(service: service)
         }
     }
 }

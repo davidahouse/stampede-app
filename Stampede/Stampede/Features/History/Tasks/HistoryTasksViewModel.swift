@@ -9,7 +9,12 @@
 import Foundation
 import HouseKit
 
-class HistoryTasksViewModel: BaseViewModel<[TaskStatus]> { }
+@MainActor
+class HistoryTasksViewModel: BaseViewModel<[TaskStatus]> {
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchHistoryTasks()
+    }
+}
 
 #if DEBUG
 extension HistoryTasksViewModel {

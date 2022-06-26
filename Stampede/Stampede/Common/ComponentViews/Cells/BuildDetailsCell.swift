@@ -20,7 +20,6 @@ struct BuildDetailsCell: View {
             }
             Spacer()
             ValueLabel(buildDetails.completedAgo)
-            Image(systemName: "chevron.right")
         }
     }
 }

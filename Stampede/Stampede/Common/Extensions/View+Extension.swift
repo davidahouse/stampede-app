@@ -33,10 +33,13 @@ extension View {
                 RepositoryView(repository: repository)
             })
             .navigationDestination(for: BuildStatus.self, destination: { buildStatus in
-                BuildView(state: .results(buildStatus))
+                BuildView(buildID: buildStatus.id, state: .results(buildStatus))
             })
             .navigationDestination(for: TaskStatus.self, destination: { task in
                 BuildTaskView(taskID: task.id)
+            })
+            .navigationDestination(for: BuildDetails.self, destination: { details in
+                BuildView(buildID: details.build_id)
             })
             .navigationDestination(for: MainMenuItem.self, destination: { menuItem in
                 switch menuItem {

@@ -39,4 +39,3 @@ struct TimeLabel_Previews: PreviewProvider, Previewable {
 }
 
 #endif
-
