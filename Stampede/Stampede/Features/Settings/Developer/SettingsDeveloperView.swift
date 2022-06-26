@@ -17,14 +17,13 @@ struct SettingsDeveloperView: View {
 
     var body: some View {
         List {
-            Button(action: {
-//                router.route(to: routes.routeSettingsDeveloperPersonaRoute())
+            NavigationLink(destination: {
+                SettingsDeveloperPersonaView()
             }, label: {
                 HStack {
                     PrimaryLabel("Fixture Persona")
                     Spacer()
                     ValueLabel(viewModel.fixturePersona)
-                    Image(systemName: "chevron.right")
                 }
             })
         }
