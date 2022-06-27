@@ -52,8 +52,9 @@ struct MainView: View {
                 }
                 Section(header: SectionHeaderLabel("Settings")) {
                     ForEach(MainMenuItem.settingsItems, id: \.self) { item in
-                        //                 FeatureRouteCell(title: item.rawValue, route: routes.route(for: item))
-                        Text("\(item.rawValue)")
+                        NavigationLink(value: item, label: {
+                            FeatureRouteCell(title: item.rawValue)
+                        })
                     }
                 }
             }
