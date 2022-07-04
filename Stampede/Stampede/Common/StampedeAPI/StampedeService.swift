@@ -14,14 +14,19 @@ import HouseKit
 public class StampedeService: ObservableObject {
 
     var provider: StampedeServiceProvider
-    public var hostPassthroughSubject: PassthroughSubject<String, Never> {
-        return provider.hostPassthroughSubject
-    }
 
     public init(host: String? = nil, provider: StampedeServiceProvider) {
         self.provider = provider
+        self.stampedeServerURL = host ?? ""
     }
     
+    @Published var stampedeServerURL: String {
+        didSet {
+            provider.setHost(stampedeServerURL)
+            print("new server URL: \(stampedeServerURL)")
+        }
+    }
+
     // Repository
     func fetchRepositories() async -> ViewModelState<[Repository]> {
         do {

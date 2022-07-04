@@ -13,18 +13,17 @@ import HouseKit
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServiceProvider {
 
-    public let hostPassthroughSubject = PassthroughSubject<String, Never>()
     private var host: String?
-    private var hostSink: AnyCancellable?
 
     public init(host: String? = nil) {
         self.host = host
         super.init()
-        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
-           self.host = value
-        })
     }
 
+    public func setHost(_ host: String) {
+        self.host = host
+    }
+    
     // Repository
     public func fetchRepositories() async throws -> [Repository] {
         return try await fetch(.repositories)

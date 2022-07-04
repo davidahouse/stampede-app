@@ -14,6 +14,7 @@ import Combine
 class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
 
     var persona: Persona!
+    private var host: String?
 
     var fetchRepositoriesCalled = false
     var fetchActiveBuildsCalled = false
@@ -33,20 +34,16 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     var fetchHistoryBuildsCalled = false
     var fetchRepositorySourceBuildsCalled = false
 
-    var hostPassthroughSubject: PassthroughSubject<String, Never> = PassthroughSubject<String, Never>()
-
-    private var host: String?
-    private var hostSink: AnyCancellable?
-
     public init(host: String? = nil, persona: Persona? = HappyPersona()) {
         self.host = host
         self.persona = persona
         super.init()
-        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
-           self.host = value
-        })
     }
 
+    public func setHost(_ host: String) {
+        self.host = host
+    }
+    
     // Repository
     func fetchRepositories() async throws -> [Repository] {
         return try await fetch(persona.repositories)

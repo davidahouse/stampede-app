@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class Dependencies {
+class Dependencies: ObservableObject {
     let defaults: StampedeDefaults = {
         return StampedeDefaults()
     }()
@@ -42,7 +42,6 @@ class Dependencies {
             service = StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
             #endif
         }
-        defaults.hostSubject = service.hostPassthroughSubject
     }
 
     func selectNetworkProvider() {

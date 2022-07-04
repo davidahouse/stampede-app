@@ -105,7 +105,6 @@
 		C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */; };
 		C38BDD9B2545F90600CA9A48 /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = C38BDD9A2545F90600CA9A48 /* Parma */; };
 		C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */; };
-		C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */; };
 		C38C888E24BA1B8F00F6E6C9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888D24BA1B8F00F6E6C9 /* MainViewModel.swift */; };
 		C38C889224BA223200F6E6C9 /* SettingsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C889124BA223200F6E6C9 /* SettingsInfoView.swift */; };
 		C38C889424BA224300F6E6C9 /* SettingsInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C889324BA224300F6E6C9 /* SettingsInfoViewModel.swift */; };
@@ -320,7 +319,6 @@
 		C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRouteCellTests.swift; sourceTree = "<group>"; };
 		C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildDetailsCellTests.swift; sourceTree = "<group>"; };
 		C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerView.swift; sourceTree = "<group>"; };
-		C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStampedeServerViewModel.swift; sourceTree = "<group>"; };
 		C38C888D24BA1B8F00F6E6C9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		C38C889124BA223200F6E6C9 /* SettingsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInfoView.swift; sourceTree = "<group>"; };
 		C38C889324BA224300F6E6C9 /* SettingsInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInfoViewModel.swift; sourceTree = "<group>"; };
@@ -975,7 +973,6 @@
 			isa = PBXGroup;
 			children = (
 				C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */,
-				C38C888524BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift */,
 			);
 			path = StampedeServer;
 			sourceTree = "<group>";
@@ -1516,7 +1513,6 @@
 				C39E59012540765F00217743 /* ErrorPersona.swift in Sources */,
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
-				C38C888624BA155A00F6E6C9 /* SettingsStampedeServerViewModel.swift in Sources */,
 				DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */,
 				C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */,
 				C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */,

@@ -13,8 +13,9 @@ import HouseKit
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 public protocol StampedeServiceProvider {
 
-    var hostPassthroughSubject: PassthroughSubject<String, Never> { get }
-
+    // Set the host
+    func setHost(_ host: String)
+    
     // Repository
     func fetchRepositories() async throws -> [Repository]
     func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus]
