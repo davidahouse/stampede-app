@@ -37,26 +37,16 @@ enum MainMenuItem: String, CaseIterable {
 @MainActor
 class MainViewModel: ObservableObject {
 
-    @Published var state: ViewModelState<[Repository]> = .loading
-
-    public init(state: ViewModelState<[Repository]> = .loading) {
-        self.state = state
-    }
-    
     public func viewModelFor(repository: Repository) -> RepositoryViewModel {
         RepositoryViewModel(repository: repository)
-    }
-    
-    public func fetch(service: StampedeService) async {
-        state = await service.fetchRepositories()
     }
 }
 
 #if DEBUG
 extension MainViewModel {
-    static let defaultViewModel = MainViewModel(state: .results(Repository.someRepositories))
-    static let loading = MainViewModel(state: .loading)
-    static let networkError = MainViewModel(state: .networkError(.network(description: "Some service error")))
-    static let empty = MainViewModel(state: .results([]))
+    static let defaultViewModel = MainViewModel()
+    static let loading = MainViewModel()
+    static let networkError = MainViewModel()
+    static let empty = MainViewModel()
 }
 #endif

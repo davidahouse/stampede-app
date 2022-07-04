@@ -9,7 +9,12 @@
 import Foundation
 import HouseKit
 
-class SelectRepositoryViewModel: BaseViewModel<[Repository]> { }
+class SelectRepositoryViewModel: BaseViewModel<[Repository]> {
+    
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchRepositories()
+    }
+}
 
 #if DEBUG
 extension SelectRepositoryViewModel {

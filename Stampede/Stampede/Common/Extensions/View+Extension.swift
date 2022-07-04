@@ -15,6 +15,7 @@ extension View {
         return self
             .environmentObject(dependencies.theme)
             .environmentObject(dependencies.service)
+            .environmentObject(dependencies.repositoryList)
     }
 
     #if DEBUG
@@ -22,7 +23,7 @@ extension View {
         return self
             .environmentObject(StampedeDefaults.someDefaults)
             .environmentObject(CurrentTheme())
-            .environmentObject(RepositoryListFixture())
+            .environmentObject(RepositoryList(repositories: Repository.someRepositories, provider: RepositoryListFixtureProvider()))
             .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
     #endif

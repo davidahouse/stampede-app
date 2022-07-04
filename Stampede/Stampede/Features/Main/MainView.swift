@@ -16,6 +16,7 @@ struct MainView: View {
     @EnvironmentObject var theme: CurrentTheme
     @StateObject var viewModel = MainViewModel()
     @EnvironmentObject var service: StampedeService
+    @EnvironmentObject var repositoryList: RepositoryList
 
     // MARK: - View
 
@@ -23,17 +24,10 @@ struct MainView: View {
         NavigationStack {
             List {
                 Section(header: SectionHeaderLabel("Repositories")) {
-                    switch viewModel.state {
-                    case .loading:
-                        PrimaryLabel("Loading...")
-                    case .networkError(let error):
-                        NetworkErrorView(error: error)
-                    case .results(let repositories):
-                        ForEach(repositories, id: \.self) { item in
-                            NavigationLink(value: item, label: {
-                                RepositoryCell(repository: item)
-                            }).accessibilityIdentifier(item.id)
-                        }
+                    ForEach(repositoryList.repositories, id: \.self) { item in
+                        NavigationLink(value: item, label: {
+                            RepositoryCell(repository: item)
+                        }).accessibilityIdentifier(item.id)
                     }
                 }
                 Section(header: SectionHeaderLabel("Monitor")) {
@@ -61,9 +55,6 @@ struct MainView: View {
             .listStyle(GroupedListStyle())
             .navigationTitle("Stampede")
             .withNavigationDestinations()
-        }
-        .task {
-            await viewModel.fetch(service: service)
         }
     }
 }

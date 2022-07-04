@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class Dependencies: ObservableObject {
+class Dependencies {
     let defaults: StampedeDefaults = {
         return StampedeDefaults()
     }()
@@ -18,9 +18,10 @@ class Dependencies: ObservableObject {
     let theme: CurrentTheme
     let repositoryList: RepositoryList
 
-    init(serviceProvider: StampedeServiceProvider? = nil, repositoryList: RepositoryList = BaseRepositoryList()) {
+    init(serviceProvider: StampedeServiceProvider? = nil, repositoryListProvider: RepositoryListProvider? = nil) {
         theme = CurrentTheme()
-        self.repositoryList = repositoryList
+
+        // Initialize the service provider depending on environment and what was passed into us
         if let serviceProvider = serviceProvider {
             service = StampedeService(provider: serviceProvider)
         } else {
@@ -42,6 +43,22 @@ class Dependencies: ObservableObject {
             service = StampedeService(host: defaults.host, provider: StampedeServiceNetworkProvider(host: defaults.host))
             #endif
         }
+        
+        // Initialize the repository list depending on environment and what was passed into us
+        if let repositoryListProvider {
+            repositoryList = RepositoryList(provider: repositoryListProvider)
+        } else {
+            #if DEBUG
+            if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
+                repositoryList = RepositoryList(repositories: Repository.favoriteRepositories, provider: RepositoryListFixtureProvider())
+            } else {
+                repositoryList = RepositoryList(provider: FileManager.default)
+            }
+            #else
+            repositoryList = RepositoryList(provider: FileManager.default)
+            #endif
+        }
+        
     }
 
     func selectNetworkProvider() {

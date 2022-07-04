@@ -11,13 +11,7 @@ import SwiftUI
 @main
 struct StampedeApp: App {
 
-    @State var dependencies = {
-        if let stampedeServer = ProcessInfo.processInfo.environment["StampedeServer"], stampedeServer == "fixtures" {
-            return Dependencies(repositoryList: RepositoryListFixture())
-        } else {
-            return Dependencies()
-        }
-    }()
+    @State var dependencies = Dependencies()
 
     var body: some Scene {
         WindowGroup {

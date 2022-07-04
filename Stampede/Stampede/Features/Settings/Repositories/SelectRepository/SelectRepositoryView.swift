@@ -10,26 +10,14 @@ import SwiftUI
 import HouseKit
 import Combine
 
-protocol SelectRepositoryDelegate: AnyObject {
-    func didSelectRepository(_ repository: Repository)
-}
-
 struct SelectRepositoryView: View {
     
     // MARK: - View Model
     
     @EnvironmentObject var viewModel: SelectRepositoryViewModel
+    @EnvironmentObject var service: StampedeService
+    @EnvironmentObject var repositoryList: RepositoryList
     
-    // MARK: - Private Properties
-    
-    weak var delegate: SelectRepositoryDelegate?
-
-    // MARK: - Initializer
-    
-    init(delegate: SelectRepositoryDelegate? = nil) {
-        self.delegate = delegate
-    }
-
     // MARK: - View
     
     var body: some View {
@@ -40,7 +28,7 @@ struct SelectRepositoryView: View {
                         FavoriteRepositoryCell(repository: item)
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
-                                delegate?.didSelectRepository(item)
+                                repositoryList.addRepository(repository: item)
                             })
                     }
                 } else {
@@ -49,6 +37,9 @@ struct SelectRepositoryView: View {
             }
             .listStyle(DefaultListStyle())
         })
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 
