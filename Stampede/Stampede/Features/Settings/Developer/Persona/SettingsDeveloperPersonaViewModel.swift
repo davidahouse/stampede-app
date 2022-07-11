@@ -11,7 +11,6 @@ import SwiftUI
 
 class SettingsDeveloperPersonaViewModel: ObservableObject {
 
-    @Published var selectedPersona: String = "None"
     @Published var personas: [String] = [
         "None",
         "Happy",

@@ -11,6 +11,7 @@ import SwiftUI
 import HouseKit
 import Combine
 
+@MainActor
 class BuildViewModel: BaseViewModel<BuildStatus> {
 
     let buildID: String

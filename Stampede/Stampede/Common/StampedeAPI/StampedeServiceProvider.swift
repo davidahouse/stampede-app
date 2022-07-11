@@ -15,7 +15,7 @@ public protocol StampedeServiceProvider {
 
     // Set the host
     func setHost(_ host: String)
-    
+
     // Repository
     func fetchRepositories() async throws -> [Repository]
     func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus]

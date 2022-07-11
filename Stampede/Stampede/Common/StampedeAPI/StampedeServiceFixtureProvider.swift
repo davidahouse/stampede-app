@@ -43,7 +43,7 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     public func setHost(_ host: String) {
         self.host = host
     }
-    
+
     // Repository
     func fetchRepositories() async throws -> [Repository] {
         return try await fetch(persona.repositories)

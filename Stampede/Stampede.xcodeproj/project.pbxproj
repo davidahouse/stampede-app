@@ -119,7 +119,6 @@
 		C39E59062540946D00217743 /* LoadingPersona.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E59052540946D00217743 /* LoadingPersona.swift */; };
 		C39E590B2540971400217743 /* ErrorBuildDetailsPersona.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E590A2540971400217743 /* ErrorBuildDetailsPersona.swift */; };
 		C39E591F2540BCF400217743 /* SettingsDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E591E2540BCF400217743 /* SettingsDeveloperView.swift */; };
-		C39E59242540BD5B00217743 /* SettingsDeveloperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E59232540BD5B00217743 /* SettingsDeveloperViewModel.swift */; };
 		C3AB1CEF254C6EA900B1E9C0 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1CEE254C6EA900B1E9C0 /* RootViewControllerTests.swift */; };
 		C3B035262550D1F10098CDB2 /* Fixtures+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B035252550D1F10098CDB2 /* Fixtures+Date.swift */; };
 		C3B1225E253B5E7C005FD154 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B1225D253B5E7C005FD154 /* TaskDetails.swift */; };
@@ -333,7 +332,6 @@
 		C39E59052540946D00217743 /* LoadingPersona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPersona.swift; sourceTree = "<group>"; };
 		C39E590A2540971400217743 /* ErrorBuildDetailsPersona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBuildDetailsPersona.swift; sourceTree = "<group>"; };
 		C39E591E2540BCF400217743 /* SettingsDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperView.swift; sourceTree = "<group>"; };
-		C39E59232540BD5B00217743 /* SettingsDeveloperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeveloperViewModel.swift; sourceTree = "<group>"; };
 		C3AB1CE9254B907800B1E9C0 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		C3AB1CEE254C6EA900B1E9C0 /* RootViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerTests.swift; sourceTree = "<group>"; };
 		C3B035252550D1F10098CDB2 /* Fixtures+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fixtures+Date.swift"; sourceTree = "<group>"; };
@@ -1049,7 +1047,6 @@
 			children = (
 				C30342A2254103E0006E1BF3 /* Persona */,
 				C39E591E2540BCF400217743 /* SettingsDeveloperView.swift */,
-				C39E59232540BD5B00217743 /* SettingsDeveloperViewModel.swift */,
 			);
 			path = Developer;
 			sourceTree = "<group>";
@@ -1566,7 +1563,6 @@
 				C30342AC254104C5006E1BF3 /* SettingsDeveloperPersonaView.swift in Sources */,
 				C3D150882506569B0080FC53 /* BuildKeyCell.swift in Sources */,
 				C3F7668B245B704D0022E485 /* NetworkErrorView.swift in Sources */,
-				C39E59242540BD5B00217743 /* SettingsDeveloperViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

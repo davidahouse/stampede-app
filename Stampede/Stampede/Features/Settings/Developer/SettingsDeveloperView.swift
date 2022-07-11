@@ -13,7 +13,7 @@ struct SettingsDeveloperView: View {
     // MARK: - Environment Objects
 
     @EnvironmentObject var theme: CurrentTheme
-    @EnvironmentObject var viewModel: SettingsDeveloperViewModel
+    @EnvironmentObject var service: StampedeService
 
     var body: some View {
         List {
@@ -23,7 +23,7 @@ struct SettingsDeveloperView: View {
                 HStack {
                     PrimaryLabel("Fixture Persona")
                     Spacer()
-                    ValueLabel(viewModel.fixturePersona)
+                    ValueLabel(service.persona)
                 }
             })
         }
@@ -37,17 +37,17 @@ struct SettingsDeveloperView_Previews: PreviewProvider, Previewable {
         devicePreviews
     }
 
-    static var defaultViewModel: PreviewData<SettingsDeveloperViewModel> {
-        PreviewData(id: "developer", viewModel: SettingsDeveloperViewModel())
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "developer", viewModel: "None")
     }
 
-    static var alternateViewModels: [PreviewData<SettingsDeveloperViewModel>] {
+    static var alternateViewModels: [PreviewData<String>] {
         [
         ]
     }
 
-    static func create(from viewModel: SettingsDeveloperViewModel) -> some View {
-        return SettingsDeveloperView().environmentObject(viewModel)
+    static func create(from viewModel: String) -> some View {
+        return SettingsDeveloperView()
     }
 }
 #endif

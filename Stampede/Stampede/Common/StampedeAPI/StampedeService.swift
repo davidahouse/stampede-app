@@ -18,12 +18,23 @@ public class StampedeService: ObservableObject {
     public init(host: String? = nil, provider: StampedeServiceProvider) {
         self.provider = provider
         self.stampedeServerURL = host ?? ""
+        self.persona = "None"
     }
     
     @Published var stampedeServerURL: String {
         didSet {
             provider.setHost(stampedeServerURL)
             print("new server URL: \(stampedeServerURL)")
+        }
+    }
+    
+    @Published var persona: String {
+        didSet {
+            if persona == "None" {
+                provider = StampedeServiceNetworkProvider(host: stampedeServerURL)
+            } else {
+                provider = StampedeServiceFixtureProvider(host: "fixtures", persona: StampedeServiceFixtureProvider.fromString(persona))
+            }
         }
     }
 
