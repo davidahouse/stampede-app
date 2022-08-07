@@ -42,15 +42,10 @@ extension XCTestCase {
             UIGraphicsEndImageContext()
             host.dismiss(animated: false)
 
-//            let cropRect = CGRect(x: (host.view.bounds.size.width / 2) - (size.width / 2), y: (host.view.bounds.size.height / 2), width: size.width, height: size.height)
-//            if let cgImage = snapshotImage.cgImage?.cropping(to: cropRect) {
-            //let croppedImage = UIImage(cgImage: cgImage)
-                let attachment = XCTAttachment(image: snapshotImage)
-                attachment.name = title
-                attachment.lifetime = .keepAlways
-                add(attachment)
-            //}
-        //}
+            let attachment = XCTAttachment(image: snapshotImage)
+            attachment.name = title
+            attachment.lifetime = .keepAlways
+            add(attachment)
     }
 
     func capture(_ feature: UIViewController, title: String) {

@@ -15,7 +15,6 @@ struct RepositorySourceDetailsView: View {
     // MARK: - Observed objects
 
     @EnvironmentObject var viewModel: RepositorySourceDetailsViewModel
-    @EnvironmentObject var router: Router
 
     var body: some View {
         BaseView(viewModel: viewModel, content: { builds in

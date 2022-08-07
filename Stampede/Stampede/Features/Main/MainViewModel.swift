@@ -34,13 +34,19 @@ enum MainMenuItem: String, CaseIterable {
     }()
 }
 
-class MainViewModel: BaseViewModel<[Repository]> { }
+@MainActor
+class MainViewModel: ObservableObject {
+
+    public func viewModelFor(repository: Repository) -> RepositoryViewModel {
+        RepositoryViewModel(repository: repository)
+    }
+}
 
 #if DEBUG
 extension MainViewModel {
-    static let defaultViewModel = MainViewModel(state: .results(Repository.someRepositories))
-    static let loading = MainViewModel(state: .loading)
-    static let networkError = MainViewModel(state: .networkError(.network(description: "Some service error")))
-    static let empty = MainViewModel(state: .results([]))
+    static let defaultViewModel = MainViewModel()
+    static let loading = MainViewModel()
+    static let networkError = MainViewModel()
+    static let empty = MainViewModel()
 }
 #endif

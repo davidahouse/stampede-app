@@ -13,31 +13,32 @@ import HouseKit
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 public protocol StampedeServiceProvider {
 
-    var hostPassthroughSubject: PassthroughSubject<String, Never> { get }
+    // Set the host
+    func setHost(_ host: String)
 
     // Repository
-    func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>?
-    func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>?
-    func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>?
-    func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>?
-    func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>?
-    func fetchTaskDetailsPublisher(taskID: String) -> AnyPublisher<TaskDetails, ServiceError>?
-    func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) -> AnyPublisher<[BuildDetails], ServiceError>?
+    func fetchRepositories() async throws -> [Repository]
+    func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus]
+    func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild]
+    func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey]
+    func fetchBuildDetails(buildID: String) async throws -> BuildStatus
+    func fetchTaskDetails(taskID: String) async throws -> TaskDetails
+    func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) async throws -> [BuildDetails]
 
     // Monitor
-    func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>?
-    func fetchMonitorQueuesPublisher() -> AnyPublisher<QueueSummaries, ServiceError>?
-    func fetchWorkerStatusPublisher() -> AnyPublisher<[WorkerStatus], ServiceError>?
-    func fetchActiveTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>?
+    func fetchActiveBuilds() async throws -> [BuildStatus]
+    func fetchMonitorQueues() async throws -> QueueSummaries
+    func fetchWorkerStatus() async throws -> [WorkerStatus]
+    func fetchActiveTasks() async throws -> [TaskStatus]
 
     // History
-    func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>?
-    func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>?
-    func fetchHistoryHourlySummaryPublisher() -> AnyPublisher<[HourlySummary], ServiceError>?
+    func fetchHistoryBuilds() async throws -> [BuildDetails]
+    func fetchHistoryTasks() async throws -> [TaskStatus]
+    func fetchHistoryHourlySummary() async throws -> [HourlySummary]
 
     // Admin
-    func fetchAdminTasksPublisher() -> AnyPublisher<[Task], ServiceError>?
-    func fetchAdminConfigDefaultsPublisher() -> AnyPublisher<ConfigDefaults, ServiceError>?
-    func fetchAdminConfigOverridesPublisher() -> AnyPublisher<ConfigOverrides, ServiceError>?
-    func fetchAdminQueuesPublisher() -> AnyPublisher<[Queue], ServiceError>?
+    func fetchAdminTasks() async throws -> [Task]
+    func fetchAdminConfigDefaults() async throws -> ConfigDefaults
+    func fetchAdminConfigOverrides() async throws -> ConfigOverrides
+    func fetchAdminQueues() async throws -> [Queue]
 }

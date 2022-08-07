@@ -10,7 +10,12 @@ import Foundation
 import SwiftUI
 import HouseKit
 
-class HistoryBuildsViewModel: BaseViewModel<[BuildDetails]> { }
+@MainActor
+class HistoryBuildsViewModel: BaseViewModel<[BuildDetails]> {
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchHistoryBuilds()
+    }
+}
 
 #if DEBUG
 extension HistoryBuildsViewModel {

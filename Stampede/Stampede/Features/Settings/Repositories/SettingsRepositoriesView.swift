@@ -10,42 +10,38 @@ import SwiftUI
 import HouseKit
 import Combine
 
-protocol SettingsRepositoriesViewDelegate: class {
-    func didDeleteRepositories(_ indexSet: IndexSet)
-}
-
 struct SettingsRepositoriesView: View {
 
     // MARK: - View Model
 
     @EnvironmentObject var viewModel: SettingsRepositoriesViewModel
-
-    // MARK: - Private Properties
+    @EnvironmentObject var repositoryList: RepositoryList
     
-    private weak var delegate: SettingsRepositoriesViewDelegate?
-
-    // MARK: - Initializer
-    
-    init(delegate: SettingsRepositoriesViewDelegate? = nil) {
-        self.delegate = delegate
-    }
+    @State private var showSelectRepository: Bool = false
     
     // MARK: - Body
     
     var body: some View {
-        BaseView(viewModel: viewModel) { repositories in
-            List {
-                if repositories.count > 0 {
-                    ForEach(repositories, id: \.self) { item in
-                        FavoriteRepositoryCell(repository: item)
-                    }.onDelete(perform: { indexSet in
-                        self.delegate?.didDeleteRepositories(indexSet)
-                    })
-                } else {
-                    PrimaryLabel("No repositories selected")
-                }
+        List {
+            if repositoryList.repositories.count > 0 {
+                ForEach(repositoryList.repositories, id: \.self) { item in
+                    FavoriteRepositoryCell(repository: item)
+                }.onDelete(perform: { indexSet in
+                    repositoryList.removeRepositories(indexSet)
+                })
+            } else {
+                PrimaryLabel("No repositories selected")
             }
-            .listStyle(DefaultListStyle())
+        }
+        .listStyle(DefaultListStyle())
+        .toolbar {
+            Button("Add") {
+                showSelectRepository = true
+            }
+        }
+        .sheet(isPresented: $showSelectRepository) {
+            SelectRepositoryView()
+                .presentationDetents([.medium, .large])
         }
     }
 }
@@ -57,13 +53,11 @@ struct SettingsRepositoriesView_Previews: PreviewProvider, Previewable {
     }
 
     static var defaultViewModel: PreviewData<SettingsRepositoriesViewModel> {
-        PreviewData(id: "someRepositories", viewModel: SettingsRepositoriesViewModel(state: .results(Repository.someRepositories)))
+        PreviewData(id: "someRepositories", viewModel: SettingsRepositoriesViewModel())
     }
 
     static var alternateViewModels: [PreviewData<SettingsRepositoriesViewModel>] {
         [
-            PreviewData(id: "loading", viewModel: SettingsRepositoriesViewModel(state: .loading)),
-            PreviewData(id: "networkError", viewModel: SettingsRepositoriesViewModel(state: .networkError(.network(description: "Some network error"))))
         ]
     }
 

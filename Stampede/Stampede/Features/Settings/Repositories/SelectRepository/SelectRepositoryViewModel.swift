@@ -9,7 +9,28 @@
 import Foundation
 import HouseKit
 
-class SelectRepositoryViewModel: BaseViewModel<[Repository]> { }
+@MainActor
+class SelectRepositoryViewModel: BaseViewModel<[Repository]> {
+    
+    var results: [Repository] = []
+    
+    public func fetch(service: StampedeService, list: RepositoryList) async {
+        state = await service.fetchRepositories()
+        switch state {
+        case .results(let repositories):
+            results = repositories
+            filter(using: list)
+        default:
+            break
+        }
+    }
+    
+    public func filter(using list: RepositoryList) {
+        // change state to repositories that aren't already favorites
+        let filteredList = results.filter { !list.repositories.map({ $0.id }).contains($0.id) }
+        state = .results(filteredList)
+    }
+}
 
 #if DEBUG
 extension SelectRepositoryViewModel {

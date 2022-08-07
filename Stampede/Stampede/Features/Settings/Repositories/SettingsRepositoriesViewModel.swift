@@ -9,4 +9,4 @@
 import Foundation
 import HouseKit
 
-class SettingsRepositoriesViewModel: BaseViewModel<[Repository]> { }
+class SettingsRepositoriesViewModel: ObservableObject { }

@@ -12,8 +12,8 @@ struct HistoryBuildsView: View {
 
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: HistoryBuildsViewModel
-    @EnvironmentObject var router: Router
+    @StateObject var viewModel = HistoryBuildsViewModel()
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Body
     
@@ -22,7 +22,9 @@ struct HistoryBuildsView: View {
             List {
                 if activeBuilds.count > 0 {
                     ForEach(activeBuilds, id: \.self) { item in
-                        BuildDetailsCell(buildDetails: item)
+                        NavigationLink(value: item) {
+                            BuildDetailsCell(buildDetails: item)
+                        }
                     }
                 } else {
                     PrimaryLabel("No builds found")
@@ -30,6 +32,10 @@ struct HistoryBuildsView: View {
             }
             .listStyle(DefaultListStyle())
         })
+        .navigationTitle("Build History")
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 

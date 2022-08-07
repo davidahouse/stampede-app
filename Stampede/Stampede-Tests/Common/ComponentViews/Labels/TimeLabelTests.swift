@@ -15,4 +15,3 @@ class TimeLabelTests: XCTestCase {
         capturedPreviews(TimeLabel_Previews.capturedPreviews(title: "TimeLabel"))
     }
 }
-

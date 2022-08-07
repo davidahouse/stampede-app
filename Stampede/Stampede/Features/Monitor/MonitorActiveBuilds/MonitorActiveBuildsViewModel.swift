@@ -9,7 +9,13 @@
 import Foundation
 import HouseKit
 
-class MonitorActiveBuildsViewModel: BaseViewModel<[BuildStatus]> { }
+@MainActor
+class MonitorActiveBuildsViewModel: BaseViewModel<[BuildStatus]> {
+
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchActiveBuilds()
+    }
+}
 
 #if DEBUG
 extension MonitorActiveBuildsViewModel {

@@ -9,7 +9,13 @@
 import Foundation
 import HouseKit
 
-class MonitorQueuesViewModel: BaseViewModel<QueueSummaries> { }
+@MainActor
+class MonitorQueuesViewModel: BaseViewModel<QueueSummaries> {
+    
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchMonitorQueues()
+    }
+}
 
 #if DEBUG
 extension MonitorQueuesViewModel {

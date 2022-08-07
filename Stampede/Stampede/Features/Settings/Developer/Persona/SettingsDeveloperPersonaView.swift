@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-protocol SettingsDeveloperPersonaDelegate: class {
-    func didSelectPersona(_ persona: String)
-}
-
 struct SettingsDeveloperPersonaView: View {
 
     // MARK: - Environment Objects
@@ -20,14 +16,9 @@ struct SettingsDeveloperPersonaView: View {
 
     // MARK: - Observed Objects
 
-    @EnvironmentObject var viewModel: SettingsDeveloperPersonaViewModel
-
-    weak var delegate: SettingsDeveloperPersonaDelegate?
-
-    init(delegate: SettingsDeveloperPersonaDelegate? = nil) {
-        self.delegate = delegate
-    }
-
+    @StateObject var viewModel = SettingsDeveloperPersonaViewModel()
+    @EnvironmentObject var service: StampedeService
+    
     var body: some View {
         List {
             ForEach(viewModel.personas, id: \.self) { persona in
@@ -35,12 +26,12 @@ struct SettingsDeveloperPersonaView: View {
                     PrimaryLabel(persona)
                     Spacer()
 
-                    if viewModel.selectedPersona == persona {
+                    if service.persona == persona {
                         Image(systemName: "checkmark").foregroundColor(.green)
                     }
                 }.contentShape(Rectangle())
                 .onTapGesture(perform: {
-                    delegate?.didSelectPersona(persona)
+                    service.persona = persona
                 })
             }
         }

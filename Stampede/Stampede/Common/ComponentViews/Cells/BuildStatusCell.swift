@@ -10,25 +10,17 @@ import SwiftUI
 
 struct BuildStatusCell: View {
 
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
-    
     let buildStatus: BuildStatus
 
     var body: some View {
-        Button(action: {
-            router.route(to: routes.route(for: buildStatus))
-        }, label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    PrimaryLabel(buildStatus.buildDetails.repository)
-                    SecondaryLabel(buildStatus.buildIdentifier)
-                }
-                Spacer()
-                ValueLabel(buildStatus.startedAgo)
-                Image(systemName: "chevron.right")
+        HStack {
+            VStack(alignment: .leading) {
+                PrimaryLabel(buildStatus.buildDetails.repository)
+                SecondaryLabel(buildStatus.buildIdentifier)
             }
-        })
+            Spacer()
+            ValueLabel(buildStatus.startedAgo)
+        }
     }
 }
 

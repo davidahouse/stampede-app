@@ -17,6 +17,7 @@ enum FetchState {
     case hasResults
 }
 
+@MainActor
 class RepositoryViewModel: ObservableObject {
 
     // MARK: - Published properties
@@ -30,38 +31,6 @@ class RepositoryViewModel: ObservableObject {
     
     // MARK: - Properties
 
-    private var disposables = Set<AnyCancellable>()
-
-    var activeBuildsPublisher: BuildStatusResponsePublisher? {
-        didSet {
-            self.fetchActiveBuilds()
-        }
-    }
-
-    var repositoryBuildsPublisher: RepositoryBuildResponsePublisher? {
-        didSet {
-            self.fetchRepositoryBuilds()
-        }
-    }
-
-    var branchKeysPublisher: BuildKeyResponsePublisher? {
-        didSet {
-            self.fetchBranchKeys()
-        }
-    }
-
-    var releaseKeysPublisher: BuildKeyResponsePublisher? {
-        didSet {
-            self.fetchReleaseKeys()
-        }
-    }
-
-    var pullRequestKeysPublisher: BuildKeyResponsePublisher? {
-        didSet {
-            self.fetchPullRequestKeys()
-        }
-    }
-
     // MARK: - Initializer
 
     init(repository: Repository, activeBuildsState: ViewModelState<[BuildStatus]> = .loading, repositoryBuildsState: ViewModelState<[RepositoryBuild]> = .loading) {
@@ -69,80 +38,13 @@ class RepositoryViewModel: ObservableObject {
         self.activeBuildsState = activeBuildsState
         self.repositoryBuildsState = repositoryBuildsState
     }
-
-    private func fetchActiveBuilds() {
-        self.activeBuildsPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.activeBuildsState = .networkError(error)
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.activeBuildsState = .results(value)
-            }
-        }).store(in: &self.disposables)
-    }
     
-    private func fetchRepositoryBuilds() {
-        self.repositoryBuildsPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.repositoryBuildsState = .networkError(error)
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.repositoryBuildsState = .results(value)
-            }
-        }).store(in: &self.disposables)
-    }
-
-    private func fetchBranchKeys() {
-        self.branchKeysPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.branchKeysState = .networkError(error)
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.branchKeysState = .results(value)
-            }
-        }).store(in: &self.disposables)
-    }
-
-    private func fetchReleaseKeys() {
-        self.releaseKeysPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.releaseKeysState = .networkError(error)
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.releaseKeysState = .results(value)
-            }
-        }).store(in: &self.disposables)
-    }
-
-    private func fetchPullRequestKeys() {
-        self.pullRequestKeysPublisher?.sink(receiveCompletion: { result in
-          if case let .failure(error) = result {
-            print("Error receiving \(error)")
-            DispatchQueue.main.async {
-                self.pullRequestKeysState = .networkError(error)
-            }
-          }
-        }, receiveValue: { value in
-            DispatchQueue.main.async {
-                self.pullRequestKeysState = .results(value)
-            }
-        }).store(in: &self.disposables)
+    public func fetch(service: StampedeService) async {
+        activeBuildsState = await service.fetchActiveBuilds(owner: repository.owner, repository: repository.repository)
+        repositoryBuildsState = await service.fetchRepositoryBuilds(owner: repository.owner, repository: repository.repository)
+        branchKeysState = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "branch-push")
+        releaseKeysState = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "release")
+        pullRequestKeysState = await service.fetchBuildKeys(owner: repository.owner, repository: repository.repository, source: "pull-request")
     }
 }
 

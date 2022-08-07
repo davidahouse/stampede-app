@@ -8,12 +8,23 @@
 
 import SwiftUI
 import Parma
+import HouseKit
 
 struct BuildTaskView: View {
 
-    @EnvironmentObject var viewModel: BuildTaskViewModel
-    @EnvironmentObject var router: Router
+    @StateObject var viewModel: BuildTaskViewModel
+    @EnvironmentObject var service: StampedeService
 
+    // MARK: - Initializer
+
+    init(taskID: String, state: ViewModelState<TaskDetails>? = nil) {
+        if let state {
+            _viewModel = StateObject(wrappedValue: BuildTaskViewModel(taskID: taskID, state: state))
+        } else {
+            _viewModel = StateObject(wrappedValue: BuildTaskViewModel(taskID: taskID))
+        }
+    }
+    
     var body: some View {
         BaseView(viewModel: viewModel, content: { taskDetails in
             List {
@@ -21,6 +32,7 @@ struct BuildTaskView: View {
                 BuildTaskSCMDetailsView(scmDetails: taskDetails.scmDetails)
                 if taskDetails.artifacts.count > 0 {
                     BuildTaskArtifactsView(taskID: taskDetails.task.task_id, artifacts: taskDetails.artifacts)
+                        .environmentObject(viewModel)
                 }
                 Section(header: SectionHeaderLabel("Summary")) {
                     Parma(emojify(taskDetails.summary))
@@ -32,6 +44,9 @@ struct BuildTaskView: View {
                 }
             }
         })
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 
     private func emojify(_ input: String) -> String {
@@ -122,8 +137,6 @@ struct BuildTaskArtifactsView: View {
     let artifacts: [TaskArtifact]
 
     @EnvironmentObject var viewModel: BuildTaskViewModel
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
 
     var body: some View {
         Section(header: SectionHeaderLabel("Artifacts")) {
@@ -131,7 +144,7 @@ struct BuildTaskArtifactsView: View {
                 switch viewModel.categoryForArtifact(artifact) {
                 case .hasRoute:
                     Button(action: {
-                        router.route(to: routes.routeForArtifact(taskID, artifact: artifact))
+//                        router.route(to: routes.routeForArtifact(taskID, artifact: artifact))
                     }, label: {
                         HStack {
                             PrimaryLabel(artifact.title)
@@ -181,18 +194,18 @@ struct BuildTaskView_Previews: PreviewProvider, Previewable {
     }
 
     static var defaultViewModel: PreviewData<BuildTaskViewModel> {
-        PreviewData(id: "someResults", viewModel: BuildTaskViewModel(state: .results(TaskDetails.someTaskDetails)))
+        PreviewData(id: "someResults", viewModel: BuildTaskViewModel(taskID: TaskDetails.someTaskDetails.task.id, state: .results(TaskDetails.someTaskDetails)))
     }
 
     static var alternateViewModels: [PreviewData<BuildTaskViewModel>] {
         [
-            PreviewData(id: "loading", viewModel: BuildTaskViewModel(state: .loading)),
-            PreviewData(id: "networkError", viewModel: BuildTaskViewModel(state: .networkError(.network(description: "Some network error"))))
+            PreviewData(id: "loading", viewModel: BuildTaskViewModel(taskID: "", state: .loading)),
+            PreviewData(id: "networkError", viewModel: BuildTaskViewModel(taskID: "", state: .networkError(.network(description: "Some network error"))))
         ]
     }
 
     static func create(from viewModel: BuildTaskViewModel) -> some View {
-        return BuildTaskView().environmentObject(viewModel)
+        return BuildTaskView(taskID: viewModel.taskID)
     }
 }
 #endif

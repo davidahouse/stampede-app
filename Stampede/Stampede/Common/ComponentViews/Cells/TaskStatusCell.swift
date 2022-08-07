@@ -10,26 +10,18 @@ import SwiftUI
 
 struct TaskStatusCell: View {
 
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
-    
     let taskStatus: TaskStatus
 
     var body: some View {
-        Button(action: {
-            router.route(to: routes.routeForTask(taskStatus.task_id))
-        }, label: {
-            HStack {
-                TaskStatusIcon(status: taskStatus.status, conclusion: taskStatus.conclusion)
-                VStack(alignment: .leading) {
-                    PrimaryLabel(taskStatus.task)
-                    SecondaryLabel(taskStatus.buildTitle ?? "")
-                }
-                Spacer()
-                ValueLabel(taskStatus.duration)
-                Image(systemName: "chevron.right")
+        HStack {
+            TaskStatusIcon(status: taskStatus.status, conclusion: taskStatus.conclusion)
+            VStack(alignment: .leading) {
+                PrimaryLabel(taskStatus.task)
+                SecondaryLabel(taskStatus.buildTitle ?? "")
             }
-        })
+            Spacer()
+            ValueLabel(taskStatus.duration)
+        }
     }
 }
 

@@ -12,9 +12,8 @@ struct MonitorActiveTasksView: View {
 
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: MonitorActiveTasksViewModel
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
+    @StateObject var viewModel = MonitorActiveTasksViewModel()
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Body
     
@@ -23,11 +22,9 @@ struct MonitorActiveTasksView: View {
             List {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
-                        Button(action: {
-                            router.route(to: routes.routeForTask(item.task_id))
-                        }, label: {
+                        NavigationLink(value: item) {
                             TaskStatusCell(taskStatus: item)
-                        })
+                        }
                     }
                 } else {
                     PrimaryLabel("No active tasks found")
@@ -35,6 +32,13 @@ struct MonitorActiveTasksView: View {
             }
             .listStyle(DefaultListStyle())
         })
+        .navigationTitle("Active Tasks")
+        .task {
+            await viewModel.fetch(service: service)
+        }
+        .refreshable {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 

@@ -19,6 +19,13 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
         case installplist
     }
 
+    let taskID: String
+
+    init(taskID: String, state: ViewModelState<TaskDetails> = .loading, publisher: AnyPublisher<TaskDetails, ServiceError>? = nil) {
+        self.taskID = taskID
+        super.init(state: state, publisher: publisher)
+    }
+
     func categoryForArtifact(_ artifact: TaskArtifact) -> ArtifactCategory {
         switch artifact.type {
         case "link":
@@ -43,5 +50,9 @@ class BuildTaskViewModel: BaseViewModel<TaskDetails> {
         default:
             return nil
         }
+    }
+    
+    public func fetch(service: StampedeService) async {
+        state = await service.fetchTaskDetails(taskID: taskID)
     }
 }

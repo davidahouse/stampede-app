@@ -14,8 +14,14 @@ struct RepositoryView: View {
     
     // MARK: - Observed objects
 
-    @EnvironmentObject var viewModel: RepositoryViewModel
-    @EnvironmentObject var router: Router
+    @StateObject var viewModel: RepositoryViewModel
+    @EnvironmentObject var service: StampedeService
+
+    // MARK: - Initializer
+
+    init(repository: Repository) {
+        _viewModel = StateObject(wrappedValue: RepositoryViewModel(repository: repository))
+    }
 
     // MARK: - View
 
@@ -25,7 +31,9 @@ struct RepositoryView: View {
                 BaseSubView(state: viewModel.activeBuildsState, content: { activeBuilds in
                     if activeBuilds.count > 0 {
                         ForEach(activeBuilds, id: \.self) { item in
-                            BuildStatusCell(buildStatus: item)
+                            NavigationLink(value: item) {
+                                BuildStatusCell(buildStatus: item)
+                            }
                         }
                     } else {
                         PrimaryLabel("No active builds found")
@@ -82,6 +90,13 @@ struct RepositoryView: View {
             }
         }
         .listStyle(DefaultListStyle())
+        .navigationTitle(viewModel.repository.repository)
+        .refreshable {
+            await viewModel.fetch(service: service)
+        }
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 
@@ -101,7 +116,7 @@ struct RepositoryView_Previews: PreviewProvider, Previewable {
     }
 
     static func create(from viewModel: RepositoryViewModel) -> some View {
-        return RepositoryView().environmentObject(viewModel)
+        return RepositoryView(repository: viewModel.repository)
     }
 }
 #endif

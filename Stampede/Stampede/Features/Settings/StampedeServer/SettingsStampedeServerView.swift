@@ -14,14 +14,14 @@ struct SettingsStampedeServerView: View {
 
     // MARK: - Observed Objects
 
-    @EnvironmentObject var viewModel: SettingsStampedeServerViewModel
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - View
 
     var body: some View {
         Form {
             Section(header: SectionHeaderLabel("Stampede Server URL")) {
-                TextField("Stampede Server URL", text: $viewModel.stampedeServerURL)
+                TextField("Stampede Server URL", text: $service.stampedeServerURL)
                     .keyboardType(.URL)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -36,18 +36,17 @@ struct SettingsStampedeServerView_Previews: PreviewProvider, Previewable {
         devicePreviews
     }
 
-    static var defaultViewModel: PreviewData<SettingsStampedeServerViewModel> {
-        PreviewData(id: "withHost", viewModel: SettingsStampedeServerViewModel.someViewModel)
+    static var defaultViewModel: PreviewData<String> {
+        PreviewData(id: "withHost", viewModel: "some-host")
     }
 
-    static var alternateViewModels: [PreviewData<SettingsStampedeServerViewModel>] {
+    static var alternateViewModels: [PreviewData<String>] {
         [
-            PreviewData(id: "noHost", viewModel: SettingsStampedeServerViewModel.someViewModelWithNoHost)
         ]
     }
 
-    static func create(from viewModel: SettingsStampedeServerViewModel) -> some View {
-        return SettingsStampedeServerView().environmentObject(viewModel)
+    static func create(from viewModel: String) -> some View {
+        return SettingsStampedeServerView().previewDependencies()
     }
 }
 #endif

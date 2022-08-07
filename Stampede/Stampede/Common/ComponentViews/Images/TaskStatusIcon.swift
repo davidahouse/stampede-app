@@ -28,7 +28,6 @@ struct TaskStatusIcon: View {
     }
 }
 
-
 #if DEBUG
 struct TaskStatusIcon_Previews: PreviewProvider, Previewable {
     static var previews: some View {

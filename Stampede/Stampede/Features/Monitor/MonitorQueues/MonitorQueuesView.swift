@@ -12,7 +12,8 @@ struct MonitorQueuesView: View {
 
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: MonitorQueuesViewModel
+    @StateObject var viewModel = MonitorQueuesViewModel()
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Body
     
@@ -39,6 +40,13 @@ struct MonitorQueuesView: View {
                 }
             }
         })
+        .navigationTitle("Queue Status")
+        .task {
+            await viewModel.fetch(service: service)
+        }
+        .refreshable {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 
@@ -60,7 +68,7 @@ struct MonitorQueuesView_Previews: PreviewProvider, Previewable {
     }
 
     static func create(from viewModel: MonitorQueuesViewModel) -> some View {
-        return MonitorQueuesView().environmentObject(viewModel)
+        return MonitorQueuesView()
     }
 }
 #endif

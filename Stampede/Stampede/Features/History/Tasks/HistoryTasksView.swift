@@ -12,9 +12,8 @@ struct HistoryTasksView: View {
 
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: HistoryTasksViewModel
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
+    @StateObject var viewModel = HistoryTasksViewModel()
+    @EnvironmentObject var service: StampedeService
 
     // MARK: - Body
     
@@ -23,11 +22,9 @@ struct HistoryTasksView: View {
             List {
                 if tasks.count > 0 {
                     ForEach(tasks, id: \.self) { item in
-                        Button(action: {
-                            router.route(to: routes.routeForTask(item.task_id))
-                        }, label: {
+                        NavigationLink(value: item) {
                             TaskStatusCell(taskStatus: item)
-                        })
+                        }
                     }
                 } else {
                     PrimaryLabel("No tasks found")
@@ -35,6 +32,10 @@ struct HistoryTasksView: View {
             }
             .listStyle(DefaultListStyle())
         })
+        .navigationTitle("Task History")
+        .task {
+            await viewModel.fetch(service: service)
+        }
     }
 }
 

@@ -19,7 +19,6 @@ struct RepositoryCell: View {
                 SecondaryLabel(repository.repository)
             }
             Spacer()
-            Image(systemName: "chevron.right")
         }.accessibility(identifier: repository.id)
     }
 }

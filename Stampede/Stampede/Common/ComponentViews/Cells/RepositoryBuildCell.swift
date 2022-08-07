@@ -13,22 +13,15 @@ struct RepositoryBuildCell: View {
     let repository: Repository
     let repositoryBuild: RepositoryBuild
 
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var routes: Routes
-
     var body: some View {
-        Button(action: {
-            router.route(to: routes.routeForRepositoryBuild(repository, build: repositoryBuild.build))
-        }, label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    PrimaryLabel(repositoryBuild.build)
-                }
-                Spacer()
-                ValueLabel(repositoryBuild.completedAgo)
-                Image(systemName: "chevron.right")
+        HStack {
+            VStack(alignment: .leading) {
+                PrimaryLabel(repositoryBuild.build)
             }
-        })
+            Spacer()
+            ValueLabel(repositoryBuild.completedAgo)
+            Image(systemName: "chevron.right")
+        }
     }
 }
 

@@ -11,8 +11,20 @@ import SwiftUI
 import HouseKit
 import Combine
 
+@MainActor
 class BuildViewModel: BaseViewModel<BuildStatus> {
 
+    let buildID: String
+    
+    init(buildID: String, initialState: ViewModelState<BuildStatus>? = nil) {
+        self.buildID = buildID
+        if let initialState {
+            super.init(state: initialState)
+        } else {
+            super.init()
+        }
+    }
+    
     var statusImage: some View {
         switch state {
         case .results(let buildStatus):
@@ -27,5 +39,9 @@ class BuildViewModel: BaseViewModel<BuildStatus> {
         default:
             return CurrentTheme.Icons.warningStatus.image()
         }
+    }
+    
+    func fetch(service: StampedeService) async {
+        state = await service.fetchBuildDetails(buildID: buildID)
     }
 }

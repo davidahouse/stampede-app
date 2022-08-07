@@ -11,143 +11,100 @@ import Combine
 import HouseKit
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
-public class StampedeServiceNetworkProvider: NetworkProvider, StampedeServiceProvider {
+public class StampedeServiceNetworkProvider: AsyncNetworkProvider, StampedeServiceProvider {
 
-    public let hostPassthroughSubject = PassthroughSubject<String, Never>()
     private var host: String?
-    private var hostSink: AnyCancellable?
 
     public init(host: String? = nil) {
         self.host = host
         super.init()
-        hostSink = hostPassthroughSubject.sink(receiveValue: { value in
-           self.host = value
-        })
     }
 
-    public func fetchRepositoriesPublisher() -> AnyPublisher<[Repository], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[Repository], ServiceError>(Future<[Repository], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.repositories.url(host: host))
-    }
-
-    public func fetchActiveBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[BuildStatus], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[BuildStatus], ServiceError>(Future<[BuildStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.activeBuilds(owner, repository).url(host: host))
-    }
-
-    public func fetchRepositoryBuildsPublisher(owner: String, repository: String) -> AnyPublisher<[RepositoryBuild], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[RepositoryBuild], ServiceError>(Future<[RepositoryBuild], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.repositoryBuilds(owner, repository).url(host: host))
+    public func setHost(_ host: String) {
+        self.host = host
     }
     
-    public func fetchBuildDetailsPublisher(buildID: String) -> AnyPublisher<BuildStatus, ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<BuildStatus, ServiceError>(Future<BuildStatus, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.buildDetails(buildID).url(host: host))
+    // Repository
+    public func fetchRepositories() async throws -> [Repository] {
+        return try await fetch(.repositories)
     }
 
-    public func fetchTaskDetailsPublisher(taskID: String) -> AnyPublisher<TaskDetails, ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<TaskDetails, ServiceError>(Future<TaskDetails, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.taskDetails(taskID).url(host: host))
+    public func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
+        return try await fetch(.activeBuilds(owner, repository))
     }
 
-    public func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) -> AnyPublisher<[BuildDetails], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[BuildDetails], ServiceError>(Future<[BuildDetails], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.repositorySourceBuilds(owner, repository, buildKey).url(host: host))
+    public func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild] {
+        return try await fetch(.repositoryBuilds(owner, repository))
     }
 
-    public func fetchMonitorQueuesPublisher() -> AnyPublisher<QueueSummaries, ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<QueueSummaries, ServiceError>(Future<QueueSummaries, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.monitorQueues.url(host: host))
+    public func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey] {
+        return try await fetch(.buildKeys(owner, repository, source))
     }
 
-    public func fetchWorkerStatusPublisher() -> AnyPublisher<[WorkerStatus], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[WorkerStatus], ServiceError>(Future<[WorkerStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.monitorWorkerStatus.url(host: host))
+    public func fetchBuildDetails(buildID: String) async throws -> BuildStatus {
+        return try await fetch(.buildDetails(buildID))
     }
 
-    public func fetchAdminTasksPublisher() -> AnyPublisher<[Task], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[Task], ServiceError>(Future<[Task], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.adminTasks.url(host: host))
+    public func fetchTaskDetails(taskID: String) async throws -> TaskDetails {
+        return try await fetch(.taskDetails(taskID))
     }
 
-    public func fetchActiveTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[TaskStatus], ServiceError>(Future<[TaskStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.monitorActiveTasks.url(host: host))
+    public func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) async throws -> [BuildDetails] {
+        return try await fetch(.repositorySourceBuilds(owner, repository, buildKey))
     }
 
-    public func fetchActiveBuildsPublisher() -> AnyPublisher<[BuildStatus], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[BuildStatus], ServiceError>(Future<[BuildStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.monitorActiveBuilds.url(host: host))
+    // Monitor
+
+    public func fetchActiveBuilds() async throws -> [BuildStatus] {
+        return try await fetch(.monitorActiveBuilds)
     }
 
-    public func fetchAdminConfigDefaultsPublisher() -> AnyPublisher<ConfigDefaults, ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<ConfigDefaults, ServiceError>(Future<ConfigDefaults, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.adminConfigDefaults.url(host: host))
+    public func fetchMonitorQueues() async throws -> QueueSummaries {
+        return try await fetch(.monitorQueues)
     }
 
-    public func fetchAdminConfigOverridesPublisher() -> AnyPublisher<ConfigOverrides, ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<ConfigOverrides, ServiceError>(Future<ConfigOverrides, ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.adminConfigOverrides.url(host: host))
+    public func fetchWorkerStatus() async throws -> [WorkerStatus] {
+        return try await fetch(.monitorWorkerStatus)
     }
 
-    public func fetchAdminQueuesPublisher() -> AnyPublisher<[Queue], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[Queue], ServiceError>(Future<[Queue], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.adminQueues.url(host: host))
+    public func fetchActiveTasks() async throws -> [TaskStatus] {
+        return try await fetch(.monitorActiveTasks)
     }
 
-    public func fetchHistoryBuildsPublisher() -> AnyPublisher<[BuildDetails], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[BuildDetails], ServiceError>(Future<[BuildDetails], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.historyBuilds.url(host: host))
+    // History
+    public func fetchHistoryBuilds() async throws -> [BuildDetails] {
+        return try await fetch(.historyBuilds)
     }
 
-    public func fetchHistoryTasksPublisher() -> AnyPublisher<[TaskStatus], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[TaskStatus], ServiceError>(Future<[TaskStatus], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.historyTasks.url(host: host))
+    public func fetchHistoryTasks() async throws -> [TaskStatus] {
+        return try await fetch(.historyTasks)
     }
 
-    public func fetchHistoryHourlySummaryPublisher() -> AnyPublisher<[HourlySummary], ServiceError>? {
-        guard let host = host else {
-            return AnyPublisher<[HourlySummary], ServiceError>(Future<[HourlySummary], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
-        }
-        return request(url: StampedeAPIEndpoint.historyHourlySummary.url(host: host))
+    public func fetchHistoryHourlySummary() async throws -> [HourlySummary] {
+        return try await fetch(.historyHourlySummary)
     }
 
-    public func fetchBuildKeysPublisher(owner: String, repository: String, source: String) -> AnyPublisher<[BuildKey], ServiceError>? {
+    // Admin
+    public func fetchAdminTasks() async throws -> [Task] {
+        return try await fetch(.adminTasks)
+    }
+
+    public func fetchAdminConfigDefaults() async throws -> ConfigDefaults {
+        return try await fetch(.adminConfigDefaults)
+    }
+
+    public func fetchAdminConfigOverrides() async throws -> ConfigOverrides {
+        return try await fetch(.adminConfigOverrides)
+    }
+
+    public func fetchAdminQueues() async throws -> [Queue] {
+        return try await fetch(.adminQueues)
+    }
+
+    private func fetch<T: Decodable>(_ endpoint: StampedeAPIEndpoint) async throws -> T {
         guard let host = host else {
-            return AnyPublisher<[BuildKey], ServiceError>(Future<[BuildKey], ServiceError> { promise in promise(.failure(.network(description: "Host not provided")))})
+            throw ServiceError.network(description: "No host provided")
         }
-        return request(url: StampedeAPIEndpoint.buildKeys(owner, repository, source).url(host: host))
+        return try await request(url: endpoint.url(host: host))
     }
 }
