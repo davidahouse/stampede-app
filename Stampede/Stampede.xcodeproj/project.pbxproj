@@ -103,7 +103,6 @@
 		C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD7E254504A300CA9A48 /* FavoriteRepositoryCellTests.swift */; };
 		C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD83254504F600CA9A48 /* FeatureRouteCellTests.swift */; };
 		C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38BDD882545055F00CA9A48 /* BuildDetailsCellTests.swift */; };
-		C38BDD9B2545F90600CA9A48 /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = C38BDD9A2545F90600CA9A48 /* Parma */; };
 		C38C888424BA154B00F6E6C9 /* SettingsStampedeServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888324BA154B00F6E6C9 /* SettingsStampedeServerView.swift */; };
 		C38C888E24BA1B8F00F6E6C9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C888D24BA1B8F00F6E6C9 /* MainViewModel.swift */; };
 		C38C889224BA223200F6E6C9 /* SettingsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38C889124BA223200F6E6C9 /* SettingsInfoView.swift */; };
@@ -191,6 +190,7 @@
 		DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */; };
 		DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A125EABE4300A0311A /* TimeLabel.swift */; };
 		DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A625EABED400A0311A /* TimeLabelTests.swift */; };
+		DCD2DB5D28A0845A009005C3 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCD2DB5C28A0845A009005C3 /* MarkdownUI */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
 		DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */; };
 /* End PBXBuildFile section */
@@ -414,8 +414,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C38BDD9B2545F90600CA9A48 /* Parma in Frameworks */,
 				94FE1F4124FACE7A00AE4ED4 /* HouseKit in Frameworks */,
+				DCD2DB5D28A0845A009005C3 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,7 +1327,7 @@
 			name = Stampede;
 			packageProductDependencies = (
 				94FE1F4024FACE7A00AE4ED4 /* HouseKit */,
-				C38BDD9A2545F90600CA9A48 /* Parma */,
+				DCD2DB5C28A0845A009005C3 /* MarkdownUI */,
 			);
 			productName = "Stampede-Mobile";
 			productReference = C3349EB32350A92B00273730 /* Stampede.app */;
@@ -1403,7 +1403,7 @@
 			mainGroup = C3349E742350A90400273730;
 			packageReferences = (
 				94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */,
-				C38BDD992545F90600CA9A48 /* XCRemoteSwiftPackageReference "Parma" */,
+				DCD2DB5B28A0845A009005C3 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 			);
 			productRefGroup = C3349E7E2350A90400273730 /* Products */;
 			projectDirPath = "";
@@ -2009,12 +2009,12 @@
 				kind = branch;
 			};
 		};
-		C38BDD992545F90600CA9A48 /* XCRemoteSwiftPackageReference "Parma" */ = {
+		DCD2DB5B28A0845A009005C3 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dasautoooo/Parma";
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2025,10 +2025,10 @@
 			package = 94FE1F3F24FACE7A00AE4ED4 /* XCRemoteSwiftPackageReference "HouseKit" */;
 			productName = HouseKit;
 		};
-		C38BDD9A2545F90600CA9A48 /* Parma */ = {
+		DCD2DB5C28A0845A009005C3 /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C38BDD992545F90600CA9A48 /* XCRemoteSwiftPackageReference "Parma" */;
-			productName = Parma;
+			package = DCD2DB5B28A0845A009005C3 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
