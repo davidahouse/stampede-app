@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import Parma
 import HouseKit
+import MarkdownUI
 
 struct BuildTaskView: View {
 
@@ -35,11 +35,11 @@ struct BuildTaskView: View {
                         .environmentObject(viewModel)
                 }
                 Section(header: SectionHeaderLabel("Summary")) {
-                    Parma(emojify(taskDetails.summary))
+                    Markdown(emojify(taskDetails.summary))
                 }
                 if taskDetails.text != "" {
                     Section(header: SectionHeaderLabel("Text")) {
-                        Parma(emojify(taskDetails.text))
+                        Markdown(emojify(taskDetails.text))
                     }
                 }
             }

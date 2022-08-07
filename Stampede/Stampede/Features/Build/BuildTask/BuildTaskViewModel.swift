@@ -10,6 +10,7 @@ import Foundation
 import HouseKit
 import Combine
 
+@MainActor
 class BuildTaskViewModel: BaseViewModel<TaskDetails> {
 
     enum ArtifactCategory {
