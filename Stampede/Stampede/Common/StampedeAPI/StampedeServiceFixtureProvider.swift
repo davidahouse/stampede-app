@@ -123,9 +123,6 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
     private func fetch<T>(_ result: FixtureResponse<T>) async throws -> T {
         switch result {
         case .loading:
-            // TODO: Would be good to figure out how to model loading states, for
-            // now though just throwing a service error. Ideally we just don't return
-            // from this method.
             throw ServiceError.network(description: "Fixture state was loading")
         case .error(let error):
             throw error

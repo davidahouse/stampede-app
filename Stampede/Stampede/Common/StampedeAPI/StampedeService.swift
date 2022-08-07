@@ -44,9 +44,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchRepositories()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -55,9 +57,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchActiveBuilds(owner: owner, repository: repository)
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -66,9 +70,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchRepositoryBuilds(owner: owner, repository: repository)
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -77,9 +83,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchBuildKeys(owner: owner, repository: repository, source: source)
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -88,9 +96,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchBuildDetails(buildID: buildID)
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -99,9 +109,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchTaskDetails(taskID: taskID)
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -110,9 +122,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchRepositorySourceDetails(owner: owner, repository: repository, buildKey: buildKey)
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
 
@@ -122,9 +136,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchActiveBuilds()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -133,9 +149,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchMonitorQueues()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -144,9 +162,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchWorkerStatus()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -155,9 +175,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchActiveTasks()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
 
@@ -167,9 +189,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchHistoryBuilds()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -178,9 +202,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchHistoryTasks()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -189,9 +215,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchHistoryHourlySummary()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
 
@@ -201,9 +229,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchAdminTasks()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -212,9 +242,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchAdminConfigDefaults()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -223,9 +255,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchAdminConfigOverrides()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
     
@@ -234,9 +268,11 @@ public class StampedeService: ObservableObject {
             let data = try await provider.fetchAdminQueues()
             return .results(data)
         } catch {
-            // TODO: Ideally we should have a way to return just the error without
-            // converting to the more generic networkError from ServiceError
-            return .networkError(.network(description: error.localizedDescription))
+            if let serviceError = error as? ServiceError {
+                return .networkError(serviceError)
+            } else {
+                return .networkError(.network(description: error.localizedDescription))
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ struct SettingsRepositoriesView: View {
     @EnvironmentObject var viewModel: SettingsRepositoriesViewModel
     @EnvironmentObject var repositoryList: RepositoryList
     
+    @State private var showSelectRepository: Bool = false
+    
     // MARK: - Body
     
     var body: some View {
@@ -34,8 +36,12 @@ struct SettingsRepositoriesView: View {
         .listStyle(DefaultListStyle())
         .toolbar {
             Button("Add") {
-                // TODO: Move to the select repository view so we can select a new repository to add
+                showSelectRepository = true
             }
+        }
+        .sheet(isPresented: $showSelectRepository) {
+            SelectRepositoryView()
+                .presentationDetents([.medium, .large])
         }
     }
 }

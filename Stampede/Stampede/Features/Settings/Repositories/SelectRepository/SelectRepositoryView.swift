@@ -14,9 +14,10 @@ struct SelectRepositoryView: View {
     
     // MARK: - View Model
     
-    @EnvironmentObject var viewModel: SelectRepositoryViewModel
     @EnvironmentObject var service: StampedeService
     @EnvironmentObject var repositoryList: RepositoryList
+    
+    @StateObject var viewModel = SelectRepositoryViewModel()
     
     // MARK: - View
     
@@ -25,7 +26,7 @@ struct SelectRepositoryView: View {
             List {
                 if repositories.count > 0 {
                     ForEach(repositories, id: \.self) { item in
-                        FavoriteRepositoryCell(repository: item)
+                        RepositoryCell(repository: item)
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
                                 repositoryList.addRepository(repository: item)
@@ -37,8 +38,12 @@ struct SelectRepositoryView: View {
             }
             .listStyle(DefaultListStyle())
         })
+        .onChange(of: repositoryList.repositories) { _ in
+            
+            viewModel.filter(using: repositoryList)
+        }
         .task {
-            await viewModel.fetch(service: service)
+            await viewModel.fetch(service: service, list: repositoryList)
         }
     }
 }
