@@ -43,16 +43,10 @@ struct MonitorActiveBuildsView: View {
 
 #if DEBUG
 struct MonitorActiveBuildsView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        MonitorActiveBuildsView_Previews.devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<MonitorActiveBuildsViewModel> {
-        PreviewData(id: "someBuilds", viewModel: MonitorActiveBuildsViewModel.someBuilds)
-    }
-
-    static var alternateViewModels: [PreviewData<MonitorActiveBuildsViewModel>] {
+    static var viewModels: [PreviewData<MonitorActiveBuildsViewModel>] {
         [
+            PreviewData(id: "someBuilds", viewModel: MonitorActiveBuildsViewModel.someBuilds),
             PreviewData(id: "loading", viewModel: MonitorActiveBuildsViewModel(state: .loading)),
             PreviewData(id: "networkError", viewModel: MonitorActiveBuildsViewModel(state: .networkError(.network(description: "Some network error"))))
         ]

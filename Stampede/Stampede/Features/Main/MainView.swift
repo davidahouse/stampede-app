@@ -62,16 +62,10 @@ struct MainView: View {
 #if DEBUG
 
 struct MainView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        MainView_Previews.devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<MainViewModel> {
-        PreviewData(id: "someResults", viewModel: MainViewModel.defaultViewModel)
-    }
-
-    static var alternateViewModels: [PreviewData<MainViewModel>] {
+    static var viewModels: [PreviewData<MainViewModel>] {
         [
+            PreviewData(id: "someResults", viewModel: MainViewModel.defaultViewModel),
             PreviewData(id: "empty", viewModel: MainViewModel.empty),
             PreviewData(id: "loading", viewModel: MainViewModel.loading),
             PreviewData(id: "networkError", viewModel: MainViewModel.networkError)

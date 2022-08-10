@@ -41,16 +41,10 @@ struct SettingsDeveloperPersonaView: View {
 
 #if DEBUG
 struct SettingsDeveloperPersonaView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<SettingsDeveloperPersonaViewModel> {
-        PreviewData(id: "persona", viewModel: SettingsDeveloperPersonaViewModel())
-    }
-
-    static var alternateViewModels: [PreviewData<SettingsDeveloperPersonaViewModel>] {
+    static var viewModels: [PreviewData<SettingsDeveloperPersonaViewModel>] {
         [
+            PreviewData(id: "persona", viewModel: SettingsDeveloperPersonaViewModel())
         ]
     }
 

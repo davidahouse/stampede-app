@@ -26,16 +26,11 @@ struct BuildDetailsCell: View {
 
 #if DEBUG
 struct BuildDetailsCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        BuildDetailsCell_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<BuildDetails> {
-        PreviewData(id: "completedBuild", viewModel: BuildDetails.completedBuild)
-    }
-
-    static var alternateViewModels: [PreviewData<BuildDetails>] {
-        []
+    static var viewModels: [PreviewData<BuildDetails>] {
+        [
+            PreviewData(id: "completedBuild", viewModel: BuildDetails.completedBuild)
+        ]
     }
 
     static func create(from viewModel: BuildDetails) -> some View {

@@ -30,16 +30,10 @@ struct RepositorySourceDetailsView: View {
 
 #if DEBUG
 struct RepositorySourceDetailsView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<RepositorySourceDetailsViewModel> {
-        PreviewData(id: "someResults", viewModel: RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild])))
-    }
-
-    static var alternateViewModels: [PreviewData<RepositorySourceDetailsViewModel>] {
+    static var viewModels: [PreviewData<RepositorySourceDetailsViewModel>] {
         [
+            PreviewData(id: "someResults", viewModel: RepositorySourceDetailsViewModel(state: .results([BuildDetails.completedBuild]))),
             PreviewData(id: "loading", viewModel: RepositorySourceDetailsViewModel(state: .loading)),
             PreviewData(id: "networkError", viewModel: RepositorySourceDetailsViewModel(state: .networkError(.network(description: "Some network error"))))
         ]

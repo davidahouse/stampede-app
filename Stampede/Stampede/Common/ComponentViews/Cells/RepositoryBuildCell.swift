@@ -27,16 +27,10 @@ struct RepositoryBuildCell: View {
 
 #if DEBUG
 struct RepositoryBuildCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        RepositoryBuildCell_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<(Repository, RepositoryBuild)> {
-        PreviewData(id: "someRepository", viewModel: (Repository.someRepository, RepositoryBuild.someBuild))
-    }
-
-    static var alternateViewModels: [PreviewData<(Repository, RepositoryBuild)>] {
+    static var viewModels: [PreviewData<(Repository, RepositoryBuild)>] {
         [
+            PreviewData(id: "someRepository", viewModel: (Repository.someRepository, RepositoryBuild.someBuild))
         ]
     }
 

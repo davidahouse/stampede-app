@@ -32,16 +32,10 @@ struct SettingsStampedeServerView: View {
 
 #if DEBUG
 struct SettingsStampedeServerView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<String> {
-        PreviewData(id: "withHost", viewModel: "some-host")
-    }
-
-    static var alternateViewModels: [PreviewData<String>] {
+    static var viewModels: [PreviewData<String>] {
         [
+            PreviewData(id: "withHost", viewModel: "some-host")
         ]
     }
 

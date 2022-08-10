@@ -96,16 +96,10 @@ struct BuildView: View {
 
 #if DEBUG
 struct BuildView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        BuildView_Previews.devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<BuildViewModel> {
-        PreviewData(id: "someResults", viewModel: BuildViewModel(buildID: BuildStatus.someActiveBuild.id, initialState: .results(BuildStatus.someActiveBuild)))
-    }
-
-    static var alternateViewModels: [PreviewData<BuildViewModel>] {
+    static var viewModels: [PreviewData<BuildViewModel>] {
         [
+            PreviewData(id: "someResults", viewModel: BuildViewModel(buildID: BuildStatus.someActiveBuild.id, initialState: .results(BuildStatus.someActiveBuild))),
             PreviewData(id: "successBuild", viewModel: BuildViewModel(buildID: BuildStatus.someRecentSuccessBuild.buildID, initialState: .results(BuildStatus.someRecentSuccessBuild))),
             PreviewData(id: "loading", viewModel: BuildViewModel(buildID: "123", initialState: .loading)),
             PreviewData(id: "networkError", viewModel: BuildViewModel(buildID: "123", initialState: .networkError(.network(description: "Some network error"))))

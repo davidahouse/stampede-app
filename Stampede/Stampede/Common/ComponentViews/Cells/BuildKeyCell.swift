@@ -27,16 +27,11 @@ struct BuildKeyCell: View {
 
 #if DEBUG
 struct BuildKeyCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        BuildKeyCell_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<(Repository, BuildKey)> {
-        PreviewData(id: "someRepository", viewModel: (Repository.someRepository, BuildKey.someBranchKeys[0]))
-    }
-
-    static var alternateViewModels: [PreviewData<(Repository, BuildKey)>] {
-        []
+    static var viewModels: [PreviewData<(Repository, BuildKey)>] {
+        [
+            PreviewData(id: "someRepository", viewModel: (Repository.someRepository, BuildKey.someBranchKeys[0]))
+        ]
     }
 
     static func create(from viewModel: (Repository, BuildKey)) -> some View {

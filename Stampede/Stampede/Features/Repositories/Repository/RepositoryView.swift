@@ -102,16 +102,10 @@ struct RepositoryView: View {
 
 #if DEBUG
 struct RepositoryView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        RepositoryView_Previews.devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<RepositoryViewModel> {
-        PreviewData(id: "someResults", viewModel: RepositoryViewModel.someViewModel)
-    }
-
-    static var alternateViewModels: [PreviewData<RepositoryViewModel>] {
+    static var viewModels: [PreviewData<RepositoryViewModel>] {
         [
+            PreviewData(id: "someResults", viewModel: RepositoryViewModel.someViewModel)
         ]
     }
 

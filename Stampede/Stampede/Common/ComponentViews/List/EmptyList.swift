@@ -32,16 +32,11 @@ struct EmptyList: View {
 #if DEBUG
 
 struct EmptyList_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        EmptyList_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<String> {
-        PreviewData(id: "emptyList", viewModel: "Empty list message goes here...")
-    }
-
-    static var alternateViewModels: [PreviewData<String>] {
-        []
+    static var viewModels: [PreviewData<String>] {
+        [
+            PreviewData(id: "emptyList", viewModel: "Empty list message goes here...")
+        ]
     }
 
     static func create(from viewModel: String) -> some View {

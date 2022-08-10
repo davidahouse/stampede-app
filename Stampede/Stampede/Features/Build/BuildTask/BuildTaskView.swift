@@ -189,16 +189,10 @@ struct BuildTaskArtifactsView: View {
 
 #if DEBUG
 struct BuildTaskView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        BuildTaskView_Previews.devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<BuildTaskViewModel> {
-        PreviewData(id: "someResults", viewModel: BuildTaskViewModel(taskID: TaskDetails.someTaskDetails.task.id, state: .results(TaskDetails.someTaskDetails)))
-    }
-
-    static var alternateViewModels: [PreviewData<BuildTaskViewModel>] {
+    static var viewModels: [PreviewData<BuildTaskViewModel>] {
         [
+            PreviewData(id: "someResults", viewModel: BuildTaskViewModel(taskID: TaskDetails.someTaskDetails.task.id, state: .results(TaskDetails.someTaskDetails))),
             PreviewData(id: "loading", viewModel: BuildTaskViewModel(taskID: "", state: .loading)),
             PreviewData(id: "networkError", viewModel: BuildTaskViewModel(taskID: "", state: .networkError(.network(description: "Some network error"))))
         ]

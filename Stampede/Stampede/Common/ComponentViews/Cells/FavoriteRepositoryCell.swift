@@ -25,16 +25,11 @@ struct FavoriteRepositoryCell: View {
 
 #if DEBUG
 struct FavoriteRepositoryCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        FavoriteRepositoryCell_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<Repository> {
-        PreviewData(id: "someRepository", viewModel: Repository.someRepository)
-    }
-
-    static var alternateViewModels: [PreviewData<Repository>] {
-        []
+    static var viewModels: [PreviewData<Repository>] {
+        [
+            PreviewData(id: "someRepository", viewModel: Repository.someRepository)
+        ]
     }
 
     static func create(from viewModel: Repository) -> some View {
