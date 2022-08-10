@@ -30,16 +30,10 @@ struct TaskStatusIcon: View {
 
 #if DEBUG
 struct TaskStatusIcon_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<(String, String?)> {
-        PreviewData(id: "inprogress", viewModel: ("in_progress", nil))
-    }
-
-    static var alternateViewModels: [PreviewData<(String, String?)>] {
+    static var viewModels: [PreviewData<(String, String?)>] {
         [
+            PreviewData(id: "inprogress", viewModel: ("in_progress", nil)),
             PreviewData(id: "inprogress", viewModel: ("in_progress", nil)),
             PreviewData(id: "success", viewModel: ("success", "success")),
             PreviewData(id: "failure", viewModel: ("completed", "failure"))

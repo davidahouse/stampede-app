@@ -27,17 +27,12 @@ struct TaskStatusCell: View {
 
 #if DEBUG
 struct TaskStatusCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<TaskStatus> {
-        PreviewData(id: "completedTask", viewModel: TaskStatus.completedTask)
-    }
-
-    static var alternateViewModels: [PreviewData<TaskStatus>] {
-        [PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask),
-         PreviewData(id: "inProgressTask", viewModel: TaskStatus.inProgressTask)
+    static var viewModels: [PreviewData<TaskStatus>] {
+        [
+            PreviewData(id: "completedTask", viewModel: TaskStatus.completedTask),
+            PreviewData(id: "failedTask", viewModel: TaskStatus.failedTask),
+            PreviewData(id: "inProgressTask", viewModel: TaskStatus.inProgressTask)
         ]
     }
 

@@ -48,16 +48,10 @@ struct SettingsRepositoriesView: View {
 
 #if DEBUG
 struct SettingsRepositoriesView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<SettingsRepositoriesViewModel> {
-        PreviewData(id: "someRepositories", viewModel: SettingsRepositoriesViewModel())
-    }
-
-    static var alternateViewModels: [PreviewData<SettingsRepositoriesViewModel>] {
+    static var viewModels: [PreviewData<SettingsRepositoriesViewModel>] {
         [
+            PreviewData(id: "someRepositories", viewModel: SettingsRepositoriesViewModel())
         ]
     }
 

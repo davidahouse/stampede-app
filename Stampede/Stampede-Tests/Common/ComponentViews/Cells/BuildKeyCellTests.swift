@@ -11,7 +11,7 @@ import XCTest
 
 class BuildKeyCellTests: XCTestCase {
 
-    func testCapturePreviews() {
+    @MainActor func testCapturePreviews() {
         capturedPreviews(BuildKeyCell_Previews.capturedPreviews(title: "BuildKeyCell"))
     }
 }

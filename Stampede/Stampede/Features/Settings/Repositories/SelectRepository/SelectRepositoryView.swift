@@ -50,16 +50,10 @@ struct SelectRepositoryView: View {
 
 #if DEBUG
 struct SelectRepositoryView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<SelectRepositoryViewModel> {
-        PreviewData(id: "someRepositories", viewModel: SelectRepositoryViewModel.someRepositories)
-    }
-
-    static var alternateViewModels: [PreviewData<SelectRepositoryViewModel>] {
+    static var viewModels: [PreviewData<SelectRepositoryViewModel>] {
         [
+            PreviewData(id: "someRepositories", viewModel: SelectRepositoryViewModel.someRepositories),
             PreviewData(id: "loading", viewModel: SelectRepositoryViewModel(state: .loading)),
             PreviewData(id: "networkError", viewModel: SelectRepositoryViewModel(state: .networkError(.network(description: "Some network error"))))
         ]

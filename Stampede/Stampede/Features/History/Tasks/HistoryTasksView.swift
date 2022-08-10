@@ -41,16 +41,10 @@ struct HistoryTasksView: View {
 
 #if DEBUG
 struct HistoryTasksView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<HistoryTasksViewModel> {
-        PreviewData(id: "someTasks", viewModel: HistoryTasksViewModel.someTasks)
-    }
-
-    static var alternateViewModels: [PreviewData<HistoryTasksViewModel>] {
+    static var viewModels: [PreviewData<HistoryTasksViewModel>] {
         [
+            PreviewData(id: "someTasks", viewModel: HistoryTasksViewModel.someTasks),
             PreviewData(id: "loading", viewModel: HistoryTasksViewModel(state: .loading)),
             PreviewData(id: "networkError", viewModel: HistoryTasksViewModel(state: .networkError(.network(description: "Some network error"))))
         ]

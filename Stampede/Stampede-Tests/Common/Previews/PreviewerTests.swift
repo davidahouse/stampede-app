@@ -13,12 +13,10 @@ import SwiftUI
 class PreviewerTests: XCTestCase {
 
     class TestPreviewer: Previewable {
-        static var defaultViewModel: PreviewData<String> {
-            PreviewData(id: "default", viewModel: "Default VM")
-        }
 
-        static var alternateViewModels: [PreviewData<String>] {
+        static var viewModels: [PreviewData<String>] {
             [
+                PreviewData(id: "default", viewModel: "Default VM"),
                 PreviewData(id: "alt", viewModel: "Alt VM")
             ]
         }
@@ -28,11 +26,11 @@ class PreviewerTests: XCTestCase {
         }
     }
 
-    func testDebugPreviews() {
-        capture(TestPreviewer.debugPreviews, title: "DebugPreviews")
+    func testPreviews() {
+        capture(TestPreviewer.previews, title: "DebugPreviews")
     }
 
-    func testDevicePreviews() {
-        capture(TestPreviewer.devicePreviews, title: "DevicePreviews")
-    }
+//    func testDevicePreviews() {
+//        capture(TestPreviewer.devicePreviews, title: "DevicePreviews")
+//    }
 }

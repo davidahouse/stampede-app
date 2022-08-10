@@ -47,16 +47,10 @@ struct RepositoryBuildDetailsView: View {
 
 #if DEBUG
 struct RepositoryBuildDetailsView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        RepositoryBuildDetailsView_Previews.devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<RepositoryBuildDetailsViewModel> {
-        PreviewData(id: "someResults", viewModel: RepositoryBuildDetailsViewModel(repository: Repository.someRepository, build: "123", activeBuildsState: .results(BuildStatus.activeBuilds), recentBuildsState: .results([BuildDetails.completedBuild])))
-    }
-
-    static var alternateViewModels: [PreviewData<RepositoryBuildDetailsViewModel>] {
+    static var viewModels: [PreviewData<RepositoryBuildDetailsViewModel>] {
         [
+            PreviewData(id: "someResults", viewModel: RepositoryBuildDetailsViewModel(repository: Repository.someRepository, build: "123", activeBuildsState: .results(BuildStatus.activeBuilds), recentBuildsState: .results([BuildDetails.completedBuild])))
         ]
     }
 

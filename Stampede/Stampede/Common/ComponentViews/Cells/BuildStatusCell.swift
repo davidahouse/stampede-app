@@ -26,16 +26,10 @@ struct BuildStatusCell: View {
 
 #if DEBUG
 struct BuildStatusCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        BuildStatusCell_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<BuildStatus> {
-        PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild)
-    }
-
-    static var alternateViewModels: [PreviewData<BuildStatus>] {
+    static var viewModels: [PreviewData<BuildStatus>] {
         [
+            PreviewData(id: "someActiveBuild", viewModel: BuildStatus.someActiveBuild),
             PreviewData(id: "someRecentBuild", viewModel: BuildStatus.someRecentBuild)
         ]
     }

@@ -21,16 +21,11 @@ struct TimeLabel: View {
 #if DEBUG
 
 struct TimeLabel_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<Date> {
-        PreviewData(id: "someTitle", viewModel: Date(timeIntervalSince1970: 42))
-    }
-
-    static var alternateViewModels: [PreviewData<Date>] {
-        []
+    static var viewModels: [PreviewData<Date>] {
+        [
+            PreviewData(id: "someTitle", viewModel: Date(timeIntervalSince1970: 42))
+        ]
     }
 
     static func create(from viewModel: Date) -> some View {

@@ -52,16 +52,10 @@ struct MonitorQueuesView: View {
 
 #if DEBUG
 struct MonitorQueuesView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<MonitorQueuesViewModel> {
-        PreviewData(id: "someQueues", viewModel: MonitorQueuesViewModel.someQueues)
-    }
-
-    static var alternateViewModels: [PreviewData<MonitorQueuesViewModel>] {
+    static var viewModels: [PreviewData<MonitorQueuesViewModel>] {
         [
+            PreviewData(id: "someQueues", viewModel: MonitorQueuesViewModel.someQueues),
             PreviewData(id: "loading", viewModel: MonitorQueuesViewModel(state: .loading)),
             PreviewData(id: "networkError", viewModel: MonitorQueuesViewModel(state: .networkError(.network(description: "Some network error"))))
         ]

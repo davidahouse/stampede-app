@@ -34,16 +34,10 @@ struct SettingsInfoView: View {
 
 #if DEBUG
 struct SettingsInfoView_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        devicePreviews
-    }
 
-    static var defaultViewModel: PreviewData<SettingsInfoViewModel> {
-        PreviewData(id: "info", viewModel: SettingsInfoViewModel())
-    }
-
-    static var alternateViewModels: [PreviewData<SettingsInfoViewModel>] {
+    static var viewModels: [PreviewData<SettingsInfoViewModel>] {
         [
+            PreviewData(id: "info", viewModel: SettingsInfoViewModel())
         ]
     }
 

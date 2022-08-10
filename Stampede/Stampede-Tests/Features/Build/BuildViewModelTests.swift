@@ -9,6 +9,7 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class BuildViewModelTests: XCTestCase {
 
     func testViewModelReturnsAnImageForStatus() {
@@ -19,7 +20,7 @@ class BuildViewModelTests: XCTestCase {
             BuildStatus.someRecentFailedBuild
         ]
         for status in buildStatuses {
-            let viewModel = BuildViewModel(state: .results(status))
+            let viewModel = BuildViewModel(buildID: "123", initialState: .results(status))
             _ = viewModel.statusImage
         }
     }

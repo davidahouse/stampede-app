@@ -22,16 +22,11 @@ struct FeatureRouteCell: View {
 
 #if DEBUG
 struct FeatureRouteCell_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        FeatureRouteCell_Previews.debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<String> {
-        PreviewData(id: "routeCell", viewModel: "Testing")
-    }
-
-    static var alternateViewModels: [PreviewData<String>] {
-        []
+    static var viewModels: [PreviewData<String>] {
+        [
+            PreviewData(id: "routeCell", viewModel: "Testing")
+        ]
     }
 
     static func create(from viewModel: String) -> some View {

@@ -26,6 +26,23 @@ extension View {
             .environmentObject(RepositoryList(repositories: Repository.someRepositories, provider: RepositoryListFixtureProvider()))
             .environmentObject(StampedeService(provider: StampedeServiceFixtureProvider()))
     }
+    
+    func colorSchemePreview(_ colorScheme: ColorScheme) -> some View {
+        return self
+            .colorScheme(colorScheme)
+            .previewLayout(.sizeThatFits)
+            .previewDependencies()
+    }
+ 
+    func sizeCategoryPreview(_ sizeCategory: ContentSizeCategory) -> some View {
+        return self
+            .colorScheme(.light)
+            .environment(\.sizeCategory, sizeCategory)
+            .previewLayout(.sizeThatFits)
+            .previewDependencies()
+    }
+
+    
     #endif
     
     func withNavigationDestinations() -> some View {

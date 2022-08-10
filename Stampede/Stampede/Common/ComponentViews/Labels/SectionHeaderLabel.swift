@@ -23,16 +23,11 @@ struct SectionHeaderLabel: View {
 }
 
 struct SectionHeaderLabel_Previews: PreviewProvider, Previewable {
-    static var previews: some View {
-        debugPreviews
-    }
 
-    static var defaultViewModel: PreviewData<String> {
-        PreviewData(id: "someTitle", viewModel: "123")
-    }
-
-    static var alternateViewModels: [PreviewData<String>] {
-        []
+    static var viewModels: [PreviewData<String>] {
+        [
+            PreviewData(id: "someTitle", viewModel: "123")
+        ]
     }
 
     static func create(from viewModel: String) -> some View {

@@ -11,7 +11,7 @@ import XCTest
 
 class QueueSummaryCellTests: XCTestCase {
 
-    func testCapturePreviews() {
+    @MainActor func testCapturePreviews() {
         capturedPreviews(QueueSummaryCell_Previews.capturedPreviews(title: "QueueSummaryCell"))
     }
 }

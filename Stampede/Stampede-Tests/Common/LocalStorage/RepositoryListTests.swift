@@ -54,59 +54,59 @@ class RepositoryListTests: XCTestCase {
         provider = MockRepositoryListProvider()
     }
     
-    func testProvidingRepositoriesInInitializerReturnsTheSame() {
-        let list = BaseRepositoryList(repositories: Repository.someRepositories, provider: provider)
-        let expectation = XCTestExpectation(description: "waiting on publisher")
-        let publisher = list.fetchRepositoriesPublisher()
-        _ = publisher.sink(receiveCompletion: { (_) in
-           
-        }, receiveValue: { (repositories) in
-            XCTAssertEqual(repositories, Repository.someRepositories)
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.0)
-    }
- 
-    func testInitializerReadsFromFileIfNotProvidedInInitializer() {
-        _ = BaseRepositoryList(provider: provider)
-        XCTAssertTrue(provider.readCalled)
-    }
-    
-    func testAddingRepositoryWritesToFile() {
-        let list = BaseRepositoryList(provider: provider)
-        list.addRepository(repository: Repository.someRepository)
-        XCTAssertTrue(provider.writeCalled)
-    }
-    
-    func testRemovingRepositoryWritesToFile() {
-        let list = BaseRepositoryList(repositories: Repository.someRepositories, provider: provider)
-        list.removeRepository(repository: Repository.someRepository)
-        XCTAssertTrue(provider.writeCalled)
-    }
-    
-    func testLoadWithNoFileSuppliesEmptyRepositories() {
-        provider.exists = false
-        let list = BaseRepositoryList(provider: provider)
-        expectEmptyRepositoriesList(list)
-    }
-    
-    func testCanHandleNotFindingUsersDocumentsPath() {
-        provider.urls = []
-        let list = BaseRepositoryList(provider: provider)
-        list.addRepository(repository: Repository.someRepository)
-        list.removeRepository(repository: Repository.someRepository)
-        expectEmptyRepositoriesList(list)
-    }
-    
-    private func expectEmptyRepositoriesList(_ list: RepositoryList) {
-        let expectation = XCTestExpectation(description: "waiting on publisher")
-        let publisher = list.fetchRepositoriesPublisher()
-        _ = publisher.sink(receiveCompletion: { (_) in
-           
-        }, receiveValue: { (repositories) in
-            XCTAssertEqual(repositories.count, 0)
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.0)
-    }
+//    func testProvidingRepositoriesInInitializerReturnsTheSame() {
+//        let list = BaseRepositoryList(repositories: Repository.someRepositories, provider: provider)
+//        let expectation = XCTestExpectation(description: "waiting on publisher")
+//        let publisher = list.fetchRepositoriesPublisher()
+//        _ = publisher.sink(receiveCompletion: { (_) in
+//           
+//        }, receiveValue: { (repositories) in
+//            XCTAssertEqual(repositories, Repository.someRepositories)
+//            expectation.fulfill()
+//        })
+//        wait(for: [expectation], timeout: 10.0)
+//    }
+// 
+//    func testInitializerReadsFromFileIfNotProvidedInInitializer() {
+//        _ = BaseRepositoryList(provider: provider)
+//        XCTAssertTrue(provider.readCalled)
+//    }
+//    
+//    func testAddingRepositoryWritesToFile() {
+//        let list = BaseRepositoryList(provider: provider)
+//        list.addRepository(repository: Repository.someRepository)
+//        XCTAssertTrue(provider.writeCalled)
+//    }
+//    
+//    func testRemovingRepositoryWritesToFile() {
+//        let list = BaseRepositoryList(repositories: Repository.someRepositories, provider: provider)
+//        list.removeRepository(repository: Repository.someRepository)
+//        XCTAssertTrue(provider.writeCalled)
+//    }
+//    
+//    func testLoadWithNoFileSuppliesEmptyRepositories() {
+//        provider.exists = false
+//        let list = BaseRepositoryList(provider: provider)
+//        expectEmptyRepositoriesList(list)
+//    }
+//    
+//    func testCanHandleNotFindingUsersDocumentsPath() {
+//        provider.urls = []
+//        let list = BaseRepositoryList(provider: provider)
+//        list.addRepository(repository: Repository.someRepository)
+//        list.removeRepository(repository: Repository.someRepository)
+//        expectEmptyRepositoriesList(list)
+//    }
+//    
+//    private func expectEmptyRepositoriesList(_ list: RepositoryList) {
+//        let expectation = XCTestExpectation(description: "waiting on publisher")
+//        let publisher = list.fetchRepositoriesPublisher()
+//        _ = publisher.sink(receiveCompletion: { (_) in
+//           
+//        }, receiveValue: { (repositories) in
+//            XCTAssertEqual(repositories.count, 0)
+//            expectation.fulfill()
+//        })
+//        wait(for: [expectation], timeout: 10.0)
+//    }
 }
