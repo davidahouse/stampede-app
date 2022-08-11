@@ -18,7 +18,9 @@ struct SectionHeaderLabel: View {
 
     var body: some View {
         Text(title)
-            .font(.headline).foregroundColor(Color("primaryTextColor"))
+            .font(.headline)
+            .foregroundColor(Color("primaryTextColor"))
+            .accessibilityIdentifier(title)
     }
 }
 
