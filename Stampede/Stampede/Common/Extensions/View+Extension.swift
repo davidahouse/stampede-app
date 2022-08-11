@@ -41,8 +41,6 @@ extension View {
             .previewLayout(.sizeThatFits)
             .previewDependencies()
     }
-
-    
     #endif
     
     func withNavigationDestinations() -> some View {

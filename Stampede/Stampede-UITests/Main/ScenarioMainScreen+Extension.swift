@@ -17,19 +17,19 @@ extension ScenarioMainScreen {
     }
 
     func andTheRepositoriesSectionIsVisible() {
-        waitForStaticText("REPOSITORIES")
+        waitForStaticText("Repositories")
     }
 
     func andTheMonitorSectionIsVisible() {
-        waitForStaticText("MONITOR")
+        waitForStaticText("Monitor")
     }
 
     func andTheHistorySectionIsVisible() {
-        waitForStaticText("HISTORY")
+        waitForStaticText("History")
     }
 
     func andTheSettingsSectionIsVisible() {
-        waitForStaticText("SETTINGS")
+        waitForStaticText("Settings")
     }
 
     // THEN ACCESSORS

@@ -27,7 +27,7 @@ extension Previewable {
     static var previews: some View {
         Group {
             ForEach(viewModels, id: \.id) { previewData in
-                AnyView(create(from: previewData.viewModel))
+                create(from: previewData.viewModel)
                     .previewDisplayName("\(previewData.id)")
                     .previewLayout(.sizeThatFits)
             }
