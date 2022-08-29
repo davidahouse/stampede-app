@@ -15,8 +15,20 @@ struct StampedeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .dependenciesToEnvironment(dependencies)
+            if !areTestsRunning() && !arePreviewsRunning() {
+                MainView()
+                    .dependenciesToEnvironment(dependencies)
+            } else {
+                EmptyView()
+            }
         }
+    }
+    
+    private func areTestsRunning() -> Bool {
+        return NSClassFromString("XCTest") != nil
+    }
+
+    private func arePreviewsRunning() -> Bool {
+        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != nil
     }
 }
