@@ -68,7 +68,6 @@
 		C30DBF9D252D2B4500021863 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBF9C252D2B4500021863 /* TimeInterval+Extension.swift */; };
 		C30DBFA2252D306B00021863 /* TimeIntervalExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFA1252D306B00021863 /* TimeIntervalExtensionTests.swift */; };
 		C30DBFE6253223E500021863 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFE5253223E500021863 /* UIView+Extension.swift */; };
-		C30DBFF32532308900021863 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DBFF22532308900021863 /* Dependencies.swift */; };
 		C3126DA023BED27F00AC542F /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */; };
 		C3126DA223BED33400AC542F /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA123BED33400AC542F /* SecondaryLabel.swift */; };
 		C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3126DA423BED39C00AC542F /* CurrentTheme.swift */; };
@@ -168,6 +167,7 @@
 		DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A125EABE4300A0311A /* TimeLabel.swift */; };
 		DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A625EABED400A0311A /* TimeLabelTests.swift */; };
 		DCD2DB5D28A0845A009005C3 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCD2DB5C28A0845A009005C3 /* MarkdownUI */; };
+		DCEB8C2328C4177A00E5083F /* ProcessInfo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB8C2228C4177A00E5083F /* ProcessInfo+Extension.swift */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
 		DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */; };
 /* End PBXBuildFile section */
@@ -248,7 +248,6 @@
 		C30DBF9C252D2B4500021863 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		C30DBFA1252D306B00021863 /* TimeIntervalExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensionTests.swift; sourceTree = "<group>"; };
 		C30DBFE5253223E500021863 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		C30DBFF22532308900021863 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		C3126D9F23BED27F00AC542F /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA123BED33400AC542F /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
 		C3126DA423BED39C00AC542F /* CurrentTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTheme.swift; sourceTree = "<group>"; };
@@ -356,6 +355,7 @@
 		DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkProvider.swift; sourceTree = "<group>"; };
 		DC4729A125EABE4300A0311A /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
 		DC4729A625EABED400A0311A /* TimeLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelTests.swift; sourceTree = "<group>"; };
+		DCEB8C2228C4177A00E5083F /* ProcessInfo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extension.swift"; sourceTree = "<group>"; };
 		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
 		DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -474,6 +474,7 @@
 				C30DBF8E252D28A200021863 /* Date+Extension.swift */,
 				C30DBF9C252D2B4500021863 /* TimeInterval+Extension.swift */,
 				C30DBFE5253223E500021863 /* UIView+Extension.swift */,
+				DCEB8C2228C4177A00E5083F /* ProcessInfo+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -631,7 +632,6 @@
 				946DAD2A23BEC7C200053335 /* ComponentViews */,
 				944FD36223AE70AD001A9FF8 /* Extensions */,
 				94655E76236E378C00C3DE2F /* LocalStorage */,
-				C30DBFF22532308900021863 /* Dependencies.swift */,
 				C3850A24253739100057F500 /* BaseView.swift */,
 				C3850A2925373C620057F500 /* BaseSubView.swift */,
 				DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */,
@@ -1424,7 +1424,6 @@
 				C3126DA523BED39C00AC542F /* CurrentTheme.swift in Sources */,
 				94B571F224BBBECD00CA13A4 /* QueueSummary.swift in Sources */,
 				C39E58EE253F821900217743 /* RepositoryBuildDetailsViewModel.swift in Sources */,
-				C30DBFF32532308900021863 /* Dependencies.swift in Sources */,
 				C3CA2E0E24BA9EB50086B71D /* HistoryBuildsView.swift in Sources */,
 				94DB4E03247C95AA001EF693 /* RepositoryViewModel.swift in Sources */,
 				94B571FC24BBBECD00CA13A4 /* StampedeAPIEndpoint.swift in Sources */,
@@ -1435,6 +1434,7 @@
 				C3850A25253739100057F500 /* BaseView.swift in Sources */,
 				C39E59012540765F00217743 /* ErrorPersona.swift in Sources */,
 				944EF65724FD1A8300357E9E /* StampedeServiceFixtureProvider.swift in Sources */,
+				DCEB8C2328C4177A00E5083F /* ProcessInfo+Extension.swift in Sources */,
 				94B571EE24BBBECD00CA13A4 /* ConfigOverrides.swift in Sources */,
 				DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */,
 				C3B12268253B600E005FD154 /* TaskArtifact.swift in Sources */,

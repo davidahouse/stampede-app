@@ -11,24 +11,42 @@ import SwiftUI
 @main
 struct StampedeApp: App {
 
-    @State var dependencies = Dependencies()
+    @StateObject var defaults: StampedeDefaults
+    @StateObject var service: StampedeService
+    @StateObject var theme: CurrentTheme
+    @StateObject var repositoryList: RepositoryList
+    
+    // MARK: - Initializer
 
+    init() {
+        
+        if !ProcessInfo.areTestsRunning() && !ProcessInfo.arePreviewsRunning() && !ProcessInfo.isStampedeServerInEnvironment() &&
+            !ProcessInfo.isPersonaInEnvironment() {
+            
+            _defaults = StateObject(wrappedValue: StampedeDefaults.standard)
+            _service = StateObject(wrappedValue: StampedeService(host: StampedeDefaults.standard.host, provider: StampedeServiceNetworkProvider(host: StampedeDefaults.standard.host)))
+            _theme = StateObject(wrappedValue: CurrentTheme())
+            _repositoryList = StateObject(wrappedValue: RepositoryList())
+            
+        } else {
+            
+            _defaults = StateObject(wrappedValue: StampedeDefaults.debug)
+            _service = StateObject(wrappedValue: StampedeService(host: StampedeDefaults.debug.host, provider: StampedeServiceFixtureProvider(host: StampedeDefaults.debug.host)))
+            _theme = StateObject(wrappedValue: CurrentTheme())
+            _repositoryList = StateObject(wrappedValue: RepositoryList(repositories: Repository.favoriteRepositories, provider: RepositoryListFixtureProvider()))
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            if !areTestsRunning() && !arePreviewsRunning() {
+            if !ProcessInfo.areTestsRunning() && !ProcessInfo.arePreviewsRunning() {
                 MainView()
-                    .dependenciesToEnvironment(dependencies)
+                    .environmentObject(theme)
+                    .environmentObject(service)
+                    .environmentObject(repositoryList)
             } else {
                 EmptyView()
             }
         }
-    }
-    
-    private func areTestsRunning() -> Bool {
-        return NSClassFromString("XCTest") != nil
-    }
-
-    private func arePreviewsRunning() -> Bool {
-        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != nil
     }
 }
