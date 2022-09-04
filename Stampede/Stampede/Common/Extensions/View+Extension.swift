@@ -11,13 +11,6 @@ import SwiftUI
 
 extension View {
 
-    func dependenciesToEnvironment(_ dependencies: Dependencies) -> some View {
-        return self
-            .environmentObject(dependencies.theme)
-            .environmentObject(dependencies.service)
-            .environmentObject(dependencies.repositoryList)
-    }
-
     #if DEBUG
     func previewDependencies() -> some View {
         return self
