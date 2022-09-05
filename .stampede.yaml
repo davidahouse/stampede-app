@@ -2,7 +2,7 @@ config:
   productName: Stampede
   projectFolder: Stampede
   xcodeVersion: Xcode-beta.app
-  simulator: iPhone 13
+  simulator: iPhone 11
   project: Stampede
   scheme: Stampede
   infoPlist: Stampede/Info.plist
