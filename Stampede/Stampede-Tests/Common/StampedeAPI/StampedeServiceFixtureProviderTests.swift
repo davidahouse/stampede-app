@@ -24,6 +24,7 @@ class StampedeServiceFixtureProviderTests: XCTestCase {
     }
 
     func testThatNotProvidingHostReturnsAnErrorFromPublishers() {
+        // TODO: Fix these broken tests
 //        expectError(providerNoHost.fetchRepositoriesPublisher())
 //        expectError(providerNoHost.fetchRepositoryBuildsPublisher(owner: "someOwner", repository: "someRepo"))
 //        expectError(providerNoHost.fetchActiveBuildsPublisher())
@@ -45,6 +46,7 @@ class StampedeServiceFixtureProviderTests: XCTestCase {
     }
 
     func testThatWithAHostItReturnsSuccessFromPublishers() {
+        // TODO: Fix these broken tests
 //        expectSuccess(provider.fetchRepositoriesPublisher())
 //        expectSuccess(provider.fetchRepositoryBuildsPublisher(owner: "someOwner", repository: "someRepo"))
 //        expectSuccess(provider.fetchActiveBuildsPublisher())

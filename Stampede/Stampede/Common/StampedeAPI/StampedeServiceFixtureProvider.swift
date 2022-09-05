@@ -46,77 +46,95 @@ class StampedeServiceFixtureProvider: FixtureProvider, StampedeServiceProvider {
 
     // Repository
     func fetchRepositories() async throws -> [Repository] {
+        fetchRepositoriesCalled = true
         return try await fetch(persona.repositories)
     }
 
     func fetchActiveBuilds(owner: String, repository: String) async throws -> [BuildStatus] {
+        fetchActiveBuildsCalled = true
         return try await fetch(persona.repositoryActiveBuilds)
     }
 
     func fetchRepositoryBuilds(owner: String, repository: String) async throws -> [RepositoryBuild] {
+        fetchRepositoryBuildsCalled = true
         return try await fetch(persona.repositoryBuilds)
     }
 
     func fetchBuildKeys(owner: String, repository: String, source: String) async throws -> [BuildKey] {
+        fetchBuildKeysCalled = true
         return try await fetch(persona.buildKeys)
     }
 
     func fetchBuildDetails(buildID: String) async throws -> BuildStatus {
+        fetchBuildDetailsCalled = true
         return try await fetch(persona.buildDetails)
     }
 
     func fetchTaskDetails(taskID: String) async throws -> TaskDetails {
+        fetchTaskDetailsCalled = true
         return try await fetch(persona.taskDetails)
     }
 
     func fetchRepositorySourceDetails(owner: String, repository: String, buildKey: String) async throws -> [BuildDetails] {
+        fetchRepositorySourceBuildsCalled = true
         return try await fetch(persona.repositorySourceBuilds)
     }
 
     // Monitor
     func fetchActiveBuilds() async throws -> [BuildStatus] {
+        fetchActiveBuildsCalled = true
         return try await fetch(persona.activeBuilds)
     }
 
     func fetchMonitorQueues() async throws -> QueueSummaries {
+        fetchMonitorQueuesCalled = true
         return try await fetch(persona.queues)
     }
 
     func fetchWorkerStatus() async throws -> [WorkerStatus] {
+        fetchWorkerStatusCalled = true
         return try await fetch(persona.workerStatus)
     }
 
     func fetchActiveTasks() async throws -> [TaskStatus] {
+        fetchActiveTasksCalled = true
         return try await fetch(persona.activeTasks)
     }
 
     // History
     func fetchHistoryBuilds() async throws -> [BuildDetails] {
+        fetchHistoryBuildsCalled = true
         return try await fetch(persona.historyBuilds)
     }
     
     func fetchHistoryTasks() async throws -> [TaskStatus] {
+        fetchHistoryTasksCalled = true
         return try await fetch(persona.historyTasks)
     }
     
     func fetchHistoryHourlySummary() async throws -> [HourlySummary] {
+        fetchHistoryHourlySummaryCalled = true
         return try await fetch(persona.hourlySummary)
     }
 
     // Admin
     func fetchAdminTasks() async throws -> [Task] {
+        fetchAdminTasksCalled = true
         return try await fetch(persona.tasks)
     }
     
     func fetchAdminConfigDefaults() async throws -> ConfigDefaults {
+        fetchAdminConfigDefaultsCalled = true
         return try await fetch(persona.configDefaults)
     }
     
     func fetchAdminConfigOverrides() async throws -> ConfigOverrides {
+        fetchAdminConfigOverridesCalled = true
         return try await fetch(persona.configOverrides)
     }
     
     func fetchAdminQueues() async throws -> [Queue] {
+        fetchAdminQueuesCalled = true
         return try await fetch(persona.configQueues)
     }
 

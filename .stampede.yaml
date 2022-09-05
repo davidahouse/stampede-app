@@ -1,7 +1,7 @@
 config:
   productName: Stampede
   projectFolder: Stampede
-  xcodeVersion: Xcode.app
+  xcodeVersion: Xcode-beta.app
   simulator: iPhone 11
   project: Stampede
   scheme: Stampede
