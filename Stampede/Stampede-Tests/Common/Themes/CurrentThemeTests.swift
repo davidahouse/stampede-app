@@ -9,10 +9,10 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class CurrentThemeTests: XCTestCase {
 
     func testCapturePreviews() {
-        capture(CurrentTheme_Previews.previews,
-            title: "CurrentTheme_Previews")
+        capturedPreviews(CurrentTheme_Previews.capturedPreviews(title: "CurrentTheme_Previews"))
     }
 }

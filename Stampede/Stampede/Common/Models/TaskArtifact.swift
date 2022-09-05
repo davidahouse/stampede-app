@@ -18,6 +18,7 @@ public struct TaskArtifact: Codable, Equatable, Hashable {
 extension TaskArtifact {
     static let someArtifact = TaskArtifact(title: "some artifact", type: "aType", url: nil)
     static let linkArtifact = TaskArtifact(title: "link artifact", type: "link", url: "https://www.apple.com")
+    static let appInstallArtifact = TaskArtifact(title: "App Install", type: "installplist", url: "https://somehost.com/path/app.ipa")
     static let someArtifacts = [someArtifact, linkArtifact]
 }
 #endif

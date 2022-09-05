@@ -16,6 +16,7 @@ class StampedeServiceNetworkProviderTests: XCTestCase {
     let providerNoHost = StampedeServiceNetworkProvider()
 
     func testThatNotProvidingHostReturnsAnErrorFromPublishers() {
+        // TODO: Fix these broken tests
 //        expectError(providerNoHost.fetchRepositoriesPublisher())
 //        expectError(providerNoHost.fetchRepositoryBuildsPublisher(owner: "someOwner", repository: "someRepo"))
 //        expectError(providerNoHost.fetchActiveBuildsPublisher())

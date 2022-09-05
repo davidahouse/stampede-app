@@ -166,6 +166,7 @@
 		DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */; };
 		DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A125EABE4300A0311A /* TimeLabel.swift */; };
 		DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A625EABED400A0311A /* TimeLabelTests.swift */; };
+		DC491AF928C6322300DE6BB4 /* BuildTaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC491AF828C6322300DE6BB4 /* BuildTaskViewModelTests.swift */; };
 		DCD2DB5D28A0845A009005C3 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCD2DB5C28A0845A009005C3 /* MarkdownUI */; };
 		DCEB8C2328C4177A00E5083F /* ProcessInfo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB8C2228C4177A00E5083F /* ProcessInfo+Extension.swift */; };
 		DCF1607225AE6120009321A1 /* SectionHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */; };
@@ -355,6 +356,7 @@
 		DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkProvider.swift; sourceTree = "<group>"; };
 		DC4729A125EABE4300A0311A /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
 		DC4729A625EABED400A0311A /* TimeLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelTests.swift; sourceTree = "<group>"; };
+		DC491AF828C6322300DE6BB4 /* BuildTaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTaskViewModelTests.swift; sourceTree = "<group>"; };
 		DCEB8C2228C4177A00E5083F /* ProcessInfo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extension.swift"; sourceTree = "<group>"; };
 		DCF1607125AE6120009321A1 /* SectionHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabel.swift; sourceTree = "<group>"; };
 		DCF1607625AE62FC009321A1 /* SectionHeaderLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelTests.swift; sourceTree = "<group>"; };
@@ -1060,6 +1062,7 @@
 			isa = PBXGroup;
 			children = (
 				C3DDDC5925180C85005C8189 /* BuildTaskViewTests.swift */,
+				DC491AF828C6322300DE6BB4 /* BuildTaskViewModelTests.swift */,
 			);
 			path = BuildTask;
 			sourceTree = "<group>";
@@ -1546,6 +1549,7 @@
 				C38BDD7F254504A300CA9A48 /* FavoriteRepositoryCellTests.swift in Sources */,
 				C3D350F723C2B00600ADEDC9 /* CurrentThemeTests.swift in Sources */,
 				941F25D823C2A71000EC3E36 /* ValueLabelTests.swift in Sources */,
+				DC491AF928C6322300DE6BB4 /* BuildTaskViewModelTests.swift in Sources */,
 				C3DDDCCB25181409005C8189 /* StampedeErrorTests.swift in Sources */,
 				946F3A7B252C99AF008C20EF /* BuildViewModelTests.swift in Sources */,
 				C30DBF95252D297700021863 /* DateExtensionTests.swift in Sources */,

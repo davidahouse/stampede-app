@@ -72,20 +72,24 @@ struct CurrentThemeIconList: View {
 }
 
 #if DEBUG
-struct CurrentTheme_Previews: PreviewProvider {
+struct CurrentTheme_Previews: PreviewProvider, Previewable {
 
-    static let theme = CurrentTheme()
+    static var viewModels: [PreviewData<CurrentTheme>] {
+        [
+            PreviewData(id: "currentTheme", viewModel: CurrentTheme())
+        ]
+    }
 
-    static var previews: some View {
-        Group {
+    static func create(from viewModel: CurrentTheme) -> some View {
+        return Group {
             List {
                 Text("Primary Text Color").foregroundColor(Color("primaryTextColor"))
                 Text("Secondary Text Color").foregroundColor(Color("secondaryTextColor"))
                 Text("Value Text Color").foregroundColor(Color("valueTextColor"))
-                Rectangle().fill(theme.primaryBackground)
+                Rectangle().fill(viewModel.primaryBackground)
                 CurrentThemeIconList()
             }
-        }.previewDependencies()
+        }
     }
 }
 #endif

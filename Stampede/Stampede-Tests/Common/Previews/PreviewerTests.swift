@@ -10,6 +10,7 @@ import XCTest
 import SwiftUI
 @testable import Stampede
 
+@MainActor
 class PreviewerTests: XCTestCase {
 
     class TestPreviewer: Previewable {
@@ -27,10 +28,6 @@ class PreviewerTests: XCTestCase {
     }
 
     func testPreviews() {
-        capture(TestPreviewer.previews, title: "DebugPreviews")
+        capturedPreviews(TestPreviewer.capturedPreviews(title: "DebugPreviews"))
     }
-
-//    func testDevicePreviews() {
-//        capture(TestPreviewer.devicePreviews, title: "DevicePreviews")
-//    }
 }
