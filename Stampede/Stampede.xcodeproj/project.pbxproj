@@ -164,6 +164,12 @@
 		DC0D04E325E19F1A00418EBA /* TaskStatusIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */; };
 		DC1E3A13285D3E7800AE872B /* StampedeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E3A12285D3E7800AE872B /* StampedeApp.swift */; };
 		DC21B8AB285FBDE6009B3F65 /* AsyncNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */; };
+		DC2987B528C6B65900B1B2DA /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2987B428C6B65900B1B2DA /* MainViewModelTests.swift */; };
+		DC2987B728C6B78A00B1B2DA /* RepositoryListFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2987B628C6B78A00B1B2DA /* RepositoryListFixtureTests.swift */; };
+		DC2987B928C6B99700B1B2DA /* UIViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2987B828C6B99700B1B2DA /* UIViewExtensionTests.swift */; };
+		DC2987BB28C6BB8B00B1B2DA /* HistoryBuildsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2987BA28C6BB8B00B1B2DA /* HistoryBuildsViewModelTests.swift */; };
+		DC2987BD28C6CD3600B1B2DA /* QueueSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2987BC28C6CD3600B1B2DA /* QueueSummaryTests.swift */; };
+		DC2987BF28C6D04D00B1B2DA /* TaskSCMDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2987BE28C6D04D00B1B2DA /* TaskSCMDetailsTests.swift */; };
 		DC4729A225EABE4300A0311A /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A125EABE4300A0311A /* TimeLabel.swift */; };
 		DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4729A625EABED400A0311A /* TimeLabelTests.swift */; };
 		DC491AF928C6322300DE6BB4 /* BuildTaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC491AF828C6322300DE6BB4 /* BuildTaskViewModelTests.swift */; };
@@ -354,6 +360,12 @@
 		DC0D04E225E19F1A00418EBA /* TaskStatusIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIconTests.swift; sourceTree = "<group>"; };
 		DC1E3A12285D3E7800AE872B /* StampedeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampedeApp.swift; sourceTree = "<group>"; };
 		DC21B8AA285FBDE6009B3F65 /* AsyncNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkProvider.swift; sourceTree = "<group>"; };
+		DC2987B428C6B65900B1B2DA /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		DC2987B628C6B78A00B1B2DA /* RepositoryListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListFixtureTests.swift; sourceTree = "<group>"; };
+		DC2987B828C6B99700B1B2DA /* UIViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTests.swift; sourceTree = "<group>"; };
+		DC2987BA28C6BB8B00B1B2DA /* HistoryBuildsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBuildsViewModelTests.swift; sourceTree = "<group>"; };
+		DC2987BC28C6CD3600B1B2DA /* QueueSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueSummaryTests.swift; sourceTree = "<group>"; };
+		DC2987BE28C6D04D00B1B2DA /* TaskSCMDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSCMDetailsTests.swift; sourceTree = "<group>"; };
 		DC4729A125EABE4300A0311A /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
 		DC4729A625EABED400A0311A /* TimeLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelTests.swift; sourceTree = "<group>"; };
 		DC491AF828C6322300DE6BB4 /* BuildTaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTaskViewModelTests.swift; sourceTree = "<group>"; };
@@ -465,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				943C3DB32524A90F00C35FB6 /* RepositoryListTests.swift */,
+				DC2987B628C6B78A00B1B2DA /* RepositoryListFixtureTests.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -498,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				C3520CA423CE92D5004C0674 /* MainViewTests.swift */,
+				DC2987B428C6B65900B1B2DA /* MainViewModelTests.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -546,6 +560,8 @@
 				C3DDDC0F25180863005C8189 /* WorkerStatusTests.swift */,
 				C3DDDC4525180B60005C8189 /* HourlySummaryTests.swift */,
 				C3DDDCCA25181409005C8189 /* StampedeErrorTests.swift */,
+				DC2987BC28C6CD3600B1B2DA /* QueueSummaryTests.swift */,
+				DC2987BE28C6D04D00B1B2DA /* TaskSCMDetailsTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -646,6 +662,7 @@
 			children = (
 				C30DBF94252D297700021863 /* DateExtensionTests.swift */,
 				C30DBFA1252D306B00021863 /* TimeIntervalExtensionTests.swift */,
+				DC2987B828C6B99700B1B2DA /* UIViewExtensionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1088,6 +1105,7 @@
 			isa = PBXGroup;
 			children = (
 				C3DDDC7E25180F30005C8189 /* HistoryBuildsViewTests.swift */,
+				DC2987BA28C6BB8B00B1B2DA /* HistoryBuildsViewModelTests.swift */,
 			);
 			path = Builds;
 			sourceTree = "<group>";
@@ -1499,6 +1517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2987BD28C6CD3600B1B2DA /* QueueSummaryTests.swift in Sources */,
 				941F25CE23C2A63700EC3E36 /* NavbarButtonTests.swift in Sources */,
 				C38BDD84254504F600CA9A48 /* FeatureRouteCellTests.swift in Sources */,
 				C3DDDC3225180A90005C8189 /* TaskStatusCellTests.swift in Sources */,
@@ -1516,6 +1535,8 @@
 				C3DE1CA225423A2E009FA36D /* SettingsDeveloperViewTests.swift in Sources */,
 				DC4729A725EABED400A0311A /* TimeLabelTests.swift in Sources */,
 				C3DDDCD92518236B005C8189 /* StampedeServiceNetworkProviderTests.swift in Sources */,
+				DC2987B728C6B78A00B1B2DA /* RepositoryListFixtureTests.swift in Sources */,
+				DC2987B528C6B65900B1B2DA /* MainViewModelTests.swift in Sources */,
 				C3DE1CC525432F6F009FA36D /* RepositoryViewModelTests.swift in Sources */,
 				C3DDDCD1251821C6005C8189 /* StampedeAPIEndpointTests.swift in Sources */,
 				C3DDDC8E25180FB7005C8189 /* SettingsNotificationsViewTests.swift in Sources */,
@@ -1526,7 +1547,9 @@
 				C3816C8E248702BC00E6980B /* MonitorActiveBuildsViewTests.swift in Sources */,
 				C3DDDC4C25180C1F005C8189 /* BuildViewTests.swift in Sources */,
 				C3816C90248702BC00E6980B /* MonitorQueuesViewTests.swift in Sources */,
+				DC2987BB28C6BB8B00B1B2DA /* HistoryBuildsViewModelTests.swift in Sources */,
 				C38BDD892545055F00CA9A48 /* BuildDetailsCellTests.swift in Sources */,
+				DC2987BF28C6D04D00B1B2DA /* TaskSCMDetailsTests.swift in Sources */,
 				C3DE1CAC25423B85009FA36D /* RepositoryBuildDetailsViewTests.swift in Sources */,
 				DCF1607725AE62FC009321A1 /* SectionHeaderLabelTests.swift in Sources */,
 				949CC97F2517F61200BEC54E /* BuildStatusTests.swift in Sources */,
@@ -1559,6 +1582,7 @@
 				941F25D423C2A6C500EC3E36 /* PrimaryLabelTests.swift in Sources */,
 				C3DDDC1025180863005C8189 /* WorkerStatusTests.swift in Sources */,
 				C3DE1CA725423B53009FA36D /* RepositorySourceDetailsViewTests.swift in Sources */,
+				DC2987B928C6B99700B1B2DA /* UIViewExtensionTests.swift in Sources */,
 				941F25CB23C2A5FF00EC3E36 /* EmptyListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

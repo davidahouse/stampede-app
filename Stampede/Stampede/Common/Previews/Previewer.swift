@@ -24,6 +24,8 @@ struct PreviewData<ViewModel>: Identifiable {
 }
 
 extension Previewable {
+    
+    @MainActor
     static var previews: some View {
         Group {
             ForEach(viewModels, id: \.id) { previewData in
@@ -35,27 +37,38 @@ extension Previewable {
         .previewDependencies()
     }
     
+    static func createForCapture(from viewModel: ViewModel) -> some View {
+        create(from: viewModel)
+                .previewLayout(.sizeThatFits)
+    }
+    
     @MainActor
     static func capturedPreviews(title: String) -> [(String, UIImage)] {
         
         var captured: [(String, UIImage)] = []
         
-        if let light = ImageRenderer(content: previews.colorSchemePreview(.light)).uiImage {
-            captured.append((title + "-" + "Light", light))
+        for previewData in viewModels {
+            let lightRenderer = ImageRenderer(content: createForCapture(from: previewData.viewModel)
+                .colorSchemePreview(.light))
+            if let light = lightRenderer.uiImage {
+                captured.append((title + "-" + previewData.id + "-" + "Light", light))
+            }
+            
+            if let dark = ImageRenderer(content: createForCapture(from: previewData.viewModel)
+                .colorSchemePreview(.dark)).uiImage {
+                captured.append((title + "-" + previewData.id + "-" + "Dark", dark))
+            }
+            
+            if let extraSmallText = ImageRenderer(content: createForCapture(from: previewData.viewModel)
+                .sizeCategoryPreview(.extraSmall)).uiImage {
+                captured.append((title + "-" + previewData.id + "-" + "ExtraSmallText", extraSmallText))
+            }
+            
+            if let extraLargeText = ImageRenderer(content: createForCapture(from: previewData.viewModel)
+                .sizeCategoryPreview(.extraLarge)).uiImage {
+                captured.append((title + "-" + previewData.id + "-" + "ExtraLargeText", extraLargeText))
+            }
         }
-
-        if let dark = ImageRenderer(content: previews.colorSchemePreview(.dark)).uiImage {
-            captured.append((title + "-" + "Dark", dark))
-        }
-
-        if let extraSmallText = ImageRenderer(content: previews.sizeCategoryPreview(.extraSmall)).uiImage {
-            captured.append((title + "-" + "ExtraSmallText", extraSmallText))
-        }
-        
-        if let extraLargeText = ImageRenderer(content: previews.sizeCategoryPreview(.extraLarge)).uiImage {
-            captured.append((title + "-" + "ExtraLargeText", extraLargeText))
-        }
-
         return captured
     }
 }

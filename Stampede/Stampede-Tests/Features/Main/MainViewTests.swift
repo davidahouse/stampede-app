@@ -9,11 +9,10 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class MainViewTests: XCTestCase {
 
     func testCapturePreviews() {
-        // Currently disabled because MainView includes a navigation stack that is throwing
-        // an error when trying to capture the view.
-//        capturedPreviews(MainView_Previews.capturedPreviews(title: "MainView_Previews"))
+        capturedPreviews(MainView_Previews.capturedPreviews(title: "MainView_Previews"))
     }
 }

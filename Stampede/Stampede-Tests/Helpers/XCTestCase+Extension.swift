@@ -20,6 +20,7 @@ extension XCTestCase {
         add(attachment)
     }
     
+    @MainActor
     func capturedPreviews(_ previews: [(String, UIImage)]) {
         for preview in previews {
             let attachment = XCTAttachment(image: preview.1)
