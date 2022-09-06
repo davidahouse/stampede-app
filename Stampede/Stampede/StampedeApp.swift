@@ -40,10 +40,12 @@ struct StampedeApp: App {
     var body: some Scene {
         WindowGroup {
             if !ProcessInfo.areTestsRunning() && !ProcessInfo.arePreviewsRunning() {
-                MainView()
-                    .environmentObject(theme)
-                    .environmentObject(service)
-                    .environmentObject(repositoryList)
+                NavigationStack {
+                    MainView()
+                        .environmentObject(theme)
+                        .environmentObject(service)
+                        .environmentObject(repositoryList)
+                }
             } else {
                 EmptyView()
             }

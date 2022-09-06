@@ -21,41 +21,39 @@ struct MainView: View {
     // MARK: - View
 
     var body: some View {
-        NavigationStack {
-            List {
-                Section(header: SectionHeaderLabel("Repositories")) {
-                    ForEach(repositoryList.repositories, id: \.self) { item in
-                        NavigationLink(value: item, label: {
-                            RepositoryCell(repository: item)
-                        }).accessibilityIdentifier(item.id)
-                    }
-                }
-                Section(header: SectionHeaderLabel("Monitor")) {
-                    ForEach(MainMenuItem.monitorItems, id: \.self) { item in
-                        NavigationLink(value: item, label: {
-                            FeatureRouteCell(title: item.rawValue)
-                        })
-                    }
-                }
-                Section(header: SectionHeaderLabel("History")) {
-                    ForEach(MainMenuItem.historyItems, id: \.self) { item in
-                        NavigationLink(value: item, label: {
-                            FeatureRouteCell(title: item.rawValue)
-                        })
-                    }
-                }
-                Section(header: SectionHeaderLabel("Settings")) {
-                    ForEach(MainMenuItem.settingsItems, id: \.self) { item in
-                        NavigationLink(value: item, label: {
-                            FeatureRouteCell(title: item.rawValue)
-                        })
-                    }
+        List {
+            Section(header: SectionHeaderLabel("Repositories")) {
+                ForEach(repositoryList.repositories, id: \.self) { item in
+                    NavigationLink(value: item, label: {
+                        RepositoryCell(repository: item)
+                    }).accessibilityIdentifier(item.id)
                 }
             }
-            .listStyle(GroupedListStyle())
-            .navigationTitle("Stampede")
-            .withNavigationDestinations()
+            Section(header: SectionHeaderLabel("Monitor")) {
+                ForEach(MainMenuItem.monitorItems, id: \.self) { item in
+                    NavigationLink(value: item, label: {
+                        FeatureRouteCell(title: item.rawValue)
+                    })
+                }
+            }
+            Section(header: SectionHeaderLabel("History")) {
+                ForEach(MainMenuItem.historyItems, id: \.self) { item in
+                    NavigationLink(value: item, label: {
+                        FeatureRouteCell(title: item.rawValue)
+                    })
+                }
+            }
+            Section(header: SectionHeaderLabel("Settings")) {
+                ForEach(MainMenuItem.settingsItems, id: \.self) { item in
+                    NavigationLink(value: item, label: {
+                        FeatureRouteCell(title: item.rawValue)
+                    })
+                }
+            }
         }
+        .listStyle(GroupedListStyle())
+        .navigationTitle("Stampede")
+        .withNavigationDestinations()
     }
 }
 

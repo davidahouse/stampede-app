@@ -12,7 +12,7 @@ struct TaskStatusIcon: View {
     
     let status: String
     let conclusion: String?
-    
+        
     var body: some View {
         switch status {
         case "in_progress":
@@ -33,7 +33,6 @@ struct TaskStatusIcon_Previews: PreviewProvider, Previewable {
 
     static var viewModels: [PreviewData<(String, String?)>] {
         [
-            PreviewData(id: "inprogress", viewModel: ("in_progress", nil)),
             PreviewData(id: "inprogress", viewModel: ("in_progress", nil)),
             PreviewData(id: "success", viewModel: ("success", "success")),
             PreviewData(id: "failure", viewModel: ("completed", "failure"))

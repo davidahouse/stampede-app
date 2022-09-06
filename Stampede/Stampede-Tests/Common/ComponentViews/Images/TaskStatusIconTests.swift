@@ -9,6 +9,7 @@
 @testable import Stampede
 import XCTest
 
+@MainActor
 class TaskStatusIconTests: XCTestCase {
 
     func testCapturePreviews() {
