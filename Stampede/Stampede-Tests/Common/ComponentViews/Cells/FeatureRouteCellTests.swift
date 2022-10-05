@@ -9,6 +9,7 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class FeatureRouteCellTests: XCTestCase {
 
     func testCapturePreviews() {

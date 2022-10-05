@@ -9,6 +9,7 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class SettingsDeveloperPersonaViewTests: XCTestCase {
     func testCapturePreviews() {
         capturedPreviews(SettingsDeveloperPersonaView_Previews.capturedPreviews(title: "SettingsDeveloperPersonaView_Previews"))
