@@ -9,6 +9,7 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class BuildStatusCellTests: XCTestCase {
 
     func testCapturePreviews() {

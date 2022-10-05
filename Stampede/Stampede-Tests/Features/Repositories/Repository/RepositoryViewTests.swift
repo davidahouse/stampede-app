@@ -9,6 +9,7 @@
 import XCTest
 @testable import Stampede
 
+@MainActor
 class RepositoryViewTests: XCTestCase {
 
     func testCapturePreviews() {
