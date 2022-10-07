@@ -1,0 +1,9 @@
+open:
+  commands: 
+    - sudo xcode-select -s /Applications/Xcode-14.app	
+    - xed Stampede/Stampede.xcodeproj
+openbeta:
+  commands:
+    - sudo xcode-select -s /Applications/Xcode-beta.app
+    - xed Stampede/Stampede.xcodeproj
+
